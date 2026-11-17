@@ -5,6 +5,19 @@ Usage:
 
 Without --catalog, prints the JSON entry to stdout.
 With --catalog, inserts or updates the matching entry (by releaseTag) in packs.json.
+
+Kind convention:
+    Each asset's kind is derived from its folder inside <pack_dir> and appended as
+    the last entry of its fileTags list:
+      - Image kinds: Textures -> "texture", Alphas -> "alpha"
+      - Non-image kinds: Materials -> "material", Brushes -> "brush",
+        Generators -> "generator", any other folder -> "asset"
+
+Preview convention:
+    Non-image assets may ship a sibling preview image in the same folder named
+    <stem>.preview.<img_ext> (e.g. oak-wood.blend + oak-wood.preview.png), where
+    <img_ext> is one of png, jpg, jpeg, webp, bmp, gif, tif, tiff. Preview files
+    are never added to the catalog's files/fileTags and are never release assets.
 """
 
 from __future__ import annotations
@@ -19,7 +32,41 @@ from pathlib import Path
 from urllib.parse import quote
 
 DEFAULT_REPO = "Artbyo3/DEVIL-PAINTER_Asset_Library"
-KIND_FOLDERS = (("Textures", "texture"), ("Alphas", "alpha"))
+KIND_FOLDERS = (
+    ("Textures", "texture"),
+    ("Alphas", "alpha"),
+    ("Materials", "material"),
+    ("Brushes", "brush"),
+    ("Generators", "generator"),
+)
+KNOWN_FOLDER_NAMES = {folder_name for folder_name, _ in KIND_FOLDERS}
+IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp", ".bmp", ".gif", ".tif", ".tiff")
+
+
+def is_preview_file(filename: str) -> bool:
+    stem, ext = os.path.splitext(filename)
+    return ext.lower() in IMAGE_EXTENSIONS and stem.lower().endswith(".preview")
+
+
+def iter_pack_folders(pack_dir: Path) -> list[tuple[Path, str]]:
+    folders: list[tuple[Path, str]] = []
+    for folder_name, kind in KIND_FOLDERS:
+        folder = pack_dir / folder_name
+        if folder.is_dir():
+            folders.append((folder, kind))
+    extra_folders = sorted(
+        (
+            entry
+            for entry in pack_dir.iterdir()
+            if entry.is_dir()
+            and not entry.name.startswith(".")
+            and entry.name not in KNOWN_FOLDER_NAMES
+        ),
+        key=lambda entry: entry.name,
+    )
+    for folder in extra_folders:
+        folders.append((folder, "asset"))
+    return folders
 
 
 def format_size(num_bytes: int) -> str:
@@ -68,14 +115,13 @@ def build_entry(
 
     files: list[str] = []
     file_tags: dict[str, list[str]] = {}
-    for folder_name, kind in KIND_FOLDERS:
-        folder = pack_dir / folder_name
-        if not folder.is_dir():
-            continue
+    for folder, kind in iter_pack_folders(pack_dir):
         names = sorted(
             entry.name
             for entry in folder.iterdir()
-            if entry.is_file() and not entry.name.startswith(".")
+            if entry.is_file()
+            and not entry.name.startswith(".")
+            and not is_preview_file(entry.name)
         )
         for name in names:
             if name in file_tags:

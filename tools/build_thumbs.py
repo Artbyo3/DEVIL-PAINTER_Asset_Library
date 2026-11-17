@@ -5,6 +5,21 @@ Usage:
 
 Without --catalog, prints the filename -> relative thumb path JSON mapping to stdout.
 With --catalog, sets the 'thumbs' field on the matching entry (by releaseTag) in packs.json.
+
+Kind convention:
+    Assets live inside subfolders of <pack_dir>:
+      - Image kinds: Textures ("texture"), Alphas ("alpha")
+      - Non-image kinds: Materials ("material"), Brushes ("brush"),
+        Generators ("generator"), any other folder ("asset")
+
+Preview convention:
+    For image files (image kinds or known image extensions), thumbnails are
+    generated from the file itself. For non-image files, if a sibling preview
+    picture named <stem>.preview.<img_ext> exists in the same folder (e.g.
+    oak-wood.blend with oak-wood.preview.png), the thumbnail is generated from
+    the preview and mapped under the asset's filename in 'thumbs'. If no preview
+    exists, the file gets no 'thumbs' entry. Preview files themselves are never
+    treated as catalog assets.
 """
 
 from __future__ import annotations
@@ -17,10 +32,62 @@ from pathlib import Path
 
 from PIL import Image
 
-KIND_FOLDERS = ("Textures", "Alphas")
+KIND_FOLDERS = (
+    ("Textures", "texture"),
+    ("Alphas", "alpha"),
+    ("Materials", "material"),
+    ("Brushes", "brush"),
+    ("Generators", "generator"),
+)
+KNOWN_FOLDER_NAMES = {folder_name for folder_name, _ in KIND_FOLDERS}
+IMAGE_KINDS = {"texture", "alpha"}
+IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp", ".bmp", ".gif", ".tif", ".tiff")
 MAX_SIZE = (160, 160)
 WEBP_QUALITY = 72
 JPEG_QUALITY = 75
+
+
+def is_preview_file(filename: str) -> bool:
+    stem, ext = os.path.splitext(filename)
+    return ext.lower() in IMAGE_EXTENSIONS and stem.lower().endswith(".preview")
+
+
+def iter_pack_folders(pack_dir: Path) -> list[tuple[Path, str]]:
+    folders: list[tuple[Path, str]] = []
+    for folder_name, kind in KIND_FOLDERS:
+        folder = pack_dir / folder_name
+        if folder.is_dir():
+            folders.append((folder, kind))
+    extra_folders = sorted(
+        (
+            entry
+            for entry in pack_dir.iterdir()
+            if entry.is_dir()
+            and not entry.name.startswith(".")
+            and entry.name not in KNOWN_FOLDER_NAMES
+        ),
+        key=lambda entry: entry.name,
+    )
+    for folder in extra_folders:
+        folders.append((folder, "asset"))
+    return folders
+
+
+def find_preview_image(asset_path: Path) -> Path | None:
+    expected_stem = f"{os.path.splitext(asset_path.name)[0]}.preview"
+    candidates = sorted(
+        (
+            entry
+            for entry in asset_path.parent.iterdir()
+            if entry.is_file() and not entry.name.startswith(".")
+        ),
+        key=lambda entry: entry.name,
+    )
+    for candidate in candidates:
+        cand_stem, cand_ext = os.path.splitext(candidate.name)
+        if cand_stem == expected_stem and cand_ext.lower() in IMAGE_EXTENSIONS:
+            return candidate
+    return None
 
 
 def _prepare_for_webp(img: Image.Image) -> Image.Image:
@@ -44,22 +111,35 @@ def build_thumbs(
     site_prefix: str = "thumbs",
 ) -> dict[str, str]:
     out_dir = thumbs_dir / release_tag
-    out_dir.mkdir(parents=True, exist_ok=True)
 
     mapping: dict[str, str] = {}
-    for folder_name in KIND_FOLDERS:
-        folder = pack_dir / folder_name
-        if not folder.is_dir():
-            continue
+    seen_assets: set[str] = set()
+    for folder, kind in iter_pack_folders(pack_dir):
         entries = sorted(
-            (e for e in folder.iterdir() if e.is_file() and not e.name.startswith(".")),
+            (
+                e
+                for e in folder.iterdir()
+                if e.is_file()
+                and not e.name.startswith(".")
+                and not is_preview_file(e.name)
+            ),
             key=lambda e: e.name,
         )
         for src_path in entries:
-            if src_path.name in mapping:
+            if src_path.name in seen_assets:
                 raise ValueError(f"Duplicate filename across folders: {src_path.name}")
+            seen_assets.add(src_path.name)
+
+            if kind in IMAGE_KINDS or src_path.suffix.lower() in IMAGE_EXTENSIONS:
+                thumb_source: Path | None = src_path
+            else:
+                thumb_source = find_preview_image(src_path)
+                if thumb_source is None:
+                    continue
+
+            out_dir.mkdir(parents=True, exist_ok=True)
             stem = os.path.splitext(src_path.name)[0]
-            with Image.open(src_path) as raw:
+            with Image.open(thumb_source) as raw:
                 img = raw.copy()
             img.thumbnail(MAX_SIZE, Image.Resampling.LANCZOS)
 

@@ -262,6 +262,7 @@
 
     .dp-thumb:hover {
       border-color: var(--dp-accent);
+      text-decoration: none;
     }
 
     .dp-thumb img {
@@ -269,6 +270,20 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .dp-thumb-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 4px;
+      color: var(--dp-text-secondary);
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-align: center;
+      word-break: break-all;
     }
 
     .dp-card-title {
@@ -629,45 +644,94 @@
         return { pack: pack, files: candidateFiles };
       }
 
-      function appendThumbnailBatch(grid, baseUrl, files, thumbsMap, startIndex, count) {
+      const VIEWABLE_KINDS = new Set(['texture', 'alpha']);
+      const VIEWABLE_EXTENSIONS = new Set(['png', 'jpg', 'jpeg', 'webp', 'bmp', 'gif', 'tif', 'tiff']);
+
+      function getFileExtension(filename) {
+        const dot = filename.lastIndexOf('.');
+        if (dot <= 0 || dot === filename.length - 1) return '';
+        return filename.slice(dot + 1).toLowerCase();
+      }
+
+      function getFileKind(pack, filename) {
+        const tags = pack && pack._fileTags ? pack._fileTags[filename] : null;
+        if (!Array.isArray(tags) || tags.length === 0) return '';
+        return tags[tags.length - 1];
+      }
+
+      function isViewableFile(pack, filename) {
+        if (VIEWABLE_KINDS.has(getFileKind(pack, filename))) return true;
+        return VIEWABLE_EXTENSIONS.has(getFileExtension(filename));
+      }
+
+      function createPlaceholder(filename) {
+        const ext = getFileExtension(filename);
+        const span = document.createElement('span');
+        span.className = 'dp-thumb-placeholder';
+        span.textContent = ext ? '.' + ext : filename;
+        return span;
+      }
+
+      function appendThumbnailBatch(grid, baseUrl, files, thumbsMap, pack, startIndex, count) {
         const endIndex = Math.min(startIndex + count, files.length);
         for (let i = startIndex; i < endIndex; i++) {
           const cleanFile = files[i];
           const fileUrl = baseUrl + encodeURIComponent(cleanFile);
           const thumbPath = thumbsMap && thumbsMap[cleanFile];
+          const viewable = isViewableFile(pack, cleanFile);
 
           const link = document.createElement('a');
           link.className = 'dp-thumb';
           link.href = fileUrl;
           link.title = cleanFile;
-          link.addEventListener('click', function (e) {
-            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-            e.preventDefault();
-            openOverlay(fileUrl, cleanFile, link);
-          });
 
-          const img = document.createElement('img');
-          if (thumbPath) {
+          if (viewable) {
+            link.addEventListener('click', function (e) {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+              e.preventDefault();
+              openOverlay(fileUrl, cleanFile, link);
+            });
+
+            const img = document.createElement('img');
+            if (thumbPath) {
+              img.onerror = function () {
+                img.onerror = null;
+                img.src = fileUrl;
+              };
+              img.src = thumbPath;
+            } else {
+              img.src = fileUrl;
+            }
+            img.alt = cleanFile;
+            img.setAttribute('loading', 'lazy');
+            img.loading = 'lazy';
+            img.decoding = 'async';
+
+            link.appendChild(img);
+          } else if (thumbPath) {
+            const img = document.createElement('img');
             img.onerror = function () {
               img.onerror = null;
-              img.src = fileUrl;
+              link.innerHTML = '';
+              link.appendChild(createPlaceholder(cleanFile));
             };
             img.src = thumbPath;
-          } else {
-            img.src = fileUrl;
-          }
-          img.alt = cleanFile;
-          img.setAttribute('loading', 'lazy');
-          img.loading = 'lazy';
-          img.decoding = 'async';
+            img.alt = cleanFile;
+            img.setAttribute('loading', 'lazy');
+            img.loading = 'lazy';
+            img.decoding = 'async';
 
-          link.appendChild(img);
+            link.appendChild(img);
+          } else {
+            link.appendChild(createPlaceholder(cleanFile));
+          }
+
           grid.appendChild(link);
         }
         return endIndex;
       }
 
-      function renderThumbnailGrid(card, releaseTag, files, thumbsMap) {
+      function renderThumbnailGrid(card, releaseTag, files, thumbsMap, pack) {
         if (!releaseTag || files.length === 0) return;
 
         const grid = document.createElement('div');
@@ -677,7 +741,7 @@
           encodeURIComponent(releaseTag) +
           '/';
 
-        let renderedCount = appendThumbnailBatch(grid, baseUrl, files, thumbsMap, 0, THUMB_BATCH_SIZE);
+        let renderedCount = appendThumbnailBatch(grid, baseUrl, files, thumbsMap, pack, 0, THUMB_BATCH_SIZE);
         card.appendChild(grid);
 
         if (renderedCount < files.length) {
@@ -686,7 +750,7 @@
           showMoreBtn.className = 'dp-tag-btn dp-show-more';
           showMoreBtn.textContent = 'Show more';
           showMoreBtn.addEventListener('click', function () {
-            renderedCount = appendThumbnailBatch(grid, baseUrl, files, thumbsMap, renderedCount, THUMB_BATCH_SIZE);
+            renderedCount = appendThumbnailBatch(grid, baseUrl, files, thumbsMap, pack, renderedCount, THUMB_BATCH_SIZE);
             if (renderedCount >= files.length) {
               showMoreBtn.remove();
             }
@@ -803,7 +867,7 @@
           card.appendChild(mainRow);
 
           const releaseTag = typeof pack.releaseTag === 'string' ? pack.releaseTag.trim() : '';
-          renderThumbnailGrid(card, releaseTag, entry.files, pack._thumbs);
+          renderThumbnailGrid(card, releaseTag, entry.files, pack._thumbs, pack);
 
           container.appendChild(card);
         }
