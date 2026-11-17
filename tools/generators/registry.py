@@ -91,6 +91,22 @@ REGISTERED_MODULES: tuple[str, ...] = (
     "flecktarn_camo",
     "multicam_camo",
     "urban_camo",
+    # --- Environment Surfaces: Rocks, Ground & Walls (15) ---
+    "granite_rock",
+    "sandstone_strata",
+    "slate_rock",
+    "limestone",
+    "river_pebbles",
+    "gravel",
+    "grass_field",
+    "grass_dirt_patch",
+    "moss_ground",
+    "dirt_soil",
+    "cracked_dry_mud",
+    "sand",
+    "red_brick_wall",
+    "stone_wall",
+    "stucco_plaster_wall",
 )
 
 

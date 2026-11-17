@@ -8,10 +8,10 @@ Pure local Python (`numpy` + `Pillow`) procedural texture and alpha generators c
 - `interface.py` — Shared [`GeneratorSpec`](interface.py) contract (`name`, `kind`, `tileable`, `tile_axes`, `origin`, `default_palette`, `description`, `render_fn`). Every generator accepts `(seed, palette, size, variant)` and outputs a `size x size` PNG (`512x512` default).
 - `registry.py` — Single canonical `REGISTERED_MODULES` tuple and `GENERATORS` map.
 - `common.py` — Shared periodic 2D gradient Perlin noise, multi-mode fBm (`fbm`, `turbulence`, `billow`, `ridged`, `swiss`), 3-metric periodic Voronoi, separable box blur, 5-stop palette mapping, Sobel normal/AO/curvature baking, and PBR/cloth surface shaders.
-- `palettes.py` — Consolidated 135-palette library (`PALETTES`) plus custom hex-stop parser/resampler (`resolve_palette`).
+- `palettes.py` — Consolidated 150-palette library (`PALETTES`) plus custom hex-stop parser/resampler (`resolve_palette`).
 - `types/<module>.py` — Standalone generator modules (one module per registered type).
 
-## Registered Types (66)
+## Registered Types (81)
 
 - **Cloth & Apparel Textures (17):** `denim-twill`, `jersey-knit`, `cable-knit`, `tartan-plaid`, `houndstooth-wool`, `quilted-puffer`, `corduroy`, `silk-brocade`, `waffle-knit`, `ripstop-nylon`, `herringbone-weave`, `rib-jersey-knit`, `boucle-tweed`, `jacquard-geometric`, `seersucker-shibori`, `pebbled-leather`, `garment-wrinkles`
 - **Cloth, Seam & Lace Alphas (12):** `double-topstitch-seam`, `zipper-teeth-trim`, `overlock-zigzag-seam`, `four-hole-button`, `ribbed-cuff-trim`, `cross-stitch-seam`, `rivet-grommet`, `scalloped-lace-trim`, `lace-mesh-mask`, `smocked-gather`, `belt-buckle`, `blanket-stitch-seam`
@@ -20,6 +20,7 @@ Pure local Python (`numpy` + `Pillow`) procedural texture and alpha generators c
 - **Substance Utility, Mask & Noise Maps (4):** `grunge-wear-mask`, `procedural-noise-map`, `baking-utility-map`, `matcap-sphere`
 - **Sculpting & Mechanical Decal Alphas (2):** `sculpt-stamp-alpha`, `mechanical-decal-alpha`
 - **Military Camouflage Textures (9):** `woodland-camo`, `desert-camo`, `chocolate-chip-camo`, `digital-woodland-camo`, `digital-desert-camo`, `tiger-stripe-camo`, `flecktarn-camo`, `multicam-camo`, `urban-camo`
+- **Environment Surface Textures (15):** `granite-rock`, `sandstone-strata`, `slate-rock`, `limestone`, `river-pebbles`, `gravel`, `grass-field`, `grass-dirt-patch`, `moss-ground`, `dirt-soil`, `cracked-dry-mud`, `sand`, `red-brick-wall`, `stone-wall`, `stucco-plaster-wall`
 
 ## Usage
 
