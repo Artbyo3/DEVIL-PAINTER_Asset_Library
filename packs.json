@@ -12,5 +12,33 @@
       }
     ]
   },
-  "packs": []
+  "packs": [
+    {
+      "name": "Cloth & Apparel",
+      "description": "324 seamless 512x512 cloth and fabric textures plus 28 seam, trim, and fastener alphas.",
+      "size": "117.7 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/v1.0.0/Cloth_and_Apparel.zip",
+      "tags": [
+        "cloth",
+        "fabric",
+        "textile",
+        "apparel",
+        "weave",
+        "knit",
+        "denim",
+        "plaid",
+        "herringbone",
+        "corduroy",
+        "boucle",
+        "jacquard",
+        "seersucker",
+        "shibori",
+        "silk",
+        "ripstop",
+        "stitches",
+        "alphas"
+      ],
+      "sha256": "347ca18d6cad08b9d2547d5b5496154349a3d950e02402171160e32dfedac210"
+    }
+  ]
 }
