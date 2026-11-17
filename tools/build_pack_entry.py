@@ -46,11 +46,30 @@ KIND_FOLDERS = (
 )
 KNOWN_FOLDER_NAMES = {folder_name for folder_name, _ in KIND_FOLDERS}
 IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp", ".bmp", ".gif", ".tif", ".tiff")
+MAP_SUFFIXES = (
+    "_normal",
+    "_roughness",
+    "_ao",
+    "_height",
+    "_metallic",
+    "_basecolor",
+    "_albedo",
+    "_diffuse",
+)
 
 
 def is_preview_file(filename: str) -> bool:
     stem, ext = os.path.splitext(filename)
     return ext.lower() in IMAGE_EXTENSIONS and stem.lower().endswith(".preview")
+
+
+def split_stem_and_role(filename: str) -> tuple[str, str]:
+    stem = os.path.splitext(filename)[0]
+    lower = stem.lower()
+    for suffix in MAP_SUFFIXES:
+        if lower.endswith(suffix) and len(stem) > len(suffix):
+            return stem[: -len(suffix)], suffix[1:]
+    return stem, "base"
 
 
 def iter_pack_folders(pack_dir: Path) -> list[tuple[Path, str]]:
@@ -91,8 +110,8 @@ def sha256_file(path: Path) -> str:
 
 
 def build_file_tags(filename: str, kind: str) -> list[str]:
-    stem = os.path.splitext(filename)[0].lower()
-    slug = re.sub(r"-\d+$", "", stem)
+    base_stem, _ = split_stem_and_role(filename)
+    slug = re.sub(r"-\d+$", "", base_stem.lower())
     words = [w for w in slug.split("-") if w]
     seen: set[str] = set()
     tags: list[str] = []
@@ -121,6 +140,7 @@ def build_entry(
     files: list[str] = []
     file_tags: dict[str, list[str]] = {}
     file_hashes: dict[str, str] = {}
+    materials: dict[str, dict[str, str]] = {}
     for folder, kind in iter_pack_folders(pack_dir):
         names = sorted(
             entry.name
@@ -135,6 +155,10 @@ def build_entry(
             files.append(name)
             file_tags[name] = build_file_tags(name, kind)
             file_hashes[name] = sha256_file(folder / name)
+            base_stem, role = split_stem_and_role(name)
+            mat_maps = materials.setdefault(base_stem, {})
+            if role not in mat_maps:
+                mat_maps[role] = name
 
     zip_bytes = zip_path.stat().st_size
     download_url = (
@@ -152,6 +176,7 @@ def build_entry(
         "files": files,
         "fileTags": file_tags,
         "fileHashes": file_hashes,
+        "materials": materials,
         "sha256": sha256_file(zip_path),
     }
 

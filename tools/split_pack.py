@@ -55,7 +55,8 @@ class FamilyGroup:
 
 
 def extract_family_stem(filename: str) -> str:
-    stem = os.path.splitext(filename)[0].lower()
+    base_stem, _ = build_pack_entry.split_stem_and_role(filename)
+    stem = base_stem.lower()
     stripped = re.sub(r"[-_]v?\d+$", "", stem)
     return stripped or stem
 
