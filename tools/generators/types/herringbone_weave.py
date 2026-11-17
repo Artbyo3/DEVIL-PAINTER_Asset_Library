@@ -16,16 +16,24 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
 
-    cols = int(rng.choice([4, 6, 8, 10, 12]))
-    threads = int(cols * rng.choice([4, 8]))
-    band = np.floor(u * cols).astype(np.int32)
-    direction = np.where(band % 2 == 0, 1.0, -1.0)
-    tu, tv = u * threads, v * threads
-    iu, iv = np.floor(tu).astype(np.int32), np.floor(tv).astype(np.int32)
-    fu, fv = tu - iu, tv - iv
-    twill_phase = (iu + direction * iv).astype(np.int32) % 4
-    warp_over = twill_phase < 2
-    thread_h = np.where(warp_over, np.sin(fu * math.pi), np.sin(fv * math.pi) * 0.9)
+    cols = int(rng.choice([4, 6, 8, 10]))
+    band_w = int(rng.choice([4, 8]))
+    threads = cols * band_w
+
+    # Construct authentic (4, 2*band_w) broken 2/2 twill matrix:
+    # phase shifts by +2 picks at every reversal boundary so floats stay uniformly <= 2
+    p = 2 * band_w
+    matrix = np.zeros((4, p), dtype=np.int32)
+    for col in range(p):
+        band_idx = col // band_w
+        direction = 1 if (band_idx % 2 == 0) else -1
+        break_shift = 2 if (band_idx % 2 == 1) else 0
+        for row in range(4):
+            matrix[row, col] = 1 if ((col + direction * row + break_shift) % 4) < 2 else 0
+
+    thread_h, warp_over, _, _ = common.woven_fabric_field(
+        u, v, threads, threads, matrix, float_arch=0.38, ply_twist=0.14
+    )
     slub = common.periodic_fbm(u, v, 8, 3, 0.5, rng)
 
     h = common.normalize_field(thread_h * 0.84 + slub * 0.16)

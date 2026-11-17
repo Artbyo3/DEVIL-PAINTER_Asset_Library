@@ -17,14 +17,22 @@ def _compute(
     u, v = common.make_uv_grid(size)
     slub = common.periodic_fbm(u, v, 4, 3, 0.5, rng, freqy=32)
 
-    cells = 10 + (variant % 5) * 4
+    cells = 8 + (variant % 5) * 4
     gu = (u * cells) % 1.0
     gv = (v * cells) % 1.0
-    pocket = np.maximum(np.abs(gu - 0.5), np.abs(gv - 0.5)) * 2.0
-    ridge = np.power(pocket, 1.4)
-    knit_micro = 0.5 + 0.5 * np.sin(u * cells * 6.0 * math.pi) * np.sin(v * cells * 6.0 * math.pi)
+    # Honeycomb geometry: sunken pocket center transitions steeply up curved warp/weft float walls
+    dx = np.abs(gu - 0.5) * 2.0
+    dy = np.abs(gv - 0.5) * 2.0
+    wall_u = 1.0 - np.cos(np.clip((dx - 0.15) / 0.85, 0.0, 1.0) * math.pi * 0.5) ** 2
+    wall_v = 1.0 - np.cos(np.clip((dy - 0.15) / 0.85, 0.0, 1.0) * math.pi * 0.5) ** 2
+    # Corner float overlap lifts the perimeter rim around each recessed hollow
+    ridge = np.clip(0.55 * np.maximum(wall_u, wall_v) + 0.45 * (wall_u + wall_v) * 0.5, 0.0, 1.0)
 
-    h = common.normalize_field(0.78 * ridge + 0.22 * knit_micro)
+    # Underlying 1/1 plain-weave tabby grid visible inside the honeycomb cells & ridges
+    plain_m = np.array([[1, 0], [0, 1]], dtype=np.int32)
+    weave_h, _, _, _ = common.woven_fabric_field(u, v, cells * 6, cells * 6, plain_m, float_arch=0.35, ply_twist=0.10)
+
+    h = common.normalize_field(0.72 * ridge + 0.28 * weave_h)
     c = common.normalize_field(0.82 * h + 0.18 * slub)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, slub, stops, contrast=1.15)

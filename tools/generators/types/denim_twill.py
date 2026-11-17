@@ -16,21 +16,24 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     fuzz = common.periodic_fbm(u, v, 8, 3, 0.5, rng)
-    slub = common.periodic_fbm(u, v, 4, 3, 0.5, rng, freqy=32)
+    # Ring-spun warp yarn slub varies along warp axis (u periodic freq 24, v freq 4)
+    slub = common.periodic_fbm(u, v, 24, 3, 0.55, rng, freqy=4)
 
     threads = 24 + (variant % 5) * 4
-    tu, tv = u * threads, v * threads
-    iu, iv = np.floor(tu).astype(np.int32), np.floor(tv).astype(np.int32)
-    fu, fv = tu - iu, tv - iv
+    # 3/1 twill weave matrix: Z-twill (RHT, +1 shift) on even variants, S-twill (LHT, -1) on odd
+    step = 1 if variant % 2 == 0 else -1
+    idx = np.arange(4)
+    ii, jj = np.meshgrid(idx, idx)
+    twill_3x1 = (((ii + step * jj) % 4) < 3).astype(np.int32)
 
-    warp_over = ((iu + iv * (1 if variant % 2 == 0 else -1)) % 4) < 3
-    ply_u = 0.85 + 0.15 * np.sin((fu * 2.0 + fv * 3.0) * 2.0 * math.pi)
-    ply_v = 0.85 + 0.15 * np.sin((fv * 2.0 - fu * 3.0) * 2.0 * math.pi)
-    yarn_u = np.sin(fu * math.pi) * ply_u * (0.9 + 0.1 * np.cos(fv * math.pi))
-    yarn_v = np.sin(fv * math.pi) * ply_v * (0.85 + 0.15 * np.cos(fu * math.pi))
+    warp_rad = np.clip(0.88 + 0.14 * (slub - 0.5), 0.78, 1.0)
+    weave_h, warp_over, _, _ = common.woven_fabric_field(
+        u, v, threads, threads, twill_3x1, float_arch=0.38, ply_twist=0.14, warp_radius=warp_rad, weft_radius=0.90
+    )
 
-    h = common.normalize_field(np.where(warp_over, yarn_u, yarn_v * 0.78) + 0.08 * fuzz)
-    c = common.normalize_field(np.where(warp_over, 0.25 + 0.35 * h + 0.12 * slub, 0.78 + 0.20 * h))
+    h = common.normalize_field(weave_h + 0.08 * fuzz)
+    # Indigo-dyed warp floats vs undyed/ecru weft dots showing through on 1/4 picks
+    c = common.normalize_field(np.where(warp_over, 0.18 + 0.36 * h + 0.16 * slub, 0.78 + 0.20 * h))
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     micro = common.periodic_fbm(u, v, 12, 3, 0.5, rng)
     albedo = common.apply_palette_5stop(c, micro, stops, contrast=1.15)

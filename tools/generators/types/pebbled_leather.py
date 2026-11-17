@@ -15,13 +15,19 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     micro = common.periodic_fbm(u, v, 10, 4, 0.5, rng)
-    f1, edge, cid, _, _ = common.periodic_voronoi(u, v, 14 + (variant % 5) * 2, 0.88, rng)
+    cells = 14 + (variant % 5) * 2
+    # Lloyd-relaxed periodic Voronoi gives authentic compact rounded leather grain pebbles
+    f1, edge, cid, _, _ = common.periodic_lloyd_voronoi(u, v, cells, 0.86, rng, lloyd_iters=2)
     creases = common.periodic_fbm(u, v, 4, 4, 0.55, rng, mode="ridged")
-    pebble = np.sqrt(np.clip(1.0 - f1 * 0.85, 0.0, 1.0)) * np.clip(edge * 5.0, 0.2, 1.0)
 
-    h = common.normalize_field(0.68 * pebble + 0.20 * creases + 0.12 * micro)
+    # Convex pebble crown + recessed epidermal valleys + fine hair-follicle pores in crease junctions
+    pebble = np.sqrt(np.clip(1.0 - f1 * 0.78, 0.0, 1.0)) * np.clip(edge * 4.5, 0.16, 1.0)
+    pore_noise = common.periodic_gradient_perlin(u, v, min(128, cells * 3), min(128, cells * 3), rng)
+    follicle_pores = np.exp(-((edge) ** 2) / 0.008) * np.clip((pore_noise - 0.62) * 3.2, 0.0, 1.0)
+
+    h = common.normalize_field(0.68 * pebble + 0.18 * creases + 0.14 * micro - 0.16 * follicle_pores)
     c = common.normalize_field(0.55 * h + 0.25 * cid + 0.20 * micro)
-    rough = np.clip(0.32 + 0.38 * (1.0 - pebble), 0.2, 0.85).astype(np.float32)
+    rough = np.clip(0.30 + 0.42 * (1.0 - pebble) + 0.14 * follicle_pores, 0.2, 0.88).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, micro, stops, contrast=1.15)

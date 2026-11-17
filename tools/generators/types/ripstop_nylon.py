@@ -17,17 +17,31 @@ def _compute(
     u, v = common.make_uv_grid(size)
     slub = common.periodic_fbm(u, v, 4, 3, 0.5, rng, freqy=32)
 
-    cells = 8 + (variant % 5) * 4
+    cells = 8 + (variant % 4) * 2
+    sub = 8  # 8 threads per ripstop square (every 8th warp & weft thread is double-denier ripstop yarn)
+    threads = cells * sub
+    plain_m = np.array([[1, 0], [0, 1]], dtype=np.int32)
+    weave_h, warp_over, warp_prof, weft_prof = common.woven_fabric_field(
+        u, v, threads, threads, plain_m, float_arch=0.34, ply_twist=0.06, warp_radius=0.92, weft_radius=0.92
+    )
+
+    iu = np.floor(u * threads).astype(np.int32) % sub
+    iv = np.floor(v * threads).astype(np.int32) % sub
+    reinf_u = (iu == 0).astype(np.float32)
+    reinf_v = (iv == 0).astype(np.float32)
+
+    # Reinforcement yarns stand ~1.65x prouder where they interlace on top of perpendicular threads
     gu = (u * cells) % 1.0
     gv = (v * cells) % 1.0
-    rib_u = np.exp(-((gu - 0.5) ** 2) / 0.008)
-    rib_v = np.exp(-((gv - 0.5) ** 2) / 0.008)
+    du = np.minimum(gu, 1.0 - gu) * sub
+    dv = np.minimum(gv, 1.0 - gv) * sub
+    rib_u = np.sqrt(np.clip(1.0 - (du / 0.65) ** 2, 0.0, 1.0)) * np.where(warp_over | (reinf_v == 0), 1.0, 0.42)
+    rib_v = np.sqrt(np.clip(1.0 - (dv / 0.65) ** 2, 0.0, 1.0)) * np.where((~warp_over) | (reinf_u == 0), 1.0, 0.42)
     ripstop_grid = np.maximum(rib_u, rib_v)
 
-    plain_weave = 0.5 + 0.5 * np.sin(u * cells * 8.0 * math.pi) * np.sin(v * cells * 8.0 * math.pi)
-    h = common.normalize_field(0.65 * ripstop_grid + 0.35 * plain_weave)
-    c = common.normalize_field(0.60 * h + 0.40 * slub)
-    rough = np.clip(0.28 + 0.30 * (1.0 - ripstop_grid), 0.2, 0.65)
+    h = common.normalize_field(np.maximum(0.45 * weave_h, 0.95 * ripstop_grid) + 0.04 * slub)
+    c = common.normalize_field(0.62 * h + 0.38 * slub)
+    rough = np.clip(0.28 + 0.30 * (1.0 - ripstop_grid), 0.2, 0.65).astype(np.float32)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, slub, stops, contrast=1.18)
     return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=5.4, spec_intensity=0.25), np.asarray(h, dtype=np.float32)

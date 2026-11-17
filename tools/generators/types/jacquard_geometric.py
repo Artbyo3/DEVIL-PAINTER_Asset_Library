@@ -30,13 +30,23 @@ def _compute(
     else:
         zig = np.abs(((u * rep * 2.0) % 2.0) - 1.0)
         band = (v * rep * 2.0 + zig * 0.8) % 1.0
-        motif = (band < 0.48).astype(np.float32)
+        motif = np.clip((0.48 - band) * 14.0, 0.0, 1.0)
 
-    satin_u = 0.5 + 0.5 * np.sin(u * 48.0 * math.pi)
-    satin_v = 0.5 + 0.5 * np.sin(v * 48.0 * math.pi)
-    h = common.normalize_field(np.where(motif > 0.5, 0.65 + 0.35 * satin_u, 0.25 + 0.25 * satin_v))
+    # 5-harness satin (4/1, step s=2 -> sequence 1, 3, 5, 2, 4) vs 5-harness sateen ground
+    satin_5h = np.ones((5, 5), dtype=np.int32)
+    sateen_5h = np.zeros((5, 5), dtype=np.int32)
+    for row in range(5):
+        col = (row * 2) % 5
+        satin_5h[row, col] = 0
+        sateen_5h[row, col] = 1
+
+    threads = 60
+    h_satin, _, _, _ = common.woven_fabric_field(u, v, threads, threads, satin_5h, float_arch=0.32, ply_twist=0.08)
+    h_sateen, _, _, _ = common.woven_fabric_field(u, v, threads, threads, sateen_5h, float_arch=0.32, ply_twist=0.08)
+
+    h = common.normalize_field(motif * (0.35 + 0.65 * h_satin) + (1.0 - motif) * (0.08 + 0.42 * h_sateen))
     c = common.normalize_field(0.75 * motif + 0.25 * h)
-    rough = np.where(motif > 0.5, 0.25, 0.65).astype(np.float32)
+    rough = np.where(motif > 0.5, 0.25, 0.62).astype(np.float32)
 
     micro = common.periodic_fbm(u, v, 10, 3, 0.5, rng)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)

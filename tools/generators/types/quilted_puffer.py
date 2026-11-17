@@ -22,15 +22,30 @@ def _compute(
     d2 = ((u - v) * scale) % 1.0
     ed = np.minimum(np.minimum(d1, 1.0 - d1), np.minimum(d2, 1.0 - d2))
 
-    stitch_along = np.sin(((u - v) * scale * 12.0) * math.pi) > 0.2
-    seam_groove = np.clip(ed * 10.0, 0.0, 1.0)
-    puffer_pillow = np.power(seam_groove, 0.42)
+    # C1-smooth doubly-periodic Poisson/Helmholtz inflated pillow dome inside each diamond
+    pillow_base = np.sin(d1 * math.pi) * np.sin(d2 * math.pi)
+    puffer_pillow = np.power(np.clip(pillow_base, 0.0, 1.0), 0.52)
+
+    # Seam trench and radial tension gather folds radiating inward perpendicular to quilt seams
+    seam_groove = np.clip(ed * 12.0, 0.0, 1.0)
+    warp_w = common.periodic_fbm(u, v, scale * 2, 3, 0.5, rng)
+    fold_wave1 = np.cos((d1 * 18.0 + 1.8 * warp_w) * math.pi)
+    fold_wave2 = np.cos((d2 * 18.0 + 1.8 * warp_w) * math.pi)
+    gather_folds = (
+        np.exp(-np.minimum(d1, 1.0 - d1) * 7.0) * fold_wave2
+        + np.exp(-np.minimum(d2, 1.0 - d2) * 7.0) * fold_wave1
+    ) * 0.075
+
+    # Lockstitch thread dashes centered inside seam channels
+    s1 = np.exp(-((np.minimum(d1, 1.0 - d1)) ** 2) / 0.00045) * np.clip(np.sin(d2 * 16.0 * math.pi), 0.0, 1.0)
+    s2 = np.exp(-((np.minimum(d2, 1.0 - d2)) ** 2) / 0.00045) * np.clip(np.sin(d1 * 16.0 * math.pi), 0.0, 1.0)
+    stitches = np.maximum(s1, s2)
 
     wrinkle = common.periodic_fbm(u, v, scale * 2, 4, 0.55, rng, freqy=scale * 6)
-    puff_h = puffer_pillow * (0.82 + 0.18 * wrinkle) + (1.0 - seam_groove) * 0.22 * stitch_along
+    puff_h = puffer_pillow * (0.86 + 0.14 * wrinkle) + gather_folds * seam_groove + 0.16 * stitches
 
     h = common.normalize_field(puff_h)
-    c = common.normalize_field(0.85 * h + 0.15 * slub)
+    c = common.normalize_field(0.84 * h + 0.16 * slub)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, wrinkle, stops, contrast=1.15)
     return common.shade_pbr_surface(albedo, h, roughness=np.clip(0.22 + 0.35 * (1.0 - seam_groove), 0.15, 0.75), normal_strength=6.2, spec_intensity=0.30), np.asarray(h, dtype=np.float32)

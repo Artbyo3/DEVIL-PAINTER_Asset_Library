@@ -10,13 +10,20 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def _tartan_band(coord: np.ndarray) -> np.ndarray:
-    d = np.abs(coord - 0.5) * 2.0
-    return np.where(
-        d < 0.06,
-        0.92,
-        np.where(d < 0.32, 0.18, np.where(d < 0.58, 0.52, np.where(d < 0.64, 0.88, 0.35))),
-    )
+_SETTS: tuple[list[tuple[int, float]], ...] = (
+    # Classic symmetric half-sett ratios (reflected around pivot): (thread_count, palette_pos)
+    [(12, 0.34), (4, 0.12), (2, 0.94), (4, 0.12), (8, 0.56), (2, 0.78), (6, 0.34)],
+    [(10, 0.16), (3, 0.42), (6, 0.16), (3, 0.76), (10, 0.28), (2, 0.92), (4, 0.42)],
+    [(14, 0.22), (2, 0.90), (4, 0.10), (6, 0.58), (2, 0.82), (4, 0.22), (8, 0.46)],
+)
+
+
+def _sett_lookup(sett: list[tuple[int, float]]) -> np.ndarray:
+    half = []
+    for cnt, val in sett:
+        half.extend([val] * cnt)
+    full = half + half[-2:0:-1]  # palindromic reflection around pivot threads
+    return np.array(full, dtype=np.float32)
 
 
 def _compute(
@@ -26,20 +33,29 @@ def _compute(
     u, v = common.make_uv_grid(size)
     fuzz = common.periodic_fbm(u, v, 8, 3, 0.5, rng)
 
-    threads = 32
-    tu, tv = u * threads, v * threads
-    iu, iv = np.floor(tu).astype(np.int32), np.floor(tv).astype(np.int32)
-    fu, fv = tu - iu, tv - iv
-    warp_over = ((iu + iv) // 2) % 2 == 0
-    weave = np.where(warp_over, np.sin(fu * math.pi), np.sin(fv * math.pi) * 0.88)
+    sett_arr = _sett_lookup(_SETTS[variant % len(_SETTS)])
+    # Ensure total thread count across tile is an integer multiple of 4 (2/2 twill repeat)
+    repeats = 1 + (variant % 2)
+    n_sett = len(sett_arr)
+    threads = ((n_sett * repeats + 3) // 4) * 4
 
-    repeats = 2 + (variant % 3)
-    warp_col = _tartan_band((u * repeats) % 1.0)
-    weft_col = _tartan_band((v * repeats) % 1.0)
+    # Balanced 2/2 Z-twill weave matrix
+    idx = np.arange(4)
+    ii, jj = np.meshgrid(idx, idx)
+    twill_2x2 = (((ii + jj) % 4) < 2).astype(np.int32)
+
+    weave_h, warp_over, _, _ = common.woven_fabric_field(
+        u, v, threads, threads, twill_2x2, float_arch=0.35, ply_twist=0.12
+    )
+
+    iu = (np.floor(u * threads).astype(np.int32)) % n_sett
+    iv = (np.floor(v * threads).astype(np.int32)) % n_sett
+    warp_col = sett_arr[iu]
+    weft_col = sett_arr[iv]
     chosen_col = np.where(warp_over, warp_col, weft_col)
 
-    h = common.normalize_field(0.85 * weave + 0.15 * fuzz)
-    c = common.normalize_field(0.78 * chosen_col + 0.22 * h)
+    h = common.normalize_field(0.85 * weave_h + 0.15 * fuzz)
+    c = common.normalize_field(0.76 * chosen_col + 0.24 * h)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, fuzz, stops, contrast=1.18)
     return common.shade_cloth_surface(albedo, h, normal_strength=5.4, sheen_amt=18.0), np.asarray(h, dtype=np.float32)

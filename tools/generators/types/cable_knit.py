@@ -20,17 +20,37 @@ def _compute(
     cables = 4 + (variant % 3) * 2
     cu = (u * cables) % 1.0
     cv = (v * cables * 2) % 1.0
-    in_cable = (cu > 0.18) & (cu < 0.82)
+    in_cable = (cu > 0.15) & (cu < 0.85)
 
-    norm_cu = (cu - 0.18) / 0.64
-    strand_a = np.exp(-((norm_cu - (0.5 + 0.28 * np.sin(cv * 2.0 * math.pi))) ** 2) / 0.035)
-    strand_b = np.exp(-((norm_cu - (0.5 - 0.28 * np.sin(cv * 2.0 * math.pi))) ** 2) / 0.035)
-    over_a = np.cos(cv * 2.0 * math.pi) > 0
-    braid = np.where(over_a, np.maximum(strand_a, strand_b * 0.72), np.maximum(strand_b, strand_a * 0.72))
-    yarn_rib = 0.82 + 0.18 * np.sin((cv * 6.0 + norm_cu * 4.0) * 2.0 * math.pi)
+    # 2x2 cable plait centerlines with cylindrical yarn bundle radius and knit sub-wale texture
+    norm_cu = (cu - 0.15) / 0.70
+    phase = cv * 2.0 * math.pi
+    ca_center = 0.5 + 0.24 * np.sin(phase)
+    cb_center = 0.5 - 0.24 * np.sin(phase)
+    rad = 0.21
 
-    purl = 0.5 + 0.5 * np.sin(u * cables * 8.0 * math.pi) * np.sin(v * cables * 12.0 * math.pi)
-    h = common.normalize_field(np.where(in_cable, braid * yarn_rib, purl * 0.45) + 0.10 * fuzz)
+    da = (norm_cu - ca_center) / rad
+    db = (norm_cu - cb_center) / rad
+    prof_a = np.sqrt(np.clip(1.0 - da * da, 0.0, 1.0))
+    prof_b = np.sqrt(np.clip(1.0 - db * db, 0.0, 1.0))
+
+    # Sub-wale knit V-loop ridges oriented along cable curve plus ply twist
+    knit_a = 0.82 + 0.18 * np.sin((cv * 6.0 + np.abs(da) * 0.5) * 2.0 * math.pi)
+    knit_b = 0.82 + 0.18 * np.sin((cv * 6.0 + np.abs(db) * 0.5) * 2.0 * math.pi)
+
+    # Over/under crossing elevation from cos(phase)
+    za = 0.78 + 0.22 * np.cos(phase)
+    zb = 0.78 - 0.22 * np.cos(phase)
+    braid = np.maximum(prof_a * knit_a * za, prof_b * knit_b * zb)
+
+    # True reverse-knit purl bumps (horizontal interlocking crescent arches) in side gutters
+    gu = (u * cables * 6) % 1.0
+    gv = (v * cables * 12) % 1.0
+    purl_arc = np.sqrt(np.clip(1.0 - ((gv - 0.5 - 0.16 * np.cos((gu - 0.5) * math.pi)) * 2.4) ** 2, 0.0, 1.0))
+    purl_seg = np.sqrt(np.clip(1.0 - ((gu - 0.5) * 2.05) ** 2, 0.0, 1.0))
+    purl = purl_arc * purl_seg
+
+    h = common.normalize_field(np.maximum(braid * in_cable.astype(np.float32), purl * 0.48) + 0.10 * fuzz)
     c = common.normalize_field(0.80 * h + 0.20 * in_cable.astype(np.float32))
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, fuzz, stops, contrast=1.18)

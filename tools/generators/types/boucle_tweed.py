@@ -16,19 +16,27 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     threads = [18, 24, 32, 40][variant % 4]
-    slub_u = common.periodic_fbm(u, v, 4, 3, 0.55, rng, freqy=threads // 2)
-    slub_v = common.periodic_fbm(u, v, threads // 2, 3, 0.55, rng, freqy=4)
-    tu = u * threads + (slub_u - 0.5) * 0.35
-    tv = v * threads + (slub_v - 0.5) * 0.35
-    iu, iv = np.floor(tu).astype(np.int32), np.floor(tv).astype(np.int32)
-    fu, fv = tu - iu, tv - iv
-    warp_over = ((iu + iv) % 2) == 0
-    thickness = np.where(warp_over, 0.65 + 0.5 * slub_u, 0.65 + 0.5 * slub_v)
-    weave = np.where(warp_over, np.sin(fu * math.pi), np.sin(fv * math.pi)) * thickness
-    fleck = (common.periodic_gradient_perlin(u, v, threads, threads, rng) > 0.78).astype(np.float32)
+    slub_u = common.periodic_fbm(u, v, threads, 3, 0.55, rng, freqy=4)
+    slub_v = common.periodic_fbm(u, v, 4, 3, 0.55, rng, freqy=threads)
 
-    h = common.normalize_field(weave + 0.25 * fleck)
-    c = common.normalize_field(0.60 * h + 0.25 * slub_u + 0.30 * fleck)
+    # Organic weave warp distortion from thick boucle slub yarns
+    tu_warp = (u + (slub_u - 0.5) * 0.008) % 1.0
+    tv_warp = (v + (slub_v - 0.5) * 0.008) % 1.0
+    plain_m = np.array([[1, 0], [0, 1]], dtype=np.int32)
+    w_rad = np.clip(0.72 + 0.34 * slub_u, 0.55, 1.02)
+    f_rad = np.clip(0.72 + 0.34 * slub_v, 0.55, 1.02)
+    weave_h, _, _, _ = common.woven_fabric_field(
+        tu_warp, tv_warp, threads, threads, plain_m, float_arch=0.38, ply_twist=0.18, warp_radius=w_rad, weft_radius=f_rad
+    )
+
+    # Curled boucle loop nubs and colorful wool neps along high-slub regions
+    f1_nub, _, _, _, _ = common.periodic_lloyd_voronoi(u, v, threads // 2, 0.85, rng, lloyd_iters=1)
+    nub_gate = np.clip((0.5 * slub_u + 0.5 * slub_v - 0.42) * 3.5, 0.0, 1.0)
+    boucle_loop = np.exp(-(f1_nub ** 2) / 0.14) * nub_gate * 0.42
+    fleck = (common.periodic_gradient_perlin(u, v, min(128, threads), min(128, threads), rng) > 0.76).astype(np.float32)
+
+    h = common.normalize_field(weave_h + boucle_loop + 0.18 * fleck)
+    c = common.normalize_field(0.58 * h + 0.24 * slub_u + 0.28 * fleck)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, slub_v, stops, contrast=1.18)
     return common.shade_cloth_surface(albedo, h, normal_strength=5.8, sheen_amt=14.0), np.asarray(h, dtype=np.float32)

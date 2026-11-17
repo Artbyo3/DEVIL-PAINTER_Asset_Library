@@ -18,16 +18,36 @@ def _compute(
 
     freq = 2 + (variant % 3) * 2
     warp = common.periodic_fbm(u, v, freq * 2, 4, 0.5, rng)
-    mu = np.abs(((u * freq) % 1.0) - 0.5) * 2.0
-    mv = np.abs(((v * freq) % 1.0) - 0.5) * 2.0
-    petal = np.cos((mu * 2.0 + 0.35 * warp) * math.pi) * np.cos((mv * 2.0 + 0.35 * warp) * math.pi)
-    motif = np.clip((petal + 0.25) * 4.0, 0.0, 1.0)
+    # Symmetric ogee / damask floral medallion harmonic contour (4-fold periodic symmetry)
+    du = (u * freq) % 1.0 - 0.5
+    dv = (v * freq) % 1.0 - 0.5
+    r = np.sqrt(du * du + dv * dv) * 2.0
+    ang = np.arctan2(dv, du)
+    ogee = (
+        np.cos(du * 2.0 * math.pi)
+        + np.cos(dv * 2.0 * math.pi)
+        + 0.42 * np.cos(4.0 * ang) * np.exp(-r * 1.4)
+        + 0.30 * (warp - 0.5)
+    )
+    motif = np.clip((ogee + 0.15) * 4.5, 0.0, 1.0)
 
-    satin_u = np.sin((u * 48.0) * math.pi) * 0.5 + 0.5
-    satin_v = np.sin((v * 48.0) * math.pi) * 0.5 + 0.5
-    h = common.normalize_field(np.where(motif > 0.5, 0.65 + 0.35 * satin_u, 0.25 + 0.25 * satin_v))
+    # 8-harness satin (7/1, move s=3 -> coprime(3,8)=1) vs orthogonal 8-harness sateen ground
+    satin_8h = np.zeros((8, 8), dtype=np.int32)
+    sateen_8h = np.ones((8, 8), dtype=np.int32)
+    for row in range(8):
+        col = (row * 3) % 8
+        satin_8h[row, :] = 1
+        satin_8h[row, col] = 0
+        sateen_8h[row, :] = 0
+        sateen_8h[row, col] = 1
+
+    threads = 64
+    h_satin, _, _, _ = common.woven_fabric_field(u, v, threads, threads, satin_8h, float_arch=0.30, ply_twist=0.06)
+    h_sateen, _, _, _ = common.woven_fabric_field(u, v, threads, threads, sateen_8h, float_arch=0.30, ply_twist=0.06)
+
+    h = common.normalize_field(motif * (0.38 + 0.62 * h_satin) + (1.0 - motif) * (0.08 + 0.42 * h_sateen))
     c = common.normalize_field(0.75 * motif + 0.25 * h)
-    rough = np.where(motif > 0.5, 0.28, 0.14)
+    rough = np.where(motif > 0.5, 0.24, 0.14).astype(np.float32)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, warp, stops, contrast=1.20)
     return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=5.2, spec_intensity=0.35), np.asarray(h, dtype=np.float32)

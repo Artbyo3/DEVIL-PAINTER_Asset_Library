@@ -16,28 +16,33 @@ def _compute_height(seed: int = 1, size: int = 512, variant: int = 0) -> tuple[n
     style = variant % 4
     w1 = common.periodic_fbm(u, v, 3, 4, 0.55, rng)
     w2 = common.periodic_fbm(u, v, 6, 4, 0.50, rng, mode="billow")
+    vx, vy = common.periodic_curl_noise(u, v, 3, 3, 0.55, rng)
 
     if style == 0:
+        # Tension pipe folds with Bridson curl-advected phase bifurcation & elastica 2nd harmonic
         folds = 4 + (variant % 5)
-        phase = (v * folds + 0.28 * (w1 - 0.5) + 0.12 * np.sin(u * 2.0 * math.pi)) * 2.0 * math.pi
-        pipe = np.power(0.5 + 0.5 * np.sin(phase), 0.65)
-        h = common.normalize_field(0.75 * pipe + 0.25 * w2)
+        phase = (v * folds + 0.22 * (w1 - 0.5) + 0.035 * vy + 0.12 * np.sin(u * 2.0 * math.pi)) * 2.0 * math.pi
+        pipe = np.power(0.5 + 0.5 * (0.82 * np.sin(phase) + 0.18 * np.sin(2.0 * phase + 0.4)), 0.65)
+        h = common.normalize_field(0.76 * pipe + 0.24 * w2)
     elif style == 1:
+        # Gathered waistband pleats: sharp gather amplitude peaking along periodic seam lines v=0,1
         pleats = 6 + (variant % 6) * 2
-        gather = np.power(
-            0.5 + 0.5 * np.sin((u * pleats + 0.18 * w1 * np.sin(v * 2.0 * math.pi)) * 2.0 * math.pi),
-            0.7,
-        )
+        amp_v = 0.38 + 0.62 * np.power(0.5 + 0.5 * np.cos(v * 2.0 * math.pi), 0.75)
+        phase = (u * pleats + 0.18 * (w1 - 0.5) * np.sin(v * 2.0 * math.pi) + 0.02 * vx) * 2.0 * math.pi
+        gather = np.power(0.5 + 0.5 * np.sin(phase), 0.72) * amp_v
         h = common.normalize_field(0.80 * gather + 0.20 * w2)
     elif style == 2:
+        # Crumpled linen: polyhedral Voronoi ridge network + Swiss ridged buckling creases
+        _, edge_c, _, _, _ = common.periodic_voronoi((u + 0.025 * vx) % 1.0, (v + 0.025 * vy) % 1.0, 5 + (variant % 3), 0.9, rng)
         swiss = common.periodic_fbm(u, v, 4 + (variant % 4), 5, 0.55, rng, mode="swiss")
-        billow = common.periodic_fbm(u, v, 3 + (variant % 3), 5, 0.55, rng, mode="billow")
-        h = common.normalize_field(0.55 * billow + 0.45 * swiss)
+        crease = np.power(np.clip(edge_c, 0.0, 1.0), 0.65)
+        h = common.normalize_field(0.52 * crease + 0.48 * swiss)
     else:
+        # Bias drape folds: 45-degree catenary tension folds with divergence-free curl drift
         freq = 3 + (variant % 4)
-        diag = ((u + v) * freq + 0.22 * (w1 - 0.5)) * 2.0 * math.pi
-        drape = 0.5 + 0.5 * np.sin(diag)
-        h = common.normalize_field(0.72 * drape + 0.28 * w2)
+        diag = ((u + v) * freq + 0.20 * (w1 - 0.5) + 0.025 * (vx + vy)) * 2.0 * math.pi
+        drape = np.power(0.5 + 0.5 * np.sin(diag), 0.78)
+        h = common.normalize_field(0.74 * drape + 0.26 * w2)
     return rng, w2, h
 
 
