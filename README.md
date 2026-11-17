@@ -8,7 +8,7 @@
 
 # Devil Painter Asset Library
 
-Free **CC0** texture and material packs for the [DEVIL-PAINTER](https://github.com/Artbyo3/DEVIL-PAINTER) Blender add-on—usable by anyone in any tool, with no add-on required.
+Free **CC0** texture and material packs for the [DEVIL-PAINTER](https://github.com/Artbyo3/DEVIL-PAINTER) Blender add-on, usable by anyone in any tool, with no add-on required.
 
 ## Catalog
 
