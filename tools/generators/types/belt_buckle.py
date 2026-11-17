@@ -19,11 +19,21 @@ def _compute(
     y = (v - 0.5) * 2.0
     w_half = float(rng.uniform(0.46, 0.72))
     h_half = float(rng.uniform(0.36, 0.60))
-    thick = float(rng.uniform(0.09, 0.15))
-    box_dist = np.maximum(np.abs(x) - w_half, np.abs(y) - h_half)
-    frame = np.exp(-((np.abs(box_dist) / thick) ** 2))
-    pin = ((np.abs(y) < 0.05) & (x > -w_half) & (x < 0.15)).astype(np.float32) * 0.9
-    _h = (np.maximum(frame, pin)).astype(np.float32)
+    thick = float(rng.uniform(0.085, 0.135))
+    r_corner = 0.09
+    qx = np.maximum(np.abs(x) - (w_half - r_corner), 0.0)
+    qy = np.maximum(np.abs(y) - (h_half - r_corner), 0.0)
+    box_sdf = np.sqrt(qx * qx + qy * qy) + np.minimum(np.maximum(np.abs(x) - (w_half - r_corner), np.abs(y) - (h_half - r_corner)), 0.0) - r_corner
+    frame = np.sqrt(np.clip(1.0 - (np.abs(box_sdf) / thick) ** 2, 0.0, 1.0))
+
+    # Tapered capsule SDF for buckle tongue/pin from left frame bar (-w_half) to right keeper (+0.18)
+    ax, bx = -w_half, 0.18
+    t_pin = np.clip((x - ax) / max(bx - ax, 1e-6), 0.0, 1.0)
+    dx_pin = x - (ax + t_pin * (bx - ax))
+    d_pin = np.sqrt(dx_pin * dx_pin + y * y)
+    r_pin = 0.055 * (1.0 - 0.30 * t_pin)
+    pin = np.sqrt(np.clip(1.0 - (d_pin / r_pin) ** 2, 0.0, 1.0)) * 0.92
+    _h = np.maximum(frame, pin).astype(np.float32)
     return common.alpha_image(_h), _h
 
 

@@ -9,6 +9,15 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
+def _capsule_dist(x: np.ndarray, y: np.ndarray, ax: float, ay: float, bx: float, by: float) -> np.ndarray:
+    vx, vy = bx - ax, by - ay
+    denom = vx * vx + vy * vy + 1e-12
+    t = np.clip(((x - ax) * vx + (y - ay) * vy) / denom, 0.0, 1.0)
+    dx = x - (ax + t * vx)
+    dy = y - (ay + t * vy)
+    return np.sqrt(dx * dx + dy * dy)
+
+
 def _compute(
     seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
 ) -> tuple[Image.Image, np.ndarray]:
@@ -21,13 +30,28 @@ def _compute(
     btn_r = float(rng.uniform(0.58, 0.72)) if variant > 0 else 0.68
 
     disc = np.clip((btn_r - r) * 28.0, 0.0, 1.0)
-    rim = np.exp(-((r - (btn_r - 0.10)) ** 2) / 0.004) * 0.45
-    recess = np.clip((btn_r - 0.20 - r) * 16.0, 0.0, 1.0) * 0.25
+    rim = np.exp(-((r - (btn_r - 0.09)) ** 2) / 0.0045) * 0.44
+    recess = np.clip((btn_r - 0.19 - r) * 16.0, 0.0, 1.0) * 0.24
+    # 4 thread holes at (+-0.18, +-0.18)
     h_dist = np.sqrt((np.abs(x) - 0.18) ** 2 + (np.abs(y) - 0.18) ** 2)
-    holes = np.clip((0.085 - h_dist) * 40.0, 0.0, 1.0)
-    threads_cross = ((np.abs(x) < 0.05) & (np.abs(y) < 0.22)) | ((np.abs(y) < 0.05) & (np.abs(x) < 0.22))
-    btn = disc * (0.65 + rim - recess - 0.60 * holes) + 0.35 * threads_cross.astype(np.float32)
-    _h = (np.clip(btn, 0.0, 1.0)).astype(np.float32)
+    holes = np.clip((0.082 - h_dist) * 42.0, 0.0, 1.0)
+
+    # Smooth cylindrical capsule threads genuinely threading between opposing holes (no binary + mask)
+    r_th = 0.048
+    if variant % 2 == 0:
+        d_a = _capsule_dist(x, y, -0.18, -0.18, 0.18, 0.18) / r_th
+        d_b = _capsule_dist(x, y, -0.18, 0.18, 0.18, -0.18) / r_th
+        t_a = np.sqrt(np.clip(1.0 - d_a * d_a, 0.0, 1.0)) * 0.85
+        t_b = np.sqrt(np.clip(1.0 - d_b * d_b, 0.0, 1.0)) * 1.00
+    else:
+        d_a = _capsule_dist(x, y, -0.18, -0.18, 0.18, -0.18) / r_th
+        d_b = _capsule_dist(x, y, -0.18, 0.18, 0.18, 0.18) / r_th
+        t_a = np.sqrt(np.clip(1.0 - d_a * d_a, 0.0, 1.0))
+        t_b = np.sqrt(np.clip(1.0 - d_b * d_b, 0.0, 1.0))
+    threads = np.maximum(t_a, t_b) * 0.42
+
+    btn = disc * (0.64 + rim - recess) * (1.0 - 0.72 * holes) + threads * disc
+    _h = np.clip(btn, 0.0, 1.0).astype(np.float32)
     return common.alpha_image(_h), _h
 
 

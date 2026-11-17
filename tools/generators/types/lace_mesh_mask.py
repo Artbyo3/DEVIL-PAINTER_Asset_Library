@@ -35,12 +35,10 @@ def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, 
         d1 = np.abs(((u + v) * freq) % 1.0 - 0.5) * 2.0
         d2 = np.abs(((u - v) * freq) % 1.0 - 0.5) * 2.0
         thickness = 0.12 + (variant % 3) * 0.04
-        net = np.maximum(
-            np.clip((thickness - d1) / 0.04, 0.0, 1.0),
-            np.clip((thickness - d2) / 0.04, 0.0, 1.0),
-        )
-        knots = np.exp(-((d1 * d1 + d2 * d2) / 0.02)) * 0.35
-        return np.clip(net + knots, 0.0, 1.0).astype(np.float32)
+        c1 = np.sqrt(np.clip(1.0 - (d1 / thickness) ** 2, 0.0, 1.0))
+        c2 = np.sqrt(np.clip(1.0 - (d2 / thickness) ** 2, 0.0, 1.0))
+        knots = np.sqrt(np.clip(1.0 - (d1 * d1 + d2 * d2) / (thickness * thickness * 2.2), 0.0, 1.0)) * 0.35
+        return np.clip(np.maximum(c1, c2) * 0.85 + knots, 0.0, 1.0).astype(np.float32)
 
     if style == 2:
         cols = 10 + (variant % 5) * 4
@@ -55,12 +53,15 @@ def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, 
         return (web * knit).astype(np.float32)
 
     tear_noise = common.periodic_fbm(u, v, 3, 5, 0.55, rng)
-    hole_region = tear_noise < (0.36 + (variant % 3) * 0.05)
-    fray_border = (tear_noise >= 0.32) & (tear_noise < 0.46)
-    weft_strands = (np.sin((v * 64.0 + (tear_noise - 0.5) * 3.0) * math.pi) > 0.72).astype(np.float32)
-    intact_cloth = (~hole_region).astype(np.float32)
-    fray_fuzz = fray_border.astype(np.float32) * common.periodic_gradient_perlin(u, v, 32, 32, rng)
-    return np.clip(intact_cloth + hole_region.astype(np.float32) * weft_strands * 0.85 - 0.25 * fray_fuzz, 0.0, 1.0).astype(
+    thresh = 0.36 + (variant % 3) * 0.05
+    intact_cloth = np.clip((tear_noise - thresh) * 24.0, 0.0, 1.0)
+    hole_mask = 1.0 - intact_cloth
+    # Cylindrical spanning white weft yarns across the tear (zero binary thresholding)
+    wf = ((v * 32.0 + (tear_noise - 0.5) * 2.4) % 1.0) - 0.5
+    weft_strands = np.sqrt(np.clip(1.0 - (wf / 0.26) ** 2, 0.0, 1.0))
+    fray_fuzz = np.exp(-((tear_noise - thresh) ** 2) / 0.0025) * common.periodic_gradient_perlin(u, v, 32, 32, rng)
+    denim_twill = 0.88 + 0.12 * np.sin((u * 48.0 + v * 48.0) * math.pi)
+    return np.clip(intact_cloth * denim_twill + hole_mask * weft_strands * 0.88 - 0.22 * fray_fuzz, 0.0, 1.0).astype(
         np.float32
     )
 

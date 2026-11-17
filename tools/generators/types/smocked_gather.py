@@ -17,11 +17,19 @@ def _compute(
     _ = (palette, variant)
     u, v = common.make_uv_grid(size)
     y = (v - 0.5) * 2.0
-    cols = [5, 7, 9, 12][int(rng.integers(0, 4))]
-    rows = [5, 7, 9, 12][int(rng.integers(0, 4))]
-    p1 = np.sin(u * cols * 2.0 * math.pi + np.sin(v * rows * 2.0 * math.pi) * 1.2)
-    p2 = np.sin(v * rows * 2.0 * math.pi)
-    smock = np.power(0.5 + 0.5 * p1 * p2, 1.3)
+    cols = [6, 8, 10, 12][int(rng.integers(0, 4))]
+    rows = [6, 8, 10, 12][int(rng.integers(0, 4))]
+    # Staggered English honeycomb diamond smocking lattice: two offset sub-lattices
+    u1 = (u * cols) % 1.0 - 0.5
+    v1 = (v * rows) % 1.0 - 0.5
+    u2 = (u * cols + 0.5) % 1.0 - 0.5
+    v2 = (v * rows + 0.5) % 1.0 - 0.5
+    d_diamond = np.minimum(np.abs(u1) + np.abs(v1), np.abs(u2) + np.abs(v2))
+    # Convex pinched lozenge cushion + fine pleat gathers radiating into stitch tacks
+    cushion = np.power(np.clip(np.sin(np.clip(d_diamond * 2.0, 0.0, 1.0) * math.pi * 0.5), 0.0, 1.0), 0.75)
+    pleat_folds = 0.82 + 0.18 * np.cos(u * cols * 4.0 * math.pi)
+    tack_dimple = np.exp(-((np.minimum(u1 * u1 + v1 * v1, u2 * u2 + v2 * v2)) / 0.015)) * 0.32
+    smock = np.clip(cushion * pleat_folds - tack_dimple, 0.0, 1.0)
     mask = np.clip((0.88 - np.abs(y)) * 14.0, 0.0, 1.0)
     _h = (smock * mask).astype(np.float32)
     return common.alpha_image(_h), _h

@@ -15,11 +15,32 @@ def _compute(
 ) -> tuple[Image.Image, np.ndarray]:
     _ = (np.random.default_rng(seed), palette)
     u, v = common.make_uv_grid(size)
-    ribs = 20 + (variant % 5) * 6
-    rib_wave = np.power(0.5 + 0.5 * np.sin(u * ribs * 2.0 * math.pi), 0.6)
-    knit_v = 0.85 + 0.15 * np.sin(v * ribs * 3.0 * math.pi)
+    ribs = 12 + (variant % 5) * 4
+    courses = int(round(ribs * 1.4))
+    gx, gy = u * ribs, v * courses
+    fx = gx - np.floor(gx)
+    ix = np.floor(gx).astype(np.int32)
+    iy_base = np.floor(gy).astype(np.int32)
+    is_knit = (ix % 2) == 0
+
+    r_yarn = 0.22
+    knit_h = np.zeros_like(u, dtype=np.float32)
+    for dy in (-1, 0, 1):
+        fy = gy - (iy_base + dy)
+        t = np.clip((fy + 0.18) / 1.30, 0.0, 1.0)
+        x_l = 0.18 + 0.145 * np.sin(t * math.pi * 0.85) + 0.04 * (1.0 - np.cos(t * math.pi))
+        x_r = 1.0 - x_l
+        z_leg = 0.55 + 0.45 * np.sin(t * math.pi)
+        in_span = ((fy >= -0.18) & (fy <= 1.12)).astype(np.float32)
+        pl = np.sqrt(np.clip(1.0 - ((fx - x_l) / r_yarn) ** 2, 0.0, 1.0)) * in_span
+        pr = np.sqrt(np.clip(1.0 - ((fx - x_r) / r_yarn) ** 2, 0.0, 1.0)) * in_span
+        knit_h = np.maximum(knit_h, np.maximum(pl, pr) * z_leg)
+
+    fy_p = gy - iy_base
+    purl_h = np.sqrt(np.clip(1.0 - ((fy_p - 0.5 - 0.16 * np.cos((fx - 0.5) * math.pi)) * 2.5) ** 2, 0.0, 1.0)) * 0.42
+    cuff_relief = np.where(is_knit, 0.35 + 0.65 * knit_h, 0.18 + purl_h)
     band_mask = np.clip((0.82 - np.abs(v - 0.5) * 2.0) * 16.0, 0.0, 1.0)
-    _h = (rib_wave * knit_v * band_mask).astype(np.float32)
+    _h = (cuff_relief * band_mask).astype(np.float32)
     return common.alpha_image(_h), _h
 
 

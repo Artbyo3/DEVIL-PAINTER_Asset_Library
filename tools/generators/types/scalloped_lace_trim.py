@@ -22,9 +22,15 @@ def _compute(
     base = np.clip((scallop_y - np.abs(y)) * 22.0, 0.0, 1.0)
     eu = (u * waves) % 1.0 - 0.5
     er = np.sqrt(eu * eu + y * y)
+    etheta = np.arctan2(y, eu)
     eyelet_hole = np.clip((er - 0.12) * 30.0, 0.0, 1.0)
-    rim = np.exp(-((er - 0.14) ** 2) / 0.002) * 0.4
-    _h = (base * eyelet_hole + rim * base).astype(np.float32)
+    # Broderie anglaise radial satin-stitch rim around each eyelet plus diamond bobbinet tulle
+    satin_rib = 0.78 + 0.22 * np.cos(etheta * 18.0)
+    rim = np.exp(-((er - 0.145) ** 2) / 0.002) * 0.45 * satin_rib
+    d1 = np.abs(((u + v) * waves * 4.0) % 1.0 - 0.5) * 2.0
+    d2 = np.abs(((u - v) * waves * 4.0) % 1.0 - 0.5) * 2.0
+    tulle = np.clip(0.35 + 0.45 * np.maximum(np.exp(-(d1 * d1) / 0.06), np.exp(-(d2 * d2) / 0.06)), 0.0, 1.0)
+    _h = (base * eyelet_hole * tulle + rim * base).astype(np.float32)
     return common.alpha_image(_h), _h
 
 
