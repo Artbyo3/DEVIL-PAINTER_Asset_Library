@@ -3897,6 +3897,67 @@
         "sp_586_height_alphas_and_sculpt_stamps_v098.png": "thumbs/alphas-vol1-v1.0.0/sp_586_height_alphas_and_sculpt_stamps_v098.webp",
         "zipper-teeth-trim.png": "thumbs/alphas-vol1-v1.0.0/zipper-teeth-trim.webp"
       }
+    },
+    {
+      "name": "Shelf_Test",
+      "description": "Temporary verification pack for shelf sync.",
+      "size": "291.7 KB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/shelf-test-v1.0.0/Shelf_Test.zip",
+      "releaseTag": "shelf-test-v1.0.0",
+      "tags": [
+        "test",
+        "cloth",
+        "brick",
+        "slate",
+        "texture"
+      ],
+      "files": [
+        "test-brick.png",
+        "test-denim.png",
+        "test-slate.png"
+      ],
+      "fileTags": {
+        "test-brick.png": [
+          "test-brick",
+          "test",
+          "brick",
+          "texture"
+        ],
+        "test-denim.png": [
+          "test-denim",
+          "test",
+          "denim",
+          "texture"
+        ],
+        "test-slate.png": [
+          "test-slate",
+          "test",
+          "slate",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "test-brick.png": "a250e61eb3d8a205158b3eed7fca78f5be0fe334eb7e871d0aea816750d86e02",
+        "test-denim.png": "1efd2ff7916f452d7e320a422815fbaa036d66231db84b0823539b26a351b3d3",
+        "test-slate.png": "cc3858dc12ac272be83f228f449f78cfa94d617849373984ca72e507e2276b0f"
+      },
+      "materials": {
+        "test-brick": {
+          "base": "test-brick.png"
+        },
+        "test-denim": {
+          "base": "test-denim.png"
+        },
+        "test-slate": {
+          "base": "test-slate.png"
+        }
+      },
+      "sha256": "534aa2224ef6dc10c5f1e677a9c4944f9bed1721c7a76c186547d0b4832bcc14",
+      "thumbs": {
+        "test-brick.png": "thumbs/shelf-test-v1.0.0/test-brick.webp",
+        "test-denim.png": "thumbs/shelf-test-v1.0.0/test-denim.webp",
+        "test-slate.png": "thumbs/shelf-test-v1.0.0/test-slate.webp"
+      }
     }
   ]
 }
