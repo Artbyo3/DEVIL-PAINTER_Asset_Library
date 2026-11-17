@@ -31,6 +31,20 @@ jobs:
       pages: write
 
     steps:
+      - name: Validate release_tag format
+        env:
+          INPUT_RELEASE_TAG: ${{ inputs.release_tag }}
+          EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          for tag in "$INPUT_RELEASE_TAG" "$EVENT_RELEASE_TAG"; do
+            if [ -n "$tag" ]; then
+              if [[ ! "$tag" =~ ^[A-Za-z0-9._-]+$ ]] || [[ "$tag" == *".."* ]] || [[ "$tag" == .* ]] || [[ "$tag" == -* ]]; then
+                echo "ERROR: Invalid release_tag format."
+                exit 1
+              fi
+            fi
+          done
+
       - name: Check VirusTotal API key secret
         if: inputs.simulate != true
         env:

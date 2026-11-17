@@ -203,8 +203,6 @@ def make_pack(
         [
             "release",
             "create",
-            tag,
-            str(out_zip),
             "--draft",
             "--repo",
             repo,
@@ -212,6 +210,9 @@ def make_pack(
             pack_title,
             "--notes",
             notes,
+            "--",
+            tag,
+            str(out_zip),
         ]
     )
     if create_proc.returncode != 0:

@@ -62,12 +62,12 @@ VT_API_BASE = "https://www.virustotal.com/api/v3"
 
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 OUTPUT_NAME_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
-CACHE_TTL_DAYS = 7
+CACHE_TTL_DAYS = 30
 MAX_CACHE_ENTRIES = 10000
 
 MAX_ZIP_ENTRIES = 2000
-MAX_ZIP_ENTRY_BYTES = 512 * 1024 * 1024
-MAX_ZIP_TOTAL_BYTES = 2 * 1024 * 1024 * 1024
+MAX_ZIP_ENTRY_BYTES = 500 * 1024 * 1024
+MAX_ZIP_TOTAL_BYTES = 500 * 1024 * 1024
 
 ALLOWED_GH_HOSTS = {"api.github.com", "uploads.github.com"}
 ALLOWED_VT_UPLOAD_HOSTS = {"www.virustotal.com", "virustotal.com"}
@@ -261,6 +261,7 @@ def verify_release_unchanged(
     release_id: int,
     release_tag: str,
     expected_snapshot: dict[int, tuple[str, int | None, str | None, str | None]],
+    expected_hashes: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     url = f"https://api.github.com/repos/{repo}/releases/{release_id}"
     _, body, _ = gh_api_request(url, token)
@@ -283,6 +284,32 @@ def verify_release_unchanged(
         raise RuntimeError(
             f"TOCTOU check failed: release assets on {release_tag!r} changed during scan window."
         )
+
+    if expected_hashes is not None:
+        current_names = {str(a.get("name", "")) for a in current_assets}
+        if current_names != set(expected_hashes):
+            raise RuntimeError("TOCTOU check failed: release asset filename set changed during scan window.")
+        for asset in current_assets:
+            fname = str(asset["name"])
+            expected_sha = expected_hashes[fname]
+            api_digest = asset.get("digest")
+            if isinstance(api_digest, str) and api_digest.startswith("sha256:"):
+                if api_digest[7:].lower() != expected_sha:
+                    raise RuntimeError(
+                        f"TOCTOU check failed: digest mismatch for {fname!r} ({api_digest[7:19]} != {expected_sha[:12]})."
+                    )
+            else:
+                _, asset_bytes, _ = gh_api_request(
+                    str(asset["url"]),
+                    token,
+                    accept="application/octet-stream",
+                )
+                actual_sha = hashlib.sha256(asset_bytes).hexdigest()
+                if actual_sha != expected_sha:
+                    raise RuntimeError(
+                        f"TOCTOU check failed: re-fetched hash mismatch for {fname!r} ({actual_sha[:12]} != {expected_sha[:12]})."
+                    )
+
     return refreshed
 
 
@@ -913,9 +940,17 @@ def main() -> int:
 
         pack_meta = json.loads((pack_dir / "pack.json").read_text(encoding="utf-8"))
         pack_name = _sanitize_single_line(str(pack_meta.get("name") or release.get("name") or release_tag))
+        scanned_hashes = {fname: verdict.sha256 for fname, _, verdict in records}
 
-        # Re-verify release and asset metadata right before mutating catalog or publishing (TOCTOU guard)
-        release = verify_release_unchanged(repo, gh_token, release_id, release_tag, initial_snapshot)
+        # Re-verify release assets and hashes right before mutating catalog or publishing (TOCTOU guard)
+        release = verify_release_unchanged(
+            repo,
+            gh_token,
+            release_id,
+            release_tag,
+            initial_snapshot,
+            expected_hashes=scanned_hashes,
+        )
 
         if simulate:
             summary = [
@@ -963,8 +998,15 @@ def main() -> int:
             check=True,
         )
 
-        # Final TOCTOU verification immediately prior to release modification
-        release = verify_release_unchanged(repo, gh_token, release_id, release_tag, initial_snapshot)
+        # Final TOCTOU hash verification immediately prior to release modification / undrafting
+        release = verify_release_unchanged(
+            repo,
+            gh_token,
+            release_id,
+            release_tag,
+            initial_snapshot,
+            expected_hashes=scanned_hashes,
+        )
 
         scanned_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         report_text = format_scan_report(release_tag, pack_name, mode_label, scanned_at, records)

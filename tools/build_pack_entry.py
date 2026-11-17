@@ -72,8 +72,8 @@ def validate_release_tag(release_tag: str) -> str:
 
 
 def validate_repo(repo: str) -> str:
-    if not isinstance(repo, str) or not SAFE_REPO_RE.match(repo) or ".." in repo:
-        raise ValueError(f"Unsafe repository slug: {repo!r}")
+    if not isinstance(repo, str) or not SAFE_REPO_RE.match(repo) or ".." in repo or repo != DEFAULT_REPO:
+        raise ValueError(f"Refusing non-canonical repository slug {repo!r}; expected {DEFAULT_REPO!r}")
     return repo
 
 
