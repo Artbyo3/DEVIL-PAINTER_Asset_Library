@@ -367,6 +367,40 @@
       gap: 14px;
       flex-wrap: wrap;
     }
+
+    .dp-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background-color: rgba(14, 10, 11, 0.88);
+    }
+
+    .dp-overlay[hidden] {
+      display: none;
+    }
+
+    .dp-overlay-link {
+      display: block;
+      max-width: 92vw;
+      max-height: 92vh;
+      line-height: 0;
+    }
+
+    .dp-overlay-img {
+      display: block;
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid var(--dp-border);
+      border-radius: 3px;
+      background-color: var(--dp-well);
+    }
   </style>
 </head>
 <body>
@@ -421,15 +455,60 @@
     </footer>
   </div>
 
+  <div id="thumb-overlay" class="dp-overlay" role="dialog" aria-modal="true" aria-label="Full texture preview" hidden>
+    <a id="thumb-overlay-link" class="dp-overlay-link" href="#" target="_blank" rel="noopener">
+      <img id="thumb-overlay-img" class="dp-overlay-img" src="" alt="">
+    </a>
+  </div>
+
   <script>
     (async function () {
       const THUMB_BATCH_SIZE = 60;
       const container = document.getElementById('pack-list');
       const tagBar = document.getElementById('tag-bar');
       const searchInput = document.getElementById('pack-search');
+      const overlay = document.getElementById('thumb-overlay');
+      const overlayLink = document.getElementById('thumb-overlay-link');
+      const overlayImg = document.getElementById('thumb-overlay-img');
 
       let validPacks = [];
       let activeTag = '';
+      let lastTrigger = null;
+
+      function openOverlay(fileUrl, label, triggerEl) {
+        lastTrigger = triggerEl || null;
+        overlayLink.href = fileUrl;
+        overlayLink.title = label;
+        overlayImg.src = fileUrl;
+        overlayImg.alt = label;
+        overlay.hidden = false;
+      }
+
+      function closeOverlay() {
+        if (overlay.hidden) return;
+        overlay.hidden = true;
+        overlayImg.removeAttribute('src');
+        overlayImg.alt = '';
+        overlayLink.href = '#';
+        overlayLink.removeAttribute('title');
+        if (lastTrigger && lastTrigger.isConnected) {
+          lastTrigger.focus();
+        }
+        lastTrigger = null;
+      }
+
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) {
+          closeOverlay();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !overlay.hidden) {
+          e.preventDefault();
+          closeOverlay();
+        }
+      });
 
       function renderMessage(primaryText, secondaryHtml) {
         container.innerHTML = '';
@@ -560,9 +639,12 @@
           const link = document.createElement('a');
           link.className = 'dp-thumb';
           link.href = fileUrl;
-          link.target = '_blank';
-          link.rel = 'noopener';
           link.title = cleanFile;
+          link.addEventListener('click', function (e) {
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+            openOverlay(fileUrl, cleanFile, link);
+          });
 
           const img = document.createElement('img');
           if (thumbPath) {
