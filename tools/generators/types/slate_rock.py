@@ -28,13 +28,14 @@ def _compute(
     # Flat plate surface with crisp stepped edge drop
     plate_height = 0.72 + 0.22 * np.clip(frac * 12.0, 0.0, 1.0) * (1.0 - 0.18 * frac)
 
-    # Cleavage fissures & diagonal cross-joints
+    # Cleavage fissures & anisotropic foliated mica grain aligned with slate sheets
     fissure = common.periodic_fbm(u, v, 4, 4, 0.55, rng, mode="ridged", freqy=10)
     crack_mask = np.clip((fissure - 0.76) * 8.0, 0.0, 1.0)
+    foliation = common.periodic_gabor_noise(u, v, 16, 4.5, 0.06 * tilt, 2.2, rng, impulses_per_cell=3)
     fine_grain = common.periodic_fbm(u, v, 24, 3, 0.5, rng)
 
-    h = common.normalize_field(0.68 * plate_height + 0.14 * plate_id - 0.35 * crack_mask + 0.10 * fine_grain)
-    c = common.normalize_field(0.42 * plate_height + 0.30 * (1.0 - crack_mask) + 0.18 * plate_id + 0.10 * fine_grain)
+    h = common.normalize_field(0.64 * plate_height + 0.14 * plate_id - 0.34 * crack_mask + 0.12 * foliation + 0.06 * fine_grain)
+    c = common.normalize_field(0.40 * plate_height + 0.28 * (1.0 - crack_mask) + 0.16 * plate_id + 0.16 * foliation)
     rough = np.clip(0.42 + 0.24 * crack_mask + 0.14 * fine_grain, 0.30, 0.85).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)

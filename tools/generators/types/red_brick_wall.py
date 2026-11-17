@@ -15,8 +15,9 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
 
-    rows = [8, 10, 12, 14][variant % 4]
-    cols = max(2, rows // 2)
+    # BIA Technical Notes 10 US Modular brick: nominal 8" x 2-2/3" (3:1 aspect ratio; 3 courses = 8")
+    rows = [9, 12, 15, 9][variant % 4]
+    cols = max(2, rows // 3)
 
     r_idx = np.floor(v * rows).astype(np.int32) % rows
     stag = (r_idx % 2) * 0.5
@@ -28,16 +29,21 @@ def _compute(
     brick_id = brick_rand[r_idx, c_idx]
 
     clay = common.periodic_fbm(u, v, rows * 2, 4, 0.55, rng)
+    # Anisotropic horizontal wire-cut extrusion drag lines on fired brick faces
+    wire_drag = common.periodic_gabor_noise(
+        u, v, grid_cells=rows * 2, f0=3.2, omega0=0.0, bandwidth=1.35, rng=rng, impulses_per_cell=3
+    )
     pits = common.periodic_fbm((u + 0.43) % 1.0, (v + 0.19) % 1.0, rows * 3, 3, 0.5, rng)
 
-    # Organic brick-edge chip/wear (scaled proportionally by aspect ratio cols/rows)
+    # 3/8" mortar joint on 2-2/3" nominal course = 14% pitch -> half-joint 0.070 in normalized lv units
     edge_u = np.minimum(lu, 1.0 - lu) * (float(rows) / float(cols))
     edge_v = np.minimum(lv, 1.0 - lv)
-    edge_d = np.minimum(edge_u, edge_v) + (clay - 0.5) * 0.032
+    edge_d = np.minimum(edge_u, edge_v) + (clay - 0.5) * 0.026
 
-    brick_mask = np.clip((edge_d - 0.065) / 0.030, 0.0, 1.0)
-    brick_face = np.power(brick_mask, 0.35) * (0.76 + 0.16 * clay - 0.10 * np.clip((0.36 - pits) * 3.0, 0.0, 1.0))
-    mortar_h = 0.16 + 0.10 * pits
+    tm = np.clip((edge_d - 0.070) / 0.030, 0.0, 1.0)
+    brick_mask = tm * tm * (3.0 - 2.0 * tm)
+    brick_face = np.power(brick_mask, 0.36) * (0.72 + 0.14 * clay + 0.08 * wire_drag - 0.10 * np.clip((0.36 - pits) * 3.0, 0.0, 1.0))
+    mortar_h = 0.14 + 0.10 * pits
 
     h = common.normalize_field(brick_mask * brick_face + (1.0 - brick_mask) * mortar_h)
 

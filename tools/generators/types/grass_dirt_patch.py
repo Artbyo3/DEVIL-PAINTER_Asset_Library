@@ -25,20 +25,22 @@ def _compute(
     patch_macro = common.periodic_fbm(u, v, patch_freq, 4, 0.54, rng)
     patch_edge = common.periodic_fbm((u + 0.37) % 1.0, (v + 0.59) % 1.0, 10, 3, 0.5, rng)
 
-    # Directional blades
-    warp = common.periodic_fbm(u, v, 14, 2, 0.5, rng)
-    b1 = np.power(0.5 + 0.5 * np.sin((u * 26 + v * 12 + 0.35 * (warp - 0.5)) * 2.0 * math.pi), 2.4)
-    b2 = np.power(0.5 + 0.5 * np.sin((u * (-14) + v * 28 + 0.35 * (warp - 0.5)) * 2.0 * math.pi), 2.4)
-    blades = np.maximum(b1, b2 * 0.90)
+    # Anisotropic curved grass bladelets via sparse Gabor wavelets
+    warp = common.periodic_fbm(u, v, 10, 2, 0.5, rng)
+    wu = (u + 0.03 * (warp - 0.5)) % 1.0
+    wv = (v + 0.03 * (warp - 0.5)) % 1.0
+    b1 = np.power(np.clip((common.periodic_gabor_noise(wu, wv, 18, 4.5, 0.42, 2.0, rng, impulses_per_cell=3) - 0.38) * 1.65, 0.0, 1.0), 1.4)
+    b2 = np.power(np.clip((common.periodic_gabor_noise(wu, wv, 20, 4.8, 1.78, 2.1, rng, impulses_per_cell=3) - 0.38) * 1.65, 0.0, 1.0), 1.4)
+    blades = np.maximum(b1, b2 * 0.92)
 
     # Grass coverage thins organically at edges into isolated blades
-    grass_zone = patch_macro + 0.24 * (patch_edge - 0.5) + 0.16 * (blades - 0.4)
+    grass_zone = patch_macro + 0.24 * (patch_edge - 0.5) + 0.18 * (blades - 0.4)
     grass_mask = _smoothstep(grass_zone, 0.44, 0.58)
 
-    # Dirt surface grain + tiny stones
+    # Dirt surface grain + rounded small soil pebbles
     dirt_grain = common.periodic_fbm(u, v, 24, 4, 0.55, rng)
-    f1_s, _, cid_s, _, _ = common.periodic_voronoi(u, v, 18, 0.92, rng)
-    small_stones = np.clip(((1.0 - f1_s) * (cid_s > 0.72).astype(np.float32) - 0.70) * 14.0, 0.0, 1.0)
+    f1_s, _, cid_s, _, _ = common.periodic_lloyd_voronoi(u, v, 18, 0.90, rng, lloyd_iters=1)
+    small_stones = _smoothstep((1.0 - f1_s) * (cid_s > 0.72).astype(np.float32), 0.68, 0.76)
 
     stops = np.array(common.resolve_palette(palette, SPEC.default_palette, rng), dtype=np.float32)
     dirt_rgb = stops[0] * (1.0 - dirt_grain[..., None]) + stops[1] * dirt_grain[..., None]

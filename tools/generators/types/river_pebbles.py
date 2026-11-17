@@ -16,19 +16,24 @@ def _compute(
     u, v = common.make_uv_grid(size)
 
     cells = [8, 10, 12, 14][variant % 4]
-    f1, edge, cid, _, _ = common.periodic_voronoi(u, v, cells, 0.80, rng)
+    f1, edge, cid, _, _ = common.periodic_lloyd_voronoi(u, v, cells, 0.88, rng, lloyd_iters=2)
+    _, edge_s, cid_s, _, _ = common.periodic_lloyd_voronoi((u + 0.37) % 1.0, (v + 0.59) % 1.0, cells * 2, 0.88, rng, lloyd_iters=1)
     smooth_vein = common.periodic_fbm(u, v, cells * 2, 3, 0.48, rng)
     sand_grit = common.periodic_fbm(u, v, 36, 2, 0.5, rng)
 
-    # Smooth rounded dome per pebble with recessed sand gaps
-    pebble_mask = np.clip((edge - 0.035) / 0.035, 0.0, 1.0)
-    dome = np.power(np.clip(edge * 4.2, 0.0, 1.0), 0.36) * (1.0 - 0.18 * f1)
+    # Smooth water-worn ovoid pebble domes with secondary smaller stones nestled in gaps
+    t_m = np.clip((edge - 0.032) / 0.036, 0.0, 1.0)
+    pebble_mask = t_m * t_m * (3.0 - 2.0 * t_m)
+    dome = np.power(np.clip(edge * 3.8, 0.0, 1.0), 0.36) * (1.0 - 0.16 * f1)
 
-    h = common.normalize_field(pebble_mask * (0.25 + 0.75 * dome) + (1.0 - pebble_mask) * 0.08 * sand_grit)
-    c = common.normalize_field(
-        np.where(pebble_mask > 0.25, 0.24 + 0.58 * cid + 0.18 * smooth_vein, 0.08 + 0.18 * sand_grit)
-    )
-    rough = np.where(pebble_mask > 0.35, 0.26 + 0.18 * smooth_vein, 0.88).astype(np.float32)
+    t_sub = np.clip((edge_s - 0.05) / 0.04, 0.0, 1.0) * (1.0 - pebble_mask)
+    sub_dome = np.power(np.clip(edge_s * 3.6, 0.0, 1.0), 0.42) * 0.42 * t_sub
+
+    h = common.normalize_field(np.maximum(pebble_mask * (0.26 + 0.74 * dome), sub_dome) + (1.0 - np.maximum(pebble_mask, t_sub)) * 0.08 * sand_grit)
+    peb_c = pebble_mask * (0.24 + 0.58 * cid + 0.18 * smooth_vein) + t_sub * (0.20 + 0.50 * cid_s) * (1.0 - pebble_mask)
+    sand_c = (1.0 - np.clip(pebble_mask + t_sub, 0.0, 1.0)) * (0.08 + 0.18 * sand_grit)
+    c = common.normalize_field(peb_c + sand_c)
+    rough = np.clip((1.0 - pebble_mask) * 0.86 + pebble_mask * (0.24 + 0.18 * smooth_vein), 0.20, 0.94).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, smooth_vein, stops, contrast=1.18)

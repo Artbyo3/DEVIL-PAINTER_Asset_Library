@@ -18,15 +18,17 @@ def _compute(
     cells_a = [18, 22, 26, 30][variant % 4]
     cells_b = cells_a + 14
 
-    f1_a, edge_a, cid_a, _, _ = common.periodic_voronoi(u, v, cells_a, 0.94, rng, metric="chebyshev")
-    f1_b, edge_b, cid_b, _, _ = common.periodic_voronoi(
+    f1_a, edge_a, cid_a, rxa, rya = common.periodic_voronoi(u, v, cells_a, 0.94, rng, metric="chebyshev")
+    f1_b, edge_b, cid_b, rxb, ryb = common.periodic_voronoi(
         (u + 0.37) % 1.0, (v + 0.59) % 1.0, cells_b, 0.94, rng, metric="manhattan"
     )
     grit = common.periodic_fbm(u, v, 40, 3, 0.52, rng)
 
-    # Sharp faceted beveled chips
-    chip_a = np.clip(edge_a * 6.5, 0.0, 1.0) * (0.65 + 0.35 * (1.0 - f1_a))
-    chip_b = np.clip(edge_b * 7.5, 0.0, 1.0) * (0.55 + 0.35 * (1.0 - f1_b))
+    # Tilted flat cleavage facets per angular crushed rock chip
+    tilt_a = np.clip(0.65 + 0.35 * (rxa * np.cos(cid_a * 6.2831853) + rya * np.sin(cid_a * 6.2831853)) * cells_a, 0.25, 1.0)
+    tilt_b = np.clip(0.60 + 0.35 * (rxb * np.cos(cid_b * 6.2831853) + ryb * np.sin(cid_b * 6.2831853)) * cells_b, 0.20, 1.0)
+    chip_a = np.clip(edge_a * 5.8, 0.0, 1.0) * (0.55 * tilt_a + 0.45 * (1.0 - f1_a))
+    chip_b = np.clip(edge_b * 6.8, 0.0, 1.0) * (0.55 * tilt_b + 0.45 * (1.0 - f1_b))
     use_a = chip_a >= chip_b * 0.85
 
     stone_h = np.where(use_a, chip_a, chip_b * 0.85)

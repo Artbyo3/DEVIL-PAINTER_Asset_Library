@@ -18,16 +18,23 @@ def _compute(
     clumps = [6, 8, 10, 12][variant % 4]
     wx = common.periodic_fbm(u, v, 4, 3, 0.5, rng)
     wy = common.periodic_fbm((u + 0.31) % 1.0, (v + 0.59) % 1.0, 4, 3, 0.5, rng)
-    uu = (u + 0.08 * (wx - 0.5)) % 1.0
-    vv = (v + 0.08 * (wy - 0.5)) % 1.0
+    uu = (u + 0.07 * (wx - 0.5)) % 1.0
+    vv = (v + 0.07 * (wy - 0.5)) % 1.0
 
-    _, edge, cid, _, _ = common.periodic_voronoi(uu, vv, clumps, 0.84, rng)
-    cushion = np.power(np.clip(edge * 3.4, 0.0, 1.0), 0.45)
+    # Lloyd CVT (2 iters) models isotropic radial competition of cushion moss colonies
+    _, edge, cid, _, _ = common.periodic_lloyd_voronoi(uu, vv, clumps, 0.84, rng, lloyd_iters=2)
+    t_edge = np.clip(edge / 0.38, 0.0, 1.0)
+    cushion = np.sqrt(np.clip(t_edge * t_edge * (3.0 - 2.0 * t_edge), 0.0, 1.0))
+
+    # Velvety bryophyte phyllid tufts via isotropic periodic Gabor noise + micro-fuzz
+    tuft_gabor = common.periodic_gabor_noise(
+        u, v, grid_cells=max(24, clumps * 3), f0=2.6, omega0=0.0, bandwidth=1.2, rng=rng, impulses_per_cell=3, isotropic=True
+    )
     velvet = common.periodic_fbm(u, v, 28, 4, 0.56, rng)
     micro_fuzz = common.periodic_fbm((u + 0.47) % 1.0, (v + 0.23) % 1.0, 48, 2, 0.5, rng)
 
-    h = common.normalize_field(cushion * (0.68 + 0.22 * velvet + 0.10 * micro_fuzz))
-    c = common.normalize_field(0.54 * cushion + 0.24 * velvet + 0.12 * cid + 0.10 * micro_fuzz)
+    h = common.normalize_field(cushion * (0.62 + 0.16 * velvet + 0.14 * tuft_gabor + 0.08 * micro_fuzz))
+    c = common.normalize_field(0.48 * cushion + 0.20 * velvet + 0.12 * tuft_gabor + 0.12 * cid + 0.08 * micro_fuzz)
     rough = np.clip(0.84 + 0.12 * (1.0 - cushion), 0.72, 0.96).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)

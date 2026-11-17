@@ -17,10 +17,12 @@ def _periodic_rect_voronoi(
     jitter_x: float,
     jitter_y: float,
     rng: np.random.Generator,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     px = rng.uniform(0.5 - 0.5 * jitter_x, 0.5 + 0.5 * jitter_x, size=(ny, nx)).astype(np.float32)
     py = rng.uniform(0.5 - 0.5 * jitter_y, 0.5 + 0.5 * jitter_y, size=(ny, nx)).astype(np.float32)
     cid_map = rng.uniform(0.0, 1.0, size=(ny, nx)).astype(np.float32)
+    tx_map = rng.uniform(-0.22, 0.22, size=(ny, nx)).astype(np.float32)
+    ty_map = rng.uniform(-0.22, 0.22, size=(ny, nx)).astype(np.float32)
 
     gx = u * nx
     gy = v * ny
@@ -30,6 +32,7 @@ def _periodic_rect_voronoi(
     f1 = np.full_like(u, 1e9, dtype=np.float32)
     f2 = np.full_like(u, 1e9, dtype=np.float32)
     cid = np.zeros_like(u, dtype=np.float32)
+    cleavage = np.zeros_like(u, dtype=np.float32)
 
     aspect = float(nx) / float(ny)
     for oy in (-1, 0, 1):
@@ -44,9 +47,10 @@ def _periodic_rect_voronoi(
             f2 = np.where(closer1, f1, np.where(between, dist, f2))
             f1 = np.where(closer1, dist, f1)
             cid = np.where(closer1, cid_map[cy, cx], cid)
+            cleavage = np.where(closer1, tx_map[cy, cx] * fx + ty_map[cy, cx] * fy, cleavage)
 
     edge = np.clip(f2 - f1, 0.0, 1.0)
-    return common.normalize_field(f1), common.normalize_field(edge), cid
+    return common.normalize_field(f1), common.normalize_field(edge), cid, cleavage
 
 
 def _compute(
@@ -60,16 +64,18 @@ def _compute(
     uu = (u + 0.03 * (warp - 0.5)) % 1.0
     vv = (v + 0.02 * (warp - 0.5)) % 1.0
 
-    _, edge, cid = _periodic_rect_voronoi(uu, vv, nx, ny, 0.65, 0.40, rng)
+    _, edge, cid, cleavage = _periodic_rect_voronoi(uu, vv, nx, ny, 0.65, 0.40, rng)
     rock = common.periodic_fbm(u, v, ny * 2, 4, 0.55, rng, mode="swiss")
     grit = common.periodic_fbm(u, v, 32, 3, 0.5, rng)
 
-    stone_mask = np.clip((edge - 0.045) / 0.035, 0.0, 1.0)
-    stone_dome = np.power(np.clip(edge * 4.0, 0.0, 1.0), 0.38) * (0.72 + 0.28 * rock)
+    tm = np.clip((edge - 0.042) / 0.038, 0.0, 1.0)
+    stone_mask = tm * tm * (3.0 - 2.0 * tm)
+    td = np.clip(edge / 0.25, 0.0, 1.0)
+    stone_dome = np.power(td * td * (3.0 - 2.0 * td), 0.45) * (0.68 + 0.24 * rock + 0.38 * cleavage)
 
     h = common.normalize_field(stone_mask * stone_dome + (1.0 - stone_mask) * 0.12 * grit)
     c = common.normalize_field(
-        np.where(stone_mask > 0.25, 0.24 + 0.52 * cid + 0.24 * rock, 0.10 + 0.18 * grit)
+        stone_mask * (0.24 + 0.52 * cid + 0.24 * rock) + (1.0 - stone_mask) * (0.10 + 0.18 * grit)
     )
     rough = np.where(stone_mask > 0.30, 0.72 + 0.18 * grit, 0.92).astype(np.float32)
 

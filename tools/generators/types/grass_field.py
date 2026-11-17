@@ -10,24 +10,6 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def _blade_layer(
-    u: np.ndarray,
-    v: np.ndarray,
-    kx: int,
-    ky: int,
-    warp: np.ndarray,
-    rng: np.random.Generator,
-) -> np.ndarray:
-    # Integer linear combination guarantees exact periodicity across [0, 1)^2
-    p = (u * kx + v * ky + 0.35 * (warp - 0.5)) % 1.0
-    q = (u * (-ky) + v * kx + 0.35 * (warp - 0.5)) % 1.0
-    # Dense short blade clusters via modulated high-frequency wave ridges
-    env = common.periodic_fbm((u + 0.17) % 1.0, (v + 0.31) % 1.0, 12, 2, 0.5, rng)
-    ridge = np.power(0.5 + 0.5 * np.sin(p * 2.0 * math.pi), 2.5)
-    taper = np.power(0.5 + 0.5 * np.cos(q * 0.5 * 2.0 * math.pi), 1.2)
-    return np.clip(ridge * (0.45 + 0.55 * taper) * (0.55 + 0.65 * env), 0.0, 1.0).astype(np.float32)
-
-
 def _compute(
     seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
 ) -> tuple[Image.Image, np.ndarray]:
@@ -37,16 +19,18 @@ def _compute(
     density_scale = [3, 4, 5, 6][variant % 4]
     density = common.periodic_fbm(u, v, density_scale, 4, 0.55, rng)
     clump = common.periodic_fbm((u + 0.43) % 1.0, (v + 0.71) % 1.0, density_scale * 2, 3, 0.5, rng)
-    warp_a = common.periodic_fbm(u, v, 14, 2, 0.5, rng)
-    warp_b = common.periodic_fbm((u + 0.29) % 1.0, (v + 0.61) % 1.0, 18, 2, 0.5, rng)
+    warp = common.periodic_fbm(u, v, 8, 2, 0.5, rng)
+    wu = (u + 0.03 * (warp - 0.5)) % 1.0
+    wv = (v + 0.03 * (warp - 0.5)) % 1.0
 
-    b1 = _blade_layer(u, v, 28, 12, warp_a, rng)
-    b2 = _blade_layer(u, v, -16, 26, warp_b, rng)
-    b3 = _blade_layer(u, v, 20, -24, warp_a, rng)
-    blades = np.maximum(b1, np.maximum(b2 * 0.92, b3 * 0.88))
+    # Lagae-Lefebvre Gabor bladelets oriented along 4 skewed azimuthal wind-lay angles (finite envelope, zero grid stripes)
+    b1 = np.power(np.clip((common.periodic_gabor_noise(wu, wv, 18, 4.5, 0.35, 2.0, rng, impulses_per_cell=3) - 0.38) * 1.65, 0.0, 1.0), 1.4)
+    b2 = np.power(np.clip((common.periodic_gabor_noise(wu, wv, 20, 4.8, 1.45, 2.1, rng, impulses_per_cell=3) - 0.38) * 1.65, 0.0, 1.0), 1.4)
+    b3 = np.power(np.clip((common.periodic_gabor_noise(wu, wv, 16, 4.2, 2.25, 1.9, rng, impulses_per_cell=3) - 0.38) * 1.65, 0.0, 1.0), 1.4)
+    blades = np.maximum(b1, np.maximum(b2 * 0.94, b3 * 0.88))
 
     h = common.normalize_field(0.58 * blades + 0.26 * clump + 0.16 * density)
-    c = common.normalize_field(0.44 * blades + 0.34 * density + 0.22 * clump)
+    c = common.normalize_field(0.46 * blades + 0.32 * density + 0.22 * clump)
     rough = np.clip(0.68 + 0.22 * (1.0 - blades), 0.55, 0.94).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)

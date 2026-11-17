@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import math
+
 import numpy as np
 from PIL import Image
 
@@ -18,19 +20,36 @@ def _compute(
     trowel_cells = [3, 4, 5, 6][variant % 4]
     wx = common.periodic_fbm(u, v, 2, 3, 0.5, rng)
     wy = common.periodic_fbm((u + 0.37) % 1.0, (v + 0.61) % 1.0, 2, 3, 0.5, rng)
-    uu = (u + 0.10 * (wx - 0.5)) % 1.0
-    vv = (v + 0.10 * (wy - 0.5)) % 1.0
+    uu = (u + 0.08 * (wx - 0.5)) % 1.0
+    vv = (v + 0.08 * (wy - 0.5)) % 1.0
 
-    # Broad shallow overlapping trowel sweeps & feather ridges
-    f1_a, edge_a, cid_a, _, _ = common.periodic_voronoi(uu, vv, trowel_cells, 0.85, rng)
-    f1_b, edge_b, _, _, _ = common.periodic_voronoi((uu + 0.43) % 1.0, (vv + 0.29) % 1.0, trowel_cells + 2, 0.85, rng)
+    # Curved steel trowel-blade arc sweeps: overlapping periodic circular arc ridges exp(-((r - R)^2) / w)
+    arc_field = np.zeros_like(u, dtype=np.float32)
+    skim_field = np.zeros_like(u, dtype=np.float32)
+    n_arcs = trowel_cells * 5
+    for _ in range(n_arcs):
+        cx = float(rng.uniform(0.0, 1.0))
+        cy = float(rng.uniform(0.0, 1.0))
+        rad = float(rng.uniform(0.14, 0.28))
+        ang0 = float(rng.uniform(0.0, 2.0 * math.pi))
+        dx = ((uu - cx + 0.5) % 1.0) - 0.5
+        dy = ((vv - cy + 0.5) % 1.0) - 0.5
+        r = np.sqrt(dx * dx + dy * dy + 1e-8)
+        theta = np.arctan2(dy, dx)
+        # Directional sweep envelope over ~120 deg arc segment
+        arc_ang = 0.5 + 0.5 * np.cos(theta - ang0)
+        arc_env = np.power(np.clip(arc_ang, 0.0, 1.0), 2.2)
+        ridge = np.exp(-((r - rad) ** 2) / 0.00055) * arc_env
+        arc_field += ridge
+        skim_field += np.exp(-(r * r) / (rad * rad * 1.4)) * arc_env
 
-    trowel_ridge = 0.55 * np.exp(-((edge_a - 0.06) ** 2) / 0.003) + 0.45 * np.exp(-((edge_b - 0.06) ** 2) / 0.003)
+    trowel_ridge = common.normalize_field(arc_field)
+    skim_swell = common.normalize_field(skim_field)
     lime_wash = common.periodic_fbm(u, v, 3, 3, 0.48, rng)
     sand_float = common.periodic_fbm(u, v, 42, 3, 0.52, rng)
 
-    h = common.normalize_field(0.45 * lime_wash + 0.35 * trowel_ridge + 0.12 * (1.0 - f1_a) + 0.08 * sand_float)
-    c = common.normalize_field(0.55 * lime_wash + 0.22 * (1.0 - f1_b) + 0.13 * cid_a + 0.10 * sand_float)
+    h = common.normalize_field(0.42 * lime_wash + 0.34 * trowel_ridge + 0.16 * skim_swell + 0.08 * sand_float)
+    c = common.normalize_field(0.54 * lime_wash + 0.24 * skim_swell + 0.12 * trowel_ridge + 0.10 * sand_float)
     rough = np.clip(0.68 + 0.14 * sand_float, 0.55, 0.88).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)

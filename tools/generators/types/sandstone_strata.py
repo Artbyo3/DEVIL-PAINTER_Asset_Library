@@ -21,13 +21,22 @@ def _compute(
     cross = common.periodic_fbm((u + 0.41) % 1.0, (v + 0.19) % 1.0, 4, 3, 0.50, rng, freqy=6)
     grit = common.periodic_fbm(u, v, 32, 3, 0.52, rng)
 
-    phase = (v * bands + 1.65 * (warp - 0.5) + 0.45 * (cross - 0.5))
-    strata_main = 0.5 + 0.5 * np.sin(phase * 2.0 * math.pi)
-    strata_sub = 0.5 + 0.5 * np.sin((phase * 3.0 + 0.4 * cross) * 2.0 * math.pi)
-    ledge = np.power(np.clip(strata_main, 0.0, 1.0), 0.72)
+    # Aeolian/fluvial cross-bedding: periodic bedset boundaries truncate inclined foreset laminae
+    n_sets = 2 + (variant % 2)
+    set_coord = (v * n_sets + 0.25 * (warp - 0.5)) % float(n_sets)
+    set_idx = np.floor(set_coord).astype(np.int32) % n_sets
+    set_dir = np.where(set_idx % 2 == 0, 1.0, -1.0)
+    foreset_phase = (v * bands + u * set_dir * 2.0 + 1.45 * (warp - 0.5) + 0.40 * (cross - 0.5)) % 1.0
+    # Asymmetric cemented ledge profile (gradual slope -> crisp eroded undercut)
+    ledge = np.where(foreset_phase < 0.78, foreset_phase / 0.78, 1.0 - (foreset_phase - 0.78) / 0.22)
+    strata_sub = 0.5 + 0.5 * np.sin((foreset_phase * 3.0 + 0.4 * cross) * 2.0 * math.pi)
+    # Bounding surface groove between cross-bedding cosets
+    set_frac = set_coord - np.floor(set_coord)
+    bed_seam = np.clip(np.minimum(set_frac, 1.0 - set_frac) * 14.0, 0.25, 1.0)
+    liesegang = 0.5 + 0.5 * np.sin((warp * 4.5 + cross * 2.0) * 2.0 * math.pi)
 
-    h = common.normalize_field(0.62 * ledge + 0.22 * strata_sub + 0.16 * grit)
-    c = common.normalize_field(0.55 * strata_main + 0.28 * strata_sub + 0.17 * warp)
+    h = common.normalize_field((0.60 * ledge + 0.24 * strata_sub + 0.16 * grit) * bed_seam)
+    c = common.normalize_field(0.50 * ledge + 0.24 * strata_sub + 0.14 * liesegang + 0.12 * warp)
     rough = np.clip(0.76 + 0.16 * grit, 0.65, 0.95).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)

@@ -21,16 +21,23 @@ def _compute(
     ru = (u * ripples + v * skew) % float(ripples)
     warp = common.periodic_fbm(u, v, 3, 3, 0.5, rng)
 
-    # Gentle low-relief flat-floor ripples (distinct from steep wind-dunes ridges)
-    fine_ripple = 0.5 + 0.5 * np.sin((ru + 1.15 * (warp - 0.5)) * 2.0 * math.pi)
+    # Bagnold (1941) / Anderson (1987) asymmetric aeolian ripple: gentle stoss (~72%), steeper lee (~28%, RSI ~2.6)
+    phase = (ru + 1.15 * (warp - 0.5)) % 1.0
+    stoss_frac = 0.72
+    fine_ripple = np.where(
+        phase < stoss_frac,
+        0.5 - 0.5 * np.cos(math.pi * phase / stoss_frac),
+        0.5 + 0.5 * np.cos(math.pi * (phase - stoss_frac) / (1.0 - stoss_frac)),
+    ).astype(np.float32)
     broad_undulation = common.periodic_fbm(u, v, 2, 2, 0.5, rng)
 
-    # Crisp granular sand / quartz & shell mineral speckle
+    # Crisp granular sand + Sharp (1963) crest-sorted quartz/shell mineral sparkle
     grain_a = common.periodic_fbm(u, v, 44, 3, 0.52, rng)
     grain_b = common.periodic_fbm((u + 0.37) % 1.0, (v + 0.61) % 1.0, 64, 2, 0.5, rng)
-    speck = np.clip((grain_b - 0.62) * 3.0, 0.0, 1.0)
+    crest_sort = 0.75 + 0.25 * fine_ripple
+    speck = np.clip((grain_b * crest_sort - 0.56) * 3.0, 0.0, 1.0)
 
-    h = common.normalize_field(0.46 * fine_ripple + 0.16 * broad_undulation + 0.26 * grain_a + 0.12 * grain_b)
+    h = common.normalize_field(0.46 * fine_ripple + 0.16 * broad_undulation + 0.26 * grain_a + 0.12 * grain_b * crest_sort)
     c = common.normalize_field(0.36 * fine_ripple + 0.24 * broad_undulation + 0.26 * grain_a + 0.14 * speck)
     rough = np.clip(0.76 + 0.14 * grain_a - 0.10 * speck, 0.55, 0.94).astype(np.float32)
 
