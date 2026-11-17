@@ -589,11 +589,12 @@ def safe_extract_zip(zip_path: Path, extract_dir: Path) -> Path:
 
         for info in infos:
             mode = info.external_attr >> 16
+            fmt = stat.S_IFMT(mode)
             if stat.S_ISLNK(mode):
                 raise ValueError(f"Symlink entry not allowed in zip: {info.filename!r}")
             if stat.S_ISFIFO(mode) or stat.S_ISCHR(mode) or stat.S_ISBLK(mode) or stat.S_ISSOCK(mode):
                 raise ValueError(f"Special file entry not allowed in zip: {info.filename!r}")
-            if mode != 0 and not (stat.S_ISREG(mode) or stat.S_ISDIR(mode)):
+            if fmt != 0 and not (stat.S_ISREG(mode) or stat.S_ISDIR(mode)):
                 raise ValueError(f"Unsupported non-regular file mode {oct(mode)} in zip: {info.filename!r}")
 
             if info.is_dir():
