@@ -1,0 +1,26 @@
+{
+  "_comment": "Local VirusTotal verdict fixtures for workflow_dispatch simulate=true testing without VIRUSTOTAL_API_KEY.",
+  "default_unknown_verdict": "clean",
+  "hashes": {
+    "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f": {
+      "verdict": "malicious",
+      "malicious": 58,
+      "suspicious": 0,
+      "engines": [
+        "ClamAV: Eicar-Test-Signature",
+        "Microsoft: Virus:DOS/EICAR_Test_File"
+      ],
+      "reason": "EICAR standard antivirus test string (simulated fixture)"
+    },
+    "131f95c51cc819465fa1797f6ccacf9d494aaaff46fa3eac73ae63ffbdfd8267": {
+      "verdict": "malicious",
+      "malicious": 58,
+      "suspicious": 0,
+      "engines": [
+        "ClamAV: Eicar-Test-Signature",
+        "Microsoft: Virus:DOS/EICAR_Test_File"
+      ],
+      "reason": "EICAR standard antivirus test string with trailing LF (simulated fixture)"
+    }
+  }
+}

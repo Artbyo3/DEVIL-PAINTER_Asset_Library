@@ -1,0 +1,107 @@
+name: Release Scan Gate
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Draft release tag to scan (defaults to newest draft release if omitted)"
+        required: false
+        type: string
+      simulate:
+        description: "Simulate VirusTotal verdicts from .github/vt-sim-fixtures.json (no API key required)"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: release-scan-gate
+  cancel-in-progress: false
+
+jobs:
+  scan-gate:
+    if: github.event_name == 'workflow_dispatch' || github.event.release.draft == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+
+    steps:
+      - name: Check VirusTotal API key secret
+        if: inputs.simulate != true
+        env:
+          VT_API_KEY: ${{ secrets.VIRUSTOTAL_API_KEY }}
+        run: |
+          if [ -z "$VT_API_KEY" ]; then
+            echo "ERROR: VIRUSTOTAL_API_KEY secret is not set. Add VIRUSTOTAL_API_KEY in repository Settings -> Secrets and variables -> Actions. Release remains a draft; no changes were made."
+            {
+              echo "## Release Scan Gate Blocked"
+              echo ""
+              echo "**Error:** \`VIRUSTOTAL_API_KEY\` secret is not set. Add it in **Settings -> Secrets and variables -> Actions**. Release remains a draft; no changes were made."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Pillow for thumbnail generation
+        run: python -m pip install --no-cache-dir pillow
+
+      - name: Restore VirusTotal SHA-256 verdict cache
+        if: inputs.simulate != true
+        uses: actions/cache/restore@v4
+        with:
+          path: .vt-cache
+          key: vt-verdicts-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            vt-verdicts-
+
+      - name: Run VirusTotal scan gate
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          VT_API_KEY: ${{ secrets.VIRUSTOTAL_API_KEY }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_RELEASE_ID: ${{ github.event.release.id }}
+          EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+          INPUT_RELEASE_TAG: ${{ inputs.release_tag }}
+          INPUT_SIMULATE: ${{ inputs.simulate }}
+          VT_CACHE_FILE: .vt-cache/verdicts.json
+          VT_FIXTURES_FILE: .github/vt-sim-fixtures.json
+        run: python tools/vt_scan_gate.py
+
+      - name: Save VirusTotal SHA-256 verdict cache
+        if: always() && inputs.simulate != true && hashFiles('.vt-cache/verdicts.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .vt-cache
+          key: vt-verdicts-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Commit and push catalog update
+        if: success() && steps.gate.outputs.clean == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packs.json thumbs/
+          if git diff --cached --quiet; then
+            echo "No catalog or thumbnail changes to commit."
+            exit 0
+          fi
+          git commit -m "Add ${{ steps.gate.outputs.release_tag }} to catalog after VirusTotal scan"
+          git pull --rebase origin main
+          git push origin main
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null 2>&1 || true
