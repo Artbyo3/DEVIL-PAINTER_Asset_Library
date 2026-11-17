@@ -33,9 +33,15 @@ def _compute(
     f_slate = common.periodic_fbm((uu + 0.51) % 1.0, (vv + 0.17) % 1.0, fx_base, 3, 0.48, rng, freqy=fy_base + 1)
     f_black = common.periodic_fbm((uu + 0.27) % 1.0, (vv + 0.73) % 1.0, fx_base + 1, 3, 0.46, rng, freqy=fy_base + 2)
 
-    m_mid = _smoothstep(f_mid, 0.44, 0.465)
-    m_slate = _smoothstep(f_slate, 0.54, 0.565)
-    m_black = _smoothstep(f_black, 0.60, 0.625)
+    # Balanced M81-style Urban Metro coverage fractions: 16% black, 34% slate, 30% mid-grey, 20% light ash
+    qk = float(np.quantile(f_black, 1.0 - 0.16))
+    m_black = _smoothstep(f_black, qk - 0.012, qk + 0.012)
+    free_s = f_black < qk
+    qs = float(np.quantile(f_slate[free_s], 1.0 - (0.34 / 0.84)))
+    m_slate = _smoothstep(f_slate, qs - 0.012, qs + 0.012)
+    free_m = free_s & (f_slate < qs)
+    qm = float(np.quantile(f_mid[free_m], 1.0 - (0.30 / 0.50)))
+    m_mid = _smoothstep(f_mid, qm - 0.012, qm + 0.012)
 
     stops = np.array(common.resolve_palette(palette, SPEC.default_palette, rng), dtype=np.float32)
     slub = common.periodic_fbm(u, v, 10, 2, 0.5, rng)
@@ -46,9 +52,10 @@ def _compute(
     albedo = albedo * (1.0 - m_black[..., None]) + stops[0] * m_black[..., None]
     albedo = albedo * (0.95 + 0.09 * slub[..., None]) + (stops[4] - stops[3]) * (0.06 * slub[..., None])
 
-    threads = max(24, min(96, size // 6))
-    twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
-    h = common.normalize_field(0.75 * twill + 0.25 * slub)
+    threads = max(24, ((size // 6) // 4) * 4)
+    twill_22 = np.array([[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1], [1, 0, 0, 1]], dtype=np.float32)
+    weave, _, _, _ = common.woven_fabric_field(u, v, threads, threads, twill_22, float_arch=0.38, ply_twist=0.10)
+    h = common.normalize_field(0.76 * weave + 0.24 * slub)
     return common.shade_cloth_surface(albedo, h, normal_strength=2.2, sheen_amt=6.0), np.asarray(h, dtype=np.float32)
 
 

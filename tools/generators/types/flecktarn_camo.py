@@ -15,23 +15,21 @@ def _smoothstep(x: np.ndarray, edge0: float, edge1: float) -> np.ndarray:
     return (t * t * (3.0 - 2.0 * t)).astype(np.float32)
 
 
-def _spot_cluster_layer(
+def _spot_cluster_score(
     u: np.ndarray,
     v: np.ndarray,
     shift_u: float,
     shift_v: float,
     spot_cells: int,
     cluster_freq: int,
-    threshold: float,
     rng: np.random.Generator,
 ) -> np.ndarray:
     uu = (u + shift_u) % 1.0
     vv = (v + shift_v) % 1.0
-    f1, _, _, _, _ = common.periodic_voronoi(uu, vv, spot_cells, 0.90, rng)
+    f1, _, _, _, _ = common.periodic_lloyd_voronoi(uu, vv, spot_cells, 0.90, rng, lloyd_iters=1)
     wobble = common.periodic_fbm(uu, vv, spot_cells, 2, 0.5, rng)
     cluster = common.periodic_fbm((u + shift_v) % 1.0, (v + shift_u) % 1.0, cluster_freq, 2, 0.5, rng)
-    spot_score = 0.65 * (1.0 - f1) + 0.35 * wobble + 0.32 * (cluster - 0.5)
-    return _smoothstep(spot_score, threshold, threshold + 0.045)
+    return 0.65 * (1.0 - f1) + 0.35 * wobble + 0.32 * (cluster - 0.5)
 
 
 def _compute(
@@ -41,10 +39,23 @@ def _compute(
     u, v = common.make_uv_grid(size)
 
     base_cells = [18, 22, 16, 24][variant % 4]
-    m_sage = _spot_cluster_layer(u, v, 0.13, 0.27, base_cells, 3, 0.54, rng)
-    m_moss = _spot_cluster_layer(u, v, 0.41, 0.63, base_cells - 2, 3, 0.52, rng)
-    m_rust = _spot_cluster_layer(u, v, 0.73, 0.19, base_cells + 2, 3, 0.58, rng)
-    m_black = _spot_cluster_layer(u, v, 0.29, 0.83, base_cells + 4, 4, 0.68, rng)
+    s_sage = _spot_cluster_score(u, v, 0.13, 0.27, base_cells, 3, rng)
+    s_moss = _spot_cluster_score(u, v, 0.41, 0.63, base_cells - 2, 3, rng)
+    s_rust = _spot_cluster_score(u, v, 0.73, 0.19, base_cells + 2, 3, rng)
+    s_black = _spot_cluster_score(u, v, 0.29, 0.83, base_cells + 4, 4, rng)
+
+    # Bundeswehr TL 8305-0290 Flecktarn area ratios: 10% Black, 20% Red-Brown, 35% Dark Green, 15% Sage/Light Green, 20% Light Olive ground
+    qk = float(np.quantile(s_black, 1.0 - 0.10))
+    m_black = _smoothstep(s_black, qk - 0.02, qk + 0.02)
+    free1 = s_black < qk
+    qr = float(np.quantile(s_rust[free1], 1.0 - (0.20 / 0.90)))
+    m_rust = _smoothstep(s_rust, qr - 0.02, qr + 0.02)
+    free2 = free1 & (s_rust < qr)
+    qm = float(np.quantile(s_moss[free2], 1.0 - (0.35 / 0.70)))
+    m_moss = _smoothstep(s_moss, qm - 0.02, qm + 0.02)
+    free3 = free2 & (s_moss < qm)
+    qs = float(np.quantile(s_sage[free3], 1.0 - (0.15 / 0.35)))
+    m_sage = _smoothstep(s_sage, qs - 0.02, qs + 0.02)
 
     stops = np.array(common.resolve_palette(palette, SPEC.default_palette, rng), dtype=np.float32)
     slub = common.periodic_fbm(u, v, 10, 2, 0.5, rng)
@@ -56,9 +67,10 @@ def _compute(
     albedo = albedo * (1.0 - m_black[..., None]) + stops[0] * m_black[..., None]
     albedo = albedo * (0.96 + 0.08 * slub[..., None])
 
-    threads = max(24, min(96, size // 6))
-    twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
-    h = common.normalize_field(0.75 * twill + 0.25 * slub)
+    threads = max(24, ((size // 6) // 4) * 4)
+    twill_22 = np.array([[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1], [1, 0, 0, 1]], dtype=np.float32)
+    weave, _, _, _ = common.woven_fabric_field(u, v, threads, threads, twill_22, float_arch=0.38, ply_twist=0.10)
+    h = common.normalize_field(0.75 * weave + 0.25 * slub)
     return common.shade_cloth_surface(albedo, h, normal_strength=2.1, sheen_amt=5.5), np.asarray(h, dtype=np.float32)
 
 

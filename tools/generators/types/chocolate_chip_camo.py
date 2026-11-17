@@ -26,18 +26,22 @@ def _compute(
     uu = (u + 0.20 * (wx - 0.5)) % 1.0
     vv = (v + 0.14 * (wy - 0.5)) % 1.0
 
-    # 4 desert strata tones (light sand, pale tan, medium tan, earth brown)
+    # 4 desert strata tones via conditional quantiles (~14% earth brown, ~26% khaki, ~30% light tan, ~30% sand)
     f_pale = common.periodic_fbm(uu, vv, 2, 3, 0.48, rng, freqy=4)
     f_med = common.periodic_fbm((uu + 0.47) % 1.0, (vv + 0.23) % 1.0, 2, 3, 0.48, rng, freqy=5)
     f_brown = common.periodic_fbm((uu + 0.19) % 1.0, (vv + 0.61) % 1.0, 3, 3, 0.48, rng, freqy=5)
 
-    m_pale = _smoothstep(f_pale, 0.46, 0.51)
-    m_med = _smoothstep(f_med, 0.51, 0.56)
-    m_brown = _smoothstep(f_brown, 0.57, 0.62)
+    q_br = float(np.quantile(f_brown, 1.0 - 0.14))
+    m_brown = _smoothstep(f_brown, q_br - 0.025, q_br + 0.025)
+    free_m = f_brown < q_br
+    q_m = float(np.quantile(f_med[free_m], 1.0 - 0.30))
+    m_med = _smoothstep(f_med, q_m - 0.025, q_m + 0.025)
+    q_p = float(np.quantile(f_pale[free_m & (f_med < q_m)], 1.0 - 0.50))
+    m_pale = _smoothstep(f_pale, q_p - 0.025, q_p + 0.025)
 
-    # Dark irregular chocolate chips using periodic Voronoi pebbles + warp
+    # Dark irregular chocolate chips using Lloyd-relaxed Voronoi pebbles + paired shadow offset
     cells = [14, 16, 18, 12][variant % 4]
-    f1, _, cid, _, _ = common.periodic_voronoi(u, v, cells, 0.92, rng)
+    f1, _, cid, _, _ = common.periodic_lloyd_voronoi(u, v, cells, 0.90, rng, lloyd_iters=1)
     chip_warp = common.periodic_fbm(u, v, cells, 2, 0.5, rng)
     chip_active = (cid > 0.42).astype(np.float32)
     chip_shape = (1.0 - f1) * chip_active + 0.22 * (chip_warp - 0.5)
@@ -69,9 +73,10 @@ def _compute(
     albedo = albedo * (1.0 - chip_mask[..., None]) + stops[0] * chip_mask[..., None]
     albedo = albedo * (0.96 + 0.08 * slub[..., None])
 
-    threads = max(24, min(96, size // 6))
-    twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
-    h = common.normalize_field(0.75 * twill + 0.25 * slub)
+    threads = max(24, ((size // 6) // 4) * 4)
+    twill_22 = np.array([[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1], [1, 0, 0, 1]], dtype=np.float32)
+    weave, _, _, _ = common.woven_fabric_field(u, v, threads, threads, twill_22, float_arch=0.38, ply_twist=0.10)
+    h = common.normalize_field(0.75 * weave + 0.25 * slub)
     return common.shade_cloth_surface(albedo, h, normal_strength=2.1, sheen_amt=5.5), np.asarray(h, dtype=np.float32)
 
 

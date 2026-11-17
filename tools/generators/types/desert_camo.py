@@ -33,9 +33,13 @@ def _compute(
     f_tan = common.periodic_fbm((uu + 0.41) % 1.0, (vv + 0.67) % 1.0, fx_base, 3, 0.45, rng, freqy=fy_base)
     f_brown = common.periodic_fbm((uu + 0.77) % 1.0, (vv + 0.13) % 1.0, fx_base + 1, 3, 0.45, rng, freqy=fy_base + 2)
 
-    m_pale = _smoothstep(f_pale, 0.48, 0.57)
-    m_tan = _smoothstep(f_tan, 0.47, 0.56)
-    m_brown = _smoothstep(f_brown, 0.58, 0.65)
+    # US Drawing 2-1-2240 (DCU 3-Color Desert): ~16% Light Brown streaks, ~34% Khaki bands, ~50% Light Tan ground
+    q_br = float(np.quantile(f_brown, 1.0 - 0.16))
+    m_brown = _smoothstep(f_brown, q_br - 0.032, q_br + 0.032)
+    free_t = f_brown < q_br
+    q_tn = float(np.quantile(f_tan[free_t], 1.0 - (0.34 / 0.84)))
+    m_tan = _smoothstep(f_tan, q_tn - 0.038, q_tn + 0.038)
+    m_pale = _smoothstep(f_pale, 0.48, 0.58)
 
     stops = np.array(common.resolve_palette(palette, SPEC.default_palette, rng), dtype=np.float32)
     slub = common.periodic_fbm(u, v, 10, 2, 0.5, rng)
@@ -46,9 +50,10 @@ def _compute(
     albedo = albedo * (1.0 - m_brown[..., None]) + stops[0] * m_brown[..., None]
     albedo = albedo * (0.96 + 0.08 * slub[..., None]) + (stops[4] - stops[3]) * (0.08 * slub[..., None])
 
-    threads = max(24, min(96, size // 6))
-    twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
-    h = common.normalize_field(0.72 * twill + 0.28 * slub)
+    threads = max(24, ((size // 6) // 4) * 4)
+    twill_22 = np.array([[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1], [1, 0, 0, 1]], dtype=np.float32)
+    weave, _, _, _ = common.woven_fabric_field(u, v, threads, threads, twill_22, float_arch=0.38, ply_twist=0.10)
+    h = common.normalize_field(0.75 * weave + 0.25 * slub)
     return common.shade_cloth_surface(albedo, h, normal_strength=2.0, sheen_amt=5.0), np.asarray(h, dtype=np.float32)
 
 

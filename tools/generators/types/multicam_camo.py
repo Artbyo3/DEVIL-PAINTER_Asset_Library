@@ -62,9 +62,14 @@ def _compute(
     slub = common.periodic_fbm(u, v, 10, 2, 0.5, rng)
     albedo = albedo * (0.96 + 0.08 * slub[..., None])
 
-    threads = max(24, min(96, size // 6))
-    twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
-    h = common.normalize_field(0.75 * twill + 0.25 * slub)
+    # Authentic NYCO 1/1 plain weave + 8-thread ripstop reinforcement lattice
+    threads = max(24, ((size // 6) // 8) * 8)
+    plain_11 = np.array([[1, 0], [0, 1]], dtype=np.float32)
+    weave, _, _, _ = common.woven_fabric_field(u, v, threads, threads, plain_11, float_arch=0.36, ply_twist=0.08)
+    rib_u = np.exp(-((((u * threads / 8.0) % 1.0) - 0.5) ** 2) / 0.008)
+    rib_v = np.exp(-((((v * threads / 8.0) % 1.0) - 0.5) ** 2) / 0.008)
+    rip_grid = np.maximum(rib_u, rib_v)
+    h = common.normalize_field(0.68 * weave + 0.16 * rip_grid + 0.16 * slub)
     return common.shade_cloth_surface(albedo, h, normal_strength=2.0, sheen_amt=5.0), np.asarray(h, dtype=np.float32)
 
 

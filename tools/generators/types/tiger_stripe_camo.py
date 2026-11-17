@@ -25,17 +25,23 @@ def _compute(
     wy = common.periodic_fbm(u, v, 2, 3, 0.5, rng, freqy=4)
     vv = (v + 0.065 * (wy - 0.5)) % 1.0
 
-    # Horizontal brush-bristle striations
-    bristle = common.periodic_fbm(u, vv, 3, 2, 0.5, rng, freqy=44)
-    bristle_fine = common.periodic_fbm((u + 0.31) % 1.0, vv, 5, 2, 0.5, rng, freqy=64)
+    # Horizontal brush-bristle striations via anisotropic Gabor noise (omega0=0)
+    bristle = common.periodic_gabor_noise(u, vv, 14, 5.0, 0.0, 2.0, rng, impulses_per_cell=3)
+    bristle_fine = common.periodic_gabor_noise((u + 0.31) % 1.0, vv, 18, 6.5, 0.0, 2.2, rng, impulses_per_cell=3)
 
-    f_tan = common.periodic_fbm((u + 0.17) % 1.0, (vv + 0.29) % 1.0, 1, 3, 0.48, rng, freqy=fy_stripes - 2)
-    f_olive_dk = common.periodic_fbm((u + 0.53) % 1.0, (vv + 0.11) % 1.0, 1, 3, 0.48, rng, freqy=fy_stripes)
-    f_black = common.periodic_fbm(u, vv, 2, 3, 0.46, rng, freqy=fy_stripes + 2)
+    f_tan = common.periodic_fbm((u + 0.17) % 1.0, (vv + 0.29) % 1.0, 1, 3, 0.48, rng, freqy=fy_stripes - 2) + 0.16 * (bristle - 0.5)
+    f_olive_dk = common.periodic_fbm((u + 0.53) % 1.0, (vv + 0.11) % 1.0, 1, 3, 0.48, rng, freqy=fy_stripes) + 0.20 * (bristle - 0.5)
+    f_black = common.periodic_fbm(u, vv, 2, 3, 0.46, rng, freqy=fy_stripes + 2) + 0.24 * (bristle_fine - 0.5)
 
-    m_tan = _smoothstep(f_tan + 0.16 * (bristle - 0.5), 0.56, 0.60)
-    m_olive_dk = _smoothstep(f_olive_dk + 0.20 * (bristle - 0.5), 0.48, 0.52)
-    m_black = _smoothstep(f_black + 0.24 * (bristle_fine - 0.5), 0.55, 0.585)
+    # Vietnam Tiger Stripe interlocking stripe proportions: ~30% black, ~22% deep olive, ~10% tan trace, ~38% olive ground
+    qk = float(np.quantile(f_black, 1.0 - 0.30))
+    m_black = _smoothstep(f_black, qk - 0.018, qk + 0.018)
+    free_o = f_black < qk
+    qo = float(np.quantile(f_olive_dk[free_o], 1.0 - (0.22 / 0.70)))
+    m_olive_dk = _smoothstep(f_olive_dk, qo - 0.018, qo + 0.018)
+    free_t = free_o & (f_olive_dk < qo)
+    qt = float(np.quantile(f_tan[free_t], 1.0 - (0.10 / 0.48)))
+    m_tan = _smoothstep(f_tan, qt - 0.018, qt + 0.018)
 
     stops = np.array(common.resolve_palette(palette, SPEC.default_palette, rng), dtype=np.float32)
     slub = common.periodic_fbm(u, v, 10, 2, 0.5, rng)
@@ -46,9 +52,10 @@ def _compute(
     albedo = albedo * (1.0 - m_black[..., None]) + stops[0] * m_black[..., None]
     albedo = albedo * (0.95 + 0.09 * slub[..., None]) + (stops[4] - stops[3]) * (0.05 * slub[..., None])
 
-    threads = max(24, min(96, size // 6))
-    twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
-    h = common.normalize_field(0.74 * twill + 0.26 * slub)
+    threads = max(24, ((size // 6) // 4) * 4)
+    twill_22 = np.array([[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1], [1, 0, 0, 1]], dtype=np.float32)
+    weave, _, _, _ = common.woven_fabric_field(u, v, threads, threads, twill_22, float_arch=0.38, ply_twist=0.10)
+    h = common.normalize_field(0.75 * weave + 0.25 * slub)
     return common.shade_cloth_surface(albedo, h, normal_strength=2.2, sheen_amt=5.5), np.asarray(h, dtype=np.float32)
 
 
