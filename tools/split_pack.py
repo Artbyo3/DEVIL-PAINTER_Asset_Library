@@ -63,6 +63,8 @@ def extract_family_stem(filename: str) -> str:
 
 def _load_source_meta(pack_dir: Path, kind: str, families: list[FamilyGroup]) -> dict:
     pack_json_path = pack_dir / "pack.json"
+    if pack_json_path.is_symlink():
+        raise ValueError(f"Symlink pack.json is not allowed: {pack_json_path}")
     if pack_json_path.is_file():
         loaded = json.loads(pack_json_path.read_text(encoding="utf-8"))
         if not isinstance(loaded, dict):
@@ -217,12 +219,19 @@ def _format_split_description(orig_desc: str, count: int, display_name: str) -> 
 
 
 def split_pack(pack_dir: Path, max_files: int = DEFAULT_MAX_FILES) -> int:
+    if pack_dir.is_symlink():
+        print(f"ERROR: Symlink pack folder is not allowed: {pack_dir}", file=sys.stderr)
+        return 1
     pack_dir = pack_dir.resolve()
     if not pack_dir.is_dir():
         print(f"ERROR: Pack folder does not exist: {pack_dir}", file=sys.stderr)
         return 1
 
-    folders = build_pack_entry.iter_pack_folders(pack_dir)
+    try:
+        folders = build_pack_entry.iter_pack_folders(pack_dir)
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     if not folders:
         print(f"ERROR: No asset subfolders found inside {pack_dir}", file=sys.stderr)
         return 1
@@ -241,8 +250,15 @@ def split_pack(pack_dir: Path, max_files: int = DEFAULT_MAX_FILES) -> int:
     seen_names: set[str] = set()
     for folder, kind in folders:
         for entry in sorted(folder.iterdir(), key=lambda p: p.name):
+            if entry.is_symlink():
+                print(f"ERROR: Symlink entry is not allowed: {entry}", file=sys.stderr)
+                return 1
             if not entry.is_file() or entry.name.startswith("."):
                 continue
+            if not entry.resolve().is_relative_to(pack_dir):
+                print(f"ERROR: Entry escapes pack root: {entry}", file=sys.stderr)
+                return 1
+            build_pack_entry.validate_safe_filename(entry.name)
             if build_pack_entry.is_preview_file(entry.name):
                 continue
             if entry.name in seen_names:
@@ -302,8 +318,13 @@ def split_pack(pack_dir: Path, max_files: int = DEFAULT_MAX_FILES) -> int:
 
     buckets = plan_balanced_split(families, max_files)
     targets = _choose_sibling_names(pack_dir, orig_name, len(buckets))
+    for target_path, _ in targets:
+        build_pack_entry.validate_safe_filename(target_path.name)
+        if target_path.resolve().parent != pack_dir.parent.resolve():
+            print(f"ERROR: Target sibling path escapes parent directory: {target_path}", file=sys.stderr)
+            return 1
 
-    existing_targets = [path for path, _ in targets if path.exists()]
+    existing_targets = [path for path, _ in targets if path.exists() or path.is_symlink()]
     if existing_targets:
         print(
             "ERROR: Target sibling folder(s) already exist; refusing to overwrite: "
@@ -333,10 +354,7 @@ def split_pack(pack_dir: Path, max_files: int = DEFAULT_MAX_FILES) -> int:
             "tags": list(orig_tags),
             "sets": bucket_file_count,
         }
-        (target_dir / "pack.json").write_text(
-            json.dumps(new_meta, indent=2) + "\n",
-            encoding="utf-8",
-        )
+        build_pack_entry._atomic_write_json(target_dir / "pack.json", new_meta)
         moved_counts.append((target_dir, display_name, bucket_file_count, bucket_families))
 
     # Remove emptied asset subfolders in source pack so moves leave 0 remaining catalog files

@@ -28,49 +28,33 @@ import argparse
 import json
 import os
 import sys
+import warnings
 from pathlib import Path
 
 from PIL import Image
 
-KIND_FOLDERS = (
-    ("Textures", "texture"),
-    ("Alphas", "alpha"),
-    ("Materials", "material"),
-    ("Brushes", "brush"),
-    ("Generators", "generator"),
-)
-KNOWN_FOLDER_NAMES = {folder_name for folder_name, _ in KIND_FOLDERS}
+try:
+    import build_pack_entry
+except ImportError:
+    from tools import build_pack_entry  # type: ignore[no-redef]
+
+KIND_FOLDERS = build_pack_entry.KIND_FOLDERS
+KNOWN_FOLDER_NAMES = build_pack_entry.KNOWN_FOLDER_NAMES
 IMAGE_KINDS = {"texture", "alpha"}
-IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp", ".bmp", ".gif", ".tif", ".tiff")
+IMAGE_EXTENSIONS = build_pack_entry.IMAGE_EXTENSIONS
 MAX_SIZE = (160, 160)
 WEBP_QUALITY = 72
 JPEG_QUALITY = 75
+MAX_IMAGE_PIXELS = 134_217_728  # 128 MP cap (allows up to 8K+ textures, blocks decompression bombs)
+MAX_IMAGE_FILE_BYTES = 256 * 1024 * 1024
 
 
 def is_preview_file(filename: str) -> bool:
-    stem, ext = os.path.splitext(filename)
-    return ext.lower() in IMAGE_EXTENSIONS and stem.lower().endswith(".preview")
+    return build_pack_entry.is_preview_file(filename)
 
 
 def iter_pack_folders(pack_dir: Path) -> list[tuple[Path, str]]:
-    folders: list[tuple[Path, str]] = []
-    for folder_name, kind in KIND_FOLDERS:
-        folder = pack_dir / folder_name
-        if folder.is_dir():
-            folders.append((folder, kind))
-    extra_folders = sorted(
-        (
-            entry
-            for entry in pack_dir.iterdir()
-            if entry.is_dir()
-            and not entry.name.startswith(".")
-            and entry.name not in KNOWN_FOLDER_NAMES
-        ),
-        key=lambda entry: entry.name,
-    )
-    for folder in extra_folders:
-        folders.append((folder, "asset"))
-    return folders
+    return build_pack_entry.iter_pack_folders(pack_dir)
 
 
 def find_preview_image(asset_path: Path) -> Path | None:
@@ -79,13 +63,15 @@ def find_preview_image(asset_path: Path) -> Path | None:
         (
             entry
             for entry in asset_path.parent.iterdir()
-            if entry.is_file() and not entry.name.startswith(".")
+            if not entry.name.startswith(".") and (entry.is_symlink() or entry.is_file())
         ),
         key=lambda entry: entry.name,
     )
     for candidate in candidates:
         cand_stem, cand_ext = os.path.splitext(candidate.name)
         if cand_stem == expected_stem and cand_ext.lower() in IMAGE_EXTENSIONS:
+            if candidate.is_symlink():
+                raise ValueError(f"Symlink preview file is not allowed: {candidate}")
             return candidate
     return None
 
@@ -104,13 +90,58 @@ def _prepare_for_jpeg(img: Image.Image) -> Image.Image:
     return img.convert("RGB")
 
 
+def _load_safe_image(path: Path) -> Image.Image:
+    if path.is_symlink():
+        raise ValueError(f"Symlink image is not allowed: {path}")
+    size_bytes = path.stat().st_size
+    if size_bytes <= 0:
+        raise ValueError(f"0-byte image file: {path}")
+    if size_bytes > MAX_IMAGE_FILE_BYTES:
+        raise ValueError(f"Image exceeds max file size ({MAX_IMAGE_FILE_BYTES} bytes): {path}")
+    prev_max = Image.MAX_IMAGE_PIXELS
+    Image.MAX_IMAGE_PIXELS = MAX_IMAGE_PIXELS
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", Image.DecompressionBombWarning)
+            with Image.open(path) as raw:
+                w, h = raw.size
+                if w <= 0 or h <= 0 or w * h > MAX_IMAGE_PIXELS:
+                    raise ValueError(f"Image dimensions {w}x{h} exceed pixel limit {MAX_IMAGE_PIXELS}")
+                return raw.copy()
+    finally:
+        Image.MAX_IMAGE_PIXELS = prev_max
+
+
 def build_thumbs(
     pack_dir: Path,
     release_tag: str,
     thumbs_dir: Path = Path("thumbs"),
     site_prefix: str = "thumbs",
 ) -> dict[str, str]:
-    out_dir = thumbs_dir / release_tag
+    build_pack_entry.validate_release_tag(release_tag)
+    if pack_dir.is_symlink():
+        raise ValueError(f"Symlink pack directory is not allowed: {pack_dir}")
+    if thumbs_dir.is_symlink():
+        raise ValueError(f"Symlink thumbs directory is not allowed: {thumbs_dir}")
+
+    prefix = site_prefix.strip("/")
+    if prefix and (
+        ".." in prefix
+        or "\\" in prefix
+        or ":" in prefix
+        or "?" in prefix
+        or "#" in prefix
+        or any(ord(c) < 32 for c in prefix)
+    ):
+        raise ValueError(f"Unsafe site_prefix: {site_prefix!r}")
+
+    pack_root = pack_dir.resolve()
+    thumbs_root = thumbs_dir.resolve()
+    out_dir = (thumbs_root / release_tag).resolve()
+    if not out_dir.is_relative_to(thumbs_root) or out_dir == thumbs_root:
+        raise ValueError(f"Thumbnail output directory escapes thumbs root: {out_dir}")
+    if out_dir.exists() and out_dir.is_symlink():
+        raise ValueError(f"Symlink thumbnail output directory is not allowed: {out_dir}")
 
     mapping: dict[str, str] = {}
     seen_assets: set[str] = set()
@@ -119,16 +150,22 @@ def build_thumbs(
             (
                 e
                 for e in folder.iterdir()
-                if e.is_file()
-                and not e.name.startswith(".")
-                and not is_preview_file(e.name)
+                if not e.name.startswith(".")
+                and (e.is_symlink() or e.is_file())
             ),
             key=lambda e: e.name,
         )
         for src_path in entries:
-            if src_path.name in seen_assets:
-                raise ValueError(f"Duplicate filename across folders: {src_path.name}")
-            seen_assets.add(src_path.name)
+            if src_path.is_symlink():
+                raise ValueError(f"Symlink asset is not allowed: {src_path}")
+            if not src_path.resolve().is_relative_to(pack_root):
+                raise ValueError(f"Asset escapes pack root: {src_path}")
+            name = build_pack_entry.validate_safe_filename(src_path.name)
+            if is_preview_file(name):
+                continue
+            if name in seen_assets:
+                raise ValueError(f"Duplicate filename across folders: {name}")
+            seen_assets.add(name)
 
             if kind in IMAGE_KINDS or src_path.suffix.lower() in IMAGE_EXTENSIONS:
                 thumb_source: Path | None = src_path
@@ -138,9 +175,8 @@ def build_thumbs(
                     continue
 
             out_dir.mkdir(parents=True, exist_ok=True)
-            stem = os.path.splitext(src_path.name)[0]
-            with Image.open(thumb_source) as raw:
-                img = raw.copy()
+            stem = os.path.splitext(name)[0]
+            img = _load_safe_image(thumb_source)
             img.thumbnail(MAX_SIZE, Image.Resampling.LANCZOS)
 
             webp_name = f"{stem}.webp"
@@ -156,13 +192,15 @@ def build_thumbs(
                 _prepare_for_jpeg(img).save(jpg_path, format="JPEG", quality=JPEG_QUALITY)
                 rel_name = jpg_name
 
-            prefix = site_prefix.strip("/")
-            mapping[src_path.name] = f"{prefix}/{release_tag}/{rel_name}" if prefix else f"{release_tag}/{rel_name}"
+            mapping[name] = f"{prefix}/{release_tag}/{rel_name}" if prefix else f"{release_tag}/{rel_name}"
 
     return mapping
 
 
 def update_catalog(catalog_path: Path, release_tag: str, thumbs_map: dict[str, str]) -> None:
+    build_pack_entry.validate_release_tag(release_tag)
+    if catalog_path.is_symlink():
+        raise ValueError(f"Refusing to read/write symlink catalog: {catalog_path}")
     with catalog_path.open("r", encoding="utf-8") as fh:
         data = json.load(fh)
 
@@ -177,9 +215,7 @@ def update_catalog(catalog_path: Path, release_tag: str, thumbs_map: dict[str, s
     else:
         raise KeyError(f"No pack entry with releaseTag {release_tag!r} in {catalog_path}")
 
-    with catalog_path.open("w", encoding="utf-8", newline="\n") as fh:
-        json.dump(data, fh, indent=2)
-        fh.write("\n")
+    build_pack_entry._atomic_write_json(catalog_path, data)
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -33,10 +33,13 @@ import json
 import os
 import re
 import sys
+import tempfile
 from pathlib import Path
 from urllib.parse import quote
 
 DEFAULT_REPO = "Artbyo3/DEVIL-PAINTER_Asset_Library"
+SAFE_TAG_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
+SAFE_REPO_RE = re.compile(r"^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$")
 KIND_FOLDERS = (
     ("Textures", "texture"),
     ("Alphas", "alpha"),
@@ -58,6 +61,36 @@ MAP_SUFFIXES = (
 )
 
 
+def validate_release_tag(release_tag: str) -> str:
+    if (
+        not isinstance(release_tag, str)
+        or not SAFE_TAG_RE.match(release_tag)
+        or ".." in release_tag
+    ):
+        raise ValueError(f"Unsafe release tag: {release_tag!r}")
+    return release_tag
+
+
+def validate_repo(repo: str) -> str:
+    if not isinstance(repo, str) or not SAFE_REPO_RE.match(repo) or ".." in repo:
+        raise ValueError(f"Unsafe repository slug: {repo!r}")
+    return repo
+
+
+def validate_safe_filename(name: str) -> str:
+    if (
+        not isinstance(name, str)
+        or not name
+        or name in (".", "..")
+        or "/" in name
+        or "\\" in name
+        or "\x00" in name
+        or any(ord(ch) < 32 for ch in name)
+    ):
+        raise ValueError(f"Unsafe filename: {name!r}")
+    return name
+
+
 def is_preview_file(filename: str) -> bool:
     stem, ext = os.path.splitext(filename)
     return ext.lower() in IMAGE_EXTENSIONS and stem.lower().endswith(".preview")
@@ -73,22 +106,33 @@ def split_stem_and_role(filename: str) -> tuple[str, str]:
 
 
 def iter_pack_folders(pack_dir: Path) -> list[tuple[Path, str]]:
+    if pack_dir.is_symlink():
+        raise ValueError(f"Symlink pack directory is not allowed: {pack_dir}")
+    pack_root = pack_dir.resolve()
     folders: list[tuple[Path, str]] = []
     for folder_name, kind in KIND_FOLDERS:
         folder = pack_dir / folder_name
+        if folder.is_symlink():
+            raise ValueError(f"Symlink asset folder is not allowed: {folder}")
         if folder.is_dir():
+            if not folder.resolve().is_relative_to(pack_root):
+                raise ValueError(f"Asset folder escapes pack root: {folder}")
             folders.append((folder, kind))
     extra_folders = sorted(
         (
             entry
             for entry in pack_dir.iterdir()
-            if entry.is_dir()
-            and not entry.name.startswith(".")
+            if not entry.name.startswith(".")
             and entry.name not in KNOWN_FOLDER_NAMES
+            and (entry.is_symlink() or entry.is_dir())
         ),
         key=lambda entry: entry.name,
     )
     for folder in extra_folders:
+        if folder.is_symlink():
+            raise ValueError(f"Symlink asset folder is not allowed: {folder}")
+        if not folder.resolve().is_relative_to(pack_root):
+            raise ValueError(f"Asset folder escapes pack root: {folder}")
         folders.append((folder, "asset"))
     return folders
 
@@ -128,33 +172,52 @@ def build_entry(
     zip_path: Path,
     repo: str = DEFAULT_REPO,
 ) -> dict:
+    validate_release_tag(release_tag)
+    validate_repo(repo)
+
+    if pack_dir.is_symlink():
+        raise ValueError(f"Symlink pack directory is not allowed: {pack_dir}")
+    pack_root = pack_dir.resolve()
     pack_json_path = pack_dir / "pack.json"
+    if pack_json_path.is_symlink():
+        raise ValueError(f"Symlink pack.json is not allowed: {pack_json_path}")
     if not pack_json_path.is_file():
         raise FileNotFoundError(f"Missing pack.json in {pack_dir}")
+    if zip_path.is_symlink():
+        raise ValueError(f"Symlink zip file is not allowed: {zip_path}")
     if not zip_path.is_file():
         raise FileNotFoundError(f"Missing zip file: {zip_path}")
+    validate_safe_filename(zip_path.name)
 
     with pack_json_path.open("r", encoding="utf-8") as fh:
         meta = json.load(fh)
+    if not isinstance(meta, dict):
+        raise ValueError("pack.json root must be a JSON object")
 
     files: list[str] = []
     file_tags: dict[str, list[str]] = {}
     file_hashes: dict[str, str] = {}
     materials: dict[str, dict[str, str]] = {}
     for folder, kind in iter_pack_folders(pack_dir):
-        names = sorted(
-            entry.name
-            for entry in folder.iterdir()
-            if entry.is_file()
-            and not entry.name.startswith(".")
-            and not is_preview_file(entry.name)
+        entries = sorted(
+            (e for e in folder.iterdir() if not e.name.startswith(".")),
+            key=lambda e: e.name,
         )
-        for name in names:
+        for entry in entries:
+            if entry.is_symlink():
+                raise ValueError(f"Symlink asset entry is not allowed: {entry}")
+            if not entry.is_file():
+                continue
+            if not entry.resolve().is_relative_to(pack_root):
+                raise ValueError(f"Asset entry escapes pack root: {entry}")
+            name = validate_safe_filename(entry.name)
+            if is_preview_file(name):
+                continue
             if name in file_tags:
                 raise ValueError(f"Duplicate filename across folders: {name}")
             files.append(name)
             file_tags[name] = build_file_tags(name, kind)
-            file_hashes[name] = sha256_file(folder / name)
+            file_hashes[name] = sha256_file(entry)
             base_stem, role = split_stem_and_role(name)
             mat_maps = materials.setdefault(base_stem, {})
             if role not in mat_maps:
@@ -181,7 +244,26 @@ def build_entry(
     }
 
 
+def _atomic_write_json(target_path: Path, data: dict) -> None:
+    if target_path.is_symlink():
+        raise ValueError(f"Refusing to write through symlink: {target_path}")
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp_name = tempfile.mkstemp(prefix=f".{target_path.name}.", suffix=".tmp", dir=str(target_path.parent))
+    tmp_path = Path(tmp_name)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(data, fh, indent=2)
+            fh.write("\n")
+        os.replace(tmp_path, target_path)
+    except Exception:
+        if tmp_path.exists():
+            tmp_path.unlink()
+        raise
+
+
 def update_catalog(catalog_path: Path, entry: dict) -> None:
+    if catalog_path.is_symlink():
+        raise ValueError(f"Refusing to read/write symlink catalog: {catalog_path}")
     if catalog_path.is_file():
         with catalog_path.open("r", encoding="utf-8") as fh:
             data = json.load(fh)
@@ -202,9 +284,7 @@ def update_catalog(catalog_path: Path, entry: dict) -> None:
     else:
         packs.append(entry)
 
-    with catalog_path.open("w", encoding="utf-8", newline="\n") as fh:
-        json.dump(data, fh, indent=2)
-        fh.write("\n")
+    _atomic_write_json(catalog_path, data)
 
 
 def main(argv: list[str] | None = None) -> int:

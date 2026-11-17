@@ -19,9 +19,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
+import tempfile
 import zipfile
 from pathlib import Path
 
@@ -54,7 +56,8 @@ def build_release_tag(pack_name: str, version: str = DEFAULT_VERSION) -> str:
     ver = version.strip()
     if not ver.startswith("v"):
         ver = f"v{ver}"
-    return f"{slug}-{ver}"
+    tag = f"{slug}-{ver}"
+    return build_pack_entry.validate_release_tag(tag)
 
 
 def build_release_notes(description: str) -> str:
@@ -65,20 +68,43 @@ def build_release_notes(description: str) -> str:
 
 
 def build_pack_zip(pack_dir: Path, zip_path: Path) -> Path:
-    pack_dir = pack_dir.resolve()
-    zip_path.parent.mkdir(parents=True, exist_ok=True)
-    top = pack_dir.name
+    if pack_dir.is_symlink():
+        raise ValueError(f"Symlink pack directory is not allowed: {pack_dir}")
+    if zip_path.is_symlink():
+        raise ValueError(f"Symlink zip destination is not allowed: {zip_path}")
 
-    files_to_zip: list[Path] = [pack_dir / "pack.json"]
+    pack_dir = pack_dir.resolve()
+    top = build_pack_entry.validate_safe_filename(pack_dir.name)
+    build_pack_entry.validate_safe_filename(zip_path.name)
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+
+    pack_json = pack_dir / "pack.json"
+    if pack_json.is_symlink():
+        raise ValueError(f"Symlink pack.json is not allowed: {pack_json}")
+    files_to_zip: list[Path] = [pack_json]
     for folder, _ in build_pack_entry.iter_pack_folders(pack_dir):
         for entry in sorted(folder.iterdir(), key=lambda p: p.name):
+            if entry.is_symlink():
+                raise ValueError(f"Symlink entry is not allowed: {entry}")
             if entry.is_file() and not entry.name.startswith("."):
+                if not entry.resolve().is_relative_to(pack_dir):
+                    raise ValueError(f"Entry escapes pack root: {entry}")
+                build_pack_entry.validate_safe_filename(entry.name)
                 files_to_zip.append(entry)
 
-    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for src in files_to_zip:
-            rel = src.relative_to(pack_dir).as_posix()
-            zf.write(src, arcname=f"{top}/{rel}")
+    fd, tmp_name = tempfile.mkstemp(prefix=f".{zip_path.name}.", suffix=".tmp", dir=str(zip_path.parent))
+    os.close(fd)
+    tmp_zip = Path(tmp_name)
+    try:
+        with zipfile.ZipFile(tmp_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+            for src in files_to_zip:
+                rel = src.relative_to(pack_dir).as_posix()
+                zf.write(src, arcname=f"{top}/{rel}")
+        os.replace(tmp_zip, zip_path)
+    except Exception:
+        if tmp_zip.exists():
+            tmp_zip.unlink()
+        raise
 
     return zip_path
 
@@ -93,10 +119,13 @@ def _run_gh(args: list[str]) -> subprocess.CompletedProcess[str]:
 
 
 def _find_existing_release(repo: str, tag: str) -> dict | None:
-    proc = _run_gh(["api", "--paginate", f"repos/{repo}/releases"])
+    build_pack_entry.validate_repo(repo)
+    build_pack_entry.validate_release_tag(tag)
+    proc = _run_gh(["api", "--paginate", "--slurp", f"repos/{repo}/releases"])
     if proc.returncode != 0:
         raise RuntimeError(f"Failed to query GitHub releases via gh: {proc.stderr.strip()}")
-    releases = json.loads(proc.stdout or "[]")
+    pages = json.loads(proc.stdout or "[]")
+    releases = [rel for page in pages for rel in (page if isinstance(page, list) else [page])]
     for rel in releases:
         if isinstance(rel, dict) and rel.get("tag_name") == tag:
             return rel
@@ -110,6 +139,10 @@ def make_pack(
     zip_path: Path | None = None,
     release_tag: str | None = None,
 ) -> int:
+    build_pack_entry.validate_repo(repo)
+    if pack_dir.is_symlink():
+        print(f"ERROR: Symlink pack directory is not allowed: {pack_dir}", file=sys.stderr)
+        return 1
     pack_dir = pack_dir.resolve()
 
     # Step 1: check_pack (refuse to continue if any rule fails)
@@ -122,10 +155,26 @@ def make_pack(
     assert summary.meta is not None
     pack_title = str(summary.meta["name"]).strip()
     description = str(summary.meta["description"]).strip()
-    tag = release_tag or build_release_tag(pack_title, version=version)
+    tag = (
+        build_pack_entry.validate_release_tag(release_tag)
+        if release_tag is not None
+        else build_release_tag(pack_title, version=version)
+    )
     notes = build_release_notes(description)
     out_zip = (zip_path or (pack_dir.parent / f"{pack_dir.name}.zip")).resolve()
-    catalog_paths = [p for p, _, _ in summary.catalog_files]
+    if out_zip.is_symlink():
+        print(f"ERROR: Symlink zip destination is not allowed: {out_zip}", file=sys.stderr)
+        return 1
+    build_pack_entry.validate_safe_filename(out_zip.name)
+    if out_zip.name.startswith("-"):
+        print(f"ERROR: Unsafe zip filename starting with '-': {out_zip.name}", file=sys.stderr)
+        return 1
+    catalog_paths = [p.resolve() for p, _, _ in summary.catalog_files]
+    for p in catalog_paths:
+        build_pack_entry.validate_safe_filename(p.name)
+        if p.name.startswith("-"):
+            print(f"ERROR: Unsafe asset filename starting with '-': {p.name}", file=sys.stderr)
+            return 1
 
     print(f"\nRelease plan:")
     print(f"  Repo:        {repo}")
@@ -177,10 +226,11 @@ def make_pack(
                 "release",
                 "upload",
                 tag,
-                *[str(p) for p in batch],
                 "--repo",
                 repo,
                 "--clobber",
+                "--",
+                *[str(p) for p in batch],
             ]
         )
         if up_proc.returncode != 0:

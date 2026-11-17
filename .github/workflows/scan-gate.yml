@@ -15,9 +15,7 @@ on:
         default: false
         type: boolean
 
-permissions:
-  contents: write
-  pages: write
+permissions: {}
 
 concurrency:
   group: release-scan-gate
@@ -25,9 +23,12 @@ concurrency:
 
 jobs:
   scan-gate:
-    if: github.event_name == 'workflow_dispatch' || github.event.release.draft == true
+    if: (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.release.draft == true)
     runs-on: ubuntu-latest
     timeout-minutes: 240
+    permissions:
+      contents: write
+      pages: write
 
     steps:
       - name: Check VirusTotal API key secret
@@ -49,6 +50,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -63,9 +65,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .vt-cache
-          key: vt-verdicts-${{ github.run_id }}-${{ github.run_attempt }}
+          key: vt-verdicts-v1-${{ github.ref_name }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
-            vt-verdicts-
+            vt-verdicts-v1-${{ github.ref_name }}-
 
       - name: Run VirusTotal scan gate
         id: gate
@@ -87,21 +89,28 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .vt-cache
-          key: vt-verdicts-${{ github.run_id }}-${{ github.run_attempt }}
+          key: vt-verdicts-v1-${{ github.ref_name }}-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Commit and push catalog update
-        if: success() && steps.gate.outputs.clean == 'true'
+        if: success() && inputs.simulate != true && steps.gate.outputs.clean == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.gate.outputs.release_tag }}
         run: |
+          if [[ ! "$RELEASE_TAG" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$ ]] || [[ "$RELEASE_TAG" == *".."* ]]; then
+            echo "ERROR: Invalid release_tag format."
+            exit 1
+          fi
+          gh auth setup-git
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add packs.json thumbs/
+          git add -- packs.json thumbs/
           if git diff --cached --quiet; then
             echo "No catalog or thumbnail changes to commit."
             exit 0
           fi
-          git commit -m "Add ${{ steps.gate.outputs.release_tag }} to catalog after VirusTotal scan"
+          git commit -m "Add ${RELEASE_TAG} to catalog after VirusTotal scan"
           git pull --rebase origin main
           git push origin main
-          gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null 2>&1 || true
+          gh api -X POST "repos/${GH_REPO}/pages/builds" >/dev/null 2>&1 || true

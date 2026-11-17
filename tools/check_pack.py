@@ -23,6 +23,7 @@ import argparse
 import json
 import os
 import sys
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -35,6 +36,8 @@ except ImportError:
 
 IMAGE_KINDS = {"texture", "alpha"}
 MAX_PACK_FILES = 200
+MAX_IMAGE_PIXELS = 134_217_728
+MAX_IMAGE_FILE_BYTES = 256 * 1024 * 1024
 
 
 @dataclass
@@ -67,16 +70,30 @@ def _split_preview_stem(filename: str) -> tuple[str, str] | None:
 
 
 def _verify_image_file(path: Path) -> str | None:
+    prev_max = Image.MAX_IMAGE_PIXELS
+    Image.MAX_IMAGE_PIXELS = MAX_IMAGE_PIXELS
     try:
-        if path.stat().st_size == 0:
+        if path.is_symlink():
+            return "symlink image file not allowed"
+        size_bytes = path.stat().st_size
+        if size_bytes == 0:
             return "0-byte image file"
-        with Image.open(path) as img:
-            img.verify()
-        with Image.open(path) as img:
-            img.load()
+        if size_bytes > MAX_IMAGE_FILE_BYTES:
+            return f"image exceeds {MAX_IMAGE_FILE_BYTES} bytes"
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", Image.DecompressionBombWarning)
+            with Image.open(path) as img:
+                w, h = img.size
+                if w <= 0 or h <= 0 or w * h > MAX_IMAGE_PIXELS:
+                    return f"image dimensions {w}x{h} exceed pixel limit {MAX_IMAGE_PIXELS}"
+                img.verify()
+            with Image.open(path) as img:
+                img.load()
         return None
     except Exception as exc:
         return str(exc) or exc.__class__.__name__
+    finally:
+        Image.MAX_IMAGE_PIXELS = prev_max
 
 
 def validate_pack(
@@ -84,6 +101,11 @@ def validate_pack(
     max_files: int = MAX_PACK_FILES,
 ) -> tuple[bool, list[RuleResult], PackSummary]:
     results: list[RuleResult] = []
+    if pack_dir.is_symlink():
+        results.append(RuleResult("pack-folder", False, f"Symlink pack folder is not allowed: {pack_dir}"))
+        summary = PackSummary(pack_dir, None, [], [], [], None)
+        return False, results, summary
+
     pack_dir = pack_dir.resolve()
 
     if not pack_dir.is_dir():
@@ -91,14 +113,18 @@ def validate_pack(
         summary = PackSummary(pack_dir, None, [], [], [], None)
         return False, results, summary
 
-    # Rule 1: No stray or hidden files
+    # Rule 1: No stray, hidden, or symlink entries
     stray_errors: list[str] = []
     hidden_entries: list[str] = []
     nested_dirs: list[str] = []
     empty_folders: list[str] = []
+    symlink_entries: list[str] = []
 
     root_entries = sorted(pack_dir.iterdir(), key=lambda p: p.name)
     for entry in root_entries:
+        if entry.is_symlink():
+            symlink_entries.append(entry.name)
+            continue
         if entry.name.startswith("."):
             hidden_entries.append(entry.name)
             continue
@@ -110,7 +136,9 @@ def validate_pack(
             has_non_hidden_file = False
             for sub in sub_entries:
                 rel = f"{entry.name}/{sub.name}"
-                if sub.name.startswith("."):
+                if sub.is_symlink():
+                    symlink_entries.append(rel)
+                elif sub.name.startswith("."):
                     hidden_entries.append(rel)
                 elif sub.is_dir():
                     nested_dirs.append(rel)
@@ -123,7 +151,18 @@ def validate_pack(
         else:
             stray_errors.append(f"non-regular root entry '{entry.name}'")
 
-    folders = build_pack_entry.iter_pack_folders(pack_dir)
+    folders: list[tuple[Path, str]] = []
+    if not symlink_entries:
+        folders = build_pack_entry.iter_pack_folders(pack_dir)
+    else:
+        for folder_name, kind in build_pack_entry.KIND_FOLDERS:
+            folder = pack_dir / folder_name
+            if not folder.is_symlink() and folder.is_dir():
+                folders.append((folder, kind))
+        for entry in sorted(pack_dir.iterdir(), key=lambda p: p.name):
+            if not entry.is_symlink() and entry.is_dir() and not entry.name.startswith(".") and entry.name not in build_pack_entry.KNOWN_FOLDER_NAMES:
+                folders.append((entry, "asset"))
+
     catalog_files: list[tuple[Path, Path, str]] = []
     preview_files: list[Path] = []
     duplicate_names: list[str] = []
@@ -131,7 +170,7 @@ def validate_pack(
 
     for folder, kind in folders:
         for entry in sorted(folder.iterdir(), key=lambda p: p.name):
-            if not entry.is_file() or entry.name.startswith("."):
+            if entry.is_symlink() or not entry.is_file() or entry.name.startswith("."):
                 continue
             if build_pack_entry.is_preview_file(entry.name):
                 preview_files.append(entry)
@@ -142,6 +181,8 @@ def validate_pack(
             catalog_files.append((entry, folder, kind))
 
     rule1_issues: list[str] = []
+    if symlink_entries:
+        rule1_issues.append(f"symlink entries not allowed: {', '.join(symlink_entries[:5])}")
     if hidden_entries:
         rule1_issues.append(f"hidden entries: {', '.join(hidden_entries[:5])}")
     if stray_errors:
@@ -234,7 +275,9 @@ def validate_pack(
     pack_json_path = pack_dir / "pack.json"
     meta: dict | None = None
     pack_json_errors: list[str] = []
-    if not pack_json_path.is_file():
+    if pack_json_path.is_symlink():
+        pack_json_errors.append("pack.json cannot be a symlink")
+    elif not pack_json_path.is_file():
         pack_json_errors.append("pack.json is missing")
     else:
         try:

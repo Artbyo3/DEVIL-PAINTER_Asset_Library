@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Devil Painter Asset Library</title>
   <meta name="description" content="Free CC0 texture and material packs made for Devil Painter, free for anyone to use in any program.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' https://github.com https://*.githubusercontent.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <style>
     :root {
@@ -471,7 +472,7 @@
   </div>
 
   <div id="thumb-overlay" class="dp-overlay" role="dialog" aria-modal="true" aria-label="Full texture preview" hidden>
-    <a id="thumb-overlay-link" class="dp-overlay-link" href="#" target="_blank" rel="noopener">
+    <a id="thumb-overlay-link" class="dp-overlay-link" href="#" target="_blank" rel="noopener noreferrer">
       <img id="thumb-overlay-img" class="dp-overlay-img" src="" alt="">
     </a>
   </div>
@@ -479,6 +480,11 @@
   <script>
     (async function () {
       const THUMB_BATCH_SIZE = 60;
+      const REPO_URL_PREFIX = 'https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/';
+      const RELEASE_DOWNLOAD_PATH_PREFIX = '/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/';
+      const SAFE_TAG_RE = /^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$/;
+      const SAFE_THUMB_RE = /^thumbs\/[A-Za-z0-9][A-Za-z0-9._-]{0,127}\/[A-Za-z0-9._-]+\.(?:webp|jpg|jpeg|png)$/i;
+
       const container = document.getElementById('pack-list');
       const tagBar = document.getElementById('tag-bar');
       const searchInput = document.getElementById('pack-search');
@@ -490,11 +496,70 @@
       let activeTag = '';
       let lastTrigger = null;
 
+      function safeReleaseTag(raw) {
+        if (typeof raw !== 'string') return '';
+        const tag = raw.trim();
+        if (!tag || tag.includes('..') || !SAFE_TAG_RE.test(tag)) return '';
+        return tag;
+      }
+
+      function safeFilename(raw) {
+        if (typeof raw !== 'string') return '';
+        const name = raw.trim();
+        if (!name || name === '.' || name === '..' || name.includes('/') || name.includes('\\') || name.includes('..')) {
+          return '';
+        }
+        for (let i = 0; i < name.length; i++) {
+          if (name.charCodeAt(i) < 32) return '';
+        }
+        return name;
+      }
+
+      function safeDownloadUrl(raw) {
+        if (typeof raw !== 'string' || !raw.trim()) return '';
+        try {
+          const parsed = new URL(raw.trim());
+          if (
+            parsed.protocol === 'https:' &&
+            parsed.origin === 'https://github.com' &&
+            !parsed.username &&
+            !parsed.password &&
+            parsed.pathname.startsWith(RELEASE_DOWNLOAD_PATH_PREFIX)
+          ) {
+            return parsed.href;
+          }
+        } catch (err) {
+          return '';
+        }
+        return '';
+      }
+
+      function safeRepoLinkUrl(raw) {
+        if (typeof raw !== 'string' || !raw.trim()) return '';
+        try {
+          const parsed = new URL(raw.trim());
+          if (
+            parsed.protocol === 'https:' &&
+            parsed.origin === 'https://github.com' &&
+            !parsed.username &&
+            !parsed.password &&
+            parsed.href.startsWith(REPO_URL_PREFIX)
+          ) {
+            return parsed.href;
+          }
+        } catch (err) {
+          return '';
+        }
+        return '';
+      }
+
       function openOverlay(fileUrl, label, triggerEl) {
+        const verifiedUrl = safeDownloadUrl(fileUrl);
+        if (!verifiedUrl) return;
         lastTrigger = triggerEl || null;
-        overlayLink.href = fileUrl;
+        overlayLink.href = verifiedUrl;
         overlayLink.title = label;
-        overlayImg.src = fileUrl;
+        overlayImg.src = verifiedUrl;
         overlayImg.alt = label;
         overlay.hidden = false;
       }
@@ -525,8 +590,8 @@
         }
       });
 
-      function renderMessage(primaryText, secondaryHtml) {
-        container.innerHTML = '';
+      function renderMessage(primaryText, secondaryLink) {
+        container.replaceChildren();
         const box = document.createElement('div');
         box.className = 'dp-empty';
 
@@ -534,26 +599,27 @@
         p1.textContent = primaryText;
         box.appendChild(p1);
 
-        if (secondaryHtml) {
-          const p2 = document.createElement('p');
-          p2.innerHTML = secondaryHtml;
-          box.appendChild(p2);
+        if (secondaryLink && typeof secondaryLink === 'object') {
+          const verifiedHref = safeRepoLinkUrl(secondaryLink.href);
+          if (verifiedHref) {
+            const p2 = document.createElement('p');
+            if (secondaryLink.prefix) {
+              p2.appendChild(document.createTextNode(secondaryLink.prefix));
+            }
+            const a = document.createElement('a');
+            a.href = verifiedHref;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = secondaryLink.linkText || verifiedHref;
+            p2.appendChild(a);
+            if (secondaryLink.suffix) {
+              p2.appendChild(document.createTextNode(secondaryLink.suffix));
+            }
+            box.appendChild(p2);
+          }
         }
 
         container.appendChild(box);
-      }
-
-      function safeDownloadUrl(raw) {
-        if (typeof raw !== 'string' || !raw.trim()) return '';
-        try {
-          const parsed = new URL(raw, window.location.href);
-          if (parsed.protocol === 'https:' || parsed.protocol === 'http:') {
-            return parsed.href;
-          }
-        } catch (err) {
-          return '';
-        }
-        return '';
       }
 
       function normalizeTags(rawTags) {
@@ -576,7 +642,7 @@
           return map;
         }
         for (const key of Object.keys(rawFileTags)) {
-          const cleanKey = key.trim();
+          const cleanKey = safeFilename(key);
           if (!cleanKey) continue;
           map[cleanKey] = normalizeTags(rawFileTags[key]);
         }
@@ -589,10 +655,12 @@
           return map;
         }
         for (const key of Object.keys(rawThumbs)) {
-          const cleanKey = key.trim();
+          const cleanKey = safeFilename(key);
           const val = rawThumbs[key];
-          if (!cleanKey || typeof val !== 'string' || !val.trim()) continue;
-          map[cleanKey] = val.trim().replace(/^\/+/, '');
+          if (!cleanKey || typeof val !== 'string') continue;
+          const rel = val.trim().replace(/^\/+/, '');
+          if (!rel || rel.includes('..') || !SAFE_THUMB_RE.test(rel)) continue;
+          map[cleanKey] = rel;
         }
         return map;
       }
@@ -676,13 +744,16 @@
         const endIndex = Math.min(startIndex + count, files.length);
         for (let i = startIndex; i < endIndex; i++) {
           const cleanFile = files[i];
-          const fileUrl = baseUrl + encodeURIComponent(cleanFile);
+          const fileUrl = safeDownloadUrl(baseUrl + encodeURIComponent(cleanFile));
+          if (!fileUrl) continue;
           const thumbPath = thumbsMap && thumbsMap[cleanFile];
           const viewable = isViewableFile(pack, cleanFile);
 
           const link = document.createElement('a');
           link.className = 'dp-thumb';
           link.href = fileUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
           link.title = cleanFile;
 
           if (viewable) {
@@ -712,8 +783,7 @@
             const img = document.createElement('img');
             img.onerror = function () {
               img.onerror = null;
-              link.innerHTML = '';
-              link.appendChild(createPlaceholder(cleanFile));
+              link.replaceChildren(createPlaceholder(cleanFile));
             };
             img.src = thumbPath;
             img.alt = cleanFile;
@@ -732,13 +802,14 @@
       }
 
       function renderThumbnailGrid(card, releaseTag, files, thumbsMap, pack) {
-        if (!releaseTag || files.length === 0) return;
+        const verifiedTag = safeReleaseTag(releaseTag);
+        if (!verifiedTag || files.length === 0) return;
 
         const grid = document.createElement('div');
         grid.className = 'dp-preview-grid';
         const baseUrl =
           'https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/' +
-          encodeURIComponent(releaseTag) +
+          encodeURIComponent(verifiedTag) +
           '/';
 
         let renderedCount = appendThumbnailBatch(grid, baseUrl, files, thumbsMap, pack, 0, THUMB_BATCH_SIZE);
@@ -760,7 +831,7 @@
       }
 
       function renderTagBar(allTags) {
-        tagBar.innerHTML = '';
+        tagBar.replaceChildren();
 
         const options = [''].concat(allTags);
         for (const tag of options) {
@@ -783,7 +854,12 @@
         if (validPacks.length === 0) {
           renderMessage(
             'No packs are listed yet.',
-            'Packs will show up here as zip files once they are added to <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">this repo\'s releases</a>.'
+            {
+              prefix: 'Packs will show up here as zip files once they are added to ',
+              linkText: "this repo's releases",
+              href: 'https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases',
+              suffix: '.'
+            }
           );
           return;
         }
@@ -806,7 +882,7 @@
           return;
         }
 
-        container.innerHTML = '';
+        container.replaceChildren();
         for (const entry of filtered) {
           const pack = entry.pack;
           const card = document.createElement('article');
@@ -855,7 +931,7 @@
             btn.className = 'dp-btn';
             btn.href = url;
             btn.target = '_blank';
-            btn.rel = 'noopener';
+            btn.rel = 'noopener noreferrer';
             btn.textContent = 'Download';
             actions.appendChild(btn);
           }
@@ -866,8 +942,7 @@
           mainRow.appendChild(actions);
           card.appendChild(mainRow);
 
-          const releaseTag = typeof pack.releaseTag === 'string' ? pack.releaseTag.trim() : '';
-          renderThumbnailGrid(card, releaseTag, entry.files, pack._thumbs, pack);
+          renderThumbnailGrid(card, pack._releaseTag, entry.files, pack._thumbs, pack);
 
           container.appendChild(card);
         }
@@ -891,11 +966,12 @@
           if (!pack || typeof pack !== 'object') continue;
           const name = typeof pack.name === 'string' && pack.name.trim() ? pack.name.trim() : 'Untitled Pack';
           const desc = typeof pack.description === 'string' && pack.description.trim() ? pack.description.trim() : '';
+          const releaseTag = safeReleaseTag(pack.releaseTag);
           const tags = normalizeTags(pack.tags);
           const files = Array.isArray(pack.files)
             ? pack.files
-                .filter(function (f) { return typeof f === 'string' && f.trim(); })
-                .map(function (f) { return f.trim(); })
+                .map(safeFilename)
+                .filter(Boolean)
             : [];
           const fileTags = normalizeFileTags(pack.fileTags);
           const thumbs = normalizeThumbs(pack.thumbs);
@@ -905,6 +981,7 @@
           validPacks.push(Object.assign({}, pack, {
             _name: name,
             _desc: desc,
+            _releaseTag: releaseTag,
             _tags: tags,
             _files: files,
             _fileTags: fileTags,
@@ -919,7 +996,12 @@
         renderTagBar([]);
         renderMessage(
           'Could not load the pack list right now.',
-          'You can still download the zip files from <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">this repo\'s releases page</a>.'
+          {
+            prefix: 'You can still download the zip files from ',
+            linkText: "this repo's releases page",
+            href: 'https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases',
+            suffix: '.'
+          }
         );
       }
     })();
