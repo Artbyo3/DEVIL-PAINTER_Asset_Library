@@ -19,21 +19,31 @@ def _compute(
     micro = common.periodic_fbm(u, v, 8, 4, 0.5, rng)
 
     if style == 0:
-        f1, _, _, _, _ = common.periodic_voronoi(u, v, 3 + (variant % 3), 0.8, rng)
+        # Fortification agate: concentric Liesegang chalcedony precipitation bands around Voronoi silica vug centers
+        f1, edge, _, _, _ = common.periodic_lloyd_voronoi(u, v, 3 + (variant % 3), 0.85, rng, lloyd_iters=1)
         warp = common.periodic_fbm(u, v, 4, 4, 0.5, rng)
-        rings = 0.5 + 0.5 * np.sin((f1 * (10 + variant % 6) + 0.35 * warp) * 2.0 * math.pi)
-        color_field = common.normalize_field(0.72 * rings + 0.18 * (1.0 - f1) + 0.10 * micro)
-        height = common.normalize_field(0.65 * (1.0 - f1) + 0.25 * rings + 0.10 * micro)
-        roughness = np.full_like(height, 0.14, dtype=np.float32)
+        # Edge-anchored fortification contours mirror angular host-rock cavity walls (unlike circular blobs)
+        contour = 0.55 * edge + 0.45 * (1.0 - f1)
+        phase = (contour * (9 + variant % 5) + 0.28 * warp) * 2.0 * math.pi
+        rings = 0.5 + 0.38 * np.sin(phase) + 0.12 * np.sin(3.0 * phase)
+        color_field = common.normalize_field(0.68 * rings + 0.20 * edge + 0.12 * micro)
+        height = common.normalize_field(0.62 * (1.0 - f1) + 0.28 * rings + 0.10 * micro)
+        roughness = np.clip(0.12 + 0.18 * (1.0 - rings), 0.08, 0.40).astype(np.float32)
     else:
+        # Hexagonal/trigonal quartz druzy cluster: 3-plane rhombohedral crystal termination facets per Lloyd seed
         cells = 8 + (variant % 6) * 2
-        f1, edge, cid, rx, ry = common.periodic_voronoi(u, v, cells, 0.92, rng)
-        angle = cid * 2.0 * math.pi
-        facet_plane = 0.5 + 0.45 * (rx * np.cos(angle) + ry * np.sin(angle))
-        pyramid = np.clip(1.0 - f1 * 0.85, 0.0, 1.0) * facet_plane
-        height = common.normalize_field(0.85 * pyramid + 0.15 * edge)
-        color_field = common.normalize_field(0.55 * cid + 0.35 * height + 0.10 * micro)
-        roughness = np.full_like(height, 0.10, dtype=np.float32)
+        f1, edge, cid, rx, ry = common.periodic_lloyd_voronoi(u, v, cells, 0.92, rng, lloyd_iters=1)
+        angle0 = cid * 2.0 * math.pi
+        r_proj = np.maximum.reduce([
+            rx * np.cos(angle0) + ry * np.sin(angle0),
+            rx * np.cos(angle0 + 2.0943951) + ry * np.sin(angle0 + 2.0943951),
+            rx * np.cos(angle0 + 4.1887902) + ry * np.sin(angle0 + 4.1887902),
+        ])
+        apex = np.clip(1.0 - np.abs(r_proj) * cells * 1.45, 0.0, 1.0)
+        facet_tilt = 0.5 + 0.40 * ((rx * np.cos(angle0 + 0.5) + ry * np.sin(angle0 + 0.5)) * cells)
+        height = common.normalize_field(0.72 * apex + 0.18 * np.clip(facet_tilt, 0.0, 1.0) + 0.10 * edge)
+        color_field = common.normalize_field(0.50 * cid + 0.38 * height + 0.12 * micro)
+        roughness = np.full_like(height, 0.09, dtype=np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(color_field, micro, stops, contrast=1.22)

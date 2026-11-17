@@ -16,12 +16,21 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     flutes = [6, 10, 14, 20][(variant + int(rng.integers(0, 4))) % 4]
-    flute_wave = np.abs(np.sin(u * flutes * math.pi))
-    strata = common.periodic_fbm(u, v, 4, 5, 0.58, rng, freqy=16)
-    pores = np.clip((common.periodic_fbm(u, v, 14, 4, 0.6, rng, freqy=28) - 0.68) * 5.0, 0.0, 1.0)
+    # Classical Doric/Ionic architectural flute profile: concave circular channel separated by narrow flat arrises
+    arr_frac = 0.16
+    fu = np.abs(((u * flutes) % 1.0) - 0.5) * 2.0  # 0 at trough center, 1 at arris
+    channel_span = 1.0 - arr_frac
+    in_flute = np.clip(fu / channel_span, 0.0, 1.0)
+    flute_wave = 1.0 - 0.78 * np.sqrt(np.clip(1.0 - in_flute * in_flute, 0.0, 1.0))
 
-    h = common.normalize_field(0.60 * flute_wave + 0.30 * strata - 0.35 * pores)
-    c = common.normalize_field(0.55 * strata + 0.30 * flute_wave - 0.25 * pores)
+    strata = common.periodic_fbm(u, v, 3, 5, 0.58, rng, freqy=18)
+    # Travertine carbonate dissolution vugs are horizontally elongated along bedding planes
+    vug_raw = common.periodic_fbm(u, v, 6, 4, 0.58, rng, freqy=34)
+    t_p = np.clip((vug_raw - 0.64) / 0.14, 0.0, 1.0)
+    pores = t_p * t_p * (3.0 - 2.0 * t_p)
+
+    h = common.normalize_field(0.62 * flute_wave + 0.26 * strata - 0.34 * pores)
+    c = common.normalize_field(0.55 * strata + 0.30 * flute_wave - 0.24 * pores)
     rough = np.clip(0.45 + 0.40 * pores, 0.30, 0.90).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)

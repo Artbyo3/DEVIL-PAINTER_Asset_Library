@@ -15,17 +15,25 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     cells_major = 4 + (variant % 5) * 2
-    _, edge_a, cid_a, rx_a, ry_a = common.periodic_voronoi(u, v, cells_major, 0.82, rng)
+    # Goehring et al. (2009): columnar basalt stress relaxation converges toward Centroidal Voronoi Tessellations (~120 deg Y-junctions)
+    _, edge_a, cid_a, rx_a, ry_a = common.periodic_lloyd_voronoi(u, v, cells_major, 0.88, rng, lloyd_iters=2)
     _, edge_b, _, _, _ = common.periodic_voronoi(u, v, cells_major * 2, 0.90, rng)
     micro = common.periodic_fbm(u, v, cells_major * 3, 4, 0.5, rng)
 
-    crack_major = np.clip(edge_a * (5.5 + (variant % 3) * 1.5), 0.0, 1.0)
-    crack_minor = np.clip(edge_b * 8.0, 0.25, 1.0)
-    tilt = 0.5 + 0.35 * (rx_a * np.cos(cid_a * 6.2831853) + ry_a * np.sin(cid_a * 6.2831853))
+    def _smoothstep(edge0: float, edge1: float, x: np.ndarray) -> np.ndarray:
+        t = np.clip((x - edge0) / (edge1 - edge0 + 1e-8), 0.0, 1.0)
+        return t * t * (3.0 - 2.0 * t)
 
-    height = common.normalize_field(crack_major * crack_minor * (0.65 * tilt + 0.35 * micro))
-    color_field = common.normalize_field(crack_major * (0.55 * cid_a + 0.25 * micro + 0.20 * crack_minor))
-    roughness = np.clip(0.35 + 0.50 * (1.0 - crack_major) + 0.15 * micro, 0.15, 0.95).astype(np.float32)
+    joint_w = 0.045 - 0.008 * (variant % 3)
+    crack_major = _smoothstep(0.01, joint_w + 0.055, edge_a)
+    crack_minor = 0.35 + 0.65 * _smoothstep(0.008, 0.065, edge_b)
+    # Planar cleavage facet tilt per column + subtle chisel relief
+    ang = cid_a * 6.2831853
+    tilt = np.clip(0.62 + 0.30 * (rx_a * np.cos(ang) + ry_a * np.sin(ang)), 0.25, 1.0)
+
+    height = common.normalize_field(crack_major * crack_minor * (0.72 * tilt + 0.28 * micro))
+    color_field = common.normalize_field(crack_major * (0.52 * cid_a + 0.26 * micro + 0.22 * crack_minor))
+    roughness = np.clip(0.32 + 0.52 * (1.0 - crack_major) + 0.14 * micro, 0.15, 0.95).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(color_field, micro, stops, contrast=1.20)

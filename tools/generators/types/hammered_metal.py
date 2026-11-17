@@ -15,13 +15,16 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     cells = [8, 12, 16, 22][(variant + int(rng.integers(0, 4))) % 4]
-    f1, _, cid, _, _ = common.periodic_voronoi(u, v, cells, 0.88, rng)
+    # Lloyd-relaxed Centroidal Voronoi yields authentic evenly spaced hand-planished ball-peen hammer marks
+    f1, edge, cid, _, _ = common.periodic_lloyd_voronoi(u, v, cells, 0.90, rng, lloyd_iters=2)
     micro = common.periodic_fbm(u, v, 12, 4, 0.5, rng)
 
-    dimple = np.power(np.clip(f1 * 1.25, 0.0, 1.0), 1.6)
-    h = common.normalize_field(0.85 * dimple + 0.15 * micro)
-    c = common.normalize_field(0.55 * dimple + 0.25 * cid + 0.20 * micro)
-    rough = np.clip(0.16 + 0.42 * (1.0 - dimple), 0.10, 0.75).astype(np.float32)
+    # Concave spherical peen indentation clipped at crisp burnished Voronoi ridges
+    dimple = np.power(np.clip(f1 * 1.18, 0.0, 1.0), 1.85)
+    rim_burnish = np.clip(1.0 - edge * 4.5, 0.0, 1.0)
+    h = common.normalize_field(0.86 * dimple + 0.14 * micro)
+    c = common.normalize_field(0.54 * dimple + 0.22 * cid + 0.12 * rim_burnish + 0.12 * micro)
+    rough = np.clip(0.14 + 0.38 * (1.0 - dimple) - 0.08 * rim_burnish, 0.08, 0.72).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, micro, stops, contrast=1.18)

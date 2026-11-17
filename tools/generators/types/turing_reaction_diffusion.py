@@ -14,22 +14,25 @@ def _compute(
 ) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
-    freq = 6 + (variant % 5) * 2
-    state = common.periodic_fbm(u, v, freq, 4, 0.55, rng)
-    micro = common.periodic_fbm(u, v, freq * 2, 3, 0.5, rng)
+    # Pearson (1993, Science 261) canonical Gray-Scott (F, k) morphology regimes:
+    # 0: Mitosis/Spots (0.0367, 0.0649), 1: Coral/Brain (0.0545, 0.0620),
+    # 2: Labyrinth/Maze (0.0290, 0.0570), 3: Soliton/Ribbons (0.0420, 0.0600)
+    regimes = [
+        (0.0367, 0.0649, 460),
+        (0.0545, 0.0620, 440),
+        (0.0290, 0.0570, 420),
+        (0.0420, 0.0600, 440),
+    ]
+    feed, kill, steps = regimes[variant % 4]
+    sim_res = 96 if size <= 256 else 128
+    rd_u, rd_v = common.gray_scott_rd(size, feed=feed, kill=kill, steps=steps, rng=rng, sim_res=sim_res)
+    micro = common.periodic_fbm(u, v, 10 + (variant % 4) * 2, 3, 0.5, rng)
 
-    r_act = 1 + (variant % 2)
-    r_inh = 3 + (variant % 3)
-    for _ in range(4):
-        act = common.periodic_box_blur(state, r_act)
-        inh = common.periodic_box_blur(state, r_inh)
-        diff = act - inh
-        state = common.normalize_field(state + np.tanh(diff * 8.0) * 0.35)
-
-    ridges = np.clip((state - 0.35) / 0.30, 0.0, 1.0)
-    height = common.normalize_field(0.82 * ridges + 0.18 * micro)
-    color_field = common.normalize_field(0.75 * state + 0.25 * micro)
-    roughness = np.clip(0.22 + 0.50 * (1.0 - ridges), 0.15, 0.85).astype(np.float32)
+    t = np.clip((rd_v - 0.18) / 0.58, 0.0, 1.0)
+    ridges = t * t * (3.0 - 2.0 * t)
+    height = common.normalize_field(0.84 * ridges + 0.16 * micro)
+    color_field = common.normalize_field(0.72 * rd_v + 0.14 * (1.0 - rd_u) + 0.14 * micro)
+    roughness = np.clip(0.20 + 0.52 * (1.0 - ridges), 0.14, 0.85).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(color_field, micro, stops, contrast=1.20)

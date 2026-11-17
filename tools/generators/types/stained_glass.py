@@ -15,13 +15,16 @@ def _compute(
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     cells = [7, 10, 14, 18][(variant + int(rng.integers(0, 4))) % 4]
-    _, edge, cid, _, _ = common.periodic_voronoi(u, v, cells, 0.85, rng)
-    lead = np.clip((0.055 - edge) * 32.0, 0.0, 1.0)
+    _, edge, cid, _, _ = common.periodic_lloyd_voronoi(u, v, cells, 0.88, rng, lloyd_iters=1)
+    # Half-round lead H-came cross section sqrt(1 - (edge/w)^2)
+    came_w = 0.055
+    lead_t = np.clip(1.0 - edge / came_w, 0.0, 1.0)
+    lead = np.sqrt(np.clip(lead_t * (2.0 - lead_t), 0.0, 1.0))
     glass_ripple = common.periodic_fbm(u, v, cells * 2, 3, 0.5, rng)
 
-    h = common.normalize_field(0.65 * lead + 0.35 * (1.0 - lead) * glass_ripple)
-    c = common.normalize_field(np.where(lead > 0.5, 0.05, 0.25 + 0.65 * cid + 0.15 * (glass_ripple - 0.5)))
-    rough = np.where(lead > 0.5, 0.75, 0.12).astype(np.float32)
+    h = common.normalize_field(0.68 * lead + 0.32 * (1.0 - lead_t) * glass_ripple)
+    c = common.normalize_field((1.0 - lead) * (0.25 + 0.65 * cid + 0.14 * (glass_ripple - 0.5)) + lead * 0.05)
+    rough = np.clip(0.12 + 0.64 * lead, 0.10, 0.85).astype(np.float32)
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, glass_ripple, stops, contrast=1.25)

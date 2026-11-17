@@ -17,13 +17,22 @@ def _compute(
     cells = [10, 14, 18, 24][(variant + int(rng.integers(0, 4))) % 4]
     f1, edge, cid, _, _ = common.periodic_voronoi(u, v, cells, 0.92, rng)
     f1_b, edge_b, cid_b, _, _ = common.periodic_voronoi((u + 0.37) % 1.0, (v + 0.61) % 1.0, cells + 6, 0.92, rng)
-
-    chip1 = (f1 < 0.28) & (edge > 0.04)
-    chip2 = (f1_b < 0.22) & (edge_b > 0.04) & (~chip1)
     base_noise = common.periodic_fbm(u, v, 6, 4, 0.5, rng)
 
-    c = np.where(chip1, 0.25 + 0.70 * cid, np.where(chip2, 0.15 + 0.65 * cid_b, 0.72 + 0.18 * base_noise))
-    h = np.where(chip1 | chip2, 0.78 + 0.15 * base_noise, 0.68 + 0.12 * base_noise)
+    def _sstep(e0: float, e1: float, x: np.ndarray) -> np.ndarray:
+        t = np.clip((x - e0) / (e1 - e0 + 1e-8), 0.0, 1.0)
+        return t * t * (3.0 - 2.0 * t)
+
+    chip1 = _sstep(0.32, 0.25, f1) * _sstep(0.03, 0.07, edge)
+    chip2_raw = _sstep(0.25, 0.19, f1_b) * _sstep(0.028, 0.068, edge_b)
+    chip2 = chip2_raw * (1.0 - chip1)
+    chip_mask = np.clip(chip1 + chip2, 0.0, 1.0)
+
+    vein = common.periodic_fbm(u, v, cells * 2, 3, 0.5, rng, mode="turbulence")
+    chip_tone = chip1 * (0.20 + 0.68 * cid + 0.12 * vein) + chip2 * (0.14 + 0.64 * cid_b + 0.12 * vein)
+    binder = 0.72 + 0.16 * base_noise
+    c = common.normalize_field(chip_tone + (1.0 - chip_mask) * binder)
+    h = common.normalize_field(0.68 + 0.10 * chip_mask + 0.14 * base_noise * (1.0 - 0.5 * chip_mask))
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, base_noise, stops, contrast=1.18)

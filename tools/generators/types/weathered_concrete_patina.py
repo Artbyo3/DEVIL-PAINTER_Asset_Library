@@ -21,10 +21,10 @@ def _compute(
     if kind == 0:
         agg1 = common.periodic_voronoi(u, v, [16, 24, 32][int(rng.integers(0, 3))], 0.9, rng)[0]
         agg2 = common.periodic_voronoi((u + 0.31) % 1.0, (v + 0.57) % 1.0, [28, 36][int(rng.integers(0, 2))], 0.9, rng)[0]
-        crack = common.periodic_voronoi(u, v, [4, 6][int(rng.integers(0, 2))], 0.85, rng)[1]
-        crack_line = np.clip((0.04 - crack) * 25.0, 0.0, 1.0)
-        pebbles = np.clip(1.0 - np.minimum(agg1, agg2) * 2.0, 0.0, 1.0)
-        h = common.normalize_field(0.55 * pebbles + 0.45 * micro - 0.5 * crack_line)
+        crack = common.periodic_lloyd_voronoi(u, v, [4, 6][int(rng.integers(0, 2))], 0.88, rng, lloyd_iters=1)[1]
+        crack_line = np.clip((0.038 - crack) * 26.0, 0.0, 1.0)
+        pebbles = np.clip(1.0 - np.minimum(agg1, agg2) * 2.2, 0.0, 1.0)
+        h = common.normalize_field(0.52 * pebbles + 0.48 * micro - 0.52 * crack_line)
         c = common.normalize_field(0.45 * pebbles + 0.35 * micro + 0.20 * (1.0 - crack_line))
     elif kind == 1:
         base = common.periodic_fbm(u, v, [3, 5, 7][int(rng.integers(0, 3))], 5, 0.58, rng)
@@ -33,22 +33,26 @@ def _compute(
         h = common.normalize_field(0.55 * peel + 0.30 * curl_edge + 0.15 * micro)
         c = common.normalize_field(0.65 * peel + 0.20 * micro + 0.15 * curl_edge)
     elif kind == 2:
-        _, _, cid, rx, ry = common.periodic_voronoi(u, v, [6, 10, 14, 18][int(rng.integers(0, 4))], 0.92, rng)
+        # Hot-dip galvanized zinc crystal spangle with per-grain dendritic feathering
+        _, _, cid, rx, ry = common.periodic_lloyd_voronoi(u, v, [6, 10, 14, 18][int(rng.integers(0, 4))], 0.92, rng, lloyd_iters=1)
         ang = cid * 2.0 * math.pi
-        spangle = 0.5 + 0.45 * (rx * np.cos(ang) + ry * np.sin(ang))
+        dendrite = 0.5 + 0.5 * np.cos((rx * np.cos(ang) + ry * np.sin(ang)) * 180.0)
+        spangle = 0.5 + 0.42 * (rx * np.cos(ang) + ry * np.sin(ang)) + 0.12 * dendrite
         patina = common.periodic_fbm(u, v, 5, 4, 0.55, rng, mode="turbulence")
-        h = common.normalize_field(0.65 * spangle + 0.35 * patina)
-        c = common.normalize_field(0.55 * cid + 0.25 * spangle + 0.20 * patina)
+        h = common.normalize_field(0.64 * spangle + 0.36 * patina)
+        c = common.normalize_field(0.52 * cid + 0.28 * spangle + 0.20 * patina)
     elif kind == 3:
         warp = common.periodic_fbm(u, v, [2, 3, 5][int(rng.integers(0, 3))], 5, 0.55, rng)
         layers = [5, 8, 12, 16][int(rng.integers(0, 4))]
-        strata = 0.5 + 0.5 * np.sin((v * layers + warp * 2.5) * 2.0 * math.pi)
+        # Asymmetric differential-weathering rock beds (steep cap ledges + gentle shale talus slopes)
+        sp = (v * layers + warp * 2.4) % 1.0
+        strata = np.where(sp < 0.75, sp / 0.75, 1.0 - (sp - 0.75) / 0.25)
         fissure = common.periodic_fbm(u, v, 6, 4, 0.5, rng, mode="ridged")
         h = common.normalize_field(0.60 * strata + 0.25 * fissure + 0.15 * micro)
         c = common.normalize_field(0.65 * strata + 0.35 * warp)
     elif kind == 4:
         cols = [5, 7, 9, 12][int(rng.integers(0, 4))]
-        rows = [6, 8, 12][int(rng.integers(0, 3))]
+        rows = [6, 8, 12][int(rng.integers(0, 3))]  # even rows wrap half-stagger cleanly
         ry_i = np.floor(v * rows).astype(np.int32)
         gu = ((u * cols) + (ry_i % 2) * 0.5) % 1.0
         cx_i = np.floor(u * cols + (ry_i % 2) * 0.5).astype(np.int64) % cols
@@ -57,9 +61,12 @@ def _compute(
             % 997
         ) / 997.0
         gv = (v * rows) % 1.0
-        arc = np.sqrt(np.clip(1.0 - ((gu - 0.5) * 2.0) ** 2, 0.0, 1.0))
-        step = gv * 0.7 + 0.3 * arc
-        h = common.normalize_field(step + 0.15 * micro)
+        # Semicircular Spanish/Mission barrel roof tile profile tapering slightly up-course + crisp drip step
+        taper_u = (gu - 0.5) / (0.46 - 0.06 * (1.0 - gv))
+        arc = np.sqrt(np.clip(1.0 - taper_u * taper_u * 4.0, 0.0, 1.0))
+        drip_step = np.clip((1.0 - gv) * 12.0, 0.0, 1.0)
+        step = (0.35 + 0.65 * gv) * (0.35 + 0.65 * arc) * drip_step
+        h = common.normalize_field(step + 0.14 * micro)
         c = common.normalize_field(0.45 * tile_id.astype(np.float32) + 0.35 * step + 0.20 * micro)
     else:
         n1 = common.periodic_fbm(u, v, [3, 5, 8][int(rng.integers(0, 3))], 5, 0.6, rng, mode="turbulence")

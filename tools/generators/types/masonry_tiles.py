@@ -19,38 +19,71 @@ def _compute(
     micro = common.periodic_fbm(u, v, scale * 2, 4, 0.5, rng)
 
     if sub == 0:
-        s = u * scale
-        t = v * scale
+        # Exact periodic 2:1 herringbone lattice on (grid x grid) with grid % 4 == 0
+        grid = max(4, (scale // 2) * 4)
+        s = u * grid
+        t = v * grid
         is_ = np.floor(s).astype(np.int32)
         it_ = np.floor(t).astype(np.int32)
-        zig = (is_ + it_) % 2
-        local_u = np.where(zig == 0, (s * 0.5) % 1.0, (t * 0.5) % 1.0)
-        local_v = np.where(zig == 0, t % 1.0, s % 1.0)
-        tile_id = (((is_ % scale) * 3 + (it_ % scale) * 5) % 7) / 7.0
+        fx = s - is_
+        fy = t - it_
+        res = (is_ - it_) % 4
+        # res==0: left half of horiz 2x1; res==1: right half; res==3: bottom half of vert 1x2; res==2: top half
+        h_mask = (res == 0) | (res == 1)
+        ax = np.where(res == 1, is_ - 1, is_) % grid
+        ay = np.where(res == 2, it_ - 1, it_) % grid
+        local_long = np.where(
+            res == 0,
+            fx * 0.5,
+            np.where(res == 1, 0.5 + fx * 0.5, np.where(res == 3, fy * 0.5, 0.5 + fy * 0.5)),
+        )
+        local_short = np.where(h_mask, fy, fx)
+        # Scale long-axis edge distance by 2.0 so mortar thickness is physically isotropic
+        edge_d = np.minimum(np.minimum(local_long, 1.0 - local_long) * 2.0, np.minimum(local_short, 1.0 - local_short))
+        tile_id = (
+            ((ax.astype(np.int64) * 73856093) ^ (ay.astype(np.int64) * 19349663) ^ np.int64((seed + variant) * 83492791))
+            % 997
+        ) / 997.0
     elif sub == 1:
-        rows = scale
-        cols = max(2, scale // 2)
+        # BIA Technical Notes 10 US Modular running bond (~1:3 brick face aspect, uniform mortar width)
+        rows = scale * 2
+        cols = max(2, int(round(rows / 2.8)))
         r_idx = np.floor(v * rows).astype(np.int32)
         stag = (r_idx % 2) * 0.5
-        local_u = (u * cols + stag) % 1.0
-        local_v = (v * rows) % 1.0
+        lu = (u * cols + stag) % 1.0
+        lv = (v * rows) % 1.0
+        # Normalize both axes to physical row-height units so horizontal & vertical joints match width
+        aspect = float(rows) / float(cols)
+        edge_d = np.minimum(np.minimum(lu, 1.0 - lu) * aspect, np.minimum(lv, 1.0 - lv))
         c_idx = np.floor(u * cols + stag).astype(np.int32) % cols
-        tile_id = (((r_idx % rows) * 13 + c_idx * 7) % 11) / 11.0
+        tile_id = (
+            (((r_idx % rows).astype(np.int64) * 73856093) ^ (c_idx.astype(np.int64) * 19349663) ^ np.int64((seed + variant) * 83492791))
+            % 997
+        ) / 997.0
     else:
-        local_u = (u * scale) % 1.0
-        local_v = (v * scale) % 1.0
-        cx = np.abs(local_u - 0.5)
-        cy = np.abs(local_v - 0.5)
-        oct_edge = 0.5 - np.maximum(np.maximum(cx, cy), (cx + cy) * 0.7071)
-        local_u = np.clip(oct_edge * 2.0, 0.0, 1.0)
-        local_v = local_u
-        iu = np.floor(u * scale).astype(np.int32) % scale
-        iv = np.floor(v * scale).astype(np.int32) % scale
-        tile_id = ((iu * 5 + iv * 9) % 8) / 8.0
+        # Exact 4.8.8 Archimedean tiling: regular octagons (edge s = sqrt(2)-1) + inset tilted squares at cell vertices
+        p_u = (u * scale) % 1.0
+        p_v = (v * scale) % 1.0
+        cx = np.abs(p_u - 0.5)
+        cy = np.abs(p_v - 0.5)
+        d_oct = 0.5 - np.maximum(np.maximum(cx, cy), (cx + cy) * 0.70710678)
+        # Corner diamond tile in vertex coordinates [-0.5, 0.5]^2
+        vx = ((u * scale + 0.5) % 1.0) - 0.5
+        vy = ((v * scale + 0.5) % 1.0) - 0.5
+        d_sq = (1.0 - 0.70710678) - (np.abs(vx) + np.abs(vy)) * 0.70710678
+        in_oct = d_oct >= d_sq
+        edge_d = np.maximum(d_oct, d_sq) * 2.0
+        iu = np.floor(u * scale).astype(np.int64) % scale
+        iv = np.floor(v * scale).astype(np.int64) % scale
+        vu = np.floor(u * scale + 0.5).astype(np.int64) % scale
+        vv = np.floor(v * scale + 0.5).astype(np.int64) % scale
+        oct_id = (((iu * 73856093) ^ (iv * 19349663)) % 997) / 997.0
+        sq_id = ((((vu * 19349663) ^ (vv * 83492791)) + 313) % 997) / 997.0
+        tile_id = np.where(in_oct, oct_id * 0.8 + 0.2, sq_id * 0.45)
 
-    edge_d = np.minimum(np.minimum(local_u, 1.0 - local_u), np.minimum(local_v, 1.0 - local_v))
     warp = (micro - 0.5) * 0.025
-    mortar = np.clip((edge_d + warp - 0.045) / 0.025, 0.0, 1.0)
+    t = np.clip((edge_d + warp - 0.045) / 0.028, 0.0, 1.0)
+    mortar = t * t * (3.0 - 2.0 * t)
     pillow_dome = np.power(mortar, 0.45)
 
     height = common.normalize_field(pillow_dome * (0.82 + 0.18 * micro))
