@@ -235,8 +235,8 @@ def resolve_pack_meta(
             or make_pack.build_release_tag(name)
         )
     )
-    if release_tag.startswith(SHELF_PREFIX):
-        raise ValueError(f"Public releaseTag cannot use shelf prefix: {release_tag!r}")
+    if release_tag == f"{SHELF_PREFIX}{slug}":
+        raise ValueError(f"Public releaseTag cannot collide with shelf draft tag: {release_tag!r}")
 
     catalog_zip = ""
     if catalog_entry and catalog_entry.get("downloadUrl"):
@@ -797,7 +797,10 @@ def main(argv: list[str] | None = None) -> int:
 
     for rel in all_releases:
         tag = str(rel.get("tag_name", ""))
-        if tag.startswith(SHELF_PREFIX):
+        if not tag:
+            continue
+        is_versioned_public = bool(re.search(r"-v\d+(?:\.\d+)*$", tag))
+        if tag.startswith(SHELF_PREFIX) and (rel.get("draft") is True or not is_versioned_public):
             if rel.get("draft") is not True:
                 raise RuntimeError(
                     f"Shelf release {tag!r} is published (draft=false); shelves must remain drafts."
@@ -810,8 +813,7 @@ def main(argv: list[str] | None = None) -> int:
                 raise RuntimeError(f"Duplicate shelf release found for slug {slug!r}")
             shelves_by_slug[slug] = rel
         else:
-            if tag:
-                releases_by_tag[tag] = rel
+            releases_by_tag[tag] = rel
 
     if pack_selector == "all":
         target_slugs = sorted(shelves_by_slug)
