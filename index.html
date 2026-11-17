@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devil Painter Asset Library</title>
+  <meta name="description" content="Free CC0 texture and material packs for Devil Painter and any 3D workflow.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    :root {
+      --dp-bg: #22191B;
+      --dp-elevated: #403033;
+      --dp-accent: #D57081;
+      --dp-accent-hover: #E38594;
+      --dp-text: #F6F2F3;
+      --dp-text-secondary: #D0BEC1;
+      --dp-muted: #B1999D;
+      --dp-border: #584447;
+      --dp-well: #1C1415;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--dp-bg);
+      color: var(--dp-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--dp-accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--dp-accent-hover);
+      text-decoration: underline;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--dp-accent);
+      outline-offset: 3px;
+    }
+
+    .dp-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    .dp-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--dp-border);
+      flex-wrap: wrap;
+    }
+
+    .dp-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--dp-text);
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+    }
+
+    .dp-brand:hover {
+      color: var(--dp-text);
+      text-decoration: none;
+    }
+
+    .dp-brand img {
+      width: 38px;
+      height: 38px;
+      display: block;
+    }
+
+    .dp-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    .dp-nav a {
+      color: var(--dp-text-secondary);
+    }
+
+    .dp-nav a:hover {
+      color: var(--dp-accent);
+    }
+
+    main {
+      flex: 1;
+      padding: 36px 0 28px;
+    }
+
+    .dp-hero {
+      margin-bottom: 32px;
+    }
+
+    .dp-kicker {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: var(--dp-elevated);
+      border: 1px solid var(--dp-border);
+      color: var(--dp-accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--dp-text);
+    }
+
+    .dp-lead {
+      margin: 0 0 12px;
+      max-width: 68ch;
+      color: var(--dp-text-secondary);
+      font-size: 1.03rem;
+    }
+
+    .dp-license-note {
+      margin: 0;
+      max-width: 68ch;
+      color: var(--dp-muted);
+      font-size: 0.94rem;
+    }
+
+    .dp-section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dp-text);
+    }
+
+    .dp-section-meta {
+      font-size: 0.88rem;
+      color: var(--dp-muted);
+    }
+
+    .dp-pack-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .dp-card {
+      background-color: var(--dp-elevated);
+      border: 1px solid var(--dp-border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .dp-card-body {
+      flex: 1 1 320px;
+      min-width: 0;
+    }
+
+    .dp-card-title {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--dp-text);
+    }
+
+    .dp-card-desc {
+      margin: 0;
+      color: var(--dp-text-secondary);
+      font-size: 0.94rem;
+    }
+
+    .dp-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .dp-size {
+      padding: 4px 10px;
+      border-radius: 6px;
+      background-color: var(--dp-well);
+      border: 1px solid var(--dp-border);
+      color: var(--dp-text-secondary);
+      font-size: 0.84rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .dp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border-radius: 7px;
+      background-color: var(--dp-accent);
+      color: var(--dp-well);
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background-color 0.15s ease;
+    }
+
+    .dp-btn:hover {
+      background-color: var(--dp-accent-hover);
+      color: var(--dp-well);
+      text-decoration: none;
+    }
+
+    .dp-empty {
+      background-color: var(--dp-elevated);
+      border: 1px solid var(--dp-border);
+      border-radius: 10px;
+      padding: 24px 22px;
+    }
+
+    .dp-empty p {
+      margin: 0 0 10px;
+      color: var(--dp-text-secondary);
+    }
+
+    .dp-empty p:last-child {
+      margin-bottom: 0;
+      color: var(--dp-muted);
+      font-size: 0.92rem;
+    }
+
+    .dp-footer {
+      padding-top: 20px;
+      border-top: 1px solid var(--dp-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: var(--dp-muted);
+    }
+
+    .dp-footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="dp-shell">
+    <header class="dp-header">
+      <a class="dp-brand" href="./">
+        <img src="assets/logo.svg" alt="Devil Painter logo">
+        <span>Devil Painter Asset Library</span>
+      </a>
+      <nav class="dp-nav" aria-label="Primary links">
+        <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">Releases</a>
+        <a href="https://artbyo3.github.io/DEVIL-PAINTER/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://github.com/Artbyo3/DEVIL-PAINTER" target="_blank" rel="noopener">Devil Painter</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="dp-hero">
+        <span class="dp-kicker">CC0 1.0 Public Domain</span>
+        <h1>Free CC0 Texture &amp; Material Packs</h1>
+        <p class="dp-lead">
+          A public catalog of free texture and material packs built for the
+          <a href="https://github.com/Artbyo3/DEVIL-PAINTER" target="_blank" rel="noopener">Devil Painter</a>
+          Blender add-on, usable by anyone in any tool—no add-on required.
+        </p>
+        <p class="dp-license-note">
+          Everything in this library is <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/blob/main/LICENSE" target="_blank" rel="noopener">CC0 1.0</a> and free for anyone: personal or commercial use, modification, and redistribution with no attribution required.
+        </p>
+      </section>
+
+      <section aria-labelledby="packs-heading">
+        <div class="dp-section-head">
+          <h2 id="packs-heading">Packs</h2>
+          <span class="dp-section-meta">Hosted as GitHub Release assets</span>
+        </div>
+        <div id="pack-list" class="dp-pack-list" aria-live="polite">
+          <div class="dp-empty">
+            <p>Loading pack manifest...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="dp-footer">
+      <span>CC0 1.0 Universal &middot; Free for anyone</span>
+      <div class="dp-footer-links">
+        <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library" target="_blank" rel="noopener">Library Repo</a>
+        <a href="https://github.com/Artbyo3/DEVIL-PAINTER" target="_blank" rel="noopener">Devil Painter Repo</a>
+        <a href="https://artbyo3.github.io/DEVIL-PAINTER/" target="_blank" rel="noopener">Documentation</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (async function () {
+      const container = document.getElementById('pack-list');
+
+      function renderMessage(primaryText, secondaryHtml) {
+        container.innerHTML = '';
+        const box = document.createElement('div');
+        box.className = 'dp-empty';
+
+        const p1 = document.createElement('p');
+        p1.textContent = primaryText;
+        box.appendChild(p1);
+
+        if (secondaryHtml) {
+          const p2 = document.createElement('p');
+          p2.innerHTML = secondaryHtml;
+          box.appendChild(p2);
+        }
+
+        container.appendChild(box);
+      }
+
+      function safeDownloadUrl(raw) {
+        if (typeof raw !== 'string' || !raw.trim()) return '';
+        try {
+          const parsed = new URL(raw, window.location.href);
+          if (parsed.protocol === 'https:' || parsed.protocol === 'http:') {
+            return parsed.href;
+          }
+        } catch (err) {
+          return '';
+        }
+        return '';
+      }
+
+      try {
+        const res = await fetch('./packs.json', { cache: 'no-store' });
+        if (!res.ok) {
+          throw new Error('Failed to load packs.json (' + res.status + ')');
+        }
+        const data = await res.json();
+        const packs = Array.isArray(data) ? data : (Array.isArray(data && data.packs) ? data.packs : []);
+
+        if (packs.length === 0) {
+          renderMessage(
+            'No packs have been published yet.',
+            'Pack archives will appear here as they are added to <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">GitHub Releases</a>.'
+          );
+          return;
+        }
+
+        container.innerHTML = '';
+        for (const pack of packs) {
+          if (!pack || typeof pack !== 'object') continue;
+
+          const card = document.createElement('article');
+          card.className = 'dp-card';
+
+          const body = document.createElement('div');
+          body.className = 'dp-card-body';
+
+          const title = document.createElement('h3');
+          title.className = 'dp-card-title';
+          title.textContent = typeof pack.name === 'string' && pack.name.trim() ? pack.name : 'Untitled Pack';
+          body.appendChild(title);
+
+          if (typeof pack.description === 'string' && pack.description.trim()) {
+            const desc = document.createElement('p');
+            desc.className = 'dp-card-desc';
+            desc.textContent = pack.description;
+            body.appendChild(desc);
+          }
+
+          const actions = document.createElement('div');
+          actions.className = 'dp-card-actions';
+
+          if (typeof pack.size === 'string' && pack.size.trim()) {
+            const size = document.createElement('span');
+            size.className = 'dp-size';
+            size.textContent = pack.size;
+            actions.appendChild(size);
+          }
+
+          const url = safeDownloadUrl(pack.downloadUrl || pack.download_url || pack.url);
+          if (url) {
+            const btn = document.createElement('a');
+            btn.className = 'dp-btn';
+            btn.href = url;
+            btn.target = '_blank';
+            btn.rel = 'noopener';
+            btn.textContent = 'Download';
+            actions.appendChild(btn);
+          }
+
+          card.appendChild(body);
+          card.appendChild(actions);
+          container.appendChild(card);
+        }
+
+        if (!container.children.length) {
+          renderMessage(
+            'No packs have been published yet.',
+            'Pack archives will appear here as they are added to <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">GitHub Releases</a>.'
+          );
+        }
+      } catch (err) {
+        renderMessage(
+          'Unable to load the pack manifest right now.',
+          'You can browse releases directly on <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">GitHub Releases</a>.'
+        );
+      }
+    })();
+  </script>
+</body>
+</html>

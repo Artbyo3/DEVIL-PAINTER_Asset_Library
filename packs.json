@@ -1,0 +1,13 @@
+{
+  "schema": {
+    "packs": [
+      {
+        "name": "string",
+        "description": "string",
+        "size": "string",
+        "downloadUrl": "string"
+      }
+    ]
+  },
+  "packs": []
+}
