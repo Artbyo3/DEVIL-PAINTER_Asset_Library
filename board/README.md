@@ -2,11 +2,11 @@
 
 # Library Management Board
 
-Visual index of **4** pack(s) (**442** assets total). Generated from [`packs.json`](../packs.json) and committed [`thumbs/`](../thumbs).
+Visual index of **4** pack(s) (**441** assets total). Generated from [`packs.json`](../packs.json) and committed [`thumbs/`](../thumbs).
 
 | Cover | Pack | Files | Size | Links |
 | :---: | :--- | :---: | :---: | :--- |
 | [![Cloth Textures Vol. 1](../thumbs/cloth-textures-vol1-v1.0.0/boucle-tweed-01.webp)](cloth-textures-vol1.md) | **[Cloth Textures Vol. 1](cloth-textures-vol1.md)**<br>164 seamless 512x512 woven cloth and fabric textures. | 164 | 46.8 MB | [Grid](cloth-textures-vol1.md) · [Shelf (`shelf-cloth-textures-vol1`)](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/shelf-cloth-textures-vol1) · [Public](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/cloth-textures-vol1-v1.0.0) |
 | [![Cloth Textures Vol. 2](../thumbs/cloth-textures-vol2-v1.0.0/cable-knit-01.webp)](cloth-textures-vol2.md) | **[Cloth Textures Vol. 2](cloth-textures-vol2.md)**<br>160 seamless 512x512 knit, quilted, and patterned fabric textures. | 160 | 70.4 MB | [Grid](cloth-textures-vol2.md) · [Shelf (`shelf-cloth-textures-vol2`)](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/shelf-cloth-textures-vol2) · [Public](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/cloth-textures-vol2-v1.0.0) |
 | [![Alphas Vol. 1](../thumbs/alphas-vol1-v1.0.0/belt-buckle-01.webp)](alphas-vol1.md) | **[Alphas Vol. 1](alphas-vol1.md)**<br>115 sculpting, stitch, seam, trim, fastener, and grunge height alphas. | 115 | 2.8 MB | [Grid](alphas-vol1.md) · [Shelf (`shelf-alphas-vol1`)](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/shelf-alphas-vol1) · [Public](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/alphas-vol1-v1.0.0) |
-| [![Shelf_Test](../thumbs/shelf-test-v1.0.0/test-brick.webp)](shelf-test.md) | **[Shelf_Test](shelf-test.md)**<br>Temporary verification pack for shelf sync. | 3 | 291.7 KB | [Grid](shelf-test.md) · [Shelf (`shelf-shelf-test`)](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/untagged-5e0b08702e7688c83a4c) · [Public](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/shelf-test-v1.0.0) |
+| [![Shelf_Test](../thumbs/shelf-test-v1.0.0/test-brick.webp)](shelf-test.md) | **[Shelf_Test](shelf-test.md)**<br>Temporary verification pack for shelf sync. | 2 | 194.6 KB | [Grid](shelf-test.md) · [Shelf (`shelf-shelf-test`)](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/untagged-5e0b08702e7688c83a4c) · [Public](https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/tag/shelf-test-v1.0.0) |
