@@ -3897,36 +3897,6 @@
         "sp_586_height_alphas_and_sculpt_stamps_v098.png": "thumbs/alphas-vol1-v1.0.0/sp_586_height_alphas_and_sculpt_stamps_v098.webp",
         "zipper-teeth-trim.png": "thumbs/alphas-vol1-v1.0.0/zipper-teeth-trim.webp"
       }
-    },
-    {
-      "name": "Sim Clean Pack",
-      "description": "1 seamless 64x64 simulation test texture.",
-      "size": "0.5 KB",
-      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/ci-sim-clean-test-v0.0.1/Sim_Clean_Pack.zip",
-      "releaseTag": "ci-sim-clean-test-v0.0.1",
-      "tags": [
-        "sim",
-        "test",
-        "clean"
-      ],
-      "files": [
-        "sim-clean-01.png"
-      ],
-      "fileTags": {
-        "sim-clean-01.png": [
-          "sim-clean",
-          "sim",
-          "clean",
-          "texture"
-        ]
-      },
-      "fileHashes": {
-        "sim-clean-01.png": "66737ff241ee69b079c7d014c330e871b01b86555388f11d53b5bb5c242b0498"
-      },
-      "sha256": "acfd899b810119ccd9eb590c4a51472182dd882aef07b627a55f8ce794ae64cd",
-      "thumbs": {
-        "sim-clean-01.png": "thumbs/ci-sim-clean-test-v0.0.1/sim-clean-01.webp"
-      }
     }
   ]
 }
