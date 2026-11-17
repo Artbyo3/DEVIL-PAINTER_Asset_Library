@@ -1,0 +1,41 @@
+"""Dual-scale Voronoi fracture network with per-cell facet tilt and deep fissures."""
+
+from __future__ import annotations
+
+import numpy as np
+from PIL import Image
+
+from .. import common
+from ..interface import GeneratorSpec, PaletteArg
+
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    rng = np.random.default_rng(seed)
+    u, v = common.make_uv_grid(size)
+    cells_major = 4 + (variant % 5) * 2
+    _, edge_a, cid_a, rx_a, ry_a = common.periodic_voronoi(u, v, cells_major, 0.82, rng)
+    _, edge_b, _, _, _ = common.periodic_voronoi(u, v, cells_major * 2, 0.90, rng)
+    micro = common.periodic_fbm(u, v, cells_major * 3, 4, 0.5, rng)
+
+    crack_major = np.clip(edge_a * (5.5 + (variant % 3) * 1.5), 0.0, 1.0)
+    crack_minor = np.clip(edge_b * 8.0, 0.25, 1.0)
+    tilt = 0.5 + 0.35 * (rx_a * np.cos(cid_a * 6.2831853) + ry_a * np.sin(cid_a * 6.2831853))
+
+    height = common.normalize_field(crack_major * crack_minor * (0.65 * tilt + 0.35 * micro))
+    color_field = common.normalize_field(crack_major * (0.55 * cid_a + 0.25 * micro + 0.20 * crack_minor))
+    roughness = np.clip(0.35 + 0.50 * (1.0 - crack_major) + 0.15 * micro, 0.15, 0.95).astype(np.float32)
+
+    stops = common.resolve_palette(palette, SPEC.default_palette, rng)
+    albedo = common.apply_palette_5stop(color_field, micro, stops, contrast=1.20)
+    return common.shade_pbr_surface(albedo, height, roughness=roughness, normal_strength=6.8, spec_intensity=0.26)
+
+
+SPEC = GeneratorSpec(
+    name="voronoi-basalt-crackle",
+    kind="texture",
+    tileable=True,
+    origin="procedural_textures_v2_300_pack (gen_voronoi_crackle_and_basalt; merges V1 voronoi & SP arch=1)",
+    default_palette="basalt_magma_fissure",
+    description="Dual-scale Voronoi crackle basalt columns, fractured stone, and faceted ceramic glaze.",
+    render_fn=generate,
+)
