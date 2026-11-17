@@ -426,7 +426,7 @@ def main() -> int:
 
     if not simulate and not vt_key:
         msg = (
-            "VIRUSTOTAL_API_KEY secret is not set. Add VIRUSTOTAL_API_KEY in repository "
+            "VIRUS_TOTAL_TOKEN secret is not set. Add VIRUS_TOTAL_TOKEN in repository "
             "Settings -> Secrets and variables -> Actions. Release remains a draft; no changes were made."
         )
         print(f"ERROR: {msg}")
