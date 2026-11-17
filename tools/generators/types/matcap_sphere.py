@@ -18,18 +18,31 @@ def _compute(
     x = (u - 0.5) * 2.0
     y = (v - 0.5) * 2.0
     r2 = x * x + y * y
+    r = np.sqrt(r2)
     mask = r2 <= 1.0
     sz = np.sqrt(np.clip(1.0 - r2, 0.0, 1.0))
 
-    stops = common.resolve_palette(palette, SPEC.default_palette, rng)
-    ndotl = np.clip(-0.45 * x - 0.55 * y + 0.70 * sz, 0.0, 1.0)
-    fresnel = np.power(1.0 - sz, 2.8)
-    spec = np.power(np.clip(-0.25 * x - 0.35 * y + 0.90 * sz, 0.0, 1.0), 36.0)
+    # Normalized key light L and Blinn-Phong half-vector H = normalize(L + V) with V=(0,0,1)
+    import math
+    lx, ly, lz = -0.45, -0.55, 0.703562
+    ln = math.sqrt(lx * lx + ly * ly + lz * lz)
+    lx, ly, lz = lx / ln, ly / ln, lz / ln
+    hx, hy, hz = lx, ly, lz + 1.0
+    hn = math.sqrt(hx * hx + hy * hy + hz * hz)
+    hx, hy, hz = hx / hn, hy / hn, hz / hn
 
-    field = np.clip(0.75 * ndotl + 0.25 * fresnel, 0.0, 1.0)
+    stops = common.resolve_palette(palette, SPEC.default_palette, rng)
+    ndotl = np.clip(lx * x + ly * y + lz * sz, 0.0, 1.0)
+    # Schlick (1994) Fresnel approximation (F0=0.04 dielectric -> 1 at grazing angle)
+    fresnel = 0.04 + 0.96 * np.power(1.0 - sz, 5.0)
+    ndoth = np.clip(hx * x + hy * y + hz * sz, 0.0, 1.0)
+    spec = np.power(ndoth, 40.0)
+
+    field = np.clip(0.76 * ndotl + 0.24 * fresnel, 0.0, 1.0)
     rgb = common.apply_palette_5stop(field, None, stops)
-    rgb = rgb + (spec * 220.0)[..., None] + (fresnel * 65.0)[..., None]
-    rgb = np.where(mask[..., None], np.clip(rgb, 0.0, 255.0), 18.0)
+    rgb = rgb + (spec * 225.0)[..., None] + (fresnel * 75.0)[..., None]
+    aa = np.clip((1.004 - r) / 0.008, 0.0, 1.0)
+    rgb = np.where(aa[..., None] > 0.0, np.clip(rgb, 0.0, 255.0) * aa[..., None] + 18.0 * (1.0 - aa[..., None]), 18.0)
     height = np.where(mask, sz, 0.0).astype(np.float32)
     return common.rgb_image(rgb), height
 

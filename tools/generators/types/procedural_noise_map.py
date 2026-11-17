@@ -19,33 +19,24 @@ def _compute_field(seed: int = 1, size: int = 512, variant: int = 0) -> tuple[np
     if style == 0:
         field = common.periodic_fbm(u, v, freq, 6, 0.55, rng, mode="swiss")
     elif style == 1:
-        accum = np.zeros_like(u, dtype=np.float32)
+        # Lagae & Lefebvre (2009 SIGGRAPH) periodic sparse-convolution Gabor noise
         base_ang = (variant * 0.45) % math.pi
-        for k in range(6):
-            ang = base_ang + (k - 2.5) * 0.12
-            kx = round(math.cos(ang) * freq)
-            ky = round(math.sin(ang) * freq)
-            if kx == 0 and ky == 0:
-                kx = freq
-            phase = (u * kx + v * ky) * 2.0 * math.pi
-            env = common.periodic_gradient_perlin(u, v, max(2, freq // 2), max(2, freq // 2), rng)
-            accum += np.cos(phase + env * 4.0)
-        field = common.normalize_field(accum)
+        field = common.periodic_gabor_noise(
+            u, v, grid_cells=max(6, freq * 2), f0=3.5, omega0=base_ang, bandwidth=2.0, rng=rng, impulses_per_cell=4
+        )
     elif style == 2:
         metric = "manhattan" if (variant % 2 == 0) else "chebyshev"
         f1, edge, _, _, _ = common.periodic_voronoi(u, v, freq, 0.85, rng, metric=metric)
         field = common.normalize_field(0.55 * edge + 0.45 * (1.0 - f1))
     elif style == 3:
-        pot = common.periodic_fbm(u, v, freq, 5, 0.55, rng)
-        du = np.roll(pot, -1, axis=1) - np.roll(pot, 1, axis=1)
-        dv = np.roll(pot, -1, axis=0) - np.roll(pot, 1, axis=0)
-        field = common.periodic_fbm((u + dv * 4.0) % 1.0, (v - du * 4.0) % 1.0, freq, 4, 0.5, rng)
+        # Bridson et al. (2007 SIGGRAPH) resolution-independent divergence-free curl flow advection
+        vx, vy = common.periodic_curl_noise(u, v, freq, 5, 0.55, rng)
+        field = common.periodic_fbm((u + 0.08 * vx) % 1.0, (v + 0.08 * vy) % 1.0, freq, 4, 0.5, rng)
     else:
-        state = common.periodic_fbm(u, v, freq, 4, 0.55, rng)
-        for _ in range(4):
-            diff = common.periodic_box_blur(state, 1) - common.periodic_box_blur(state, 3)
-            state = common.normalize_field(state + np.tanh(diff * 9.0) * 0.35)
-        field = state
+        # Pearson (1993) Gray-Scott PDE steady-state solution (solitons / coral)
+        sim_res = 96 if size <= 256 else 128
+        _, rd_v = common.gray_scott_rd(size, feed=0.042, kill=0.060, steps=420, rng=rng, sim_res=sim_res)
+        field = rd_v
     return rng, field
 
 
