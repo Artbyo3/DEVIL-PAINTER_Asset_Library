@@ -14,11 +14,11 @@
   },
   "packs": [
     {
-      "name": "Cloth & Apparel Vol. 1",
-      "description": "164 seamless 512x512 woven cloth and fabric textures plus 16 seam and stitch alphas.",
-      "size": "47.2 MB",
-      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/cloth-apparel-vol1-v1.0.0/Cloth_and_Apparel_Vol1.zip",
-      "releaseTag": "cloth-apparel-vol1-v1.0.0",
+      "name": "Cloth Textures Vol. 1",
+      "description": "164 seamless 512x512 woven cloth and fabric textures.",
+      "size": "46.8 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/cloth-textures-vol1-v1.0.0/Cloth_Textures_Vol1.zip",
+      "releaseTag": "cloth-textures-vol1-v1.0.0",
       "tags": [
         "cloth",
         "fabric",
@@ -32,9 +32,7 @@
         "houndstooth",
         "jacquard",
         "silk",
-        "plaid",
-        "stitches",
-        "alphas"
+        "plaid"
       ],
       "files": [
         "boucle-tweed-01.png",
@@ -200,23 +198,7 @@
         "tartan-plaid-14.png",
         "tartan-plaid-15.png",
         "tartan-plaid-16.png",
-        "tartan-plaid-17.png",
-        "blanket-stitch-seam.png",
-        "cross-stitch-seam-01.png",
-        "cross-stitch-seam-02.png",
-        "cross-stitch-seam-03.png",
-        "cross-stitch-seam-04.png",
-        "cross-stitch-seam-05.png",
-        "double-topstitch-seam.png",
-        "overlock-zigzag-seam.png",
-        "smocked-gather-01.png",
-        "smocked-gather-02.png",
-        "smocked-gather-03.png",
-        "smocked-gather-04.png",
-        "smocked-gather-05.png",
-        "smocked-gather-06.png",
-        "smocked-gather-07.png",
-        "smocked-gather-08.png"
+        "tartan-plaid-17.png"
       ],
       "fileTags": {
         "boucle-tweed-01.png": [
@@ -1166,120 +1148,16 @@
           "tartan",
           "plaid",
           "texture"
-        ],
-        "blanket-stitch-seam.png": [
-          "blanket-stitch-seam",
-          "blanket",
-          "stitch",
-          "seam",
-          "alpha"
-        ],
-        "cross-stitch-seam-01.png": [
-          "cross-stitch-seam",
-          "cross",
-          "stitch",
-          "seam",
-          "alpha"
-        ],
-        "cross-stitch-seam-02.png": [
-          "cross-stitch-seam",
-          "cross",
-          "stitch",
-          "seam",
-          "alpha"
-        ],
-        "cross-stitch-seam-03.png": [
-          "cross-stitch-seam",
-          "cross",
-          "stitch",
-          "seam",
-          "alpha"
-        ],
-        "cross-stitch-seam-04.png": [
-          "cross-stitch-seam",
-          "cross",
-          "stitch",
-          "seam",
-          "alpha"
-        ],
-        "cross-stitch-seam-05.png": [
-          "cross-stitch-seam",
-          "cross",
-          "stitch",
-          "seam",
-          "alpha"
-        ],
-        "double-topstitch-seam.png": [
-          "double-topstitch-seam",
-          "double",
-          "topstitch",
-          "seam",
-          "alpha"
-        ],
-        "overlock-zigzag-seam.png": [
-          "overlock-zigzag-seam",
-          "overlock",
-          "zigzag",
-          "seam",
-          "alpha"
-        ],
-        "smocked-gather-01.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
-        ],
-        "smocked-gather-02.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
-        ],
-        "smocked-gather-03.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
-        ],
-        "smocked-gather-04.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
-        ],
-        "smocked-gather-05.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
-        ],
-        "smocked-gather-06.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
-        ],
-        "smocked-gather-07.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
-        ],
-        "smocked-gather-08.png": [
-          "smocked-gather",
-          "smocked",
-          "gather",
-          "alpha"
         ]
       },
-      "sha256": "fcecbfc41761d41d6f6138776578d31835f19f9133a1f01622ff5d8bd5e1b5fa"
+      "sha256": "2451edc9f7885f6879ea81c16c5374d24dc0457127545334ce259ac45b6144f1"
     },
     {
-      "name": "Cloth & Apparel Vol. 2",
-      "description": "160 seamless 512x512 knit, quilted, and patterned fabric textures plus 12 trim and fastener alphas.",
-      "size": "70.5 MB",
-      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/cloth-apparel-vol2-v1.0.0/Cloth_and_Apparel_Vol2.zip",
-      "releaseTag": "cloth-apparel-vol2-v1.0.0",
+      "name": "Cloth Textures Vol. 2",
+      "description": "160 seamless 512x512 knit, quilted, and patterned fabric textures.",
+      "size": "70.4 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/cloth-textures-vol2-v1.0.0/Cloth_Textures_Vol2.zip",
+      "releaseTag": "cloth-textures-vol2-v1.0.0",
       "tags": [
         "cloth",
         "fabric",
@@ -1289,10 +1167,7 @@
         "quilted",
         "ripstop",
         "seersucker",
-        "shibori",
-        "trim",
-        "fasteners",
-        "alphas"
+        "shibori"
       ],
       "files": [
         "cable-knit-01.png",
@@ -1454,19 +1329,7 @@
         "waffle-knit-16.png",
         "waffle-knit-17.png",
         "waffle-knit-18.png",
-        "waffle-knit-19.png",
-        "belt-buckle-01.png",
-        "belt-buckle-02.png",
-        "belt-buckle-03.png",
-        "belt-buckle-04.png",
-        "four-hole-button.png",
-        "ribbed-cuff-trim.png",
-        "rivet-grommet-01.png",
-        "rivet-grommet-02.png",
-        "scalloped-lace-trim-01.png",
-        "scalloped-lace-trim-02.png",
-        "scalloped-lace-trim-03.png",
-        "zipper-teeth-trim.png"
+        "waffle-knit-19.png"
       ],
       "fileTags": {
         "cable-knit-01.png": [
@@ -2474,7 +2337,144 @@
           "waffle",
           "knit",
           "texture"
-        ],
+        ]
+      },
+      "sha256": "7f1088cd73948fe226034767bebd64ceedba59e1cdef18ba9ae8482eae669735"
+    },
+    {
+      "name": "Alphas Vol. 1",
+      "description": "115 sculpting, stitch, seam, trim, fastener, and grunge height alphas.",
+      "size": "2.8 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/alphas-vol1-v1.0.0/Alphas_Vol1.zip",
+      "releaseTag": "alphas-vol1-v1.0.0",
+      "tags": [
+        "alphas",
+        "stamps",
+        "stitches",
+        "trim",
+        "grunge",
+        "fasteners",
+        "seams",
+        "sculpt"
+      ],
+      "files": [
+        "belt-buckle-01.png",
+        "belt-buckle-02.png",
+        "belt-buckle-03.png",
+        "belt-buckle-04.png",
+        "blanket-stitch-seam.png",
+        "cross-stitch-seam-01.png",
+        "cross-stitch-seam-02.png",
+        "cross-stitch-seam-03.png",
+        "cross-stitch-seam-04.png",
+        "cross-stitch-seam-05.png",
+        "double-topstitch-seam.png",
+        "four-hole-button.png",
+        "gen2_sp_alpha_001.png",
+        "gen2_sp_alpha_002.png",
+        "gen2_sp_alpha_003.png",
+        "gen2_sp_alpha_004.png",
+        "gen2_sp_alpha_005.png",
+        "gen2_sp_alpha_007.png",
+        "gen2_sp_alpha_008.png",
+        "gen2_sp_alpha_009.png",
+        "gen2_sp_alpha_010.png",
+        "gen2_sp_alpha_011.png",
+        "gen2_sp_alpha_012.png",
+        "gen2_sp_alpha_013.png",
+        "gen2_sp_alpha_016.png",
+        "gen2_sp_alpha_017.png",
+        "gen2_sp_alpha_018.png",
+        "gen2_sp_alpha_019.png",
+        "gen2_sp_alpha_020.png",
+        "gen2_sp_alpha_021.png",
+        "gen2_sp_alpha_023.png",
+        "gen2_sp_alpha_024.png",
+        "gen2_sp_alpha_025.png",
+        "gen2_sp_alpha_026.png",
+        "gen2_sp_alpha_027.png",
+        "gen2_sp_alpha_028.png",
+        "gen2_sp_alpha_029.png",
+        "gen2_sp_alpha_031.png",
+        "gen2_sp_alpha_032.png",
+        "gen2_sp_alpha_033.png",
+        "gen2_sp_alpha_034.png",
+        "gen2_sp_alpha_035.png",
+        "gen2_sp_alpha_036.png",
+        "gen2_sp_alpha_037.png",
+        "gen2_sp_alpha_038.png",
+        "gen2_sp_alpha_040.png",
+        "gen2_sp_alpha_041.png",
+        "gen2_sp_alpha_042.png",
+        "gen2_sp_alpha_043.png",
+        "gen2_sp_alpha_044.png",
+        "gen2_sp_alpha_045.png",
+        "gen2_sp_alpha_048.png",
+        "gen2_sp_alpha_049.png",
+        "gen2_sp_alpha_050.png",
+        "gen2_sp_alpha_051.png",
+        "gen2_sp_alpha_052.png",
+        "gen2_sp_alpha_053.png",
+        "gen2_sp_alpha_054.png",
+        "gen2_sp_alpha_055.png",
+        "gen2_sp_alpha_056.png",
+        "gen2_sp_alpha_058.png",
+        "gen2_sp_alpha_059.png",
+        "gen2_sp_alpha_060.png",
+        "gen2_sp_alpha_061.png",
+        "gen2_sp_alpha_062.png",
+        "gen2_sp_alpha_064.png",
+        "gen2_sp_alpha_065.png",
+        "gen2_sp_alpha_066.png",
+        "gen2_sp_alpha_067.png",
+        "gen2_sp_alpha_068.png",
+        "gen2_sp_alpha_069.png",
+        "gen2_sp_alpha_070.png",
+        "gen2_sp_alpha_072.png",
+        "gen2_sp_alpha_073.png",
+        "gen2_sp_alpha_074.png",
+        "gen2_sp_alpha_075.png",
+        "gen2_sp_alpha_076.png",
+        "gen2_sp_alpha_077.png",
+        "gen2_sp_alpha_078.png",
+        "gen2_sp_alpha_079.png",
+        "gen2_sp_alpha_080.png",
+        "gen2_sp_alpha_081.png",
+        "gen2_sp_alpha_082.png",
+        "gen2_sp_alpha_083.png",
+        "gen2_sp_alpha_084.png",
+        "gen2_sp_alpha_085.png",
+        "gen2_sp_alpha_088.png",
+        "gen2_sp_alpha_089.png",
+        "gen2_sp_alpha_091.png",
+        "gen2_sp_alpha_092.png",
+        "gen2_sp_alpha_093.png",
+        "overlock-zigzag-seam.png",
+        "ribbed-cuff-trim.png",
+        "rivet-grommet-01.png",
+        "rivet-grommet-02.png",
+        "scalloped-lace-trim-01.png",
+        "scalloped-lace-trim-02.png",
+        "scalloped-lace-trim-03.png",
+        "smocked-gather-01.png",
+        "smocked-gather-02.png",
+        "smocked-gather-03.png",
+        "smocked-gather-04.png",
+        "smocked-gather-05.png",
+        "smocked-gather-06.png",
+        "smocked-gather-07.png",
+        "smocked-gather-08.png",
+        "sp_016_height_alphas_and_sculpt_stamps_v003.png",
+        "sp_028_height_alphas_and_sculpt_stamps_v005.png",
+        "sp_226_height_alphas_and_sculpt_stamps_v038.png",
+        "sp_244_height_alphas_and_sculpt_stamps_v041.png",
+        "sp_286_height_alphas_and_sculpt_stamps_v048.png",
+        "sp_352_height_alphas_and_sculpt_stamps_v059.png",
+        "sp_460_height_alphas_and_sculpt_stamps_v077.png",
+        "sp_586_height_alphas_and_sculpt_stamps_v098.png",
+        "zipper-teeth-trim.png"
+      ],
+      "fileTags": {
         "belt-buckle-01.png": [
           "belt-buckle",
           "belt",
@@ -2499,11 +2499,383 @@
           "buckle",
           "alpha"
         ],
+        "blanket-stitch-seam.png": [
+          "blanket-stitch-seam",
+          "blanket",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-01.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-02.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-03.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-04.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-05.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "double-topstitch-seam.png": [
+          "double-topstitch-seam",
+          "double",
+          "topstitch",
+          "seam",
+          "alpha"
+        ],
         "four-hole-button.png": [
           "four-hole-button",
           "four",
           "hole",
           "button",
+          "alpha"
+        ],
+        "gen2_sp_alpha_001.png": [
+          "gen2_sp_alpha_001",
+          "alpha"
+        ],
+        "gen2_sp_alpha_002.png": [
+          "gen2_sp_alpha_002",
+          "alpha"
+        ],
+        "gen2_sp_alpha_003.png": [
+          "gen2_sp_alpha_003",
+          "alpha"
+        ],
+        "gen2_sp_alpha_004.png": [
+          "gen2_sp_alpha_004",
+          "alpha"
+        ],
+        "gen2_sp_alpha_005.png": [
+          "gen2_sp_alpha_005",
+          "alpha"
+        ],
+        "gen2_sp_alpha_007.png": [
+          "gen2_sp_alpha_007",
+          "alpha"
+        ],
+        "gen2_sp_alpha_008.png": [
+          "gen2_sp_alpha_008",
+          "alpha"
+        ],
+        "gen2_sp_alpha_009.png": [
+          "gen2_sp_alpha_009",
+          "alpha"
+        ],
+        "gen2_sp_alpha_010.png": [
+          "gen2_sp_alpha_010",
+          "alpha"
+        ],
+        "gen2_sp_alpha_011.png": [
+          "gen2_sp_alpha_011",
+          "alpha"
+        ],
+        "gen2_sp_alpha_012.png": [
+          "gen2_sp_alpha_012",
+          "alpha"
+        ],
+        "gen2_sp_alpha_013.png": [
+          "gen2_sp_alpha_013",
+          "alpha"
+        ],
+        "gen2_sp_alpha_016.png": [
+          "gen2_sp_alpha_016",
+          "alpha"
+        ],
+        "gen2_sp_alpha_017.png": [
+          "gen2_sp_alpha_017",
+          "alpha"
+        ],
+        "gen2_sp_alpha_018.png": [
+          "gen2_sp_alpha_018",
+          "alpha"
+        ],
+        "gen2_sp_alpha_019.png": [
+          "gen2_sp_alpha_019",
+          "alpha"
+        ],
+        "gen2_sp_alpha_020.png": [
+          "gen2_sp_alpha_020",
+          "alpha"
+        ],
+        "gen2_sp_alpha_021.png": [
+          "gen2_sp_alpha_021",
+          "alpha"
+        ],
+        "gen2_sp_alpha_023.png": [
+          "gen2_sp_alpha_023",
+          "alpha"
+        ],
+        "gen2_sp_alpha_024.png": [
+          "gen2_sp_alpha_024",
+          "alpha"
+        ],
+        "gen2_sp_alpha_025.png": [
+          "gen2_sp_alpha_025",
+          "alpha"
+        ],
+        "gen2_sp_alpha_026.png": [
+          "gen2_sp_alpha_026",
+          "alpha"
+        ],
+        "gen2_sp_alpha_027.png": [
+          "gen2_sp_alpha_027",
+          "alpha"
+        ],
+        "gen2_sp_alpha_028.png": [
+          "gen2_sp_alpha_028",
+          "alpha"
+        ],
+        "gen2_sp_alpha_029.png": [
+          "gen2_sp_alpha_029",
+          "alpha"
+        ],
+        "gen2_sp_alpha_031.png": [
+          "gen2_sp_alpha_031",
+          "alpha"
+        ],
+        "gen2_sp_alpha_032.png": [
+          "gen2_sp_alpha_032",
+          "alpha"
+        ],
+        "gen2_sp_alpha_033.png": [
+          "gen2_sp_alpha_033",
+          "alpha"
+        ],
+        "gen2_sp_alpha_034.png": [
+          "gen2_sp_alpha_034",
+          "alpha"
+        ],
+        "gen2_sp_alpha_035.png": [
+          "gen2_sp_alpha_035",
+          "alpha"
+        ],
+        "gen2_sp_alpha_036.png": [
+          "gen2_sp_alpha_036",
+          "alpha"
+        ],
+        "gen2_sp_alpha_037.png": [
+          "gen2_sp_alpha_037",
+          "alpha"
+        ],
+        "gen2_sp_alpha_038.png": [
+          "gen2_sp_alpha_038",
+          "alpha"
+        ],
+        "gen2_sp_alpha_040.png": [
+          "gen2_sp_alpha_040",
+          "alpha"
+        ],
+        "gen2_sp_alpha_041.png": [
+          "gen2_sp_alpha_041",
+          "alpha"
+        ],
+        "gen2_sp_alpha_042.png": [
+          "gen2_sp_alpha_042",
+          "alpha"
+        ],
+        "gen2_sp_alpha_043.png": [
+          "gen2_sp_alpha_043",
+          "alpha"
+        ],
+        "gen2_sp_alpha_044.png": [
+          "gen2_sp_alpha_044",
+          "alpha"
+        ],
+        "gen2_sp_alpha_045.png": [
+          "gen2_sp_alpha_045",
+          "alpha"
+        ],
+        "gen2_sp_alpha_048.png": [
+          "gen2_sp_alpha_048",
+          "alpha"
+        ],
+        "gen2_sp_alpha_049.png": [
+          "gen2_sp_alpha_049",
+          "alpha"
+        ],
+        "gen2_sp_alpha_050.png": [
+          "gen2_sp_alpha_050",
+          "alpha"
+        ],
+        "gen2_sp_alpha_051.png": [
+          "gen2_sp_alpha_051",
+          "alpha"
+        ],
+        "gen2_sp_alpha_052.png": [
+          "gen2_sp_alpha_052",
+          "alpha"
+        ],
+        "gen2_sp_alpha_053.png": [
+          "gen2_sp_alpha_053",
+          "alpha"
+        ],
+        "gen2_sp_alpha_054.png": [
+          "gen2_sp_alpha_054",
+          "alpha"
+        ],
+        "gen2_sp_alpha_055.png": [
+          "gen2_sp_alpha_055",
+          "alpha"
+        ],
+        "gen2_sp_alpha_056.png": [
+          "gen2_sp_alpha_056",
+          "alpha"
+        ],
+        "gen2_sp_alpha_058.png": [
+          "gen2_sp_alpha_058",
+          "alpha"
+        ],
+        "gen2_sp_alpha_059.png": [
+          "gen2_sp_alpha_059",
+          "alpha"
+        ],
+        "gen2_sp_alpha_060.png": [
+          "gen2_sp_alpha_060",
+          "alpha"
+        ],
+        "gen2_sp_alpha_061.png": [
+          "gen2_sp_alpha_061",
+          "alpha"
+        ],
+        "gen2_sp_alpha_062.png": [
+          "gen2_sp_alpha_062",
+          "alpha"
+        ],
+        "gen2_sp_alpha_064.png": [
+          "gen2_sp_alpha_064",
+          "alpha"
+        ],
+        "gen2_sp_alpha_065.png": [
+          "gen2_sp_alpha_065",
+          "alpha"
+        ],
+        "gen2_sp_alpha_066.png": [
+          "gen2_sp_alpha_066",
+          "alpha"
+        ],
+        "gen2_sp_alpha_067.png": [
+          "gen2_sp_alpha_067",
+          "alpha"
+        ],
+        "gen2_sp_alpha_068.png": [
+          "gen2_sp_alpha_068",
+          "alpha"
+        ],
+        "gen2_sp_alpha_069.png": [
+          "gen2_sp_alpha_069",
+          "alpha"
+        ],
+        "gen2_sp_alpha_070.png": [
+          "gen2_sp_alpha_070",
+          "alpha"
+        ],
+        "gen2_sp_alpha_072.png": [
+          "gen2_sp_alpha_072",
+          "alpha"
+        ],
+        "gen2_sp_alpha_073.png": [
+          "gen2_sp_alpha_073",
+          "alpha"
+        ],
+        "gen2_sp_alpha_074.png": [
+          "gen2_sp_alpha_074",
+          "alpha"
+        ],
+        "gen2_sp_alpha_075.png": [
+          "gen2_sp_alpha_075",
+          "alpha"
+        ],
+        "gen2_sp_alpha_076.png": [
+          "gen2_sp_alpha_076",
+          "alpha"
+        ],
+        "gen2_sp_alpha_077.png": [
+          "gen2_sp_alpha_077",
+          "alpha"
+        ],
+        "gen2_sp_alpha_078.png": [
+          "gen2_sp_alpha_078",
+          "alpha"
+        ],
+        "gen2_sp_alpha_079.png": [
+          "gen2_sp_alpha_079",
+          "alpha"
+        ],
+        "gen2_sp_alpha_080.png": [
+          "gen2_sp_alpha_080",
+          "alpha"
+        ],
+        "gen2_sp_alpha_081.png": [
+          "gen2_sp_alpha_081",
+          "alpha"
+        ],
+        "gen2_sp_alpha_082.png": [
+          "gen2_sp_alpha_082",
+          "alpha"
+        ],
+        "gen2_sp_alpha_083.png": [
+          "gen2_sp_alpha_083",
+          "alpha"
+        ],
+        "gen2_sp_alpha_084.png": [
+          "gen2_sp_alpha_084",
+          "alpha"
+        ],
+        "gen2_sp_alpha_085.png": [
+          "gen2_sp_alpha_085",
+          "alpha"
+        ],
+        "gen2_sp_alpha_088.png": [
+          "gen2_sp_alpha_088",
+          "alpha"
+        ],
+        "gen2_sp_alpha_089.png": [
+          "gen2_sp_alpha_089",
+          "alpha"
+        ],
+        "gen2_sp_alpha_091.png": [
+          "gen2_sp_alpha_091",
+          "alpha"
+        ],
+        "gen2_sp_alpha_092.png": [
+          "gen2_sp_alpha_092",
+          "alpha"
+        ],
+        "gen2_sp_alpha_093.png": [
+          "gen2_sp_alpha_093",
+          "alpha"
+        ],
+        "overlock-zigzag-seam.png": [
+          "overlock-zigzag-seam",
+          "overlock",
+          "zigzag",
+          "seam",
           "alpha"
         ],
         "ribbed-cuff-trim.png": [
@@ -2546,6 +2918,86 @@
           "trim",
           "alpha"
         ],
+        "smocked-gather-01.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-02.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-03.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-04.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-05.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-06.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-07.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-08.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "sp_016_height_alphas_and_sculpt_stamps_v003.png": [
+          "sp_016_height_alphas_and_sculpt_stamps_v003",
+          "alpha"
+        ],
+        "sp_028_height_alphas_and_sculpt_stamps_v005.png": [
+          "sp_028_height_alphas_and_sculpt_stamps_v005",
+          "alpha"
+        ],
+        "sp_226_height_alphas_and_sculpt_stamps_v038.png": [
+          "sp_226_height_alphas_and_sculpt_stamps_v038",
+          "alpha"
+        ],
+        "sp_244_height_alphas_and_sculpt_stamps_v041.png": [
+          "sp_244_height_alphas_and_sculpt_stamps_v041",
+          "alpha"
+        ],
+        "sp_286_height_alphas_and_sculpt_stamps_v048.png": [
+          "sp_286_height_alphas_and_sculpt_stamps_v048",
+          "alpha"
+        ],
+        "sp_352_height_alphas_and_sculpt_stamps_v059.png": [
+          "sp_352_height_alphas_and_sculpt_stamps_v059",
+          "alpha"
+        ],
+        "sp_460_height_alphas_and_sculpt_stamps_v077.png": [
+          "sp_460_height_alphas_and_sculpt_stamps_v077",
+          "alpha"
+        ],
+        "sp_586_height_alphas_and_sculpt_stamps_v098.png": [
+          "sp_586_height_alphas_and_sculpt_stamps_v098",
+          "alpha"
+        ],
         "zipper-teeth-trim.png": [
           "zipper-teeth-trim",
           "zipper",
@@ -2554,7 +3006,7 @@
           "alpha"
         ]
       },
-      "sha256": "9037c12ac134f046f4fdf3e749f8933b2b61cbbd7d4360142e0ce0c2910fa47e"
+      "sha256": "419b12343d78470a3feb4d2dfe440c11e8645f81a15172dc09fe4336e80ff58f"
     }
   ]
 }
