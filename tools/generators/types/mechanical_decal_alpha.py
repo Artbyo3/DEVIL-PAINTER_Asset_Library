@@ -28,25 +28,36 @@ def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, 
     falloff = np.clip(1.0 - np.power(np.sqrt(x * x + y * y) / 0.92, 3.2), 0.0, 1.0)
     micro = common.periodic_fbm(u, v, [4, 6, 9][int(rng.integers(0, 3))], 4, 0.5, rng)
 
+    def _sstep(e0: float, e1: float, val: np.ndarray) -> np.ndarray:
+        t = np.clip((val - e0) / (e1 - e0 + 1e-8), 0.0, 1.0)
+        return t * t * (3.0 - 2.0 * t)
+
     if kind == 0:
+        # Trapezoidal pressure-angle involute gear tooth profile + smooth spoke cutouts
         teeth = [6, 8, 10, 12, 16, 22, 28][int(rng.integers(0, 7))]
-        tooth_profile = np.clip(np.cos(theta * teeth) * 3.0, -0.5, 0.5) * float(rng.uniform(0.06, 0.13))
+        tooth_profile = np.clip(np.cos(theta * teeth) * 2.2, -0.5, 0.5) * float(rng.uniform(0.06, 0.13))
         gear_r = float(rng.uniform(0.45, 0.72)) + tooth_profile
-        gear = np.clip((gear_r - r) * 30.0, 0.0, 1.0)
+        gear = _sstep(-0.025, 0.025, gear_r - r)
         hole_r = float(rng.uniform(0.10, 0.28))
-        hub = np.clip((r - hole_r) * 30.0, 0.0, 1.0)
+        hub = _sstep(-0.025, 0.025, r - hole_r)
         spokes = [3, 4, 5, 6][int(rng.integers(0, 4))]
-        ring_cut = (r > hole_r + 0.08) & (r < 0.42) & (np.abs(np.sin(theta * spokes)) > 0.35)
-        return (gear * hub * np.where(ring_cut, 0.15, 1.0) * falloff).astype(np.float32)
+        win_r = _sstep(hole_r + 0.05, hole_r + 0.10, r) * _sstep(0.45, 0.40, r)
+        win_ang = _sstep(0.30, 0.42, np.abs(np.sin(theta * spokes)))
+        ring_cut = win_r * win_ang
+        return (gear * hub * (1.0 - 0.85 * ring_cut) * falloff).astype(np.float32)
     if kind == 1:
         slots = [3, 4, 5, 7, 9][int(rng.integers(0, 5))]
-        w_box = float(rng.uniform(0.45, 0.78))
-        h_box = float(rng.uniform(0.40, 0.74))
-        box = (np.abs(xr) < w_box) & (np.abs(yr) < h_box)
+        w_box = float(rng.uniform(0.45, 0.76))
+        h_box = float(rng.uniform(0.40, 0.72))
+        corner = 0.06
+        qx = np.maximum(np.abs(xr) - (w_box - corner), 0.0)
+        qy = np.maximum(np.abs(yr) - (h_box - corner), 0.0)
+        box_sdf = np.hypot(qx, qy) - corner
+        box_mask = _sstep(0.025, -0.025, box_sdf)
         slot_phase = ((yr / (h_box * 2.0) + 0.5) * slots) % 1.0
-        louver = np.where(slot_phase < 0.65, slot_phase / 0.65, 0.0)
-        frame = np.clip(1.0 - np.maximum(np.abs(xr) / w_box, np.abs(yr) / h_box), 0.0, 0.15) * 6.0
-        return (np.where(box, np.maximum(louver * 0.85, frame * 0.4), 0.0) * falloff).astype(np.float32)
+        louver = np.where(slot_phase < 0.65, slot_phase / 0.65, np.clip((1.0 - slot_phase) / 0.08, 0.0, 1.0) * 0.2)
+        frame = np.clip(-box_sdf / 0.12, 0.0, 1.0)
+        return (box_mask * np.maximum(louver * 0.85, frame * 0.4) * falloff).astype(np.float32)
     if kind == 2:
         claws = [1, 2, 3, 4, 5][int(rng.integers(0, 5))]
         acc = np.zeros_like(u, dtype=np.float32)
@@ -59,13 +70,13 @@ def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, 
             taper = np.clip(1.0 - (xr / 0.82) ** 2, 0.0, 1.0)
             dist = np.abs(yr - off - curve)
             acc = np.maximum(acc, np.exp(-(dist * dist) / width) * taper)
-        return acc.astype(np.float32)
+        return (acc * falloff).astype(np.float32)
     if kind == 3:
         rays = [4, 5, 7, 9, 13][int(rng.integers(0, 5))]
         ang_jitter = theta + (micro - 0.5) * 0.7
         spoke = np.power(np.abs(np.cos(ang_jitter * rays * 0.5)), float(rng.uniform(10.0, 22.0)))
         rings = np.power(np.abs(np.cos(r * float(rng.uniform(6.0, 15.0)) + micro * 2.5)), 14.0)
-        return (np.maximum(spoke, rings * 0.7) * np.clip(1.0 - r / 0.88, 0.0, 1.0)).astype(np.float32)
+        return (np.maximum(spoke, rings * 0.7) * falloff).astype(np.float32)
     if kind == 4:
         petals = [4, 5, 6, 8, 10, 12][int(rng.integers(0, 6))]
         wave_r = float(rng.uniform(0.38, 0.55)) + float(rng.uniform(0.10, 0.22)) * np.cos(theta * petals)
@@ -74,7 +85,7 @@ def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, 
         return (np.clip(petal_rim + 0.65 * inner_star, 0.0, 1.0) * falloff).astype(np.float32)
     if kind == 5:
         cells = [5, 7, 10, 14][int(rng.integers(0, 4))]
-        f1, _, cid, _, _ = common.periodic_voronoi(u, v, cells, 0.88, rng)
+        f1, _, cid, _, _ = common.periodic_lloyd_voronoi(u, v, cells, 0.88, rng, lloyd_iters=1)
         bumps = np.clip(1.0 - f1 * 1.4, 0.0, 1.0) * (0.55 + 0.45 * cid)
         return (bumps * falloff).astype(np.float32)
     if kind == 6:
@@ -92,13 +103,16 @@ def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, 
     if sub == 0:
         r1 = np.exp(-((r - float(rng.uniform(0.50, 0.72))) ** 2) / 0.0018)
         r2 = np.exp(-((r - float(rng.uniform(0.22, 0.42))) ** 2) / 0.0018)
-        ticks = ((np.abs(xr) < 0.03) | (np.abs(yr) < 0.03)) & (r > 0.18) & (r < 0.75)
-        return (np.clip(r1 + r2 + ticks.astype(np.float32) * 0.9, 0.0, 1.0) * falloff).astype(np.float32)
+        tick_w = np.minimum(_sstep(0.04, 0.02, np.abs(xr)), 1.0) + np.minimum(_sstep(0.04, 0.02, np.abs(yr)), 1.0)
+        tick_r = _sstep(0.16, 0.20, r) * _sstep(0.77, 0.73, r)
+        ticks = np.clip(tick_w, 0.0, 1.0) * tick_r
+        return (np.clip(r1 + r2 + ticks * 0.9, 0.0, 1.0) * falloff).astype(np.float32)
     if sub == 1:
-        chev = ((np.abs(xr) + yr * 0.8) * [2.5, 3.5, 5.0][int(rng.integers(0, 3))]) % 1.0
-        bars = (chev < 0.5).astype(np.float32)
-        box = (np.abs(xr) < 0.68) & (np.abs(yr) < 0.55)
-        return (bars * box.astype(np.float32) * falloff).astype(np.float32)
+        k_freq = [2.5, 3.5, 5.0][int(rng.integers(0, 3))]
+        chev = ((np.abs(xr) + yr * 0.8) * k_freq) % 1.0
+        bars = _sstep(0.45, 0.55, np.sin(chev * 2.0 * math.pi) * 0.5 + 0.5)
+        box = _sstep(0.70, 0.66, np.abs(xr)) * _sstep(0.57, 0.53, np.abs(yr))
+        return (bars * box * falloff).astype(np.float32)
 
     sides = [3, 4, 5, 6, 8][int(rng.integers(0, 5))]
     pr = r * np.cos((theta + math.pi / sides) % (2.0 * math.pi / sides) - math.pi / sides)
