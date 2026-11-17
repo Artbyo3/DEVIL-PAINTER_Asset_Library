@@ -489,6 +489,20 @@
         return map;
       }
 
+      function normalizeThumbs(rawThumbs) {
+        const map = Object.create(null);
+        if (!rawThumbs || typeof rawThumbs !== 'object' || Array.isArray(rawThumbs)) {
+          return map;
+        }
+        for (const key of Object.keys(rawThumbs)) {
+          const cleanKey = key.trim();
+          const val = rawThumbs[key];
+          if (!cleanKey || typeof val !== 'string' || !val.trim()) continue;
+          map[cleanKey] = val.trim().replace(/^\/+/, '');
+        }
+        return map;
+      }
+
       function fileHasTag(pack, file, tag) {
         const tags = pack._fileTags[file];
         return Array.isArray(tags) && tags.includes(tag);
@@ -536,11 +550,12 @@
         return { pack: pack, files: candidateFiles };
       }
 
-      function appendThumbnailBatch(grid, baseUrl, files, startIndex, count) {
+      function appendThumbnailBatch(grid, baseUrl, files, thumbsMap, startIndex, count) {
         const endIndex = Math.min(startIndex + count, files.length);
         for (let i = startIndex; i < endIndex; i++) {
           const cleanFile = files[i];
           const fileUrl = baseUrl + encodeURIComponent(cleanFile);
+          const thumbPath = thumbsMap && thumbsMap[cleanFile];
 
           const link = document.createElement('a');
           link.className = 'dp-thumb';
@@ -550,7 +565,15 @@
           link.title = cleanFile;
 
           const img = document.createElement('img');
-          img.src = fileUrl;
+          if (thumbPath) {
+            img.onerror = function () {
+              img.onerror = null;
+              img.src = fileUrl;
+            };
+            img.src = thumbPath;
+          } else {
+            img.src = fileUrl;
+          }
           img.alt = cleanFile;
           img.setAttribute('loading', 'lazy');
           img.loading = 'lazy';
@@ -562,7 +585,7 @@
         return endIndex;
       }
 
-      function renderThumbnailGrid(card, releaseTag, files) {
+      function renderThumbnailGrid(card, releaseTag, files, thumbsMap) {
         if (!releaseTag || files.length === 0) return;
 
         const grid = document.createElement('div');
@@ -572,7 +595,7 @@
           encodeURIComponent(releaseTag) +
           '/';
 
-        let renderedCount = appendThumbnailBatch(grid, baseUrl, files, 0, THUMB_BATCH_SIZE);
+        let renderedCount = appendThumbnailBatch(grid, baseUrl, files, thumbsMap, 0, THUMB_BATCH_SIZE);
         card.appendChild(grid);
 
         if (renderedCount < files.length) {
@@ -581,7 +604,7 @@
           showMoreBtn.className = 'dp-tag-btn dp-show-more';
           showMoreBtn.textContent = 'Show more';
           showMoreBtn.addEventListener('click', function () {
-            renderedCount = appendThumbnailBatch(grid, baseUrl, files, renderedCount, THUMB_BATCH_SIZE);
+            renderedCount = appendThumbnailBatch(grid, baseUrl, files, thumbsMap, renderedCount, THUMB_BATCH_SIZE);
             if (renderedCount >= files.length) {
               showMoreBtn.remove();
             }
@@ -698,7 +721,7 @@
           card.appendChild(mainRow);
 
           const releaseTag = typeof pack.releaseTag === 'string' ? pack.releaseTag.trim() : '';
-          renderThumbnailGrid(card, releaseTag, entry.files);
+          renderThumbnailGrid(card, releaseTag, entry.files, pack._thumbs);
 
           container.appendChild(card);
         }
@@ -729,6 +752,7 @@
                 .map(function (f) { return f.trim(); })
             : [];
           const fileTags = normalizeFileTags(pack.fileTags);
+          const thumbs = normalizeThumbs(pack.thumbs);
           for (const t of tags) {
             allTagSet.add(t);
           }
@@ -737,7 +761,8 @@
             _desc: desc,
             _tags: tags,
             _files: files,
-            _fileTags: fileTags
+            _fileTags: fileTags,
+            _thumbs: thumbs
           }));
         }
 
