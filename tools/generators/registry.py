@@ -81,6 +81,16 @@ REGISTERED_MODULES: tuple[str, ...] = (
     # --- Sculpting & Mechanical Decal Alphas (2) ---
     "sculpt_stamp_alpha",
     "mechanical_decal_alpha",
+    # --- Military Camouflage Textures (9) ---
+    "woodland_camo",
+    "desert_camo",
+    "chocolate_chip_camo",
+    "digital_woodland_camo",
+    "digital_desert_camo",
+    "tiger_stripe_camo",
+    "flecktarn_camo",
+    "multicam_camo",
+    "urban_camo",
 )
 
 
