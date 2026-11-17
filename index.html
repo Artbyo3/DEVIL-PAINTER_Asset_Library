@@ -32,7 +32,8 @@
       background-color: var(--dp-bg);
       color: var(--dp-text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.55;
+      font-size: 14px;
+      line-height: 1.45;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -50,24 +51,21 @@
     button:focus-visible,
     input:focus-visible {
       outline: 2px solid var(--dp-accent);
-      outline-offset: 3px;
+      outline-offset: 2px;
     }
 
     .dp-shell {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 24px 20px 40px;
+      max-width: 820px;
+      margin: 0;
+      padding: 16px 20px 28px;
     }
 
     .dp-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 20px;
+      gap: 12px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--dp-border);
       flex-wrap: wrap;
     }
@@ -75,11 +73,10 @@
     .dp-brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       color: var(--dp-text);
       font-weight: 600;
-      font-size: 1.05rem;
-      letter-spacing: 0.01em;
+      font-size: 0.95rem;
     }
 
     .dp-brand:hover {
@@ -88,17 +85,17 @@
     }
 
     .dp-brand img {
-      width: 38px;
-      height: 38px;
+      width: 24px;
+      height: 24px;
       display: block;
     }
 
     .dp-nav {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 14px;
       flex-wrap: wrap;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
     }
 
     .dp-nav a {
@@ -110,73 +107,73 @@
     }
 
     main {
-      flex: 1;
-      padding: 36px 0 28px;
+      padding: 14px 0 18px;
     }
 
     .dp-hero {
-      margin-bottom: 32px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--dp-border);
     }
 
     h1 {
-      margin: 0 0 12px;
-      font-size: clamp(1.75rem, 3.2vw, 2.35rem);
-      line-height: 1.2;
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      line-height: 1.25;
       font-weight: 700;
       color: var(--dp-text);
     }
 
     .dp-lead {
-      margin: 0 0 12px;
-      max-width: 68ch;
+      margin: 0 0 4px;
       color: var(--dp-text-secondary);
-      font-size: 1.03rem;
+      font-size: 0.94rem;
     }
 
     .dp-license-note {
       margin: 0;
-      max-width: 68ch;
       color: var(--dp-muted);
-      font-size: 0.94rem;
+      font-size: 0.86rem;
     }
 
     .dp-section-head {
       display: flex;
       align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
 
     h2 {
       margin: 0;
-      font-size: 1.25rem;
+      font-size: 1.02rem;
       font-weight: 600;
       color: var(--dp-text);
     }
 
     .dp-section-meta {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       color: var(--dp-muted);
     }
 
     .dp-controls {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 16px;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
     }
 
     .dp-search {
-      width: 100%;
-      padding: 10px 14px;
-      border-radius: 8px;
+      flex: 1 1 220px;
+      max-width: 300px;
+      padding: 5px 8px;
+      border-radius: 3px;
       border: 1px solid var(--dp-border);
       background-color: var(--dp-well);
       color: var(--dp-text);
       font: inherit;
-      font-size: 0.94rem;
+      font-size: 0.86rem;
     }
 
     .dp-search::placeholder {
@@ -186,20 +183,19 @@
     .dp-tag-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
     .dp-tag-btn {
-      padding: 5px 12px;
-      border-radius: 999px;
+      padding: 4px 9px;
+      border-radius: 3px;
       border: 1px solid var(--dp-border);
-      background-color: var(--dp-elevated);
+      background-color: var(--dp-well);
       color: var(--dp-text-secondary);
       font: inherit;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
     .dp-tag-btn:hover {
@@ -215,21 +211,23 @@
     }
 
     .dp-pack-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+      border: 1px solid var(--dp-border);
+      border-radius: 3px;
+      background-color: var(--dp-well);
     }
 
     .dp-card {
-      background-color: var(--dp-elevated);
-      border: 1px solid var(--dp-border);
-      border-radius: 10px;
-      padding: 18px 20px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--dp-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 12px;
       flex-wrap: wrap;
+    }
+
+    .dp-card:last-child {
+      border-bottom: none;
     }
 
     .dp-card-body {
@@ -238,8 +236,8 @@
     }
 
     .dp-card-title {
-      margin: 0 0 6px;
-      font-size: 1.08rem;
+      margin: 0 0 2px;
+      font-size: 0.94rem;
       font-weight: 600;
       color: var(--dp-text);
     }
@@ -247,40 +245,36 @@
     .dp-card-desc {
       margin: 0;
       color: var(--dp-text-secondary);
-      font-size: 0.94rem;
+      font-size: 0.84rem;
     }
 
     .dp-card-tags {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 4px;
     }
 
     .dp-tag {
-      padding: 2px 9px;
-      border-radius: 999px;
-      background-color: var(--dp-well);
-      border: 1px solid var(--dp-border);
-      color: var(--dp-text-secondary);
+      color: var(--dp-muted);
       font-size: 0.78rem;
+    }
+
+    .dp-tag::before {
+      content: "#";
     }
 
     .dp-card-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-shrink: 0;
     }
 
     .dp-size {
-      padding: 4px 10px;
-      border-radius: 6px;
-      background-color: var(--dp-well);
-      border: 1px solid var(--dp-border);
-      color: var(--dp-text-secondary);
-      font-size: 0.84rem;
+      color: var(--dp-muted);
+      font-size: 0.82rem;
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
@@ -289,14 +283,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 9px 16px;
-      border-radius: 7px;
+      padding: 4px 10px;
+      border-radius: 3px;
       background-color: var(--dp-accent);
       color: var(--dp-well);
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       font-weight: 600;
       white-space: nowrap;
-      transition: background-color 0.15s ease;
     }
 
     .dp-btn:hover {
@@ -306,38 +299,36 @@
     }
 
     .dp-empty {
-      background-color: var(--dp-elevated);
-      border: 1px solid var(--dp-border);
-      border-radius: 10px;
-      padding: 24px 22px;
+      padding: 12px 14px;
     }
 
     .dp-empty p {
-      margin: 0 0 10px;
+      margin: 0 0 4px;
       color: var(--dp-text-secondary);
+      font-size: 0.88rem;
     }
 
     .dp-empty p:last-child {
       margin-bottom: 0;
       color: var(--dp-muted);
-      font-size: 0.92rem;
+      font-size: 0.84rem;
     }
 
     .dp-footer {
-      padding-top: 20px;
+      padding-top: 10px;
       border-top: 1px solid var(--dp-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       color: var(--dp-muted);
     }
 
     .dp-footer-links {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
   </style>
@@ -358,12 +349,14 @@
 
     <main>
       <section class="dp-hero">
-        <h1>Texture and Material Packs</h1>
+        <h1>Free CC0 Texture &amp; Material Packs</h1>
         <p class="dp-lead">
-          Free packs made for <a href="https://github.com/Artbyo3/DEVIL-PAINTER" target="_blank" rel="noopener">Devil Painter</a>.
+          Free texture and material packs made for
+          <a href="https://github.com/Artbyo3/DEVIL-PAINTER" target="_blank" rel="noopener">Devil Painter</a>.
+          Anyone can use them for free in any program.
         </p>
         <p class="dp-license-note">
-          They are <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/blob/main/LICENSE" target="_blank" rel="noopener">CC0</a>, so you can use them in any program for any work, edit and share them, with no credit needed.
+          Everything here is <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/blob/main/LICENSE" target="_blank" rel="noopener">CC0 1.0</a>. Use these packs for personal or commercial work, edit them, and share them with no credit needed.
         </p>
       </section>
 
