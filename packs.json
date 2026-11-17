@@ -3897,6 +3897,41 @@
         "sp_586_height_alphas_and_sculpt_stamps_v098.png": "thumbs/alphas-vol1-v1.0.0/sp_586_height_alphas_and_sculpt_stamps_v098.webp",
         "zipper-teeth-trim.png": "thumbs/alphas-vol1-v1.0.0/zipper-teeth-trim.webp"
       }
+    },
+    {
+      "name": "VT Live Test Pack",
+      "description": "Temporary 1-asset pack for live VirusTotal Release Scan Gate verification",
+      "size": "1.2 KB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/vt-live-clean-v0.0.1/VT_Live_Test_Pack.zip",
+      "releaseTag": "vt-live-clean-v0.0.1",
+      "tags": [
+        "test",
+        "verification"
+      ],
+      "files": [
+        "vt-live-tile-01.png"
+      ],
+      "fileTags": {
+        "vt-live-tile-01.png": [
+          "vt-live-tile",
+          "vt",
+          "live",
+          "tile",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "vt-live-tile-01.png": "dc371c3f9ff1a303c4d8194841776519ede7111c32137461bae476fb752787af"
+      },
+      "materials": {
+        "vt-live-tile-01": {
+          "base": "vt-live-tile-01.png"
+        }
+      },
+      "sha256": "ceec10c4bfabec73cc58c18d9864291cc48ccc9cff703ebf471fbd03570be1c3",
+      "thumbs": {
+        "vt-live-tile-01.png": "thumbs/vt-live-clean-v0.0.1/vt-live-tile-01.webp"
+      }
     }
   ]
 }
