@@ -5,7 +5,10 @@
         "name": "string",
         "description": "string",
         "size": "string",
-        "downloadUrl": "string"
+        "downloadUrl": "string",
+        "tags": [
+          "string"
+        ]
       }
     ]
   },

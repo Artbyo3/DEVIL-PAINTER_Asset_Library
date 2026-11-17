@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Devil Painter Asset Library</title>
-  <meta name="description" content="Free CC0 texture and material packs for Devil Painter and any 3D workflow.">
+  <meta name="description" content="Free CC0 texture and material packs made for Devil Painter, free for anyone to use in any program.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <style>
     :root {
@@ -47,7 +47,8 @@
     }
 
     a:focus-visible,
-    button:focus-visible {
+    button:focus-visible,
+    input:focus-visible {
       outline: 2px solid var(--dp-accent);
       outline-offset: 3px;
     }
@@ -174,6 +175,59 @@
       color: var(--dp-muted);
     }
 
+    .dp-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .dp-search {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--dp-border);
+      background-color: var(--dp-well);
+      color: var(--dp-text);
+      font: inherit;
+      font-size: 0.94rem;
+    }
+
+    .dp-search::placeholder {
+      color: var(--dp-muted);
+    }
+
+    .dp-tag-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dp-tag-btn {
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--dp-border);
+      background-color: var(--dp-elevated);
+      color: var(--dp-text-secondary);
+      font: inherit;
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .dp-tag-btn:hover {
+      border-color: var(--dp-accent);
+      color: var(--dp-text);
+    }
+
+    .dp-tag-btn.is-active {
+      background-color: var(--dp-accent);
+      border-color: var(--dp-accent);
+      color: var(--dp-well);
+      font-weight: 600;
+    }
+
     .dp-pack-list {
       display: grid;
       grid-template-columns: 1fr;
@@ -208,6 +262,23 @@
       margin: 0;
       color: var(--dp-text-secondary);
       font-size: 0.94rem;
+    }
+
+    .dp-card-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .dp-tag {
+      padding: 2px 9px;
+      border-radius: 999px;
+      background-color: var(--dp-well);
+      border: 1px solid var(--dp-border);
+      color: var(--dp-text-secondary);
+      font-size: 0.78rem;
     }
 
     .dp-card-actions {
@@ -304,23 +375,27 @@
         <span class="dp-kicker">CC0 1.0 Public Domain</span>
         <h1>Free CC0 Texture &amp; Material Packs</h1>
         <p class="dp-lead">
-          A public catalog of free texture and material packs built for the
-          <a href="https://github.com/Artbyo3/DEVIL-PAINTER" target="_blank" rel="noopener">Devil Painter</a>
-          Blender add-on, usable by anyone in any tool &mdash; no add-on required.
+          Free texture and material packs made for
+          <a href="https://github.com/Artbyo3/DEVIL-PAINTER" target="_blank" rel="noopener">Devil Painter</a>.
+          Anyone can use them for free in any program.
         </p>
         <p class="dp-license-note">
-          Everything in this library is <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/blob/main/LICENSE" target="_blank" rel="noopener">CC0 1.0</a> and free for anyone: personal or commercial use, modification, and redistribution with no attribution required.
+          Everything here is <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/blob/main/LICENSE" target="_blank" rel="noopener">CC0 1.0</a>. Use these packs for personal or commercial work, edit them, and share them with no credit needed.
         </p>
       </section>
 
       <section aria-labelledby="packs-heading">
         <div class="dp-section-head">
           <h2 id="packs-heading">Packs</h2>
-          <span class="dp-section-meta">Hosted as GitHub Release assets</span>
+          <span class="dp-section-meta">Downloads are ordinary zip files</span>
+        </div>
+        <div class="dp-controls">
+          <input id="pack-search" class="dp-search" type="search" placeholder="Search packs by name or description..." aria-label="Search packs">
+          <div id="tag-bar" class="dp-tag-bar" role="group" aria-label="Filter packs by tag"></div>
         </div>
         <div id="pack-list" class="dp-pack-list" aria-live="polite">
           <div class="dp-empty">
-            <p>Loading pack manifest...</p>
+            <p>Loading packs...</p>
           </div>
         </div>
       </section>
@@ -339,6 +414,11 @@
   <script>
     (async function () {
       const container = document.getElementById('pack-list');
+      const tagBar = document.getElementById('tag-bar');
+      const searchInput = document.getElementById('pack-search');
+
+      let validPacks = [];
+      let activeTag = '';
 
       function renderMessage(primaryText, secondaryHtml) {
         container.innerHTML = '';
@@ -371,26 +451,71 @@
         return '';
       }
 
-      try {
-        const res = await fetch('./packs.json', { cache: 'no-store' });
-        if (!res.ok) {
-          throw new Error('Failed to load packs.json (' + res.status + ')');
+      function normalizeTags(rawTags) {
+        if (!Array.isArray(rawTags)) return [];
+        const seen = new Set();
+        const out = [];
+        for (const item of rawTags) {
+          if (typeof item !== 'string') continue;
+          const clean = item.trim().toLowerCase();
+          if (!clean || seen.has(clean)) continue;
+          seen.add(clean);
+          out.push(clean);
         }
-        const data = await res.json();
-        const packs = Array.isArray(data) ? data : (Array.isArray(data && data.packs) ? data.packs : []);
+        return out;
+      }
 
-        if (packs.length === 0) {
+      function renderTagBar(allTags) {
+        tagBar.innerHTML = '';
+
+        const options = [''].concat(allTags);
+        for (const tag of options) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'dp-tag-btn' + (activeTag === tag ? ' is-active' : '');
+          btn.dataset.tag = tag;
+          btn.setAttribute('aria-pressed', activeTag === tag ? 'true' : 'false');
+          btn.textContent = tag === '' ? 'All' : tag;
+          btn.addEventListener('click', function () {
+            activeTag = tag;
+            renderTagBar(allTags);
+            renderPacks();
+          });
+          tagBar.appendChild(btn);
+        }
+      }
+
+      function renderPacks() {
+        if (validPacks.length === 0) {
           renderMessage(
-            'No packs have been published yet.',
-            'Pack archives will appear here as they are added to <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">GitHub Releases</a>.'
+            'No packs are listed yet.',
+            'Packs will show up here as zip files once they are added to <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">this repo\'s releases</a>.'
           );
           return;
         }
 
-        container.innerHTML = '';
-        for (const pack of packs) {
-          if (!pack || typeof pack !== 'object') continue;
+        const query = searchInput.value.trim().toLowerCase();
+        const filtered = validPacks.filter(function (pack) {
+          if (activeTag && !pack._tags.includes(activeTag)) {
+            return false;
+          }
+          if (query) {
+            const matchesName = pack._name.toLowerCase().includes(query);
+            const matchesDesc = pack._desc.toLowerCase().includes(query);
+            if (!matchesName && !matchesDesc) {
+              return false;
+            }
+          }
+          return true;
+        });
 
+        if (filtered.length === 0) {
+          renderMessage('No packs match your search or selected tag.');
+          return;
+        }
+
+        container.innerHTML = '';
+        for (const pack of filtered) {
           const card = document.createElement('article');
           card.className = 'dp-card';
 
@@ -399,14 +524,26 @@
 
           const title = document.createElement('h3');
           title.className = 'dp-card-title';
-          title.textContent = typeof pack.name === 'string' && pack.name.trim() ? pack.name : 'Untitled Pack';
+          title.textContent = pack._name;
           body.appendChild(title);
 
-          if (typeof pack.description === 'string' && pack.description.trim()) {
+          if (pack._desc) {
             const desc = document.createElement('p');
             desc.className = 'dp-card-desc';
-            desc.textContent = pack.description;
+            desc.textContent = pack._desc;
             body.appendChild(desc);
+          }
+
+          if (pack._tags.length > 0) {
+            const tagsWrap = document.createElement('div');
+            tagsWrap.className = 'dp-card-tags';
+            for (const tag of pack._tags) {
+              const tagEl = document.createElement('span');
+              tagEl.className = 'dp-tag';
+              tagEl.textContent = tag;
+              tagsWrap.appendChild(tagEl);
+            }
+            body.appendChild(tagsWrap);
           }
 
           const actions = document.createElement('div');
@@ -434,17 +571,45 @@
           card.appendChild(actions);
           container.appendChild(card);
         }
+      }
 
-        if (!container.children.length) {
-          renderMessage(
-            'No packs have been published yet.',
-            'Pack archives will appear here as they are added to <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">GitHub Releases</a>.'
-          );
+      searchInput.addEventListener('input', function () {
+        renderPacks();
+      });
+
+      try {
+        const res = await fetch('./packs.json', { cache: 'no-store' });
+        if (!res.ok) {
+          throw new Error('Failed to load packs.json (' + res.status + ')');
         }
+        const data = await res.json();
+        const packs = Array.isArray(data) ? data : (Array.isArray(data && data.packs) ? data.packs : []);
+
+        const allTagSet = new Set();
+        validPacks = [];
+        for (const pack of packs) {
+          if (!pack || typeof pack !== 'object') continue;
+          const name = typeof pack.name === 'string' && pack.name.trim() ? pack.name.trim() : 'Untitled Pack';
+          const desc = typeof pack.description === 'string' && pack.description.trim() ? pack.description.trim() : '';
+          const tags = normalizeTags(pack.tags);
+          for (const t of tags) {
+            allTagSet.add(t);
+          }
+          validPacks.push(Object.assign({}, pack, {
+            _name: name,
+            _desc: desc,
+            _tags: tags
+          }));
+        }
+
+        const allTags = Array.from(allTagSet).sort();
+        renderTagBar(allTags);
+        renderPacks();
       } catch (err) {
+        renderTagBar([]);
         renderMessage(
-          'Unable to load the pack manifest right now.',
-          'You can browse releases directly on <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">GitHub Releases</a>.'
+          'Could not load the pack list right now.',
+          'You can still download the zip files from <a href="https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases" target="_blank" rel="noopener">this repo\'s releases page</a>.'
         );
       }
     })();
