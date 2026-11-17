@@ -9,7 +9,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     cols = [6, 8, 10, 14][(variant + int(rng.integers(0, 4))) % 4]
@@ -41,8 +43,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, glaze, stops, contrast=1.15)
     rough = np.where(grout > 0.2, 0.16, 0.85).astype(np.float32)
-    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=5.5, spec_intensity=0.25)
+    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=5.5, spec_intensity=0.25), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="hex-mosaic",
@@ -52,4 +61,8 @@ SPEC = GeneratorSpec(
     default_palette="moroccan_zellige",
     description="Beveled hexagonal ceramic mosaic tiles with per-tile glaze color variation and recessed grout.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_pbr_surface.",
+    normal_strength=5.5,
+    height_fn=generate_height,
 )

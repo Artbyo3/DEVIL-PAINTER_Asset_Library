@@ -9,7 +9,7 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute_mask(seed: int = 1, size: int = 512, variant: int = 0) -> tuple[np.random.Generator, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     style = variant % 5
@@ -46,11 +46,20 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
         thresh = 0.35 + (variant % 4) * 0.08
         raw = np.clip((swiss - thresh) / 0.28, 0.0, 1.0)
         mask = common.normalize_field(0.80 * raw + 0.20 * base)
+    return rng, mask
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    rng, mask = _compute_mask(seed=seed, size=size, variant=variant)
     if palette is not None:
         stops = common.resolve_palette(palette, SPEC.default_palette, rng)
         return common.rgb_image(common.apply_palette_5stop(mask, None, stops))
     return common.alpha_image(mask)
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    _ = palette
+    return _compute_mask(seed=seed, size=size, variant=variant)[1]
 
 
 SPEC = GeneratorSpec(
@@ -61,4 +70,8 @@ SPEC = GeneratorSpec(
     default_palette="charcoal_flannel",
     description="Tileable surface grunge masks: scratches (v0), drips (v1), corrosion peel (v2), cracks (v3), smudge breakup (v4).",
     render_fn=generate,
+    normal_source="derived",
+    normal_rule="Derived relief height directly from the 2D grunge/scratch/drip/peel/crack wear mask.",
+    normal_strength=5.5,
+    height_fn=generate_height,
 )

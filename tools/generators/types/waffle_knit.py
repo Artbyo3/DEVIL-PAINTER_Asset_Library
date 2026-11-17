@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     slub = common.periodic_fbm(u, v, 4, 3, 0.5, rng, freqy=32)
@@ -26,8 +28,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     c = common.normalize_field(0.82 * h + 0.18 * slub)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, slub, stops, contrast=1.15)
-    return common.shade_cloth_surface(albedo, h, normal_strength=6.0, sheen_amt=14.0)
+    return common.shade_cloth_surface(albedo, h, normal_strength=6.0, sheen_amt=14.0), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="waffle-knit",
@@ -37,4 +46,8 @@ SPEC = GeneratorSpec(
     default_palette="sage_linen",
     description="Honeycomb waffle thermal knit and pique polo mesh weave.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_cloth_surface.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

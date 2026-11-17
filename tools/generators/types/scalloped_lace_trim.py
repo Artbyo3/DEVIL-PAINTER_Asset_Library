@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     _ = palette
     u, v = common.make_uv_grid(size)
@@ -22,8 +24,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     er = np.sqrt(eu * eu + y * y)
     eyelet_hole = np.clip((er - 0.12) * 30.0, 0.0, 1.0)
     rim = np.exp(-((er - 0.14) ** 2) / 0.002) * 0.4
-    return common.alpha_image(base * eyelet_hole + rim * base)
+    _h = (base * eyelet_hole + rim * base).astype(np.float32)
+    return common.alpha_image(_h), _h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="scalloped-lace-trim",
@@ -34,4 +44,8 @@ SPEC = GeneratorSpec(
     default_palette="bridal_ivory_lace",
     description="Scalloped broderie anglaise eyelet lace edge trim alpha (tiles horizontally).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native scalloped edge profile, eyelet cutouts, and raised embroidery rim.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

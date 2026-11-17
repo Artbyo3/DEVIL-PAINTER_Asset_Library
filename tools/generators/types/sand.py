@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
 
@@ -34,8 +36,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, grain_b, stops, contrast=1.12)
-    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=2.8, spec_intensity=0.14)
+    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=2.8, spec_intensity=0.14), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="sand",
@@ -45,4 +54,8 @@ SPEC = GeneratorSpec(
     default_palette="rippled_beach_sand",
     description="Flat beach and desert floor sand with fine low-relief wave ripples and crisp granular mineral sparkle.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_pbr_surface.",
+    normal_strength=2.8,
+    height_fn=generate_height,
 )

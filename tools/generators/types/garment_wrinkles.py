@@ -10,7 +10,7 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute_height(seed: int = 1, size: int = 512, variant: int = 0) -> tuple[np.random.Generator, np.ndarray, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     style = variant % 4
@@ -38,7 +38,11 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
         diag = ((u + v) * freq + 0.22 * (w1 - 0.5)) * 2.0 * math.pi
         drape = 0.5 + 0.5 * np.sin(diag)
         h = common.normalize_field(0.72 * drape + 0.28 * w2)
+    return rng, w2, h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    rng, w2, h = _compute_height(seed=seed, size=size, variant=variant)
     if palette is None and variant % 2 == 1:
         normal_rgb, _, _, _, _ = common.compute_sobel_normals_and_baking(h, normal_strength=7.5)
         return common.rgb_image(normal_rgb)
@@ -46,6 +50,11 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(h, w2, stops, contrast=1.08)
     return common.shade_cloth_surface(albedo, h, normal_strength=6.5, sheen_amt=14.0)
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    _ = palette
+    return _compute_height(seed=seed, size=size, variant=variant)[2]
 
 
 SPEC = GeneratorSpec(
@@ -56,4 +65,8 @@ SPEC = GeneratorSpec(
     default_palette="heather_grey_jersey",
     description="Tension pipe folds, gathered waistband pleats, crumpled linen creases, and bias drape folds.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native garment fold, pleat, crumple, and drape elevation field h.",
+    normal_strength=6.5,
+    height_fn=generate_height,
 )

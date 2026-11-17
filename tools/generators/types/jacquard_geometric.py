@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     rep = [3, 4, 5, 6][int(rng.integers(0, 4))]
@@ -39,8 +41,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     micro = common.periodic_fbm(u, v, 10, 3, 0.5, rng)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, micro, stops, contrast=1.15)
-    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=5.2, spec_intensity=0.22)
+    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=5.2, spec_intensity=0.22), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="jacquard-geometric",
@@ -50,4 +59,8 @@ SPEC = GeneratorSpec(
     default_palette="teal_jacquard",
     description="Geometric jacquard upholstery/apparel fabric (diamond lattice, medallion, or chevron zigzag).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_pbr_surface.",
+    normal_strength=5.2,
+    height_fn=generate_height,
 )

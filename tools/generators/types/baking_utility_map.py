@@ -75,6 +75,14 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     return common.rgb_image(flow_rgb)
 
 
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    rng = np.random.default_rng(seed)
+    _ = palette
+    u, v = common.make_uv_grid(size)
+    h, _, _ = _base_surface_fields(u, v, rng, variant)
+    return h
+
+
 SPEC = GeneratorSpec(
     name="baking-utility-map",
     kind="texture",
@@ -83,4 +91,8 @@ SPEC = GeneratorSpec(
     default_palette="cyber_bulkhead",
     description="Tileable baking utility maps: Channel-packed ORM (v0), Color Selection ID (v1), Anisotropic Flow Tangent (v2).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native underlying surface height field h baked by _base_surface_fields.",
+    normal_strength=6.5,
+    height_fn=generate_height,
 )

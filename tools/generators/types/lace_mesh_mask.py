@@ -10,7 +10,7 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
     rng = np.random.default_rng(seed)
     _ = palette
     u, v = common.make_uv_grid(size)
@@ -28,7 +28,7 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
         d1 = np.abs(((u + v) * scale * 4.0) % 1.0 - 0.5)
         d2 = np.abs(((u - v) * scale * 4.0) % 1.0 - 0.5)
         tulle = np.maximum(np.exp(-(d1 * d1) / 0.004), np.exp(-(d2 * d2) / 0.004)) * 0.45
-        return common.alpha_image(np.clip(flower + tulle, 0.0, 1.0))
+        return np.clip(flower + tulle, 0.0, 1.0).astype(np.float32)
 
     if style == 1:
         freq = 8 + (variant % 6) * 4
@@ -40,7 +40,7 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
             np.clip((thickness - d2) / 0.04, 0.0, 1.0),
         )
         knots = np.exp(-((d1 * d1 + d2 * d2) / 0.02)) * 0.35
-        return common.alpha_image(np.clip(net + knots, 0.0, 1.0))
+        return np.clip(net + knots, 0.0, 1.0).astype(np.float32)
 
     if style == 2:
         cols = 10 + (variant % 5) * 4
@@ -52,7 +52,7 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
         hole_r = np.sqrt((lu * 1.2) ** 2 + (lv * 0.85) ** 2)
         web = np.clip((hole_r - 0.28) / 0.06, 0.0, 1.0)
         knit = 0.85 + 0.15 * np.sin(u * cols * 4.0 * math.pi)
-        return common.alpha_image(web * knit)
+        return (web * knit).astype(np.float32)
 
     tear_noise = common.periodic_fbm(u, v, 3, 5, 0.55, rng)
     hole_region = tear_noise < (0.36 + (variant % 3) * 0.05)
@@ -60,9 +60,13 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     weft_strands = (np.sin((v * 64.0 + (tear_noise - 0.5) * 3.0) * math.pi) > 0.72).astype(np.float32)
     intact_cloth = (~hole_region).astype(np.float32)
     fray_fuzz = fray_border.astype(np.float32) * common.periodic_gradient_perlin(u, v, 32, 32, rng)
-    return common.alpha_image(
-        np.clip(intact_cloth + hole_region.astype(np.float32) * weft_strands * 0.85 - 0.25 * fray_fuzz, 0.0, 1.0)
+    return np.clip(intact_cloth + hole_region.astype(np.float32) * weft_strands * 0.85 - 0.25 * fray_fuzz, 0.0, 1.0).astype(
+        np.float32
     )
+
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return common.alpha_image(generate_height(seed=seed, palette=palette, size=size, variant=variant))
 
 
 SPEC = GeneratorSpec(
@@ -73,4 +77,8 @@ SPEC = GeneratorSpec(
     default_palette="bridal_ivory_lace",
     description="Tileable opacity masks: Chantilly floral lace, fishnet, jersey eyelet mesh, and ripped denim tear.",
     render_fn=generate,
+    normal_source="derived",
+    normal_rule="Derived thread relief from opacity/tear cutout alpha mask field.",
+    normal_strength=4.5,
+    height_fn=generate_height,
 )

@@ -9,7 +9,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
 
@@ -55,8 +57,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     albedo = mortar_rgb * (1.0 - brick_mask[..., None]) + b_rgb * brick_mask[..., None]
     rough = np.where(brick_mask > 0.35, 0.72 + 0.16 * clay, 0.90).astype(np.float32)
 
-    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=6.2, spec_intensity=0.10)
+    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=6.2, spec_intensity=0.10), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="red-brick-wall",
@@ -66,4 +75,8 @@ SPEC = GeneratorSpec(
     default_palette="classic_red_brick",
     description="Classic running-bond red clay brick masonry wall with weathered faces and recessed mortar joints.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_pbr_surface.",
+    normal_strength=6.2,
+    height_fn=generate_height,
 )

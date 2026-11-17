@@ -9,7 +9,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     _ = palette
     u, v = common.make_uv_grid(size)
@@ -25,8 +27,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     holes = np.clip((0.085 - h_dist) * 40.0, 0.0, 1.0)
     threads_cross = ((np.abs(x) < 0.05) & (np.abs(y) < 0.22)) | ((np.abs(y) < 0.05) & (np.abs(x) < 0.22))
     btn = disc * (0.65 + rim - recess - 0.60 * holes) + 0.35 * threads_cross.astype(np.float32)
-    return common.alpha_image(np.clip(btn, 0.0, 1.0))
+    _h = (np.clip(btn, 0.0, 1.0)).astype(np.float32)
+    return common.alpha_image(_h), _h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="four-hole-button",
@@ -37,4 +47,8 @@ SPEC = GeneratorSpec(
     default_palette="charcoal_flannel",
     description="Radial 4-hole shirt button decal alpha stamp with beveled rim and crossed sewing threads.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native beveled button dish, raised rim, thread holes, and center X-stitch relief.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

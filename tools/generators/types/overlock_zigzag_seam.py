@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     _ = (np.random.default_rng(seed), palette)
     u, v = common.make_uv_grid(size)
     x = (u - 0.5) * 2.0
@@ -21,8 +23,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     diag_dist = np.abs(x - zig_x)
     zig_thread = np.exp(-(diag_dist * diag_dist) / 0.0018)
     border_rails = np.exp(-((np.abs(x) - 0.20) ** 2) / 0.0012) * np.sin(sv * math.pi)
-    return common.alpha_image(np.maximum(zig_thread, border_rails * 0.85))
+    _h = (np.maximum(zig_thread, border_rails * 0.85)).astype(np.float32)
+    return common.alpha_image(_h), _h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="overlock-zigzag-seam",
@@ -33,4 +43,8 @@ SPEC = GeneratorSpec(
     default_palette="charcoal_flannel",
     description="Overlock serger zigzag edge stitch and dual rail threads (tiles vertically).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native zigzag overlock serger thread and dual border rail relief.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

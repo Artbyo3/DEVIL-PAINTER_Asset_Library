@@ -33,6 +33,10 @@ def _slug_filename(type_name: str, index: int) -> str:
     return f"{type_name}-{index:02d}.png"
 
 
+def _normal_path(base_path: Path) -> Path:
+    return base_path.with_name(f"{base_path.stem}_normal{base_path.suffix}")
+
+
 def _build_pack_json(
     pack_name: str,
     kind: str,
@@ -72,6 +76,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--variant", type=int, default=0, help="Sub-style variant selector (default: 0).")
     parser.add_argument("--count", type=int, default=1, help="Number of textures to generate in single-type mode.")
     parser.add_argument("--count-per-type", type=int, default=1, help="Number of textures per type in --types mode.")
+    parser.add_argument(
+        "--normal",
+        action="store_true",
+        help="Also emit OpenGL (+Y up) tangent-space normal maps with the _normal suffix.",
+    )
     parser.add_argument("--out", default=None, help="Output .png file path or directory (default: current directory).")
     parser.add_argument("--out-dir", default=None, help="Output directory for batch / pack-ready output.")
     parser.add_argument(
@@ -97,7 +106,10 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Registered generators ({len(specs)}):")
         for spec in specs:
             tile_label = "tileable" if spec.tileable else f"non-tiling({spec.tile_axes})"
-            print(f"  {spec.name:<28} [{spec.kind:<7}] {tile_label:<18} palette={spec.default_palette}")
+            print(
+                f"  {spec.name:<28} [{spec.kind:<7}] {tile_label:<18} "
+                f"normal={spec.normal_source:<7} palette={spec.default_palette}"
+            )
         return 0
 
     if args.list_palettes:
@@ -139,6 +151,16 @@ def main(argv: list[str] | None = None) -> int:
         img = specs[0].generate(seed=args.seed, palette=args.palette, size=args.size, variant=args.variant)
         img.save(out_file, format="PNG", compress_level=4)
         print(f"Generated {out_file} ({specs[0].name}, {img.size[0]}x{img.size[1]}, {img.mode})")
+        if args.normal:
+            n_file = _normal_path(out_file)
+            n_img = specs[0].generate_normal(
+                seed=args.seed, palette=args.palette, size=args.size, variant=args.variant
+            )
+            n_img.save(n_file, format="PNG", compress_level=4)
+            print(
+                f"Generated {n_file} ({specs[0].name} normal [{specs[0].normal_source}], "
+                f"{n_img.size[0]}x{n_img.size[1]}, {n_img.mode})"
+            )
         return 0
 
     out_root = Path(args.out_dir or args.out or ".")
@@ -154,14 +176,25 @@ def main(argv: list[str] | None = None) -> int:
         for i in range(1, per_type + 1):
             filename = _slug_filename(spec.name, i)
             out_path = target_dir / filename
+            variant_i = args.variant + (i - 1)
             img = spec.generate(
                 seed=seed_cursor,
                 palette=args.palette,
                 size=args.size,
-                variant=args.variant + (i - 1),
+                variant=variant_i,
             )
             img.save(out_path, format="PNG", compress_level=4)
             generated_paths.append(out_path)
+            if args.normal:
+                n_path = _normal_path(out_path)
+                n_img = spec.generate_normal(
+                    seed=seed_cursor,
+                    palette=args.palette,
+                    size=args.size,
+                    variant=variant_i,
+                )
+                n_img.save(n_path, format="PNG", compress_level=4)
+                generated_paths.append(n_path)
             seed_cursor += 104729
 
     if args.write_pack_json:

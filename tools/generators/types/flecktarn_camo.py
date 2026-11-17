@@ -34,7 +34,9 @@ def _spot_cluster_layer(
     return _smoothstep(spot_score, threshold, threshold + 0.045)
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
 
@@ -57,8 +59,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     threads = max(24, min(96, size // 6))
     twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
     h = common.normalize_field(0.75 * twill + 0.25 * slub)
-    return common.shade_cloth_surface(albedo, h, normal_strength=2.1, sheen_amt=5.5)
+    return common.shade_cloth_surface(albedo, h, normal_strength=2.1, sheen_amt=5.5), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="flecktarn-camo",
@@ -68,4 +77,8 @@ SPEC = GeneratorSpec(
     default_palette="bundeswehr_flecktarn",
     description="German Flecktarn camouflage with dense layered clusters of small organic dots and spots over a muted green base.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_cloth_surface.",
+    normal_strength=2.1,
+    height_fn=generate_height,
 )

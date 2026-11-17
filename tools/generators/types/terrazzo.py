@@ -9,7 +9,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     cells = [10, 14, 18, 24][(variant + int(rng.integers(0, 4))) % 4]
@@ -25,8 +27,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, base_noise, stops, contrast=1.18)
-    return common.shade_pbr_surface(albedo, common.normalize_field(h), roughness=0.28, normal_strength=3.8, spec_intensity=0.20)
+    return common.shade_pbr_surface(albedo, common.normalize_field(h), roughness=0.28, normal_strength=3.8, spec_intensity=0.20), np.asarray(common.normalize_field(h), dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="terrazzo",
@@ -36,4 +45,8 @@ SPEC = GeneratorSpec(
     default_palette="desert_travertine",
     description="Polished terrazzo stone aggregate chips embedded in cementitious binder.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (common.normalize_field(h)) used by shade_pbr_surface.",
+    normal_strength=3.8,
+    height_fn=generate_height,
 )

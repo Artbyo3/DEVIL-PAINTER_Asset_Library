@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     kind = variant % 6
@@ -68,7 +70,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, micro, stops, contrast=1.14)
     ao = 0.84 + 0.16 * h
-    return common.rgb_image(albedo * ao[..., None])
+    return common.rgb_image(albedo * ao[..., None]), h
+
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 
 SPEC = GeneratorSpec(
@@ -79,4 +89,8 @@ SPEC = GeneratorSpec(
     default_palette="industrial_concrete",
     description="Aggregate concrete cracks (v0), peeling paint (v1), zinc spangle (v2), strata (v3), barrel roof tiles (v4), corrosion patina (v5).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native surface relief field h (aggregate cracks, paint curl, zinc spangle, strata, barrel tiles, corrosion patina).",
+    normal_strength=5.5,
+    height_fn=generate_height,
 )

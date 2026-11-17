@@ -300,6 +300,40 @@ def compute_sobel_normals_and_baking(
     return normal_rgb.astype(np.uint8), ao, curv, nx, ny
 
 
+def height_to_normal(height: np.ndarray, strength: float = 6.0) -> Image.Image:
+    """Convert a 2D height field into a periodic OpenGL (+Y up, Blender) tangent-space normal map."""
+    h = normalize_field(height)
+    h_right = np.roll(h, -1, axis=1)
+    h_left = np.roll(h, 1, axis=1)
+    h_up = np.roll(h, 1, axis=0)
+    h_down = np.roll(h, -1, axis=0)
+
+    # 3x3 periodic Sobel derivatives: +X right, +Y up (row index decreases upward)
+    dh_dx = (
+        (np.roll(h_right, 1, axis=0) - np.roll(h_left, 1, axis=0))
+        + 2.0 * (h_right - h_left)
+        + (np.roll(h_right, -1, axis=0) - np.roll(h_left, -1, axis=0))
+    ) * 0.125
+    dh_dy_up = (
+        (np.roll(h_up, 1, axis=1) - np.roll(h_down, 1, axis=1))
+        + 2.0 * (h_up - h_down)
+        + (np.roll(h_up, -1, axis=1) - np.roll(h_down, -1, axis=1))
+    ) * 0.125
+
+    s = float(strength)
+    nx = -dh_dx * s
+    ny = -dh_dy_up * s
+    nz = np.ones_like(h, dtype=np.float32)
+    inv_len = 1.0 / np.sqrt(nx * nx + ny * ny + nz * nz + 1e-12)
+    nx = nx * inv_len
+    ny = ny * inv_len
+    nz = nz * inv_len
+
+    rgb = np.stack([nx * 0.5 + 0.5, ny * 0.5 + 0.5, nz * 0.5 + 0.5], axis=-1)
+    rgb_u8 = np.rint(np.clip(rgb * 255.0, 0.0, 255.0)).astype(np.uint8)
+    return Image.fromarray(rgb_u8, mode="RGB")
+
+
 def alpha_image(field: np.ndarray) -> Image.Image:
     f = normalize_field(field)
     return Image.fromarray(np.clip(f * 255.0, 0.0, 255.0).astype(np.uint8), mode="L")

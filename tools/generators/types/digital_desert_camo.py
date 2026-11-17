@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
 
@@ -53,8 +55,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     threads = max(24, min(96, size // 6))
     twill = 0.5 + 0.5 * np.sin(((u + v) * threads) * 2.0 * math.pi) * np.sin((u * threads * 2.0) * math.pi)
     h = common.normalize_field(0.76 * twill + 0.24 * slub)
-    return common.shade_cloth_surface(albedo, h, normal_strength=1.9, sheen_amt=4.5)
+    return common.shade_cloth_surface(albedo, h, normal_strength=1.9, sheen_amt=4.5), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="digital-desert-camo",
@@ -64,4 +73,8 @@ SPEC = GeneratorSpec(
     default_palette="marpat_desert_camo",
     description="MARPAT-style digital desert camouflage using quantized periodic square pixels in sand, khaki, and coyote brown.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_cloth_surface.",
+    normal_strength=1.9,
+    height_fn=generate_height,
 )

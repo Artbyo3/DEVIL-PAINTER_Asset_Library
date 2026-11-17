@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     freq = 2 + (variant % 4)
@@ -33,7 +35,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(color_field, r_v, stops, contrast=1.18)
-    return common.shade_pbr_surface(albedo, height, roughness=roughness, normal_strength=5.5, spec_intensity=0.28)
+    img = common.shade_pbr_surface(albedo, height, roughness=roughness, normal_strength=5.5, spec_intensity=0.28)
+    return img, height
+
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 
 SPEC = GeneratorSpec(
@@ -44,4 +55,8 @@ SPEC = GeneratorSpec(
     default_palette="carrara_gold_marble",
     description="Dual-stage IQ nested domain warping for Carrara/Portoro marble veins and mineral swirls.",
     render_fn=generate,
+    normal_source="derived",
+    normal_rule="Derived relief height from domain-warped mineral vein scalar field (0.75 * color_field + 0.25 * r_u).",
+    normal_strength=5.5,
+    height_fn=generate_height,
 )

@@ -9,7 +9,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     _ = (palette, variant)
     u, v = common.make_uv_grid(size)
@@ -21,8 +23,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     box_dist = np.maximum(np.abs(x) - w_half, np.abs(y) - h_half)
     frame = np.exp(-((np.abs(box_dist) / thick) ** 2))
     pin = ((np.abs(y) < 0.05) & (x > -w_half) & (x < 0.15)).astype(np.float32) * 0.9
-    return common.alpha_image(np.maximum(frame, pin))
+    _h = (np.maximum(frame, pin)).astype(np.float32)
+    return common.alpha_image(_h), _h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="belt-buckle",
@@ -33,4 +43,8 @@ SPEC = GeneratorSpec(
     default_palette="charcoal_flannel",
     description="Rectangular pin belt buckle hardware decal alpha stamp.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native beveled metallic buckle frame and pin relief field.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

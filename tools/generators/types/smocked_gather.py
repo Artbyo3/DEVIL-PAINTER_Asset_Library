@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     _ = (palette, variant)
     u, v = common.make_uv_grid(size)
@@ -21,8 +23,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     p2 = np.sin(v * rows * 2.0 * math.pi)
     smock = np.power(0.5 + 0.5 * p1 * p2, 1.3)
     mask = np.clip((0.88 - np.abs(y)) * 14.0, 0.0, 1.0)
-    return common.alpha_image(smock * mask)
+    _h = (smock * mask).astype(np.float32)
+    return common.alpha_image(_h), _h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="smocked-gather",
@@ -33,4 +43,8 @@ SPEC = GeneratorSpec(
     default_palette="charcoal_flannel",
     description="Gathered smocked fabric cuff/waistband relief alpha band (tiles horizontally).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native pleated smocked fabric gather relief field.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

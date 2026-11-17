@@ -49,7 +49,9 @@ def _periodic_rect_voronoi(
     return common.normalize_field(f1), common.normalize_field(edge), cid
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
 
@@ -73,8 +75,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
 
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(c, rock, stops, contrast=1.18)
-    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=6.6, spec_intensity=0.14)
+    return common.shade_pbr_surface(albedo, h, roughness=rough, normal_strength=6.6, spec_intensity=0.14), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="stone-wall",
@@ -84,4 +93,8 @@ SPEC = GeneratorSpec(
     default_palette="rough_fieldstone_wall",
     description="Stacked rough-hewn coursed stone masonry wall with chiseled rock faces and recessed mortar gaps.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_pbr_surface.",
+    normal_strength=6.6,
+    height_fn=generate_height,
 )

@@ -9,7 +9,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     _ = palette
     u, v = common.make_uv_grid(size)
@@ -19,8 +21,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     spine = np.exp(-((x + 0.15) ** 2) / 0.0025)
     cross_bar = ((x >= -0.15) & (x <= 0.25)).astype(np.float32) * np.exp(-((sv - 0.5) ** 2) / 0.015)
     seam_ridge = np.exp(-((x + 0.15) ** 2) / 0.025) * 0.35
-    return common.alpha_image(np.maximum(spine, cross_bar) + seam_ridge)
+    _h = (np.maximum(spine, cross_bar) + seam_ridge).astype(np.float32)
+    return common.alpha_image(_h), _h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="blanket-stitch-seam",
@@ -31,4 +41,8 @@ SPEC = GeneratorSpec(
     default_palette="charcoal_flannel",
     description="Blanket / whip-stitch edge seam trim alpha with vertical spine and perpendicular loops (tiles vertically).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native blanket-stitch thread spine, cross-bar, and seam ridge relief.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

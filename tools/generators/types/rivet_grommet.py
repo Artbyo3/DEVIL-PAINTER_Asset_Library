@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     _ = (palette, variant)
     u, v = common.make_uv_grid(size)
@@ -33,8 +35,16 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
         * np.power(0.5 + 0.5 * np.sin(theta * [12, 16, 20][int(rng.integers(0, 3))]), 2.0)
         * np.exp(-((r - outer_r * 1.18) ** 2) / 0.015)
     )
-    return common.alpha_image(ring * bevel + prongs + puckers)
+    _h = (ring * bevel + prongs + puckers).astype(np.float32)
+    return common.alpha_image(_h), _h
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="rivet-grommet",
@@ -45,4 +55,8 @@ SPEC = GeneratorSpec(
     default_palette="charcoal_flannel",
     description="Radial metallic grommet eyelet with beveled washer, inner prongs, and outer fabric puckers.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native beveled grommet ring, radial prongs, and fabric pucker relief.",
+    normal_strength=6.0,
+    height_fn=generate_height,
 )

@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     style = variant % 3
@@ -42,8 +44,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     roughness = np.clip(0.30 + 0.40 * (1.0 - height), 0.15, 0.85).astype(np.float32)
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     albedo = common.apply_palette_5stop(color_field, micro, stops, contrast=1.18)
-    return common.shade_pbr_surface(albedo, height, roughness=roughness, normal_strength=5.0, spec_intensity=0.22)
+    return common.shade_pbr_surface(albedo, height, roughness=roughness, normal_strength=5.0, spec_intensity=0.22), np.asarray(height, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="stylized-arcane-cel",
@@ -53,4 +62,8 @@ SPEC = GeneratorSpec(
     default_palette="ghibli_cel_meadow",
     description="Stylized cel-shaded grass blades (v0), water caustics (v1), and painterly arcane slabs (v2).",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (height) used by shade_pbr_surface.",
+    normal_strength=5.0,
+    height_fn=generate_height,
 )

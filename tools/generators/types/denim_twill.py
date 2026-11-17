@@ -10,7 +10,9 @@ from .. import common
 from ..interface import GeneratorSpec, PaletteArg
 
 
-def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+def _compute(
+    seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0
+) -> tuple[Image.Image, np.ndarray]:
     rng = np.random.default_rng(seed)
     u, v = common.make_uv_grid(size)
     fuzz = common.periodic_fbm(u, v, 8, 3, 0.5, rng)
@@ -32,8 +34,15 @@ def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant
     stops = common.resolve_palette(palette, SPEC.default_palette, rng)
     micro = common.periodic_fbm(u, v, 12, 3, 0.5, rng)
     albedo = common.apply_palette_5stop(c, micro, stops, contrast=1.15)
-    return common.shade_cloth_surface(albedo, h, normal_strength=5.6, sheen_amt=18.0)
+    return common.shade_cloth_surface(albedo, h, normal_strength=5.6, sheen_amt=18.0), np.asarray(h, dtype=np.float32)
 
+
+def generate(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> Image.Image:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[0]
+
+
+def generate_height(seed: int = 1, palette: PaletteArg = None, size: int = 512, variant: int = 0) -> np.ndarray:
+    return _compute(seed=seed, palette=palette, size=size, variant=variant)[1]
 
 SPEC = GeneratorSpec(
     name="denim-twill",
@@ -43,4 +52,8 @@ SPEC = GeneratorSpec(
     default_palette="selvedge_indigo_denim",
     description="3x1 selvedge denim twill with diagonal wale, 2-ply yarn twist, and weft show-through.",
     render_fn=generate,
+    normal_source="native",
+    normal_rule="Native physical surface height field (h) used by shade_cloth_surface.",
+    normal_strength=5.6,
+    height_fn=generate_height,
 )
