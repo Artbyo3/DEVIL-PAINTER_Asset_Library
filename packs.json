@@ -3897,55 +3897,6 @@
         "sp_586_height_alphas_and_sculpt_stamps_v098.png": "thumbs/alphas-vol1-v1.0.0/sp_586_height_alphas_and_sculpt_stamps_v098.webp",
         "zipper-teeth-trim.png": "thumbs/alphas-vol1-v1.0.0/zipper-teeth-trim.webp"
       }
-    },
-    {
-      "name": "Shelf_Test",
-      "description": "Temporary verification pack for shelf sync.",
-      "size": "194.6 KB",
-      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/shelf-test-v1.0.0/Shelf_Test.zip",
-      "releaseTag": "shelf-test-v1.0.0",
-      "tags": [
-        "test",
-        "cloth",
-        "brick",
-        "slate",
-        "texture"
-      ],
-      "files": [
-        "test-brick.png",
-        "test-denim.png"
-      ],
-      "fileTags": {
-        "test-brick.png": [
-          "test-brick",
-          "test",
-          "brick",
-          "texture"
-        ],
-        "test-denim.png": [
-          "test-denim",
-          "test",
-          "denim",
-          "texture"
-        ]
-      },
-      "fileHashes": {
-        "test-brick.png": "a250e61eb3d8a205158b3eed7fca78f5be0fe334eb7e871d0aea816750d86e02",
-        "test-denim.png": "1efd2ff7916f452d7e320a422815fbaa036d66231db84b0823539b26a351b3d3"
-      },
-      "materials": {
-        "test-brick": {
-          "base": "test-brick.png"
-        },
-        "test-denim": {
-          "base": "test-denim.png"
-        }
-      },
-      "sha256": "7cdc2a6def212cdee8e424832109b12b38acb469924a22b3e68a36b6e4d11ce9",
-      "thumbs": {
-        "test-brick.png": "thumbs/shelf-test-v1.0.0/test-brick.webp",
-        "test-denim.png": "thumbs/shelf-test-v1.0.0/test-denim.webp"
-      }
     }
   ]
 }
