@@ -210,6 +210,10 @@
       font-weight: 600;
     }
 
+    .dp-show-more {
+      margin-top: 8px;
+    }
+
     .dp-pack-list {
       border: 1px solid var(--dp-border);
       border-radius: 3px;
@@ -419,6 +423,7 @@
 
   <script>
     (async function () {
+      const THUMB_BATCH_SIZE = 60;
       const container = document.getElementById('pack-list');
       const tagBar = document.getElementById('tag-bar');
       const searchInput = document.getElementById('pack-search');
@@ -471,6 +476,120 @@
         return out;
       }
 
+      function normalizeFileTags(rawFileTags) {
+        const map = Object.create(null);
+        if (!rawFileTags || typeof rawFileTags !== 'object' || Array.isArray(rawFileTags)) {
+          return map;
+        }
+        for (const key of Object.keys(rawFileTags)) {
+          const cleanKey = key.trim();
+          if (!cleanKey) continue;
+          map[cleanKey] = normalizeTags(rawFileTags[key]);
+        }
+        return map;
+      }
+
+      function fileHasTag(pack, file, tag) {
+        const tags = pack._fileTags[file];
+        return Array.isArray(tags) && tags.includes(tag);
+      }
+
+      function fileMatchesQuery(pack, file, query) {
+        if (file.toLowerCase().includes(query)) return true;
+        const tags = pack._fileTags[file];
+        if (!Array.isArray(tags)) return false;
+        return tags.some(function (t) { return t.includes(query); });
+      }
+
+      function packMatchesQuery(pack, query) {
+        if (pack._name.toLowerCase().includes(query)) return true;
+        if (pack._desc.toLowerCase().includes(query)) return true;
+        return pack._tags.some(function (t) { return t.includes(query); });
+      }
+
+      function filterPackForDisplay(pack, tag, tagMatchesAnyFile, query) {
+        let candidateFiles = pack._files;
+        if (tag) {
+          if (tagMatchesAnyFile) {
+            candidateFiles = pack._files.filter(function (f) {
+              return fileHasTag(pack, f, tag);
+            });
+            if (candidateFiles.length === 0) return null;
+          } else if (!pack._tags.includes(tag)) {
+            return null;
+          }
+        }
+
+        if (query) {
+          const matchingFiles = candidateFiles.filter(function (f) {
+            return fileMatchesQuery(pack, f, query);
+          });
+          if (matchingFiles.length > 0) {
+            return { pack: pack, files: matchingFiles };
+          }
+          if (packMatchesQuery(pack, query)) {
+            return { pack: pack, files: candidateFiles };
+          }
+          return null;
+        }
+
+        return { pack: pack, files: candidateFiles };
+      }
+
+      function appendThumbnailBatch(grid, baseUrl, files, startIndex, count) {
+        const endIndex = Math.min(startIndex + count, files.length);
+        for (let i = startIndex; i < endIndex; i++) {
+          const cleanFile = files[i];
+          const fileUrl = baseUrl + encodeURIComponent(cleanFile);
+
+          const link = document.createElement('a');
+          link.className = 'dp-thumb';
+          link.href = fileUrl;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.title = cleanFile;
+
+          const img = document.createElement('img');
+          img.src = fileUrl;
+          img.alt = cleanFile;
+          img.setAttribute('loading', 'lazy');
+          img.loading = 'lazy';
+          img.decoding = 'async';
+
+          link.appendChild(img);
+          grid.appendChild(link);
+        }
+        return endIndex;
+      }
+
+      function renderThumbnailGrid(card, releaseTag, files) {
+        if (!releaseTag || files.length === 0) return;
+
+        const grid = document.createElement('div');
+        grid.className = 'dp-preview-grid';
+        const baseUrl =
+          'https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/' +
+          encodeURIComponent(releaseTag) +
+          '/';
+
+        let renderedCount = appendThumbnailBatch(grid, baseUrl, files, 0, THUMB_BATCH_SIZE);
+        card.appendChild(grid);
+
+        if (renderedCount < files.length) {
+          const showMoreBtn = document.createElement('button');
+          showMoreBtn.type = 'button';
+          showMoreBtn.className = 'dp-tag-btn dp-show-more';
+          showMoreBtn.textContent = 'Show more';
+          showMoreBtn.addEventListener('click', function () {
+            renderedCount = appendThumbnailBatch(grid, baseUrl, files, renderedCount, THUMB_BATCH_SIZE);
+            if (renderedCount >= files.length) {
+              showMoreBtn.remove();
+            }
+          });
+          card.appendChild(showMoreBtn);
+        }
+      }
+
       function renderTagBar(allTags) {
         tagBar.innerHTML = '';
 
@@ -501,19 +620,17 @@
         }
 
         const query = searchInput.value.trim().toLowerCase();
-        const filtered = validPacks.filter(function (pack) {
-          if (activeTag && !pack._tags.includes(activeTag)) {
-            return false;
-          }
-          if (query) {
-            const matchesName = pack._name.toLowerCase().includes(query);
-            const matchesDesc = pack._desc.toLowerCase().includes(query);
-            if (!matchesName && !matchesDesc) {
-              return false;
-            }
-          }
-          return true;
+        const tagMatchesAnyFile = Boolean(activeTag) && validPacks.some(function (pack) {
+          return pack._files.some(function (f) { return fileHasTag(pack, f, activeTag); });
         });
+
+        const filtered = [];
+        for (const pack of validPacks) {
+          const match = filterPackForDisplay(pack, activeTag, tagMatchesAnyFile, query);
+          if (match) {
+            filtered.push(match);
+          }
+        }
 
         if (filtered.length === 0) {
           renderMessage('No packs match your search or selected tag.');
@@ -521,7 +638,8 @@
         }
 
         container.innerHTML = '';
-        for (const pack of filtered) {
+        for (const entry of filtered) {
+          const pack = entry.pack;
           const card = document.createElement('article');
           card.className = 'dp-card';
 
@@ -580,39 +698,7 @@
           card.appendChild(mainRow);
 
           const releaseTag = typeof pack.releaseTag === 'string' ? pack.releaseTag.trim() : '';
-          const files = Array.isArray(pack.files)
-            ? pack.files.filter(function (f) { return typeof f === 'string' && f.trim(); })
-            : [];
-          if (releaseTag && files.length > 0) {
-            const grid = document.createElement('div');
-            grid.className = 'dp-preview-grid';
-            const baseUrl =
-              'https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/' +
-              encodeURIComponent(releaseTag) +
-              '/';
-            for (const file of files) {
-              const cleanFile = file.trim();
-              const fileUrl = baseUrl + encodeURIComponent(cleanFile);
-
-              const link = document.createElement('a');
-              link.className = 'dp-thumb';
-              link.href = fileUrl;
-              link.target = '_blank';
-              link.rel = 'noopener';
-              link.title = cleanFile;
-
-              const img = document.createElement('img');
-              img.src = fileUrl;
-              img.alt = cleanFile;
-              img.setAttribute('loading', 'lazy');
-              img.loading = 'lazy';
-              img.decoding = 'async';
-
-              link.appendChild(img);
-              grid.appendChild(link);
-            }
-            card.appendChild(grid);
-          }
+          renderThumbnailGrid(card, releaseTag, entry.files);
 
           container.appendChild(card);
         }
@@ -637,13 +723,21 @@
           const name = typeof pack.name === 'string' && pack.name.trim() ? pack.name.trim() : 'Untitled Pack';
           const desc = typeof pack.description === 'string' && pack.description.trim() ? pack.description.trim() : '';
           const tags = normalizeTags(pack.tags);
+          const files = Array.isArray(pack.files)
+            ? pack.files
+                .filter(function (f) { return typeof f === 'string' && f.trim(); })
+                .map(function (f) { return f.trim(); })
+            : [];
+          const fileTags = normalizeFileTags(pack.fileTags);
           for (const t of tags) {
             allTagSet.add(t);
           }
           validPacks.push(Object.assign({}, pack, {
             _name: name,
             _desc: desc,
-            _tags: tags
+            _tags: tags,
+            _files: files,
+            _fileTags: fileTags
           }));
         }
 

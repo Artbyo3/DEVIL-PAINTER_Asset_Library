@@ -56,9 +56,2505 @@
         "boucle-tweed-17.png",
         "boucle-tweed-18.png",
         "boucle-tweed-19.png",
-        "boucle-tweed-20.png"
+        "boucle-tweed-20.png",
+        "boucle-tweed-21.png",
+        "boucle-tweed-22.png",
+        "boucle-tweed-23.png",
+        "boucle-tweed-24.png",
+        "boucle-tweed-25.png",
+        "boucle-tweed-26.png",
+        "boucle-tweed-27.png",
+        "boucle-tweed-28.png",
+        "boucle-tweed-29.png",
+        "boucle-tweed-30.png",
+        "corduroy-01.png",
+        "corduroy-02.png",
+        "corduroy-03.png",
+        "corduroy-04.png",
+        "corduroy-05.png",
+        "corduroy-06.png",
+        "corduroy-07.png",
+        "corduroy-08.png",
+        "corduroy-09.png",
+        "corduroy-10.png",
+        "corduroy-11.png",
+        "corduroy-12.png",
+        "corduroy-13.png",
+        "corduroy-14.png",
+        "corduroy-15.png",
+        "corduroy-16.png",
+        "corduroy-17.png",
+        "corduroy-18.png",
+        "denim-twill-01.png",
+        "denim-twill-02.png",
+        "denim-twill-03.png",
+        "denim-twill-04.png",
+        "denim-twill-05.png",
+        "denim-twill-06.png",
+        "denim-twill-07.png",
+        "denim-twill-08.png",
+        "denim-twill-09.png",
+        "denim-twill-10.png",
+        "denim-twill-11.png",
+        "denim-twill-12.png",
+        "denim-twill-13.png",
+        "denim-twill-14.png",
+        "denim-twill-15.png",
+        "denim-twill-16.png",
+        "denim-twill-17.png",
+        "denim-twill-18.png",
+        "denim-twill-19.png",
+        "denim-twill-20.png",
+        "denim-twill-21.png",
+        "herringbone-weave-01.png",
+        "herringbone-weave-02.png",
+        "herringbone-weave-03.png",
+        "herringbone-weave-04.png",
+        "herringbone-weave-05.png",
+        "herringbone-weave-06.png",
+        "herringbone-weave-07.png",
+        "herringbone-weave-08.png",
+        "herringbone-weave-09.png",
+        "herringbone-weave-10.png",
+        "herringbone-weave-11.png",
+        "herringbone-weave-12.png",
+        "herringbone-weave-13.png",
+        "herringbone-weave-14.png",
+        "herringbone-weave-15.png",
+        "herringbone-weave-16.png",
+        "herringbone-weave-17.png",
+        "herringbone-weave-18.png",
+        "herringbone-weave-19.png",
+        "herringbone-weave-20.png",
+        "herringbone-weave-21.png",
+        "herringbone-weave-22.png",
+        "herringbone-weave-23.png",
+        "herringbone-weave-24.png",
+        "herringbone-weave-25.png",
+        "herringbone-weave-26.png",
+        "herringbone-weave-27.png",
+        "houndstooth-wool-01.png",
+        "houndstooth-wool-02.png",
+        "houndstooth-wool-03.png",
+        "houndstooth-wool-04.png",
+        "houndstooth-wool-05.png",
+        "houndstooth-wool-06.png",
+        "houndstooth-wool-07.png",
+        "houndstooth-wool-08.png",
+        "houndstooth-wool-09.png",
+        "houndstooth-wool-10.png",
+        "houndstooth-wool-11.png",
+        "houndstooth-wool-12.png",
+        "jacquard-diamond-01.png",
+        "jacquard-diamond-02.png",
+        "jacquard-diamond-03.png",
+        "jacquard-diamond-04.png",
+        "jacquard-diamond-05.png",
+        "jacquard-diamond-06.png",
+        "jacquard-medallion-01.png",
+        "jacquard-medallion-02.png",
+        "jacquard-medallion-03.png",
+        "jacquard-medallion-04.png",
+        "jacquard-medallion-05.png",
+        "jacquard-medallion-06.png",
+        "jacquard-medallion-07.png",
+        "jacquard-zigzag-01.png",
+        "jacquard-zigzag-02.png",
+        "jacquard-zigzag-03.png",
+        "jacquard-zigzag-04.png",
+        "jacquard-zigzag-05.png",
+        "jacquard-zigzag-06.png",
+        "jacquard-zigzag-07.png",
+        "jacquard-zigzag-08.png",
+        "jacquard-zigzag-09.png",
+        "silk-brocade-01.png",
+        "silk-brocade-02.png",
+        "silk-brocade-03.png",
+        "silk-brocade-04.png",
+        "silk-brocade-05.png",
+        "silk-brocade-06.png",
+        "silk-brocade-07.png",
+        "silk-brocade-08.png",
+        "silk-brocade-09.png",
+        "silk-brocade-10.png",
+        "silk-brocade-11.png",
+        "silk-brocade-12.png",
+        "silk-brocade-13.png",
+        "silk-brocade-14.png",
+        "silk-brocade-15.png",
+        "silk-brocade-16.png",
+        "silk-brocade-17.png",
+        "tartan-plaid-01.png",
+        "tartan-plaid-02.png",
+        "tartan-plaid-03.png",
+        "tartan-plaid-04.png",
+        "tartan-plaid-05.png",
+        "tartan-plaid-06.png",
+        "tartan-plaid-07.png",
+        "tartan-plaid-08.png",
+        "tartan-plaid-09.png",
+        "tartan-plaid-10.png",
+        "tartan-plaid-11.png",
+        "tartan-plaid-12.png",
+        "tartan-plaid-13.png",
+        "tartan-plaid-14.png",
+        "tartan-plaid-15.png",
+        "tartan-plaid-16.png",
+        "tartan-plaid-17.png",
+        "blanket-stitch-seam.png",
+        "cross-stitch-seam-01.png",
+        "cross-stitch-seam-02.png",
+        "cross-stitch-seam-03.png",
+        "cross-stitch-seam-04.png",
+        "cross-stitch-seam-05.png",
+        "double-topstitch-seam.png",
+        "overlock-zigzag-seam.png",
+        "smocked-gather-01.png",
+        "smocked-gather-02.png",
+        "smocked-gather-03.png",
+        "smocked-gather-04.png",
+        "smocked-gather-05.png",
+        "smocked-gather-06.png",
+        "smocked-gather-07.png",
+        "smocked-gather-08.png"
       ],
+      "fileTags": {
+        "boucle-tweed-01.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-02.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-03.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-04.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-05.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-06.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-07.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-08.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-09.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-10.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-11.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-12.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-13.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-14.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-15.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-16.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-17.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-18.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-19.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-20.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-21.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-22.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-23.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-24.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-25.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-26.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-27.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-28.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-29.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "boucle-tweed-30.png": [
+          "boucle-tweed",
+          "boucle",
+          "tweed",
+          "texture"
+        ],
+        "corduroy-01.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-02.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-03.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-04.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-05.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-06.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-07.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-08.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-09.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-10.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-11.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-12.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-13.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-14.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-15.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-16.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-17.png": [
+          "corduroy",
+          "texture"
+        ],
+        "corduroy-18.png": [
+          "corduroy",
+          "texture"
+        ],
+        "denim-twill-01.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-02.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-03.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-04.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-05.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-06.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-07.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-08.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-09.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-10.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-11.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-12.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-13.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-14.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-15.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-16.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-17.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-18.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-19.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-20.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "denim-twill-21.png": [
+          "denim-twill",
+          "denim",
+          "twill",
+          "texture"
+        ],
+        "herringbone-weave-01.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-02.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-03.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-04.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-05.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-06.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-07.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-08.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-09.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-10.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-11.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-12.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-13.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-14.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-15.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-16.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-17.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-18.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-19.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-20.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-21.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-22.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-23.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-24.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-25.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-26.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "herringbone-weave-27.png": [
+          "herringbone-weave",
+          "herringbone",
+          "weave",
+          "texture"
+        ],
+        "houndstooth-wool-01.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-02.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-03.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-04.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-05.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-06.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-07.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-08.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-09.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-10.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-11.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "houndstooth-wool-12.png": [
+          "houndstooth-wool",
+          "houndstooth",
+          "wool",
+          "texture"
+        ],
+        "jacquard-diamond-01.png": [
+          "jacquard-diamond",
+          "jacquard",
+          "diamond",
+          "texture"
+        ],
+        "jacquard-diamond-02.png": [
+          "jacquard-diamond",
+          "jacquard",
+          "diamond",
+          "texture"
+        ],
+        "jacquard-diamond-03.png": [
+          "jacquard-diamond",
+          "jacquard",
+          "diamond",
+          "texture"
+        ],
+        "jacquard-diamond-04.png": [
+          "jacquard-diamond",
+          "jacquard",
+          "diamond",
+          "texture"
+        ],
+        "jacquard-diamond-05.png": [
+          "jacquard-diamond",
+          "jacquard",
+          "diamond",
+          "texture"
+        ],
+        "jacquard-diamond-06.png": [
+          "jacquard-diamond",
+          "jacquard",
+          "diamond",
+          "texture"
+        ],
+        "jacquard-medallion-01.png": [
+          "jacquard-medallion",
+          "jacquard",
+          "medallion",
+          "texture"
+        ],
+        "jacquard-medallion-02.png": [
+          "jacquard-medallion",
+          "jacquard",
+          "medallion",
+          "texture"
+        ],
+        "jacquard-medallion-03.png": [
+          "jacquard-medallion",
+          "jacquard",
+          "medallion",
+          "texture"
+        ],
+        "jacquard-medallion-04.png": [
+          "jacquard-medallion",
+          "jacquard",
+          "medallion",
+          "texture"
+        ],
+        "jacquard-medallion-05.png": [
+          "jacquard-medallion",
+          "jacquard",
+          "medallion",
+          "texture"
+        ],
+        "jacquard-medallion-06.png": [
+          "jacquard-medallion",
+          "jacquard",
+          "medallion",
+          "texture"
+        ],
+        "jacquard-medallion-07.png": [
+          "jacquard-medallion",
+          "jacquard",
+          "medallion",
+          "texture"
+        ],
+        "jacquard-zigzag-01.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-02.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-03.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-04.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-05.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-06.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-07.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-08.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "jacquard-zigzag-09.png": [
+          "jacquard-zigzag",
+          "jacquard",
+          "zigzag",
+          "texture"
+        ],
+        "silk-brocade-01.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-02.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-03.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-04.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-05.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-06.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-07.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-08.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-09.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-10.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-11.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-12.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-13.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-14.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-15.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-16.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "silk-brocade-17.png": [
+          "silk-brocade",
+          "silk",
+          "brocade",
+          "texture"
+        ],
+        "tartan-plaid-01.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-02.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-03.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-04.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-05.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-06.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-07.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-08.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-09.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-10.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-11.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-12.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-13.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-14.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-15.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-16.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "tartan-plaid-17.png": [
+          "tartan-plaid",
+          "tartan",
+          "plaid",
+          "texture"
+        ],
+        "blanket-stitch-seam.png": [
+          "blanket-stitch-seam",
+          "blanket",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-01.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-02.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-03.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-04.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "cross-stitch-seam-05.png": [
+          "cross-stitch-seam",
+          "cross",
+          "stitch",
+          "seam",
+          "alpha"
+        ],
+        "double-topstitch-seam.png": [
+          "double-topstitch-seam",
+          "double",
+          "topstitch",
+          "seam",
+          "alpha"
+        ],
+        "overlock-zigzag-seam.png": [
+          "overlock-zigzag-seam",
+          "overlock",
+          "zigzag",
+          "seam",
+          "alpha"
+        ],
+        "smocked-gather-01.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-02.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-03.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-04.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-05.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-06.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-07.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ],
+        "smocked-gather-08.png": [
+          "smocked-gather",
+          "smocked",
+          "gather",
+          "alpha"
+        ]
+      },
       "sha256": "fcecbfc41761d41d6f6138776578d31835f19f9133a1f01622ff5d8bd5e1b5fa"
+    },
+    {
+      "name": "Cloth & Apparel Vol. 2",
+      "description": "160 seamless 512x512 knit, quilted, and patterned fabric textures plus 12 trim and fastener alphas.",
+      "size": "70.5 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/cloth-apparel-vol2-v1.0.0/Cloth_and_Apparel_Vol2.zip",
+      "releaseTag": "cloth-apparel-vol2-v1.0.0",
+      "tags": [
+        "cloth",
+        "fabric",
+        "textile",
+        "apparel",
+        "knit",
+        "quilted",
+        "ripstop",
+        "seersucker",
+        "shibori",
+        "trim",
+        "fasteners",
+        "alphas"
+      ],
+      "files": [
+        "cable-knit-01.png",
+        "cable-knit-02.png",
+        "cable-knit-03.png",
+        "cable-knit-04.png",
+        "cable-knit-05.png",
+        "cable-knit-06.png",
+        "cable-knit-07.png",
+        "cable-knit-08.png",
+        "cable-knit-09.png",
+        "cable-knit-10.png",
+        "cable-knit-11.png",
+        "cable-knit-12.png",
+        "cable-knit-13.png",
+        "cable-knit-14.png",
+        "cable-knit-15.png",
+        "cable-knit-16.png",
+        "cable-knit-17.png",
+        "cable-knit-18.png",
+        "jersey-knit-01.png",
+        "jersey-knit-02.png",
+        "jersey-knit-03.png",
+        "jersey-knit-04.png",
+        "jersey-knit-05.png",
+        "jersey-knit-06.png",
+        "jersey-knit-07.png",
+        "jersey-knit-08.png",
+        "jersey-knit-09.png",
+        "jersey-knit-10.png",
+        "jersey-knit-11.png",
+        "jersey-knit-12.png",
+        "jersey-knit-13.png",
+        "jersey-knit-14.png",
+        "jersey-knit-15.png",
+        "jersey-knit-16.png",
+        "jersey-knit-17.png",
+        "jersey-knit-18.png",
+        "jersey-knit-19.png",
+        "jersey-knit-20.png",
+        "jersey-knit-21.png",
+        "jersey-knit-22.png",
+        "jersey-knit-23.png",
+        "jersey-knit-24.png",
+        "quilted-puffer-01.png",
+        "quilted-puffer-02.png",
+        "quilted-puffer-03.png",
+        "quilted-puffer-04.png",
+        "quilted-puffer-05.png",
+        "quilted-puffer-06.png",
+        "quilted-puffer-07.png",
+        "quilted-puffer-08.png",
+        "quilted-puffer-09.png",
+        "quilted-puffer-10.png",
+        "quilted-puffer-11.png",
+        "quilted-puffer-12.png",
+        "quilted-puffer-13.png",
+        "quilted-puffer-14.png",
+        "quilted-puffer-15.png",
+        "quilted-puffer-16.png",
+        "quilted-puffer-17.png",
+        "rib-jersey-knit-01.png",
+        "rib-jersey-knit-02.png",
+        "rib-jersey-knit-03.png",
+        "rib-jersey-knit-04.png",
+        "rib-jersey-knit-05.png",
+        "rib-jersey-knit-06.png",
+        "rib-jersey-knit-07.png",
+        "rib-jersey-knit-08.png",
+        "rib-jersey-knit-09.png",
+        "rib-jersey-knit-10.png",
+        "rib-jersey-knit-11.png",
+        "rib-jersey-knit-12.png",
+        "rib-jersey-knit-13.png",
+        "rib-jersey-knit-14.png",
+        "rib-jersey-knit-15.png",
+        "rib-jersey-knit-16.png",
+        "rib-jersey-knit-17.png",
+        "rib-jersey-knit-18.png",
+        "rib-jersey-knit-19.png",
+        "rib-jersey-knit-20.png",
+        "rib-jersey-knit-21.png",
+        "rib-jersey-knit-22.png",
+        "rib-jersey-knit-23.png",
+        "rib-jersey-knit-24.png",
+        "rib-jersey-knit-25.png",
+        "rib-jersey-knit-26.png",
+        "rib-jersey-knit-27.png",
+        "rib-jersey-knit-28.png",
+        "rib-jersey-knit-29.png",
+        "rib-jersey-knit-30.png",
+        "rib-jersey-knit-31.png",
+        "rib-jersey-knit-32.png",
+        "ripstop-nylon-01.png",
+        "ripstop-nylon-02.png",
+        "ripstop-nylon-03.png",
+        "ripstop-nylon-04.png",
+        "ripstop-nylon-05.png",
+        "ripstop-nylon-06.png",
+        "ripstop-nylon-07.png",
+        "ripstop-nylon-08.png",
+        "ripstop-nylon-09.png",
+        "ripstop-nylon-10.png",
+        "ripstop-nylon-11.png",
+        "ripstop-nylon-12.png",
+        "ripstop-nylon-13.png",
+        "ripstop-nylon-14.png",
+        "ripstop-nylon-15.png",
+        "ripstop-nylon-16.png",
+        "ripstop-nylon-17.png",
+        "ripstop-nylon-18.png",
+        "ripstop-nylon-19.png",
+        "ripstop-nylon-20.png",
+        "ripstop-nylon-21.png",
+        "ripstop-nylon-22.png",
+        "ripstop-nylon-23.png",
+        "seersucker-stripe-01.png",
+        "seersucker-stripe-02.png",
+        "seersucker-stripe-03.png",
+        "seersucker-stripe-04.png",
+        "seersucker-stripe-05.png",
+        "seersucker-stripe-06.png",
+        "seersucker-stripe-07.png",
+        "seersucker-stripe-08.png",
+        "seersucker-stripe-09.png",
+        "seersucker-stripe-10.png",
+        "seersucker-stripe-11.png",
+        "seersucker-stripe-12.png",
+        "seersucker-stripe-13.png",
+        "shibori-tie-dye-01.png",
+        "shibori-tie-dye-02.png",
+        "shibori-tie-dye-03.png",
+        "shibori-tie-dye-04.png",
+        "shibori-tie-dye-05.png",
+        "shibori-tie-dye-06.png",
+        "shibori-tie-dye-07.png",
+        "shibori-tie-dye-08.png",
+        "shibori-tie-dye-09.png",
+        "shibori-tie-dye-10.png",
+        "shibori-tie-dye-11.png",
+        "shibori-tie-dye-12.png",
+        "shibori-tie-dye-13.png",
+        "shibori-tie-dye-14.png",
+        "waffle-knit-01.png",
+        "waffle-knit-02.png",
+        "waffle-knit-03.png",
+        "waffle-knit-04.png",
+        "waffle-knit-05.png",
+        "waffle-knit-06.png",
+        "waffle-knit-07.png",
+        "waffle-knit-08.png",
+        "waffle-knit-09.png",
+        "waffle-knit-10.png",
+        "waffle-knit-11.png",
+        "waffle-knit-12.png",
+        "waffle-knit-13.png",
+        "waffle-knit-14.png",
+        "waffle-knit-15.png",
+        "waffle-knit-16.png",
+        "waffle-knit-17.png",
+        "waffle-knit-18.png",
+        "waffle-knit-19.png",
+        "belt-buckle-01.png",
+        "belt-buckle-02.png",
+        "belt-buckle-03.png",
+        "belt-buckle-04.png",
+        "four-hole-button.png",
+        "ribbed-cuff-trim.png",
+        "rivet-grommet-01.png",
+        "rivet-grommet-02.png",
+        "scalloped-lace-trim-01.png",
+        "scalloped-lace-trim-02.png",
+        "scalloped-lace-trim-03.png",
+        "zipper-teeth-trim.png"
+      ],
+      "fileTags": {
+        "cable-knit-01.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-02.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-03.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-04.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-05.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-06.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-07.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-08.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-09.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-10.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-11.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-12.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-13.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-14.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-15.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-16.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-17.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "cable-knit-18.png": [
+          "cable-knit",
+          "cable",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-01.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-02.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-03.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-04.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-05.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-06.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-07.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-08.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-09.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-10.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-11.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-12.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-13.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-14.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-15.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-16.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-17.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-18.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-19.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-20.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-21.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-22.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-23.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "jersey-knit-24.png": [
+          "jersey-knit",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "quilted-puffer-01.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-02.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-03.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-04.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-05.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-06.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-07.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-08.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-09.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-10.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-11.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-12.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-13.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-14.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-15.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-16.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "quilted-puffer-17.png": [
+          "quilted-puffer",
+          "quilted",
+          "puffer",
+          "texture"
+        ],
+        "rib-jersey-knit-01.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-02.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-03.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-04.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-05.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-06.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-07.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-08.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-09.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-10.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-11.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-12.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-13.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-14.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-15.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-16.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-17.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-18.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-19.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-20.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-21.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-22.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-23.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-24.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-25.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-26.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-27.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-28.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-29.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-30.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-31.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "rib-jersey-knit-32.png": [
+          "rib-jersey-knit",
+          "rib",
+          "jersey",
+          "knit",
+          "texture"
+        ],
+        "ripstop-nylon-01.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-02.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-03.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-04.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-05.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-06.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-07.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-08.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-09.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-10.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-11.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-12.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-13.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-14.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-15.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-16.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-17.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-18.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-19.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-20.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-21.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-22.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "ripstop-nylon-23.png": [
+          "ripstop-nylon",
+          "ripstop",
+          "nylon",
+          "texture"
+        ],
+        "seersucker-stripe-01.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-02.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-03.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-04.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-05.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-06.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-07.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-08.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-09.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-10.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-11.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-12.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "seersucker-stripe-13.png": [
+          "seersucker-stripe",
+          "seersucker",
+          "stripe",
+          "texture"
+        ],
+        "shibori-tie-dye-01.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-02.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-03.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-04.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-05.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-06.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-07.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-08.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-09.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-10.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-11.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-12.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-13.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "shibori-tie-dye-14.png": [
+          "shibori-tie-dye",
+          "shibori",
+          "tie",
+          "dye",
+          "texture"
+        ],
+        "waffle-knit-01.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-02.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-03.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-04.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-05.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-06.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-07.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-08.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-09.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-10.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-11.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-12.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-13.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-14.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-15.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-16.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-17.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-18.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "waffle-knit-19.png": [
+          "waffle-knit",
+          "waffle",
+          "knit",
+          "texture"
+        ],
+        "belt-buckle-01.png": [
+          "belt-buckle",
+          "belt",
+          "buckle",
+          "alpha"
+        ],
+        "belt-buckle-02.png": [
+          "belt-buckle",
+          "belt",
+          "buckle",
+          "alpha"
+        ],
+        "belt-buckle-03.png": [
+          "belt-buckle",
+          "belt",
+          "buckle",
+          "alpha"
+        ],
+        "belt-buckle-04.png": [
+          "belt-buckle",
+          "belt",
+          "buckle",
+          "alpha"
+        ],
+        "four-hole-button.png": [
+          "four-hole-button",
+          "four",
+          "hole",
+          "button",
+          "alpha"
+        ],
+        "ribbed-cuff-trim.png": [
+          "ribbed-cuff-trim",
+          "ribbed",
+          "cuff",
+          "trim",
+          "alpha"
+        ],
+        "rivet-grommet-01.png": [
+          "rivet-grommet",
+          "rivet",
+          "grommet",
+          "alpha"
+        ],
+        "rivet-grommet-02.png": [
+          "rivet-grommet",
+          "rivet",
+          "grommet",
+          "alpha"
+        ],
+        "scalloped-lace-trim-01.png": [
+          "scalloped-lace-trim",
+          "scalloped",
+          "lace",
+          "trim",
+          "alpha"
+        ],
+        "scalloped-lace-trim-02.png": [
+          "scalloped-lace-trim",
+          "scalloped",
+          "lace",
+          "trim",
+          "alpha"
+        ],
+        "scalloped-lace-trim-03.png": [
+          "scalloped-lace-trim",
+          "scalloped",
+          "lace",
+          "trim",
+          "alpha"
+        ],
+        "zipper-teeth-trim.png": [
+          "zipper-teeth-trim",
+          "zipper",
+          "teeth",
+          "trim",
+          "alpha"
+        ]
+      },
+      "sha256": "9037c12ac134f046f4fdf3e749f8933b2b61cbbd7d4360142e0ce0c2910fa47e"
     }
   ]
 }
