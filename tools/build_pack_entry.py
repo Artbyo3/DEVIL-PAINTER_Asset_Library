@@ -18,6 +18,11 @@ Preview convention:
     <stem>.preview.<img_ext> (e.g. oak-wood.blend + oak-wood.preview.png), where
     <img_ext> is one of png, jpg, jpeg, webp, bmp, gif, tif, tiff. Preview files
     are never added to the catalog's files/fileTags and are never release assets.
+
+Per-file hashes:
+    Each catalog entry includes a 'fileHashes' object mapping every filename in
+    'files' to the lowercase hex SHA-256 digest of that source file's bytes,
+    computed directly from the pack folder files.
 """
 
 from __future__ import annotations
@@ -115,6 +120,7 @@ def build_entry(
 
     files: list[str] = []
     file_tags: dict[str, list[str]] = {}
+    file_hashes: dict[str, str] = {}
     for folder, kind in iter_pack_folders(pack_dir):
         names = sorted(
             entry.name
@@ -128,6 +134,7 @@ def build_entry(
                 raise ValueError(f"Duplicate filename across folders: {name}")
             files.append(name)
             file_tags[name] = build_file_tags(name, kind)
+            file_hashes[name] = sha256_file(folder / name)
 
     zip_bytes = zip_path.stat().st_size
     download_url = (
@@ -144,6 +151,7 @@ def build_entry(
         "tags": meta["tags"],
         "files": files,
         "fileTags": file_tags,
+        "fileHashes": file_hashes,
         "sha256": sha256_file(zip_path),
     }
 
@@ -161,7 +169,10 @@ def update_catalog(catalog_path: Path, entry: dict) -> None:
 
     for idx, existing in enumerate(packs):
         if isinstance(existing, dict) and existing.get("releaseTag") == entry["releaseTag"]:
-            packs[idx] = entry
+            merged = dict(entry)
+            if "thumbs" in existing and "thumbs" not in merged:
+                merged["thumbs"] = existing["thumbs"]
+            packs[idx] = merged
             break
     else:
         packs.append(entry)
