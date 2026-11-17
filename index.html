@@ -219,6 +219,13 @@
     .dp-card {
       padding: 10px 12px;
       border-bottom: 1px solid var(--dp-border);
+    }
+
+    .dp-card:last-child {
+      border-bottom: none;
+    }
+
+    .dp-card-main {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -226,13 +233,38 @@
       flex-wrap: wrap;
     }
 
-    .dp-card:last-child {
-      border-bottom: none;
-    }
-
     .dp-card-body {
       flex: 1 1 320px;
       min-width: 0;
+    }
+
+    .dp-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+      gap: 6px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--dp-border);
+    }
+
+    .dp-thumb {
+      display: block;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--dp-border);
+      border-radius: 3px;
+      background-color: var(--dp-bg);
+      overflow: hidden;
+    }
+
+    .dp-thumb:hover {
+      border-color: var(--dp-accent);
+    }
+
+    .dp-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .dp-card-title {
@@ -541,8 +573,47 @@
             actions.appendChild(btn);
           }
 
-          card.appendChild(body);
-          card.appendChild(actions);
+          const mainRow = document.createElement('div');
+          mainRow.className = 'dp-card-main';
+          mainRow.appendChild(body);
+          mainRow.appendChild(actions);
+          card.appendChild(mainRow);
+
+          const releaseTag = typeof pack.releaseTag === 'string' ? pack.releaseTag.trim() : '';
+          const files = Array.isArray(pack.files)
+            ? pack.files.filter(function (f) { return typeof f === 'string' && f.trim(); })
+            : [];
+          if (releaseTag && files.length > 0) {
+            const grid = document.createElement('div');
+            grid.className = 'dp-preview-grid';
+            const baseUrl =
+              'https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/' +
+              encodeURIComponent(releaseTag) +
+              '/';
+            for (const file of files) {
+              const cleanFile = file.trim();
+              const fileUrl = baseUrl + encodeURIComponent(cleanFile);
+
+              const link = document.createElement('a');
+              link.className = 'dp-thumb';
+              link.href = fileUrl;
+              link.target = '_blank';
+              link.rel = 'noopener';
+              link.title = cleanFile;
+
+              const img = document.createElement('img');
+              img.src = fileUrl;
+              img.alt = cleanFile;
+              img.setAttribute('loading', 'lazy');
+              img.loading = 'lazy';
+              img.decoding = 'async';
+
+              link.appendChild(img);
+              grid.appendChild(link);
+            }
+            card.appendChild(grid);
+          }
+
           container.appendChild(card);
         }
       }
