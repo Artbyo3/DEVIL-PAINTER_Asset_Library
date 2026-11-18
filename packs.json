@@ -3897,6 +3897,142 @@
         "sp_586_height_alphas_and_sculpt_stamps_v098.png": "thumbs/alphas-vol1-v1.0.0/sp_586_height_alphas_and_sculpt_stamps_v098.webp",
         "zipper-teeth-trim.png": "thumbs/alphas-vol1-v1.0.0/zipper-teeth-trim.webp"
       }
+    },
+    {
+      "name": "Base Textures",
+      "description": "8 seamless 2048x2048 standalone base-color pattern and surface textures.",
+      "size": "22.4 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/base-textures-v1.0.0/Base_Textures.zip",
+      "releaseTag": "base-textures-v1.0.0",
+      "tags": [
+        "base",
+        "textures",
+        "albedo",
+        "patterns",
+        "2048",
+        "seamless"
+      ],
+      "files": [
+        "base-dragon-scales-emerald.png",
+        "base-geode-agate-amethyst.png",
+        "base-hardwood-walnut.png",
+        "base-hex-mosaic-zellige.png",
+        "base-pcb-circuit-green.png",
+        "base-stained-glass-iridescent.png",
+        "base-terrazzo-travertine.png",
+        "base-woodland-camo-m81.png"
+      ],
+      "fileTags": {
+        "base-dragon-scales-emerald.png": [
+          "base-dragon-scales-emerald",
+          "base",
+          "dragon",
+          "scales",
+          "emerald",
+          "texture"
+        ],
+        "base-geode-agate-amethyst.png": [
+          "base-geode-agate-amethyst",
+          "base",
+          "geode",
+          "agate",
+          "amethyst",
+          "texture"
+        ],
+        "base-hardwood-walnut.png": [
+          "base-hardwood-walnut",
+          "base",
+          "hardwood",
+          "walnut",
+          "texture"
+        ],
+        "base-hex-mosaic-zellige.png": [
+          "base-hex-mosaic-zellige",
+          "base",
+          "hex",
+          "mosaic",
+          "zellige",
+          "texture"
+        ],
+        "base-pcb-circuit-green.png": [
+          "base-pcb-circuit-green",
+          "base",
+          "pcb",
+          "circuit",
+          "green",
+          "texture"
+        ],
+        "base-stained-glass-iridescent.png": [
+          "base-stained-glass-iridescent",
+          "base",
+          "stained",
+          "glass",
+          "iridescent",
+          "texture"
+        ],
+        "base-terrazzo-travertine.png": [
+          "base-terrazzo-travertine",
+          "base",
+          "terrazzo",
+          "travertine",
+          "texture"
+        ],
+        "base-woodland-camo-m81.png": [
+          "base-woodland-camo-m81",
+          "base",
+          "woodland",
+          "camo",
+          "m81",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "base-dragon-scales-emerald.png": "280e4f3ccb41345a22126b335fc8f6ea623f0269b97dca853c12cd98ccd20291",
+        "base-geode-agate-amethyst.png": "699f361b4983d460ac22d5042536363b2674a78273a80fd9cb2267f1705a58d3",
+        "base-hardwood-walnut.png": "91727656cd04c50a66b4f4ed4db035afeb379cc904d40185af59dad72e3de166",
+        "base-hex-mosaic-zellige.png": "aa2fce6c71d5516c8670d7214d5fa3600a4294a23073b2f33ecc303a19e68012",
+        "base-pcb-circuit-green.png": "187d7a1bbd6b0b01fe41a8991d2b5b68358ed500d9041c8d0bee1826c2a68729",
+        "base-stained-glass-iridescent.png": "633245f0b01ddca61f1b450990d050f4014e04cf6b539809f8d074c55929f333",
+        "base-terrazzo-travertine.png": "ed559d6b5cfea52bba3ee3740f5e852cd7338c7940a5d6776a188edd8c41d5c6",
+        "base-woodland-camo-m81.png": "eb976268037097c1e99c1937378de75caf1ce51dabd8a48eb81a3e7da9a7e28e"
+      },
+      "materials": {
+        "base-dragon-scales-emerald": {
+          "base": "base-dragon-scales-emerald.png"
+        },
+        "base-geode-agate-amethyst": {
+          "base": "base-geode-agate-amethyst.png"
+        },
+        "base-hardwood-walnut": {
+          "base": "base-hardwood-walnut.png"
+        },
+        "base-hex-mosaic-zellige": {
+          "base": "base-hex-mosaic-zellige.png"
+        },
+        "base-pcb-circuit-green": {
+          "base": "base-pcb-circuit-green.png"
+        },
+        "base-stained-glass-iridescent": {
+          "base": "base-stained-glass-iridescent.png"
+        },
+        "base-terrazzo-travertine": {
+          "base": "base-terrazzo-travertine.png"
+        },
+        "base-woodland-camo-m81": {
+          "base": "base-woodland-camo-m81.png"
+        }
+      },
+      "sha256": "c43968185370f957c9fd6e63ca04cdcb36f14d3fd5ef04bd20665bc272a5e6b2",
+      "thumbs": {
+        "base-dragon-scales-emerald.png": "thumbs/base-textures-v1.0.0/base-dragon-scales-emerald.webp",
+        "base-geode-agate-amethyst.png": "thumbs/base-textures-v1.0.0/base-geode-agate-amethyst.webp",
+        "base-hardwood-walnut.png": "thumbs/base-textures-v1.0.0/base-hardwood-walnut.webp",
+        "base-hex-mosaic-zellige.png": "thumbs/base-textures-v1.0.0/base-hex-mosaic-zellige.webp",
+        "base-pcb-circuit-green.png": "thumbs/base-textures-v1.0.0/base-pcb-circuit-green.webp",
+        "base-stained-glass-iridescent.png": "thumbs/base-textures-v1.0.0/base-stained-glass-iridescent.webp",
+        "base-terrazzo-travertine.png": "thumbs/base-textures-v1.0.0/base-terrazzo-travertine.webp",
+        "base-woodland-camo-m81.png": "thumbs/base-textures-v1.0.0/base-woodland-camo-m81.webp"
+      }
     }
   ]
 }
