@@ -4177,6 +4177,145 @@
         "detail-normal-twill-weave-grain.png": "thumbs/detail-normals-v1.0.0/detail-normal-twill-weave-grain.webp",
         "detail-normal-wood-pore-grain.png": "thumbs/detail-normals-v1.0.0/detail-normal-wood-pore-grain.webp"
       }
+    },
+    {
+      "name": "Masks & Grunge",
+      "description": "8 seamless 2048x2048 grayscale grunge, wear, tear, scratch, and procedural dirt masks.",
+      "size": "8.4 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/masks-grunge-v1.0.0/Masks_and_Grunge.zip",
+      "releaseTag": "masks-grunge-v1.0.0",
+      "tags": [
+        "masks",
+        "grunge",
+        "wear",
+        "dirt",
+        "scratches",
+        "noise",
+        "2048",
+        "seamless",
+        "grayscale"
+      ],
+      "files": [
+        "mask-grunge-crack-dirt.png",
+        "mask-grunge-drips.png",
+        "mask-grunge-paint-peel.png",
+        "mask-grunge-scratches.png",
+        "mask-grunge-smudge-wear.png",
+        "mask-lace-ripped-tear.png",
+        "mask-noise-curl-dirt.png",
+        "mask-noise-swiss-ridge.png"
+      ],
+      "fileTags": {
+        "mask-grunge-crack-dirt.png": [
+          "mask-grunge-crack-dirt",
+          "mask",
+          "grunge",
+          "crack",
+          "dirt",
+          "texture"
+        ],
+        "mask-grunge-drips.png": [
+          "mask-grunge-drips",
+          "mask",
+          "grunge",
+          "drips",
+          "texture"
+        ],
+        "mask-grunge-paint-peel.png": [
+          "mask-grunge-paint-peel",
+          "mask",
+          "grunge",
+          "paint",
+          "peel",
+          "texture"
+        ],
+        "mask-grunge-scratches.png": [
+          "mask-grunge-scratches",
+          "mask",
+          "grunge",
+          "scratches",
+          "texture"
+        ],
+        "mask-grunge-smudge-wear.png": [
+          "mask-grunge-smudge-wear",
+          "mask",
+          "grunge",
+          "smudge",
+          "wear",
+          "texture"
+        ],
+        "mask-lace-ripped-tear.png": [
+          "mask-lace-ripped-tear",
+          "mask",
+          "lace",
+          "ripped",
+          "tear",
+          "texture"
+        ],
+        "mask-noise-curl-dirt.png": [
+          "mask-noise-curl-dirt",
+          "mask",
+          "noise",
+          "curl",
+          "dirt",
+          "texture"
+        ],
+        "mask-noise-swiss-ridge.png": [
+          "mask-noise-swiss-ridge",
+          "mask",
+          "noise",
+          "swiss",
+          "ridge",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "mask-grunge-crack-dirt.png": "0286ecaf78d685b148cdcb331e76c6dfdb260d67ca4779e6f64e273539c66fd8",
+        "mask-grunge-drips.png": "a14db33a86e89895d2fe7cb19114537caf2a67a5a3182f09d8dd1b9448f759d6",
+        "mask-grunge-paint-peel.png": "6201213dafecf376eb18633e23c9d610560502a3fe0483ace6fcf741311da56a",
+        "mask-grunge-scratches.png": "29c03b23c944f2181a306907faaa2a6fc86d93d26824d61815659787302f1efc",
+        "mask-grunge-smudge-wear.png": "844a91b7fa79a739a67c8a15fbfa95d9994505769d4eec533b2ca11396439287",
+        "mask-lace-ripped-tear.png": "4840f9e4958131f2f3f9acbdf71f5d88ffea60abbe548e18072a2ca3f9acbae4",
+        "mask-noise-curl-dirt.png": "4989db2b4ce296d25e4a7cb03fc43490ffd1073bdb2112d9d739ce1f2bf4abf5",
+        "mask-noise-swiss-ridge.png": "89fe73f909085c1ace9d1efdb81d2ee27bc7a862601e80184d7217601e09f272"
+      },
+      "materials": {
+        "mask-grunge-crack-dirt": {
+          "base": "mask-grunge-crack-dirt.png"
+        },
+        "mask-grunge-drips": {
+          "base": "mask-grunge-drips.png"
+        },
+        "mask-grunge-paint-peel": {
+          "base": "mask-grunge-paint-peel.png"
+        },
+        "mask-grunge-scratches": {
+          "base": "mask-grunge-scratches.png"
+        },
+        "mask-grunge-smudge-wear": {
+          "base": "mask-grunge-smudge-wear.png"
+        },
+        "mask-lace-ripped-tear": {
+          "base": "mask-lace-ripped-tear.png"
+        },
+        "mask-noise-curl-dirt": {
+          "base": "mask-noise-curl-dirt.png"
+        },
+        "mask-noise-swiss-ridge": {
+          "base": "mask-noise-swiss-ridge.png"
+        }
+      },
+      "sha256": "c2c05345248007faf400125e3774fe72e63f79c7e28aa493cae31eb634fda8a0",
+      "thumbs": {
+        "mask-grunge-crack-dirt.png": "thumbs/masks-grunge-v1.0.0/mask-grunge-crack-dirt.webp",
+        "mask-grunge-drips.png": "thumbs/masks-grunge-v1.0.0/mask-grunge-drips.webp",
+        "mask-grunge-paint-peel.png": "thumbs/masks-grunge-v1.0.0/mask-grunge-paint-peel.webp",
+        "mask-grunge-scratches.png": "thumbs/masks-grunge-v1.0.0/mask-grunge-scratches.webp",
+        "mask-grunge-smudge-wear.png": "thumbs/masks-grunge-v1.0.0/mask-grunge-smudge-wear.webp",
+        "mask-lace-ripped-tear.png": "thumbs/masks-grunge-v1.0.0/mask-lace-ripped-tear.webp",
+        "mask-noise-curl-dirt.png": "thumbs/masks-grunge-v1.0.0/mask-noise-curl-dirt.webp",
+        "mask-noise-swiss-ridge.png": "thumbs/masks-grunge-v1.0.0/mask-noise-swiss-ridge.webp"
+      }
     }
   ]
 }
