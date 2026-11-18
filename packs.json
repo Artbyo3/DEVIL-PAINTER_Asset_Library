@@ -4316,6 +4316,266 @@
         "mask-noise-curl-dirt.png": "thumbs/masks-grunge-v1.0.0/mask-noise-curl-dirt.webp",
         "mask-noise-swiss-ridge.png": "thumbs/masks-grunge-v1.0.0/mask-noise-swiss-ridge.webp"
       }
+    },
+    {
+      "name": "Alphas",
+      "description": "18 2048x2048 grayscale sculpting, stitch, hardware, trim, and label alphas.",
+      "size": "4.4 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/alphas-v1.0.0/Alphas.zip",
+      "releaseTag": "alphas-v1.0.0",
+      "tags": [
+        "alphas",
+        "sculpt",
+        "stamps",
+        "seams",
+        "stitches",
+        "hardware",
+        "clothing",
+        "2048",
+        "grayscale"
+      ],
+      "files": [
+        "alpha-belt-buckle.png",
+        "alpha-box-x-bartack.png",
+        "alpha-chain-stitch-seam.png",
+        "alpha-closed-zipper-teeth.png",
+        "alpha-copper-dome-rivet.png",
+        "alpha-cross-stitch-seam.png",
+        "alpha-crown-stamp.png",
+        "alpha-double-needle-seam.png",
+        "alpha-double-topstitch-seam.png",
+        "alpha-four-hole-button-fixed.png",
+        "alpha-perforated-hole-row.png",
+        "alpha-quilted-diamond-stitch.png",
+        "alpha-rivet-grommet.png",
+        "alpha-rivet-row-trim.png",
+        "alpha-snap-button.png",
+        "alpha-straight-topstitch-seam.png",
+        "alpha-woven-label-patch.png",
+        "alpha-zipper-teeth-trim.png"
+      ],
+      "fileTags": {
+        "alpha-belt-buckle.png": [
+          "alpha-belt-buckle",
+          "alpha",
+          "belt",
+          "buckle"
+        ],
+        "alpha-box-x-bartack.png": [
+          "alpha-box-x-bartack",
+          "alpha",
+          "box",
+          "x",
+          "bartack"
+        ],
+        "alpha-chain-stitch-seam.png": [
+          "alpha-chain-stitch-seam",
+          "alpha",
+          "chain",
+          "stitch",
+          "seam"
+        ],
+        "alpha-closed-zipper-teeth.png": [
+          "alpha-closed-zipper-teeth",
+          "alpha",
+          "closed",
+          "zipper",
+          "teeth"
+        ],
+        "alpha-copper-dome-rivet.png": [
+          "alpha-copper-dome-rivet",
+          "alpha",
+          "copper",
+          "dome",
+          "rivet"
+        ],
+        "alpha-cross-stitch-seam.png": [
+          "alpha-cross-stitch-seam",
+          "alpha",
+          "cross",
+          "stitch",
+          "seam"
+        ],
+        "alpha-crown-stamp.png": [
+          "alpha-crown-stamp",
+          "alpha",
+          "crown",
+          "stamp"
+        ],
+        "alpha-double-needle-seam.png": [
+          "alpha-double-needle-seam",
+          "alpha",
+          "double",
+          "needle",
+          "seam"
+        ],
+        "alpha-double-topstitch-seam.png": [
+          "alpha-double-topstitch-seam",
+          "alpha",
+          "double",
+          "topstitch",
+          "seam"
+        ],
+        "alpha-four-hole-button-fixed.png": [
+          "alpha-four-hole-button-fixed",
+          "alpha",
+          "four",
+          "hole",
+          "button",
+          "fixed"
+        ],
+        "alpha-perforated-hole-row.png": [
+          "alpha-perforated-hole-row",
+          "alpha",
+          "perforated",
+          "hole",
+          "row"
+        ],
+        "alpha-quilted-diamond-stitch.png": [
+          "alpha-quilted-diamond-stitch",
+          "alpha",
+          "quilted",
+          "diamond",
+          "stitch"
+        ],
+        "alpha-rivet-grommet.png": [
+          "alpha-rivet-grommet",
+          "alpha",
+          "rivet",
+          "grommet"
+        ],
+        "alpha-rivet-row-trim.png": [
+          "alpha-rivet-row-trim",
+          "alpha",
+          "rivet",
+          "row",
+          "trim"
+        ],
+        "alpha-snap-button.png": [
+          "alpha-snap-button",
+          "alpha",
+          "snap",
+          "button"
+        ],
+        "alpha-straight-topstitch-seam.png": [
+          "alpha-straight-topstitch-seam",
+          "alpha",
+          "straight",
+          "topstitch",
+          "seam"
+        ],
+        "alpha-woven-label-patch.png": [
+          "alpha-woven-label-patch",
+          "alpha",
+          "woven",
+          "label",
+          "patch"
+        ],
+        "alpha-zipper-teeth-trim.png": [
+          "alpha-zipper-teeth-trim",
+          "alpha",
+          "zipper",
+          "teeth",
+          "trim"
+        ]
+      },
+      "fileHashes": {
+        "alpha-belt-buckle.png": "e441fb5a8e4ed4d3582fbfa80e4a33a76c9374e3fa6dca9ab88027d4b31e62a0",
+        "alpha-box-x-bartack.png": "6115d57909f0cc3d24945a287d68a6fbbfea629d2433fd1c6ead47243a1c480d",
+        "alpha-chain-stitch-seam.png": "593fd2ddb2f238ccc68df88e0d0bd29c8f1001a5b417901c72d0ff17efe6d392",
+        "alpha-closed-zipper-teeth.png": "0c7b363ef74e31cc4351216eba087db0bfb4d1eb6419749bc847f504e27a5733",
+        "alpha-copper-dome-rivet.png": "5cccbbd133dfb36bb92e6aeef060bbd777fd7c45c4a9ac6ac9479ca5f948a982",
+        "alpha-cross-stitch-seam.png": "b6d2872bb7a0de090bf04e9e714a859132c8bdd5e15db5efe129e77320b53233",
+        "alpha-crown-stamp.png": "72da0c4bd05232669a4893159de2a7a2feaa256be5e9245f9ad3f5217902b201",
+        "alpha-double-needle-seam.png": "6b4ff3c6c09eb2b42187870d476beed500c5ac272605a8506b5a921661ee04fe",
+        "alpha-double-topstitch-seam.png": "6d9bb491443a8a57bb9ce1e5c4238544ff227f7877352c2399b898e28c599539",
+        "alpha-four-hole-button-fixed.png": "d9c2ab1a2ff5cb8e98ee0290f7a415c72d6fc140fc10b8b53f2b60444ce75d1a",
+        "alpha-perforated-hole-row.png": "5101b1eb646b0fce4b87345d82a37aff7793325c1bcf4ee4e8a6998455280e4c",
+        "alpha-quilted-diamond-stitch.png": "1b6ab447c7580915343bba02a6682a61d004e196284d0f39fb00f6b23c45cfce",
+        "alpha-rivet-grommet.png": "89ab7002fa8941347572f8d170876de89ce09191ac2b588858d682d837846422",
+        "alpha-rivet-row-trim.png": "cc6ad709675992349fb0523e6dc8a1c89c36ede7a47cf8b6433585f0bad45f29",
+        "alpha-snap-button.png": "1b8df50ed9e52a1df3eeedbf20bfd38a961be323c48d00e13459f41b91c516a3",
+        "alpha-straight-topstitch-seam.png": "8f3e8446f87e35b7679d27a3ca576342d2e0554122737e845b9c761b630e4197",
+        "alpha-woven-label-patch.png": "3312cafa86cc8e9016408016cd918f0df46066acf75843270020e6e2ad63e4c8",
+        "alpha-zipper-teeth-trim.png": "b7af7a67da0b443ce636229f6f88fe3f560713c5d15f9aa0effafcf9e7de62b3"
+      },
+      "materials": {
+        "alpha-belt-buckle": {
+          "base": "alpha-belt-buckle.png"
+        },
+        "alpha-box-x-bartack": {
+          "base": "alpha-box-x-bartack.png"
+        },
+        "alpha-chain-stitch-seam": {
+          "base": "alpha-chain-stitch-seam.png"
+        },
+        "alpha-closed-zipper-teeth": {
+          "base": "alpha-closed-zipper-teeth.png"
+        },
+        "alpha-copper-dome-rivet": {
+          "base": "alpha-copper-dome-rivet.png"
+        },
+        "alpha-cross-stitch-seam": {
+          "base": "alpha-cross-stitch-seam.png"
+        },
+        "alpha-crown-stamp": {
+          "base": "alpha-crown-stamp.png"
+        },
+        "alpha-double-needle-seam": {
+          "base": "alpha-double-needle-seam.png"
+        },
+        "alpha-double-topstitch-seam": {
+          "base": "alpha-double-topstitch-seam.png"
+        },
+        "alpha-four-hole-button-fixed": {
+          "base": "alpha-four-hole-button-fixed.png"
+        },
+        "alpha-perforated-hole-row": {
+          "base": "alpha-perforated-hole-row.png"
+        },
+        "alpha-quilted-diamond-stitch": {
+          "base": "alpha-quilted-diamond-stitch.png"
+        },
+        "alpha-rivet-grommet": {
+          "base": "alpha-rivet-grommet.png"
+        },
+        "alpha-rivet-row-trim": {
+          "base": "alpha-rivet-row-trim.png"
+        },
+        "alpha-snap-button": {
+          "base": "alpha-snap-button.png"
+        },
+        "alpha-straight-topstitch-seam": {
+          "base": "alpha-straight-topstitch-seam.png"
+        },
+        "alpha-woven-label-patch": {
+          "base": "alpha-woven-label-patch.png"
+        },
+        "alpha-zipper-teeth-trim": {
+          "base": "alpha-zipper-teeth-trim.png"
+        }
+      },
+      "sha256": "d096a56f5b697efa4bb8708355e90312b152a6970d2b2d06eddbf386a01343fe",
+      "thumbs": {
+        "alpha-belt-buckle.png": "thumbs/alphas-v1.0.0/alpha-belt-buckle.webp",
+        "alpha-box-x-bartack.png": "thumbs/alphas-v1.0.0/alpha-box-x-bartack.webp",
+        "alpha-chain-stitch-seam.png": "thumbs/alphas-v1.0.0/alpha-chain-stitch-seam.webp",
+        "alpha-closed-zipper-teeth.png": "thumbs/alphas-v1.0.0/alpha-closed-zipper-teeth.webp",
+        "alpha-copper-dome-rivet.png": "thumbs/alphas-v1.0.0/alpha-copper-dome-rivet.webp",
+        "alpha-cross-stitch-seam.png": "thumbs/alphas-v1.0.0/alpha-cross-stitch-seam.webp",
+        "alpha-crown-stamp.png": "thumbs/alphas-v1.0.0/alpha-crown-stamp.webp",
+        "alpha-double-needle-seam.png": "thumbs/alphas-v1.0.0/alpha-double-needle-seam.webp",
+        "alpha-double-topstitch-seam.png": "thumbs/alphas-v1.0.0/alpha-double-topstitch-seam.webp",
+        "alpha-four-hole-button-fixed.png": "thumbs/alphas-v1.0.0/alpha-four-hole-button-fixed.webp",
+        "alpha-perforated-hole-row.png": "thumbs/alphas-v1.0.0/alpha-perforated-hole-row.webp",
+        "alpha-quilted-diamond-stitch.png": "thumbs/alphas-v1.0.0/alpha-quilted-diamond-stitch.webp",
+        "alpha-rivet-grommet.png": "thumbs/alphas-v1.0.0/alpha-rivet-grommet.webp",
+        "alpha-rivet-row-trim.png": "thumbs/alphas-v1.0.0/alpha-rivet-row-trim.webp",
+        "alpha-snap-button.png": "thumbs/alphas-v1.0.0/alpha-snap-button.webp",
+        "alpha-straight-topstitch-seam.png": "thumbs/alphas-v1.0.0/alpha-straight-topstitch-seam.webp",
+        "alpha-woven-label-patch.png": "thumbs/alphas-v1.0.0/alpha-woven-label-patch.webp",
+        "alpha-zipper-teeth-trim.png": "thumbs/alphas-v1.0.0/alpha-zipper-teeth-trim.webp"
+      }
     }
   ]
 }
