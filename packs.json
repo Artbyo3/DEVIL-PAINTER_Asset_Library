@@ -5691,6 +5691,1119 @@
         "tartan-plaid-black-watch-layered_normal.png": "thumbs/materials-vol1-v1.0.0/tartan-plaid-black-watch-layered_normal.webp",
         "tartan-plaid-black-watch-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/tartan-plaid-black-watch-layered_roughness.webp"
       }
+    },
+    {
+      "name": "Materials Vol. 2",
+      "description": "84 seamless 2048x2048 PBR material maps across 28 stone, rock, marble, brick, masonry, and ground materials (base color, normal, and roughness).",
+      "size": "170.2 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/materials-vol2-v1.0.0/Materials_Vol2.zip",
+      "releaseTag": "materials-vol2-v1.0.0",
+      "tags": [
+        "materials",
+        "pbr",
+        "2048",
+        "stone",
+        "rock",
+        "marble",
+        "brick",
+        "masonry",
+        "ground",
+        "layered",
+        "seamless"
+      ],
+      "files": [
+        "granite-rock-alpine-lichen.png",
+        "granite-rock-alpine-lichen_normal.png",
+        "granite-rock-alpine-lichen_roughness.png",
+        "granite-rock-pink-feldspar.png",
+        "granite-rock-pink-feldspar_normal.png",
+        "granite-rock-pink-feldspar_roughness.png",
+        "granite-rock-speckled-grey-layered.png",
+        "granite-rock-speckled-grey-layered_normal.png",
+        "granite-rock-speckled-grey-layered_roughness.png",
+        "granite-rock-speckled-grey.png",
+        "granite-rock-speckled-grey_normal.png",
+        "granite-rock-speckled-grey_roughness.png",
+        "limestone-pale-fossil-layered.png",
+        "limestone-pale-fossil-layered_normal.png",
+        "limestone-pale-fossil-layered_roughness.png",
+        "marble-carrara-gold-layered.png",
+        "marble-carrara-gold-layered_normal.png",
+        "marble-carrara-gold-layered_roughness.png",
+        "marble-carrara-gold.png",
+        "marble-carrara-gold_normal.png",
+        "marble-carrara-gold_roughness.png",
+        "marble-emerald-malachite.png",
+        "marble-emerald-malachite_normal.png",
+        "marble-emerald-malachite_roughness.png",
+        "marble-nero-portoro-layered.png",
+        "marble-nero-portoro-layered_normal.png",
+        "marble-nero-portoro-layered_roughness.png",
+        "marble-nero-portoro.png",
+        "marble-nero-portoro_normal.png",
+        "marble-nero-portoro_roughness.png",
+        "masonry-tiles-terracotta-layered.png",
+        "masonry-tiles-terracotta-layered_normal.png",
+        "masonry-tiles-terracotta-layered_roughness.png",
+        "moss-ground-forest-layered.png",
+        "moss-ground-forest-layered_normal.png",
+        "moss-ground-forest-layered_roughness.png",
+        "red-brick-wall-classic-clay-layered.png",
+        "red-brick-wall-classic-clay-layered_normal.png",
+        "red-brick-wall-classic-clay-layered_roughness.png",
+        "red-brick-wall-classic-clay.png",
+        "red-brick-wall-classic-clay_normal.png",
+        "red-brick-wall-classic-clay_roughness.png",
+        "red-brick-wall-sooty-charcoal.png",
+        "red-brick-wall-sooty-charcoal_normal.png",
+        "red-brick-wall-sooty-charcoal_roughness.png",
+        "red-brick-wall-tuscan-terracotta.png",
+        "red-brick-wall-tuscan-terracotta_normal.png",
+        "red-brick-wall-tuscan-terracotta_roughness.png",
+        "sandstone-strata-golden-ochre-layered.png",
+        "sandstone-strata-golden-ochre-layered_normal.png",
+        "sandstone-strata-golden-ochre-layered_roughness.png",
+        "sandstone-strata-golden-ochre.png",
+        "sandstone-strata-golden-ochre_normal.png",
+        "sandstone-strata-golden-ochre_roughness.png",
+        "sandstone-strata-pale-buff.png",
+        "sandstone-strata-pale-buff_normal.png",
+        "sandstone-strata-pale-buff_roughness.png",
+        "sandstone-strata-red-canyon.png",
+        "sandstone-strata-red-canyon_normal.png",
+        "sandstone-strata-red-canyon_roughness.png",
+        "slate-rock-dark-cleavage-layered.png",
+        "slate-rock-dark-cleavage-layered_normal.png",
+        "slate-rock-dark-cleavage-layered_roughness.png",
+        "slate-rock-dark-cleavage.png",
+        "slate-rock-dark-cleavage_normal.png",
+        "slate-rock-dark-cleavage_roughness.png",
+        "slate-rock-mossy-forest.png",
+        "slate-rock-mossy-forest_normal.png",
+        "slate-rock-mossy-forest_roughness.png",
+        "slate-rock-rust-shale.png",
+        "slate-rock-rust-shale_normal.png",
+        "slate-rock-rust-shale_roughness.png",
+        "stone-wall-desert-travertine.png",
+        "stone-wall-desert-travertine_normal.png",
+        "stone-wall-desert-travertine_roughness.png",
+        "stone-wall-mossy-cottage.png",
+        "stone-wall-mossy-cottage_normal.png",
+        "stone-wall-mossy-cottage_roughness.png",
+        "stone-wall-rough-fieldstone-layered.png",
+        "stone-wall-rough-fieldstone-layered_normal.png",
+        "stone-wall-rough-fieldstone-layered_roughness.png",
+        "stone-wall-rough-fieldstone.png",
+        "stone-wall-rough-fieldstone_normal.png",
+        "stone-wall-rough-fieldstone_roughness.png"
+      ],
+      "fileTags": {
+        "granite-rock-alpine-lichen.png": [
+          "granite-rock-alpine-lichen",
+          "granite",
+          "rock",
+          "alpine",
+          "lichen",
+          "texture"
+        ],
+        "granite-rock-alpine-lichen_normal.png": [
+          "granite-rock-alpine-lichen",
+          "granite",
+          "rock",
+          "alpine",
+          "lichen",
+          "texture"
+        ],
+        "granite-rock-alpine-lichen_roughness.png": [
+          "granite-rock-alpine-lichen",
+          "granite",
+          "rock",
+          "alpine",
+          "lichen",
+          "texture"
+        ],
+        "granite-rock-pink-feldspar.png": [
+          "granite-rock-pink-feldspar",
+          "granite",
+          "rock",
+          "pink",
+          "feldspar",
+          "texture"
+        ],
+        "granite-rock-pink-feldspar_normal.png": [
+          "granite-rock-pink-feldspar",
+          "granite",
+          "rock",
+          "pink",
+          "feldspar",
+          "texture"
+        ],
+        "granite-rock-pink-feldspar_roughness.png": [
+          "granite-rock-pink-feldspar",
+          "granite",
+          "rock",
+          "pink",
+          "feldspar",
+          "texture"
+        ],
+        "granite-rock-speckled-grey-layered.png": [
+          "granite-rock-speckled-grey-layered",
+          "granite",
+          "rock",
+          "speckled",
+          "grey",
+          "layered",
+          "texture"
+        ],
+        "granite-rock-speckled-grey-layered_normal.png": [
+          "granite-rock-speckled-grey-layered",
+          "granite",
+          "rock",
+          "speckled",
+          "grey",
+          "layered",
+          "texture"
+        ],
+        "granite-rock-speckled-grey-layered_roughness.png": [
+          "granite-rock-speckled-grey-layered",
+          "granite",
+          "rock",
+          "speckled",
+          "grey",
+          "layered",
+          "texture"
+        ],
+        "granite-rock-speckled-grey.png": [
+          "granite-rock-speckled-grey",
+          "granite",
+          "rock",
+          "speckled",
+          "grey",
+          "texture"
+        ],
+        "granite-rock-speckled-grey_normal.png": [
+          "granite-rock-speckled-grey",
+          "granite",
+          "rock",
+          "speckled",
+          "grey",
+          "texture"
+        ],
+        "granite-rock-speckled-grey_roughness.png": [
+          "granite-rock-speckled-grey",
+          "granite",
+          "rock",
+          "speckled",
+          "grey",
+          "texture"
+        ],
+        "limestone-pale-fossil-layered.png": [
+          "limestone-pale-fossil-layered",
+          "limestone",
+          "pale",
+          "fossil",
+          "layered",
+          "texture"
+        ],
+        "limestone-pale-fossil-layered_normal.png": [
+          "limestone-pale-fossil-layered",
+          "limestone",
+          "pale",
+          "fossil",
+          "layered",
+          "texture"
+        ],
+        "limestone-pale-fossil-layered_roughness.png": [
+          "limestone-pale-fossil-layered",
+          "limestone",
+          "pale",
+          "fossil",
+          "layered",
+          "texture"
+        ],
+        "marble-carrara-gold-layered.png": [
+          "marble-carrara-gold-layered",
+          "marble",
+          "carrara",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "marble-carrara-gold-layered_normal.png": [
+          "marble-carrara-gold-layered",
+          "marble",
+          "carrara",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "marble-carrara-gold-layered_roughness.png": [
+          "marble-carrara-gold-layered",
+          "marble",
+          "carrara",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "marble-carrara-gold.png": [
+          "marble-carrara-gold",
+          "marble",
+          "carrara",
+          "gold",
+          "texture"
+        ],
+        "marble-carrara-gold_normal.png": [
+          "marble-carrara-gold",
+          "marble",
+          "carrara",
+          "gold",
+          "texture"
+        ],
+        "marble-carrara-gold_roughness.png": [
+          "marble-carrara-gold",
+          "marble",
+          "carrara",
+          "gold",
+          "texture"
+        ],
+        "marble-emerald-malachite.png": [
+          "marble-emerald-malachite",
+          "marble",
+          "emerald",
+          "malachite",
+          "texture"
+        ],
+        "marble-emerald-malachite_normal.png": [
+          "marble-emerald-malachite",
+          "marble",
+          "emerald",
+          "malachite",
+          "texture"
+        ],
+        "marble-emerald-malachite_roughness.png": [
+          "marble-emerald-malachite",
+          "marble",
+          "emerald",
+          "malachite",
+          "texture"
+        ],
+        "marble-nero-portoro-layered.png": [
+          "marble-nero-portoro-layered",
+          "marble",
+          "nero",
+          "portoro",
+          "layered",
+          "texture"
+        ],
+        "marble-nero-portoro-layered_normal.png": [
+          "marble-nero-portoro-layered",
+          "marble",
+          "nero",
+          "portoro",
+          "layered",
+          "texture"
+        ],
+        "marble-nero-portoro-layered_roughness.png": [
+          "marble-nero-portoro-layered",
+          "marble",
+          "nero",
+          "portoro",
+          "layered",
+          "texture"
+        ],
+        "marble-nero-portoro.png": [
+          "marble-nero-portoro",
+          "marble",
+          "nero",
+          "portoro",
+          "texture"
+        ],
+        "marble-nero-portoro_normal.png": [
+          "marble-nero-portoro",
+          "marble",
+          "nero",
+          "portoro",
+          "texture"
+        ],
+        "marble-nero-portoro_roughness.png": [
+          "marble-nero-portoro",
+          "marble",
+          "nero",
+          "portoro",
+          "texture"
+        ],
+        "masonry-tiles-terracotta-layered.png": [
+          "masonry-tiles-terracotta-layered",
+          "masonry",
+          "tiles",
+          "terracotta",
+          "layered",
+          "texture"
+        ],
+        "masonry-tiles-terracotta-layered_normal.png": [
+          "masonry-tiles-terracotta-layered",
+          "masonry",
+          "tiles",
+          "terracotta",
+          "layered",
+          "texture"
+        ],
+        "masonry-tiles-terracotta-layered_roughness.png": [
+          "masonry-tiles-terracotta-layered",
+          "masonry",
+          "tiles",
+          "terracotta",
+          "layered",
+          "texture"
+        ],
+        "moss-ground-forest-layered.png": [
+          "moss-ground-forest-layered",
+          "moss",
+          "ground",
+          "forest",
+          "layered",
+          "texture"
+        ],
+        "moss-ground-forest-layered_normal.png": [
+          "moss-ground-forest-layered",
+          "moss",
+          "ground",
+          "forest",
+          "layered",
+          "texture"
+        ],
+        "moss-ground-forest-layered_roughness.png": [
+          "moss-ground-forest-layered",
+          "moss",
+          "ground",
+          "forest",
+          "layered",
+          "texture"
+        ],
+        "red-brick-wall-classic-clay-layered.png": [
+          "red-brick-wall-classic-clay-layered",
+          "red",
+          "brick",
+          "wall",
+          "classic",
+          "clay",
+          "layered",
+          "texture"
+        ],
+        "red-brick-wall-classic-clay-layered_normal.png": [
+          "red-brick-wall-classic-clay-layered",
+          "red",
+          "brick",
+          "wall",
+          "classic",
+          "clay",
+          "layered",
+          "texture"
+        ],
+        "red-brick-wall-classic-clay-layered_roughness.png": [
+          "red-brick-wall-classic-clay-layered",
+          "red",
+          "brick",
+          "wall",
+          "classic",
+          "clay",
+          "layered",
+          "texture"
+        ],
+        "red-brick-wall-classic-clay.png": [
+          "red-brick-wall-classic-clay",
+          "red",
+          "brick",
+          "wall",
+          "classic",
+          "clay",
+          "texture"
+        ],
+        "red-brick-wall-classic-clay_normal.png": [
+          "red-brick-wall-classic-clay",
+          "red",
+          "brick",
+          "wall",
+          "classic",
+          "clay",
+          "texture"
+        ],
+        "red-brick-wall-classic-clay_roughness.png": [
+          "red-brick-wall-classic-clay",
+          "red",
+          "brick",
+          "wall",
+          "classic",
+          "clay",
+          "texture"
+        ],
+        "red-brick-wall-sooty-charcoal.png": [
+          "red-brick-wall-sooty-charcoal",
+          "red",
+          "brick",
+          "wall",
+          "sooty",
+          "charcoal",
+          "texture"
+        ],
+        "red-brick-wall-sooty-charcoal_normal.png": [
+          "red-brick-wall-sooty-charcoal",
+          "red",
+          "brick",
+          "wall",
+          "sooty",
+          "charcoal",
+          "texture"
+        ],
+        "red-brick-wall-sooty-charcoal_roughness.png": [
+          "red-brick-wall-sooty-charcoal",
+          "red",
+          "brick",
+          "wall",
+          "sooty",
+          "charcoal",
+          "texture"
+        ],
+        "red-brick-wall-tuscan-terracotta.png": [
+          "red-brick-wall-tuscan-terracotta",
+          "red",
+          "brick",
+          "wall",
+          "tuscan",
+          "terracotta",
+          "texture"
+        ],
+        "red-brick-wall-tuscan-terracotta_normal.png": [
+          "red-brick-wall-tuscan-terracotta",
+          "red",
+          "brick",
+          "wall",
+          "tuscan",
+          "terracotta",
+          "texture"
+        ],
+        "red-brick-wall-tuscan-terracotta_roughness.png": [
+          "red-brick-wall-tuscan-terracotta",
+          "red",
+          "brick",
+          "wall",
+          "tuscan",
+          "terracotta",
+          "texture"
+        ],
+        "sandstone-strata-golden-ochre-layered.png": [
+          "sandstone-strata-golden-ochre-layered",
+          "sandstone",
+          "strata",
+          "golden",
+          "ochre",
+          "layered",
+          "texture"
+        ],
+        "sandstone-strata-golden-ochre-layered_normal.png": [
+          "sandstone-strata-golden-ochre-layered",
+          "sandstone",
+          "strata",
+          "golden",
+          "ochre",
+          "layered",
+          "texture"
+        ],
+        "sandstone-strata-golden-ochre-layered_roughness.png": [
+          "sandstone-strata-golden-ochre-layered",
+          "sandstone",
+          "strata",
+          "golden",
+          "ochre",
+          "layered",
+          "texture"
+        ],
+        "sandstone-strata-golden-ochre.png": [
+          "sandstone-strata-golden-ochre",
+          "sandstone",
+          "strata",
+          "golden",
+          "ochre",
+          "texture"
+        ],
+        "sandstone-strata-golden-ochre_normal.png": [
+          "sandstone-strata-golden-ochre",
+          "sandstone",
+          "strata",
+          "golden",
+          "ochre",
+          "texture"
+        ],
+        "sandstone-strata-golden-ochre_roughness.png": [
+          "sandstone-strata-golden-ochre",
+          "sandstone",
+          "strata",
+          "golden",
+          "ochre",
+          "texture"
+        ],
+        "sandstone-strata-pale-buff.png": [
+          "sandstone-strata-pale-buff",
+          "sandstone",
+          "strata",
+          "pale",
+          "buff",
+          "texture"
+        ],
+        "sandstone-strata-pale-buff_normal.png": [
+          "sandstone-strata-pale-buff",
+          "sandstone",
+          "strata",
+          "pale",
+          "buff",
+          "texture"
+        ],
+        "sandstone-strata-pale-buff_roughness.png": [
+          "sandstone-strata-pale-buff",
+          "sandstone",
+          "strata",
+          "pale",
+          "buff",
+          "texture"
+        ],
+        "sandstone-strata-red-canyon.png": [
+          "sandstone-strata-red-canyon",
+          "sandstone",
+          "strata",
+          "red",
+          "canyon",
+          "texture"
+        ],
+        "sandstone-strata-red-canyon_normal.png": [
+          "sandstone-strata-red-canyon",
+          "sandstone",
+          "strata",
+          "red",
+          "canyon",
+          "texture"
+        ],
+        "sandstone-strata-red-canyon_roughness.png": [
+          "sandstone-strata-red-canyon",
+          "sandstone",
+          "strata",
+          "red",
+          "canyon",
+          "texture"
+        ],
+        "slate-rock-dark-cleavage-layered.png": [
+          "slate-rock-dark-cleavage-layered",
+          "slate",
+          "rock",
+          "dark",
+          "cleavage",
+          "layered",
+          "texture"
+        ],
+        "slate-rock-dark-cleavage-layered_normal.png": [
+          "slate-rock-dark-cleavage-layered",
+          "slate",
+          "rock",
+          "dark",
+          "cleavage",
+          "layered",
+          "texture"
+        ],
+        "slate-rock-dark-cleavage-layered_roughness.png": [
+          "slate-rock-dark-cleavage-layered",
+          "slate",
+          "rock",
+          "dark",
+          "cleavage",
+          "layered",
+          "texture"
+        ],
+        "slate-rock-dark-cleavage.png": [
+          "slate-rock-dark-cleavage",
+          "slate",
+          "rock",
+          "dark",
+          "cleavage",
+          "texture"
+        ],
+        "slate-rock-dark-cleavage_normal.png": [
+          "slate-rock-dark-cleavage",
+          "slate",
+          "rock",
+          "dark",
+          "cleavage",
+          "texture"
+        ],
+        "slate-rock-dark-cleavage_roughness.png": [
+          "slate-rock-dark-cleavage",
+          "slate",
+          "rock",
+          "dark",
+          "cleavage",
+          "texture"
+        ],
+        "slate-rock-mossy-forest.png": [
+          "slate-rock-mossy-forest",
+          "slate",
+          "rock",
+          "mossy",
+          "forest",
+          "texture"
+        ],
+        "slate-rock-mossy-forest_normal.png": [
+          "slate-rock-mossy-forest",
+          "slate",
+          "rock",
+          "mossy",
+          "forest",
+          "texture"
+        ],
+        "slate-rock-mossy-forest_roughness.png": [
+          "slate-rock-mossy-forest",
+          "slate",
+          "rock",
+          "mossy",
+          "forest",
+          "texture"
+        ],
+        "slate-rock-rust-shale.png": [
+          "slate-rock-rust-shale",
+          "slate",
+          "rock",
+          "rust",
+          "shale",
+          "texture"
+        ],
+        "slate-rock-rust-shale_normal.png": [
+          "slate-rock-rust-shale",
+          "slate",
+          "rock",
+          "rust",
+          "shale",
+          "texture"
+        ],
+        "slate-rock-rust-shale_roughness.png": [
+          "slate-rock-rust-shale",
+          "slate",
+          "rock",
+          "rust",
+          "shale",
+          "texture"
+        ],
+        "stone-wall-desert-travertine.png": [
+          "stone-wall-desert-travertine",
+          "stone",
+          "wall",
+          "desert",
+          "travertine",
+          "texture"
+        ],
+        "stone-wall-desert-travertine_normal.png": [
+          "stone-wall-desert-travertine",
+          "stone",
+          "wall",
+          "desert",
+          "travertine",
+          "texture"
+        ],
+        "stone-wall-desert-travertine_roughness.png": [
+          "stone-wall-desert-travertine",
+          "stone",
+          "wall",
+          "desert",
+          "travertine",
+          "texture"
+        ],
+        "stone-wall-mossy-cottage.png": [
+          "stone-wall-mossy-cottage",
+          "stone",
+          "wall",
+          "mossy",
+          "cottage",
+          "texture"
+        ],
+        "stone-wall-mossy-cottage_normal.png": [
+          "stone-wall-mossy-cottage",
+          "stone",
+          "wall",
+          "mossy",
+          "cottage",
+          "texture"
+        ],
+        "stone-wall-mossy-cottage_roughness.png": [
+          "stone-wall-mossy-cottage",
+          "stone",
+          "wall",
+          "mossy",
+          "cottage",
+          "texture"
+        ],
+        "stone-wall-rough-fieldstone-layered.png": [
+          "stone-wall-rough-fieldstone-layered",
+          "stone",
+          "wall",
+          "rough",
+          "fieldstone",
+          "layered",
+          "texture"
+        ],
+        "stone-wall-rough-fieldstone-layered_normal.png": [
+          "stone-wall-rough-fieldstone-layered",
+          "stone",
+          "wall",
+          "rough",
+          "fieldstone",
+          "layered",
+          "texture"
+        ],
+        "stone-wall-rough-fieldstone-layered_roughness.png": [
+          "stone-wall-rough-fieldstone-layered",
+          "stone",
+          "wall",
+          "rough",
+          "fieldstone",
+          "layered",
+          "texture"
+        ],
+        "stone-wall-rough-fieldstone.png": [
+          "stone-wall-rough-fieldstone",
+          "stone",
+          "wall",
+          "rough",
+          "fieldstone",
+          "texture"
+        ],
+        "stone-wall-rough-fieldstone_normal.png": [
+          "stone-wall-rough-fieldstone",
+          "stone",
+          "wall",
+          "rough",
+          "fieldstone",
+          "texture"
+        ],
+        "stone-wall-rough-fieldstone_roughness.png": [
+          "stone-wall-rough-fieldstone",
+          "stone",
+          "wall",
+          "rough",
+          "fieldstone",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "granite-rock-alpine-lichen.png": "6cc119e204103cb3092886e1cc2fa31a35b35727eda93b416629f10029cb18fe",
+        "granite-rock-alpine-lichen_normal.png": "916ad7187296d009807c7179b3ffc739bef99c6d1d436bd8909f50c4b8190582",
+        "granite-rock-alpine-lichen_roughness.png": "1272534707b1677f6a0f41373b79f39a3725348832b151197c1cb0e3c966e17b",
+        "granite-rock-pink-feldspar.png": "81e970a7ec847280e6c128217932bb234fe1c8ac17b61d084cfd35700ed945cc",
+        "granite-rock-pink-feldspar_normal.png": "8f749a25c7ed826616c391f6ec3e9949304cfd8e1088cd57fed725a5c1e4b16c",
+        "granite-rock-pink-feldspar_roughness.png": "9a760b5e3c01973e6ae0d2ae6d08f596bf4ecb7aefb84f065c9177b94a07bb01",
+        "granite-rock-speckled-grey-layered.png": "8b3995764caa4bf505e930d02edb97c9f0382afc9c5e5dce563b0dda128ec3fb",
+        "granite-rock-speckled-grey-layered_normal.png": "e2a52a6a4f6a64c5077d7c90c19c03e5aabd0d62e7a69871751fe52477f1e4d9",
+        "granite-rock-speckled-grey-layered_roughness.png": "19bfb61b76f06989e93218a5977e6f16086238ec202b0a45c6d79922f3fd3daa",
+        "granite-rock-speckled-grey.png": "365ad616d19503a920b5e51036d82e627b579bdc7860d3f570f6692a8f6d8671",
+        "granite-rock-speckled-grey_normal.png": "50cb9fcc38e855bf3ba071a5eb32bc4a3af79c441706a5777dd924b7845a49be",
+        "granite-rock-speckled-grey_roughness.png": "9e5bba715de69ed3aac05fbd5fa69fe5949602fd5c05bbf9dd8bb62dba955eea",
+        "limestone-pale-fossil-layered.png": "2b71402eac8124a991349072a9caf2728cdc8dc9a42b03815fb40a60a33b068c",
+        "limestone-pale-fossil-layered_normal.png": "9bddb0e327599a08e5b784043ff1b0f98a974fcaaa11f00b145c7a6cca91255e",
+        "limestone-pale-fossil-layered_roughness.png": "13be23b0390733ea52454973248f39edccd5f11e1e6bafc0862bb68b45df246b",
+        "marble-carrara-gold-layered.png": "163f41b06bad56790e6579833b9d871d8a5bd56e31243dcb18d1268dc4f2fbc6",
+        "marble-carrara-gold-layered_normal.png": "91306e743d3c09b0f5d15d137fef9e3bcc9240d1d0acbd5d45f50eb2855e739f",
+        "marble-carrara-gold-layered_roughness.png": "3240b3f6a5729d90af8cb7205b6acf41249f2de373855693c30a91edc27e9393",
+        "marble-carrara-gold.png": "daa3ee2c5e064dbba68ceabcfdc4f8fb38246e3a7cabdf51f29c796ee435145b",
+        "marble-carrara-gold_normal.png": "1340ac23351977b573261cbf5c2503d3d1bccbf7263c65155b93945e19e1ccc1",
+        "marble-carrara-gold_roughness.png": "ff950879d8626fef327bfbacc1bd213d1e83e0f86725350f444c1dcc0096d0ee",
+        "marble-emerald-malachite.png": "d758031a7fb912c672b2ebc967a724228088d5563959ba68ae7bbc0f13877de0",
+        "marble-emerald-malachite_normal.png": "8fa7bb52ff1c66ebef089582d7a0fb8f5c13c2875bd125afb1543bf36beffb39",
+        "marble-emerald-malachite_roughness.png": "b4483d32c220735d8104a1b94606cbd4ac6e99f461a474ee2dfee25f59880284",
+        "marble-nero-portoro-layered.png": "653fd5eb56d3d15ea09f9ae30b9c0641ea43eecebe12b5ec8d48bb8aaff7ae03",
+        "marble-nero-portoro-layered_normal.png": "9cf64dfbc160dbd35bfe51907eebe739407b3ed108931daec481964fa23a751d",
+        "marble-nero-portoro-layered_roughness.png": "b70ac1d0962ea588a5e1fa27a1e07e093de2b8a01d327d17e664eedb7efe49e1",
+        "marble-nero-portoro.png": "0632ee5c3a67054bb43c6cd680e6da23bb18603658c3855ed759f29c5d4996c4",
+        "marble-nero-portoro_normal.png": "e51af7d81698eb17d066af50d403d8b8e96fd2b46909b5ad68adc53c953a4775",
+        "marble-nero-portoro_roughness.png": "aea3c853b3243c825dc7d3b51f4cbe398a246c506497c53660328d395088ac04",
+        "masonry-tiles-terracotta-layered.png": "f9cb2910c6df95c6c5e85c7c04630b31669e375c046210e9fa3f52f6febbc587",
+        "masonry-tiles-terracotta-layered_normal.png": "3cced463eea08533dfa3344414825e8f5ad215522eb03c0853459ba8223935fe",
+        "masonry-tiles-terracotta-layered_roughness.png": "9508a00f8224ac48e084d5886be33c206b2abc0c8805487861c6da52183f37ef",
+        "moss-ground-forest-layered.png": "d879366101fce7efe8c762e5d02125ae82ca2baf4c5c34b980d9d8759ce475c8",
+        "moss-ground-forest-layered_normal.png": "624bf4c963f15b3b23c3b1675a3df9116821868653e449f7b658f988d9bb4664",
+        "moss-ground-forest-layered_roughness.png": "45f43fac12152a852f2560df4d0743757543acc1ff0c3d11f78794af0ef55445",
+        "red-brick-wall-classic-clay-layered.png": "250a2650541423bf3f6fc1523ce06d02ef40fc168fca80f213c710b716c93238",
+        "red-brick-wall-classic-clay-layered_normal.png": "215b86cdbb1016133f0c320bdf1313f3f35ec54ede4050cceef70bc21444790d",
+        "red-brick-wall-classic-clay-layered_roughness.png": "edb3f889f37ed43162648c028348980b6879f8cdb80699259defc2f60e680065",
+        "red-brick-wall-classic-clay.png": "d9394fa21ab583d5042f57a2f34e3d4a5d3bff8ef3af6472339ecb69f9cd4fd9",
+        "red-brick-wall-classic-clay_normal.png": "3d1c49e1ef1d0abf2238de3e82fd4dad4e5dddcfac37aa7878d2249d22b70fa2",
+        "red-brick-wall-classic-clay_roughness.png": "bffcfb4ce58ea20b8c8e027f831f42ca06870faf1d6225711dba9f531e2c08c4",
+        "red-brick-wall-sooty-charcoal.png": "ff77deaf63633be25ab51c8baa5a6bb4a2d27b79fe35ecb53693b9768e3d1c2a",
+        "red-brick-wall-sooty-charcoal_normal.png": "a2ef0e0fc9fbc9f70bf2450ae579a71d8f742ab44ffe318d37847e843ef7e884",
+        "red-brick-wall-sooty-charcoal_roughness.png": "d73254e6a6f8de2cd2da7da28e4251c18aae549df2523c74ed3ff1046fdf35ef",
+        "red-brick-wall-tuscan-terracotta.png": "96c1fd63118ca52050d5284a62404786a88d809b22e2b99c25c8a6661672f54a",
+        "red-brick-wall-tuscan-terracotta_normal.png": "db48f3c23e537b11de88ca02c395bb27bf51df18cc43981de463db69452fb27e",
+        "red-brick-wall-tuscan-terracotta_roughness.png": "379d00f497d0ff3eb884f17627515955e384f80bd718d0c837354de7a072ffd5",
+        "sandstone-strata-golden-ochre-layered.png": "fe98433b05eba0f94891a6bcf50dd9acb918ab33660e0d15a1d6da5cba1ec068",
+        "sandstone-strata-golden-ochre-layered_normal.png": "fb7f829fad63576c9a8f415eac26442c3d06487ea834c83b14f356aa358e5e17",
+        "sandstone-strata-golden-ochre-layered_roughness.png": "ede3f9f6ef13bafd7e647be141a7e96b6e82b6f47e9a6c9765921a47d4b5c4af",
+        "sandstone-strata-golden-ochre.png": "77bc48462764a0849cbd161a103f9345ee803f6387a81c5f95be37127e256556",
+        "sandstone-strata-golden-ochre_normal.png": "ac99734c0baecfa5db4346a5df51fa189b20154cdbc991aef64d8c7bbb3e681c",
+        "sandstone-strata-golden-ochre_roughness.png": "08ad0a101270087a7cfa0738f1f1be0748cf9b5b819460eb26b47a6840b7e9bb",
+        "sandstone-strata-pale-buff.png": "9acccf6801086d5886c7362e0fdb2e1ccf214d3f9883914ae511dac77e11a2dc",
+        "sandstone-strata-pale-buff_normal.png": "54b93b6fb8a5ff4574fdb5dd0eaf5c12ba61e9d12469ce3573e3ce5088ae09ce",
+        "sandstone-strata-pale-buff_roughness.png": "e6661febad24fe3ad0fefab160a07307df1c96ba367718e0d8606c0f353ee5ef",
+        "sandstone-strata-red-canyon.png": "e44d5eab32fbe38a157ce5114827bb05e92784cdcea606a0e173c4e93ffcd71b",
+        "sandstone-strata-red-canyon_normal.png": "40c3d6612bdb772236422b26fab255b235898a58620a247b100a3bcd3186553c",
+        "sandstone-strata-red-canyon_roughness.png": "9dc8a92fc686f3abbe7284a2143b38e86fc49351d347cde8f3ce72920a95c526",
+        "slate-rock-dark-cleavage-layered.png": "0d1ab970bc310647dd4da6cbfb9757f2ca8dc43297fe907eaab72f97a5835b9c",
+        "slate-rock-dark-cleavage-layered_normal.png": "f6c4942ababd582792e6f3676275ad852bd6482f51657150d88dc38ec2adc2d4",
+        "slate-rock-dark-cleavage-layered_roughness.png": "df1b0569e3982f38315b71fe62105f7da12dc4c2b3dc23572ffc874cb0abacd7",
+        "slate-rock-dark-cleavage.png": "49f67d601fa89eecca4fcf0bffc970e46c8ecd6a81c01210bc9ca2239a014b5b",
+        "slate-rock-dark-cleavage_normal.png": "93867620ff565bd6964cd7d67b58dc447d88e28a19c29901da047a15b5248c86",
+        "slate-rock-dark-cleavage_roughness.png": "c3f36f787bacf4a80ab958054bbd1efd8135c0b6ed33eaa5be286bca268bcde7",
+        "slate-rock-mossy-forest.png": "9574aa6651b0c78af29f75611b2fd5602c9fecdc822519a72452799387fb2497",
+        "slate-rock-mossy-forest_normal.png": "364c1bb77692501fdebb78c852b5c3f59c2d27b9bb5923ce9f0e16d32bbfa4d7",
+        "slate-rock-mossy-forest_roughness.png": "44d878bc02d0fb34b3f22802690580abd4354692a88ceb861f4930feb87e5f5c",
+        "slate-rock-rust-shale.png": "9f1e6e8ad5ed26aa09ee63dff7c936691a122db1dc83411122ffe149970a47e6",
+        "slate-rock-rust-shale_normal.png": "86635c50150f27d005c8422495d7d0714f0d9d45f1547a156c83ec14f14b92c5",
+        "slate-rock-rust-shale_roughness.png": "7b7461bd7278f91374653cf03e10f3e4089707c246b984c9e43a8ca1328ea007",
+        "stone-wall-desert-travertine.png": "4077eb60a415e57ed54faf0c7298ee715cdd18ba23f821baa20456a28b261aaa",
+        "stone-wall-desert-travertine_normal.png": "b0dc1a465b37ad69ccb54ea65e7241bd5fc915702868b532262918cadb8588dd",
+        "stone-wall-desert-travertine_roughness.png": "9034bbc872fe649f87bd90a50d5405a84d254402a1c5b7416e8773e8c79324df",
+        "stone-wall-mossy-cottage.png": "1c5c2129c5871bf45325d28e9fbf59560dbf6d377660b2d04a89c281687ed3ea",
+        "stone-wall-mossy-cottage_normal.png": "b5a3593014c885a01138b262a5be8501b207aea9c9a8ab010232148211b6d47c",
+        "stone-wall-mossy-cottage_roughness.png": "2da3700c56c3c713932903403b06913ec4fbcef7ae8e93af6f9c798b59607acc",
+        "stone-wall-rough-fieldstone-layered.png": "a47e7404c5233597313b31f3a041a98bb1a34828941bfdaf2a809bec383477f3",
+        "stone-wall-rough-fieldstone-layered_normal.png": "155ec3b3aa825d6beed90a0f16fa9b613d8ec9c0de7dc9d45d73f74bdb93845e",
+        "stone-wall-rough-fieldstone-layered_roughness.png": "cc393414886e81ae3eb17238d65e9efa54578f34f8464b21c047b1ea3c103693",
+        "stone-wall-rough-fieldstone.png": "4aadd0e5f0e9b030fd58c5d46ff40b5e8e54f960cccb254dcb4b93ca0ced06f1",
+        "stone-wall-rough-fieldstone_normal.png": "6356725c7fc142ed568c58e648745b32cd8dd6e0f3d396c3c30532ead3b6f7a4",
+        "stone-wall-rough-fieldstone_roughness.png": "0cd1714fc3270675f8f036082cb7066662fcf8fd1421c40fb502af55137ed8be"
+      },
+      "materials": {
+        "granite-rock-alpine-lichen": {
+          "base": "granite-rock-alpine-lichen.png",
+          "normal": "granite-rock-alpine-lichen_normal.png",
+          "roughness": "granite-rock-alpine-lichen_roughness.png"
+        },
+        "granite-rock-pink-feldspar": {
+          "base": "granite-rock-pink-feldspar.png",
+          "normal": "granite-rock-pink-feldspar_normal.png",
+          "roughness": "granite-rock-pink-feldspar_roughness.png"
+        },
+        "granite-rock-speckled-grey-layered": {
+          "base": "granite-rock-speckled-grey-layered.png",
+          "normal": "granite-rock-speckled-grey-layered_normal.png",
+          "roughness": "granite-rock-speckled-grey-layered_roughness.png"
+        },
+        "granite-rock-speckled-grey": {
+          "base": "granite-rock-speckled-grey.png",
+          "normal": "granite-rock-speckled-grey_normal.png",
+          "roughness": "granite-rock-speckled-grey_roughness.png"
+        },
+        "limestone-pale-fossil-layered": {
+          "base": "limestone-pale-fossil-layered.png",
+          "normal": "limestone-pale-fossil-layered_normal.png",
+          "roughness": "limestone-pale-fossil-layered_roughness.png"
+        },
+        "marble-carrara-gold-layered": {
+          "base": "marble-carrara-gold-layered.png",
+          "normal": "marble-carrara-gold-layered_normal.png",
+          "roughness": "marble-carrara-gold-layered_roughness.png"
+        },
+        "marble-carrara-gold": {
+          "base": "marble-carrara-gold.png",
+          "normal": "marble-carrara-gold_normal.png",
+          "roughness": "marble-carrara-gold_roughness.png"
+        },
+        "marble-emerald-malachite": {
+          "base": "marble-emerald-malachite.png",
+          "normal": "marble-emerald-malachite_normal.png",
+          "roughness": "marble-emerald-malachite_roughness.png"
+        },
+        "marble-nero-portoro-layered": {
+          "base": "marble-nero-portoro-layered.png",
+          "normal": "marble-nero-portoro-layered_normal.png",
+          "roughness": "marble-nero-portoro-layered_roughness.png"
+        },
+        "marble-nero-portoro": {
+          "base": "marble-nero-portoro.png",
+          "normal": "marble-nero-portoro_normal.png",
+          "roughness": "marble-nero-portoro_roughness.png"
+        },
+        "masonry-tiles-terracotta-layered": {
+          "base": "masonry-tiles-terracotta-layered.png",
+          "normal": "masonry-tiles-terracotta-layered_normal.png",
+          "roughness": "masonry-tiles-terracotta-layered_roughness.png"
+        },
+        "moss-ground-forest-layered": {
+          "base": "moss-ground-forest-layered.png",
+          "normal": "moss-ground-forest-layered_normal.png",
+          "roughness": "moss-ground-forest-layered_roughness.png"
+        },
+        "red-brick-wall-classic-clay-layered": {
+          "base": "red-brick-wall-classic-clay-layered.png",
+          "normal": "red-brick-wall-classic-clay-layered_normal.png",
+          "roughness": "red-brick-wall-classic-clay-layered_roughness.png"
+        },
+        "red-brick-wall-classic-clay": {
+          "base": "red-brick-wall-classic-clay.png",
+          "normal": "red-brick-wall-classic-clay_normal.png",
+          "roughness": "red-brick-wall-classic-clay_roughness.png"
+        },
+        "red-brick-wall-sooty-charcoal": {
+          "base": "red-brick-wall-sooty-charcoal.png",
+          "normal": "red-brick-wall-sooty-charcoal_normal.png",
+          "roughness": "red-brick-wall-sooty-charcoal_roughness.png"
+        },
+        "red-brick-wall-tuscan-terracotta": {
+          "base": "red-brick-wall-tuscan-terracotta.png",
+          "normal": "red-brick-wall-tuscan-terracotta_normal.png",
+          "roughness": "red-brick-wall-tuscan-terracotta_roughness.png"
+        },
+        "sandstone-strata-golden-ochre-layered": {
+          "base": "sandstone-strata-golden-ochre-layered.png",
+          "normal": "sandstone-strata-golden-ochre-layered_normal.png",
+          "roughness": "sandstone-strata-golden-ochre-layered_roughness.png"
+        },
+        "sandstone-strata-golden-ochre": {
+          "base": "sandstone-strata-golden-ochre.png",
+          "normal": "sandstone-strata-golden-ochre_normal.png",
+          "roughness": "sandstone-strata-golden-ochre_roughness.png"
+        },
+        "sandstone-strata-pale-buff": {
+          "base": "sandstone-strata-pale-buff.png",
+          "normal": "sandstone-strata-pale-buff_normal.png",
+          "roughness": "sandstone-strata-pale-buff_roughness.png"
+        },
+        "sandstone-strata-red-canyon": {
+          "base": "sandstone-strata-red-canyon.png",
+          "normal": "sandstone-strata-red-canyon_normal.png",
+          "roughness": "sandstone-strata-red-canyon_roughness.png"
+        },
+        "slate-rock-dark-cleavage-layered": {
+          "base": "slate-rock-dark-cleavage-layered.png",
+          "normal": "slate-rock-dark-cleavage-layered_normal.png",
+          "roughness": "slate-rock-dark-cleavage-layered_roughness.png"
+        },
+        "slate-rock-dark-cleavage": {
+          "base": "slate-rock-dark-cleavage.png",
+          "normal": "slate-rock-dark-cleavage_normal.png",
+          "roughness": "slate-rock-dark-cleavage_roughness.png"
+        },
+        "slate-rock-mossy-forest": {
+          "base": "slate-rock-mossy-forest.png",
+          "normal": "slate-rock-mossy-forest_normal.png",
+          "roughness": "slate-rock-mossy-forest_roughness.png"
+        },
+        "slate-rock-rust-shale": {
+          "base": "slate-rock-rust-shale.png",
+          "normal": "slate-rock-rust-shale_normal.png",
+          "roughness": "slate-rock-rust-shale_roughness.png"
+        },
+        "stone-wall-desert-travertine": {
+          "base": "stone-wall-desert-travertine.png",
+          "normal": "stone-wall-desert-travertine_normal.png",
+          "roughness": "stone-wall-desert-travertine_roughness.png"
+        },
+        "stone-wall-mossy-cottage": {
+          "base": "stone-wall-mossy-cottage.png",
+          "normal": "stone-wall-mossy-cottage_normal.png",
+          "roughness": "stone-wall-mossy-cottage_roughness.png"
+        },
+        "stone-wall-rough-fieldstone-layered": {
+          "base": "stone-wall-rough-fieldstone-layered.png",
+          "normal": "stone-wall-rough-fieldstone-layered_normal.png",
+          "roughness": "stone-wall-rough-fieldstone-layered_roughness.png"
+        },
+        "stone-wall-rough-fieldstone": {
+          "base": "stone-wall-rough-fieldstone.png",
+          "normal": "stone-wall-rough-fieldstone_normal.png",
+          "roughness": "stone-wall-rough-fieldstone_roughness.png"
+        }
+      },
+      "sha256": "c9cdb7668dafcf41ae5a1fae11c25cc561ec4d6ab153ff9e947e684db028c29f",
+      "thumbs": {
+        "granite-rock-alpine-lichen.png": "thumbs/materials-vol2-v1.0.0/granite-rock-alpine-lichen.webp",
+        "granite-rock-alpine-lichen_normal.png": "thumbs/materials-vol2-v1.0.0/granite-rock-alpine-lichen_normal.webp",
+        "granite-rock-alpine-lichen_roughness.png": "thumbs/materials-vol2-v1.0.0/granite-rock-alpine-lichen_roughness.webp",
+        "granite-rock-pink-feldspar.png": "thumbs/materials-vol2-v1.0.0/granite-rock-pink-feldspar.webp",
+        "granite-rock-pink-feldspar_normal.png": "thumbs/materials-vol2-v1.0.0/granite-rock-pink-feldspar_normal.webp",
+        "granite-rock-pink-feldspar_roughness.png": "thumbs/materials-vol2-v1.0.0/granite-rock-pink-feldspar_roughness.webp",
+        "granite-rock-speckled-grey-layered.png": "thumbs/materials-vol2-v1.0.0/granite-rock-speckled-grey-layered.webp",
+        "granite-rock-speckled-grey-layered_normal.png": "thumbs/materials-vol2-v1.0.0/granite-rock-speckled-grey-layered_normal.webp",
+        "granite-rock-speckled-grey-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/granite-rock-speckled-grey-layered_roughness.webp",
+        "granite-rock-speckled-grey.png": "thumbs/materials-vol2-v1.0.0/granite-rock-speckled-grey.webp",
+        "granite-rock-speckled-grey_normal.png": "thumbs/materials-vol2-v1.0.0/granite-rock-speckled-grey_normal.webp",
+        "granite-rock-speckled-grey_roughness.png": "thumbs/materials-vol2-v1.0.0/granite-rock-speckled-grey_roughness.webp",
+        "limestone-pale-fossil-layered.png": "thumbs/materials-vol2-v1.0.0/limestone-pale-fossil-layered.webp",
+        "limestone-pale-fossil-layered_normal.png": "thumbs/materials-vol2-v1.0.0/limestone-pale-fossil-layered_normal.webp",
+        "limestone-pale-fossil-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/limestone-pale-fossil-layered_roughness.webp",
+        "marble-carrara-gold-layered.png": "thumbs/materials-vol2-v1.0.0/marble-carrara-gold-layered.webp",
+        "marble-carrara-gold-layered_normal.png": "thumbs/materials-vol2-v1.0.0/marble-carrara-gold-layered_normal.webp",
+        "marble-carrara-gold-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/marble-carrara-gold-layered_roughness.webp",
+        "marble-carrara-gold.png": "thumbs/materials-vol2-v1.0.0/marble-carrara-gold.webp",
+        "marble-carrara-gold_normal.png": "thumbs/materials-vol2-v1.0.0/marble-carrara-gold_normal.webp",
+        "marble-carrara-gold_roughness.png": "thumbs/materials-vol2-v1.0.0/marble-carrara-gold_roughness.webp",
+        "marble-emerald-malachite.png": "thumbs/materials-vol2-v1.0.0/marble-emerald-malachite.webp",
+        "marble-emerald-malachite_normal.png": "thumbs/materials-vol2-v1.0.0/marble-emerald-malachite_normal.webp",
+        "marble-emerald-malachite_roughness.png": "thumbs/materials-vol2-v1.0.0/marble-emerald-malachite_roughness.webp",
+        "marble-nero-portoro-layered.png": "thumbs/materials-vol2-v1.0.0/marble-nero-portoro-layered.webp",
+        "marble-nero-portoro-layered_normal.png": "thumbs/materials-vol2-v1.0.0/marble-nero-portoro-layered_normal.webp",
+        "marble-nero-portoro-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/marble-nero-portoro-layered_roughness.webp",
+        "marble-nero-portoro.png": "thumbs/materials-vol2-v1.0.0/marble-nero-portoro.webp",
+        "marble-nero-portoro_normal.png": "thumbs/materials-vol2-v1.0.0/marble-nero-portoro_normal.webp",
+        "marble-nero-portoro_roughness.png": "thumbs/materials-vol2-v1.0.0/marble-nero-portoro_roughness.webp",
+        "masonry-tiles-terracotta-layered.png": "thumbs/materials-vol2-v1.0.0/masonry-tiles-terracotta-layered.webp",
+        "masonry-tiles-terracotta-layered_normal.png": "thumbs/materials-vol2-v1.0.0/masonry-tiles-terracotta-layered_normal.webp",
+        "masonry-tiles-terracotta-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/masonry-tiles-terracotta-layered_roughness.webp",
+        "moss-ground-forest-layered.png": "thumbs/materials-vol2-v1.0.0/moss-ground-forest-layered.webp",
+        "moss-ground-forest-layered_normal.png": "thumbs/materials-vol2-v1.0.0/moss-ground-forest-layered_normal.webp",
+        "moss-ground-forest-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/moss-ground-forest-layered_roughness.webp",
+        "red-brick-wall-classic-clay-layered.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-classic-clay-layered.webp",
+        "red-brick-wall-classic-clay-layered_normal.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-classic-clay-layered_normal.webp",
+        "red-brick-wall-classic-clay-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-classic-clay-layered_roughness.webp",
+        "red-brick-wall-classic-clay.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-classic-clay.webp",
+        "red-brick-wall-classic-clay_normal.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-classic-clay_normal.webp",
+        "red-brick-wall-classic-clay_roughness.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-classic-clay_roughness.webp",
+        "red-brick-wall-sooty-charcoal.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-sooty-charcoal.webp",
+        "red-brick-wall-sooty-charcoal_normal.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-sooty-charcoal_normal.webp",
+        "red-brick-wall-sooty-charcoal_roughness.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-sooty-charcoal_roughness.webp",
+        "red-brick-wall-tuscan-terracotta.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-tuscan-terracotta.webp",
+        "red-brick-wall-tuscan-terracotta_normal.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-tuscan-terracotta_normal.webp",
+        "red-brick-wall-tuscan-terracotta_roughness.png": "thumbs/materials-vol2-v1.0.0/red-brick-wall-tuscan-terracotta_roughness.webp",
+        "sandstone-strata-golden-ochre-layered.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-golden-ochre-layered.webp",
+        "sandstone-strata-golden-ochre-layered_normal.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-golden-ochre-layered_normal.webp",
+        "sandstone-strata-golden-ochre-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-golden-ochre-layered_roughness.webp",
+        "sandstone-strata-golden-ochre.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-golden-ochre.webp",
+        "sandstone-strata-golden-ochre_normal.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-golden-ochre_normal.webp",
+        "sandstone-strata-golden-ochre_roughness.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-golden-ochre_roughness.webp",
+        "sandstone-strata-pale-buff.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-pale-buff.webp",
+        "sandstone-strata-pale-buff_normal.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-pale-buff_normal.webp",
+        "sandstone-strata-pale-buff_roughness.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-pale-buff_roughness.webp",
+        "sandstone-strata-red-canyon.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-red-canyon.webp",
+        "sandstone-strata-red-canyon_normal.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-red-canyon_normal.webp",
+        "sandstone-strata-red-canyon_roughness.png": "thumbs/materials-vol2-v1.0.0/sandstone-strata-red-canyon_roughness.webp",
+        "slate-rock-dark-cleavage-layered.png": "thumbs/materials-vol2-v1.0.0/slate-rock-dark-cleavage-layered.webp",
+        "slate-rock-dark-cleavage-layered_normal.png": "thumbs/materials-vol2-v1.0.0/slate-rock-dark-cleavage-layered_normal.webp",
+        "slate-rock-dark-cleavage-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/slate-rock-dark-cleavage-layered_roughness.webp",
+        "slate-rock-dark-cleavage.png": "thumbs/materials-vol2-v1.0.0/slate-rock-dark-cleavage.webp",
+        "slate-rock-dark-cleavage_normal.png": "thumbs/materials-vol2-v1.0.0/slate-rock-dark-cleavage_normal.webp",
+        "slate-rock-dark-cleavage_roughness.png": "thumbs/materials-vol2-v1.0.0/slate-rock-dark-cleavage_roughness.webp",
+        "slate-rock-mossy-forest.png": "thumbs/materials-vol2-v1.0.0/slate-rock-mossy-forest.webp",
+        "slate-rock-mossy-forest_normal.png": "thumbs/materials-vol2-v1.0.0/slate-rock-mossy-forest_normal.webp",
+        "slate-rock-mossy-forest_roughness.png": "thumbs/materials-vol2-v1.0.0/slate-rock-mossy-forest_roughness.webp",
+        "slate-rock-rust-shale.png": "thumbs/materials-vol2-v1.0.0/slate-rock-rust-shale.webp",
+        "slate-rock-rust-shale_normal.png": "thumbs/materials-vol2-v1.0.0/slate-rock-rust-shale_normal.webp",
+        "slate-rock-rust-shale_roughness.png": "thumbs/materials-vol2-v1.0.0/slate-rock-rust-shale_roughness.webp",
+        "stone-wall-desert-travertine.png": "thumbs/materials-vol2-v1.0.0/stone-wall-desert-travertine.webp",
+        "stone-wall-desert-travertine_normal.png": "thumbs/materials-vol2-v1.0.0/stone-wall-desert-travertine_normal.webp",
+        "stone-wall-desert-travertine_roughness.png": "thumbs/materials-vol2-v1.0.0/stone-wall-desert-travertine_roughness.webp",
+        "stone-wall-mossy-cottage.png": "thumbs/materials-vol2-v1.0.0/stone-wall-mossy-cottage.webp",
+        "stone-wall-mossy-cottage_normal.png": "thumbs/materials-vol2-v1.0.0/stone-wall-mossy-cottage_normal.webp",
+        "stone-wall-mossy-cottage_roughness.png": "thumbs/materials-vol2-v1.0.0/stone-wall-mossy-cottage_roughness.webp",
+        "stone-wall-rough-fieldstone-layered.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone-layered.webp",
+        "stone-wall-rough-fieldstone-layered_normal.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone-layered_normal.webp",
+        "stone-wall-rough-fieldstone-layered_roughness.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone-layered_roughness.webp",
+        "stone-wall-rough-fieldstone.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone.webp",
+        "stone-wall-rough-fieldstone_normal.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone_normal.webp",
+        "stone-wall-rough-fieldstone_roughness.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone_roughness.webp"
+      }
     }
   ]
 }
