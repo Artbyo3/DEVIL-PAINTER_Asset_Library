@@ -4576,6 +4576,1121 @@
         "alpha-woven-label-patch.png": "thumbs/alphas-v1.0.0/alpha-woven-label-patch.webp",
         "alpha-zipper-teeth-trim.png": "thumbs/alphas-v1.0.0/alpha-zipper-teeth-trim.webp"
       }
+    },
+    {
+      "name": "Materials Vol. 1",
+      "description": "84 seamless 2048x2048 PBR material maps across 28 textile, leather, metal, and plaster materials (base color, normal, and roughness).",
+      "size": "163.2 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/materials-vol1-v1.0.0/Materials_Vol1.zip",
+      "releaseTag": "materials-vol1-v1.0.0",
+      "tags": [
+        "materials",
+        "pbr",
+        "2048",
+        "cloth",
+        "weave",
+        "leather",
+        "metal",
+        "plaster",
+        "layered",
+        "seamless"
+      ],
+      "files": [
+        "cable-knit-aran-cream-layered.png",
+        "cable-knit-aran-cream-layered_normal.png",
+        "cable-knit-aran-cream-layered_roughness.png",
+        "cable-knit-aran-cream.png",
+        "cable-knit-aran-cream_normal.png",
+        "cable-knit-aran-cream_roughness.png",
+        "cable-knit-burgundy.png",
+        "cable-knit-burgundy_normal.png",
+        "cable-knit-burgundy_roughness.png",
+        "cable-knit-maritime-navy.png",
+        "cable-knit-maritime-navy_normal.png",
+        "cable-knit-maritime-navy_roughness.png",
+        "corduroy-camel-layered.png",
+        "corduroy-camel-layered_normal.png",
+        "corduroy-camel-layered_roughness.png",
+        "damascus-steel-folded-layered.png",
+        "damascus-steel-folded-layered_normal.png",
+        "damascus-steel-folded-layered_roughness.png",
+        "denim-twill-acid-wash.png",
+        "denim-twill-acid-wash_normal.png",
+        "denim-twill-acid-wash_roughness.png",
+        "denim-twill-charcoal.png",
+        "denim-twill-charcoal_normal.png",
+        "denim-twill-charcoal_roughness.png",
+        "denim-twill-raw-indigo-layered.png",
+        "denim-twill-raw-indigo-layered_normal.png",
+        "denim-twill-raw-indigo-layered_roughness.png",
+        "denim-twill-raw-indigo.png",
+        "denim-twill-raw-indigo_normal.png",
+        "denim-twill-raw-indigo_roughness.png",
+        "hammered-metal-forged-gold-layered.png",
+        "hammered-metal-forged-gold-layered_normal.png",
+        "hammered-metal-forged-gold-layered_roughness.png",
+        "hammered-metal-forged-gold.png",
+        "hammered-metal-forged-gold_normal.png",
+        "hammered-metal-forged-gold_roughness.png",
+        "hammered-metal-galvanized-steel.png",
+        "hammered-metal-galvanized-steel_normal.png",
+        "hammered-metal-galvanized-steel_roughness.png",
+        "hammered-metal-verdigris-bronze.png",
+        "hammered-metal-verdigris-bronze_normal.png",
+        "hammered-metal-verdigris-bronze_roughness.png",
+        "herringbone-weave-mustard-ochre.png",
+        "herringbone-weave-mustard-ochre_normal.png",
+        "herringbone-weave-mustard-ochre_roughness.png",
+        "herringbone-weave-savile-tweed-layered.png",
+        "herringbone-weave-savile-tweed-layered_normal.png",
+        "herringbone-weave-savile-tweed-layered_roughness.png",
+        "herringbone-weave-savile-tweed.png",
+        "herringbone-weave-savile-tweed_normal.png",
+        "herringbone-weave-savile-tweed_roughness.png",
+        "herringbone-weave-slate-charcoal.png",
+        "herringbone-weave-slate-charcoal_normal.png",
+        "herringbone-weave-slate-charcoal_roughness.png",
+        "pebbled-leather-obsidian-black.png",
+        "pebbled-leather-obsidian-black_normal.png",
+        "pebbled-leather-obsidian-black_roughness.png",
+        "pebbled-leather-obsidian-layered.png",
+        "pebbled-leather-obsidian-layered_normal.png",
+        "pebbled-leather-obsidian-layered_roughness.png",
+        "pebbled-leather-oxblood-burgundy.png",
+        "pebbled-leather-oxblood-burgundy_normal.png",
+        "pebbled-leather-oxblood-burgundy_roughness.png",
+        "pebbled-leather-saddle-cognac-layered.png",
+        "pebbled-leather-saddle-cognac-layered_normal.png",
+        "pebbled-leather-saddle-cognac-layered_roughness.png",
+        "pebbled-leather-saddle-cognac.png",
+        "pebbled-leather-saddle-cognac_normal.png",
+        "pebbled-leather-saddle-cognac_roughness.png",
+        "stucco-plaster-wall-cool-grey.png",
+        "stucco-plaster-wall-cool-grey_normal.png",
+        "stucco-plaster-wall-cool-grey_roughness.png",
+        "stucco-plaster-wall-terracotta.png",
+        "stucco-plaster-wall-terracotta_normal.png",
+        "stucco-plaster-wall-terracotta_roughness.png",
+        "stucco-plaster-wall-warm-sand-layered.png",
+        "stucco-plaster-wall-warm-sand-layered_normal.png",
+        "stucco-plaster-wall-warm-sand-layered_roughness.png",
+        "stucco-plaster-wall-warm-sand.png",
+        "stucco-plaster-wall-warm-sand_normal.png",
+        "stucco-plaster-wall-warm-sand_roughness.png",
+        "tartan-plaid-black-watch-layered.png",
+        "tartan-plaid-black-watch-layered_normal.png",
+        "tartan-plaid-black-watch-layered_roughness.png"
+      ],
+      "fileTags": {
+        "cable-knit-aran-cream-layered.png": [
+          "cable-knit-aran-cream-layered",
+          "cable",
+          "knit",
+          "aran",
+          "cream",
+          "layered",
+          "texture"
+        ],
+        "cable-knit-aran-cream-layered_normal.png": [
+          "cable-knit-aran-cream-layered",
+          "cable",
+          "knit",
+          "aran",
+          "cream",
+          "layered",
+          "texture"
+        ],
+        "cable-knit-aran-cream-layered_roughness.png": [
+          "cable-knit-aran-cream-layered",
+          "cable",
+          "knit",
+          "aran",
+          "cream",
+          "layered",
+          "texture"
+        ],
+        "cable-knit-aran-cream.png": [
+          "cable-knit-aran-cream",
+          "cable",
+          "knit",
+          "aran",
+          "cream",
+          "texture"
+        ],
+        "cable-knit-aran-cream_normal.png": [
+          "cable-knit-aran-cream",
+          "cable",
+          "knit",
+          "aran",
+          "cream",
+          "texture"
+        ],
+        "cable-knit-aran-cream_roughness.png": [
+          "cable-knit-aran-cream",
+          "cable",
+          "knit",
+          "aran",
+          "cream",
+          "texture"
+        ],
+        "cable-knit-burgundy.png": [
+          "cable-knit-burgundy",
+          "cable",
+          "knit",
+          "burgundy",
+          "texture"
+        ],
+        "cable-knit-burgundy_normal.png": [
+          "cable-knit-burgundy",
+          "cable",
+          "knit",
+          "burgundy",
+          "texture"
+        ],
+        "cable-knit-burgundy_roughness.png": [
+          "cable-knit-burgundy",
+          "cable",
+          "knit",
+          "burgundy",
+          "texture"
+        ],
+        "cable-knit-maritime-navy.png": [
+          "cable-knit-maritime-navy",
+          "cable",
+          "knit",
+          "maritime",
+          "navy",
+          "texture"
+        ],
+        "cable-knit-maritime-navy_normal.png": [
+          "cable-knit-maritime-navy",
+          "cable",
+          "knit",
+          "maritime",
+          "navy",
+          "texture"
+        ],
+        "cable-knit-maritime-navy_roughness.png": [
+          "cable-knit-maritime-navy",
+          "cable",
+          "knit",
+          "maritime",
+          "navy",
+          "texture"
+        ],
+        "corduroy-camel-layered.png": [
+          "corduroy-camel-layered",
+          "corduroy",
+          "camel",
+          "layered",
+          "texture"
+        ],
+        "corduroy-camel-layered_normal.png": [
+          "corduroy-camel-layered",
+          "corduroy",
+          "camel",
+          "layered",
+          "texture"
+        ],
+        "corduroy-camel-layered_roughness.png": [
+          "corduroy-camel-layered",
+          "corduroy",
+          "camel",
+          "layered",
+          "texture"
+        ],
+        "damascus-steel-folded-layered.png": [
+          "damascus-steel-folded-layered",
+          "damascus",
+          "steel",
+          "folded",
+          "layered",
+          "texture"
+        ],
+        "damascus-steel-folded-layered_normal.png": [
+          "damascus-steel-folded-layered",
+          "damascus",
+          "steel",
+          "folded",
+          "layered",
+          "texture"
+        ],
+        "damascus-steel-folded-layered_roughness.png": [
+          "damascus-steel-folded-layered",
+          "damascus",
+          "steel",
+          "folded",
+          "layered",
+          "texture"
+        ],
+        "denim-twill-acid-wash.png": [
+          "denim-twill-acid-wash",
+          "denim",
+          "twill",
+          "acid",
+          "wash",
+          "texture"
+        ],
+        "denim-twill-acid-wash_normal.png": [
+          "denim-twill-acid-wash",
+          "denim",
+          "twill",
+          "acid",
+          "wash",
+          "texture"
+        ],
+        "denim-twill-acid-wash_roughness.png": [
+          "denim-twill-acid-wash",
+          "denim",
+          "twill",
+          "acid",
+          "wash",
+          "texture"
+        ],
+        "denim-twill-charcoal.png": [
+          "denim-twill-charcoal",
+          "denim",
+          "twill",
+          "charcoal",
+          "texture"
+        ],
+        "denim-twill-charcoal_normal.png": [
+          "denim-twill-charcoal",
+          "denim",
+          "twill",
+          "charcoal",
+          "texture"
+        ],
+        "denim-twill-charcoal_roughness.png": [
+          "denim-twill-charcoal",
+          "denim",
+          "twill",
+          "charcoal",
+          "texture"
+        ],
+        "denim-twill-raw-indigo-layered.png": [
+          "denim-twill-raw-indigo-layered",
+          "denim",
+          "twill",
+          "raw",
+          "indigo",
+          "layered",
+          "texture"
+        ],
+        "denim-twill-raw-indigo-layered_normal.png": [
+          "denim-twill-raw-indigo-layered",
+          "denim",
+          "twill",
+          "raw",
+          "indigo",
+          "layered",
+          "texture"
+        ],
+        "denim-twill-raw-indigo-layered_roughness.png": [
+          "denim-twill-raw-indigo-layered",
+          "denim",
+          "twill",
+          "raw",
+          "indigo",
+          "layered",
+          "texture"
+        ],
+        "denim-twill-raw-indigo.png": [
+          "denim-twill-raw-indigo",
+          "denim",
+          "twill",
+          "raw",
+          "indigo",
+          "texture"
+        ],
+        "denim-twill-raw-indigo_normal.png": [
+          "denim-twill-raw-indigo",
+          "denim",
+          "twill",
+          "raw",
+          "indigo",
+          "texture"
+        ],
+        "denim-twill-raw-indigo_roughness.png": [
+          "denim-twill-raw-indigo",
+          "denim",
+          "twill",
+          "raw",
+          "indigo",
+          "texture"
+        ],
+        "hammered-metal-forged-gold-layered.png": [
+          "hammered-metal-forged-gold-layered",
+          "hammered",
+          "metal",
+          "forged",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "hammered-metal-forged-gold-layered_normal.png": [
+          "hammered-metal-forged-gold-layered",
+          "hammered",
+          "metal",
+          "forged",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "hammered-metal-forged-gold-layered_roughness.png": [
+          "hammered-metal-forged-gold-layered",
+          "hammered",
+          "metal",
+          "forged",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "hammered-metal-forged-gold.png": [
+          "hammered-metal-forged-gold",
+          "hammered",
+          "metal",
+          "forged",
+          "gold",
+          "texture"
+        ],
+        "hammered-metal-forged-gold_normal.png": [
+          "hammered-metal-forged-gold",
+          "hammered",
+          "metal",
+          "forged",
+          "gold",
+          "texture"
+        ],
+        "hammered-metal-forged-gold_roughness.png": [
+          "hammered-metal-forged-gold",
+          "hammered",
+          "metal",
+          "forged",
+          "gold",
+          "texture"
+        ],
+        "hammered-metal-galvanized-steel.png": [
+          "hammered-metal-galvanized-steel",
+          "hammered",
+          "metal",
+          "galvanized",
+          "steel",
+          "texture"
+        ],
+        "hammered-metal-galvanized-steel_normal.png": [
+          "hammered-metal-galvanized-steel",
+          "hammered",
+          "metal",
+          "galvanized",
+          "steel",
+          "texture"
+        ],
+        "hammered-metal-galvanized-steel_roughness.png": [
+          "hammered-metal-galvanized-steel",
+          "hammered",
+          "metal",
+          "galvanized",
+          "steel",
+          "texture"
+        ],
+        "hammered-metal-verdigris-bronze.png": [
+          "hammered-metal-verdigris-bronze",
+          "hammered",
+          "metal",
+          "verdigris",
+          "bronze",
+          "texture"
+        ],
+        "hammered-metal-verdigris-bronze_normal.png": [
+          "hammered-metal-verdigris-bronze",
+          "hammered",
+          "metal",
+          "verdigris",
+          "bronze",
+          "texture"
+        ],
+        "hammered-metal-verdigris-bronze_roughness.png": [
+          "hammered-metal-verdigris-bronze",
+          "hammered",
+          "metal",
+          "verdigris",
+          "bronze",
+          "texture"
+        ],
+        "herringbone-weave-mustard-ochre.png": [
+          "herringbone-weave-mustard-ochre",
+          "herringbone",
+          "weave",
+          "mustard",
+          "ochre",
+          "texture"
+        ],
+        "herringbone-weave-mustard-ochre_normal.png": [
+          "herringbone-weave-mustard-ochre",
+          "herringbone",
+          "weave",
+          "mustard",
+          "ochre",
+          "texture"
+        ],
+        "herringbone-weave-mustard-ochre_roughness.png": [
+          "herringbone-weave-mustard-ochre",
+          "herringbone",
+          "weave",
+          "mustard",
+          "ochre",
+          "texture"
+        ],
+        "herringbone-weave-savile-tweed-layered.png": [
+          "herringbone-weave-savile-tweed-layered",
+          "herringbone",
+          "weave",
+          "savile",
+          "tweed",
+          "layered",
+          "texture"
+        ],
+        "herringbone-weave-savile-tweed-layered_normal.png": [
+          "herringbone-weave-savile-tweed-layered",
+          "herringbone",
+          "weave",
+          "savile",
+          "tweed",
+          "layered",
+          "texture"
+        ],
+        "herringbone-weave-savile-tweed-layered_roughness.png": [
+          "herringbone-weave-savile-tweed-layered",
+          "herringbone",
+          "weave",
+          "savile",
+          "tweed",
+          "layered",
+          "texture"
+        ],
+        "herringbone-weave-savile-tweed.png": [
+          "herringbone-weave-savile-tweed",
+          "herringbone",
+          "weave",
+          "savile",
+          "tweed",
+          "texture"
+        ],
+        "herringbone-weave-savile-tweed_normal.png": [
+          "herringbone-weave-savile-tweed",
+          "herringbone",
+          "weave",
+          "savile",
+          "tweed",
+          "texture"
+        ],
+        "herringbone-weave-savile-tweed_roughness.png": [
+          "herringbone-weave-savile-tweed",
+          "herringbone",
+          "weave",
+          "savile",
+          "tweed",
+          "texture"
+        ],
+        "herringbone-weave-slate-charcoal.png": [
+          "herringbone-weave-slate-charcoal",
+          "herringbone",
+          "weave",
+          "slate",
+          "charcoal",
+          "texture"
+        ],
+        "herringbone-weave-slate-charcoal_normal.png": [
+          "herringbone-weave-slate-charcoal",
+          "herringbone",
+          "weave",
+          "slate",
+          "charcoal",
+          "texture"
+        ],
+        "herringbone-weave-slate-charcoal_roughness.png": [
+          "herringbone-weave-slate-charcoal",
+          "herringbone",
+          "weave",
+          "slate",
+          "charcoal",
+          "texture"
+        ],
+        "pebbled-leather-obsidian-black.png": [
+          "pebbled-leather-obsidian-black",
+          "pebbled",
+          "leather",
+          "obsidian",
+          "black",
+          "texture"
+        ],
+        "pebbled-leather-obsidian-black_normal.png": [
+          "pebbled-leather-obsidian-black",
+          "pebbled",
+          "leather",
+          "obsidian",
+          "black",
+          "texture"
+        ],
+        "pebbled-leather-obsidian-black_roughness.png": [
+          "pebbled-leather-obsidian-black",
+          "pebbled",
+          "leather",
+          "obsidian",
+          "black",
+          "texture"
+        ],
+        "pebbled-leather-obsidian-layered.png": [
+          "pebbled-leather-obsidian-layered",
+          "pebbled",
+          "leather",
+          "obsidian",
+          "layered",
+          "texture"
+        ],
+        "pebbled-leather-obsidian-layered_normal.png": [
+          "pebbled-leather-obsidian-layered",
+          "pebbled",
+          "leather",
+          "obsidian",
+          "layered",
+          "texture"
+        ],
+        "pebbled-leather-obsidian-layered_roughness.png": [
+          "pebbled-leather-obsidian-layered",
+          "pebbled",
+          "leather",
+          "obsidian",
+          "layered",
+          "texture"
+        ],
+        "pebbled-leather-oxblood-burgundy.png": [
+          "pebbled-leather-oxblood-burgundy",
+          "pebbled",
+          "leather",
+          "oxblood",
+          "burgundy",
+          "texture"
+        ],
+        "pebbled-leather-oxblood-burgundy_normal.png": [
+          "pebbled-leather-oxblood-burgundy",
+          "pebbled",
+          "leather",
+          "oxblood",
+          "burgundy",
+          "texture"
+        ],
+        "pebbled-leather-oxblood-burgundy_roughness.png": [
+          "pebbled-leather-oxblood-burgundy",
+          "pebbled",
+          "leather",
+          "oxblood",
+          "burgundy",
+          "texture"
+        ],
+        "pebbled-leather-saddle-cognac-layered.png": [
+          "pebbled-leather-saddle-cognac-layered",
+          "pebbled",
+          "leather",
+          "saddle",
+          "cognac",
+          "layered",
+          "texture"
+        ],
+        "pebbled-leather-saddle-cognac-layered_normal.png": [
+          "pebbled-leather-saddle-cognac-layered",
+          "pebbled",
+          "leather",
+          "saddle",
+          "cognac",
+          "layered",
+          "texture"
+        ],
+        "pebbled-leather-saddle-cognac-layered_roughness.png": [
+          "pebbled-leather-saddle-cognac-layered",
+          "pebbled",
+          "leather",
+          "saddle",
+          "cognac",
+          "layered",
+          "texture"
+        ],
+        "pebbled-leather-saddle-cognac.png": [
+          "pebbled-leather-saddle-cognac",
+          "pebbled",
+          "leather",
+          "saddle",
+          "cognac",
+          "texture"
+        ],
+        "pebbled-leather-saddle-cognac_normal.png": [
+          "pebbled-leather-saddle-cognac",
+          "pebbled",
+          "leather",
+          "saddle",
+          "cognac",
+          "texture"
+        ],
+        "pebbled-leather-saddle-cognac_roughness.png": [
+          "pebbled-leather-saddle-cognac",
+          "pebbled",
+          "leather",
+          "saddle",
+          "cognac",
+          "texture"
+        ],
+        "stucco-plaster-wall-cool-grey.png": [
+          "stucco-plaster-wall-cool-grey",
+          "stucco",
+          "plaster",
+          "wall",
+          "cool",
+          "grey",
+          "texture"
+        ],
+        "stucco-plaster-wall-cool-grey_normal.png": [
+          "stucco-plaster-wall-cool-grey",
+          "stucco",
+          "plaster",
+          "wall",
+          "cool",
+          "grey",
+          "texture"
+        ],
+        "stucco-plaster-wall-cool-grey_roughness.png": [
+          "stucco-plaster-wall-cool-grey",
+          "stucco",
+          "plaster",
+          "wall",
+          "cool",
+          "grey",
+          "texture"
+        ],
+        "stucco-plaster-wall-terracotta.png": [
+          "stucco-plaster-wall-terracotta",
+          "stucco",
+          "plaster",
+          "wall",
+          "terracotta",
+          "texture"
+        ],
+        "stucco-plaster-wall-terracotta_normal.png": [
+          "stucco-plaster-wall-terracotta",
+          "stucco",
+          "plaster",
+          "wall",
+          "terracotta",
+          "texture"
+        ],
+        "stucco-plaster-wall-terracotta_roughness.png": [
+          "stucco-plaster-wall-terracotta",
+          "stucco",
+          "plaster",
+          "wall",
+          "terracotta",
+          "texture"
+        ],
+        "stucco-plaster-wall-warm-sand-layered.png": [
+          "stucco-plaster-wall-warm-sand-layered",
+          "stucco",
+          "plaster",
+          "wall",
+          "warm",
+          "sand",
+          "layered",
+          "texture"
+        ],
+        "stucco-plaster-wall-warm-sand-layered_normal.png": [
+          "stucco-plaster-wall-warm-sand-layered",
+          "stucco",
+          "plaster",
+          "wall",
+          "warm",
+          "sand",
+          "layered",
+          "texture"
+        ],
+        "stucco-plaster-wall-warm-sand-layered_roughness.png": [
+          "stucco-plaster-wall-warm-sand-layered",
+          "stucco",
+          "plaster",
+          "wall",
+          "warm",
+          "sand",
+          "layered",
+          "texture"
+        ],
+        "stucco-plaster-wall-warm-sand.png": [
+          "stucco-plaster-wall-warm-sand",
+          "stucco",
+          "plaster",
+          "wall",
+          "warm",
+          "sand",
+          "texture"
+        ],
+        "stucco-plaster-wall-warm-sand_normal.png": [
+          "stucco-plaster-wall-warm-sand",
+          "stucco",
+          "plaster",
+          "wall",
+          "warm",
+          "sand",
+          "texture"
+        ],
+        "stucco-plaster-wall-warm-sand_roughness.png": [
+          "stucco-plaster-wall-warm-sand",
+          "stucco",
+          "plaster",
+          "wall",
+          "warm",
+          "sand",
+          "texture"
+        ],
+        "tartan-plaid-black-watch-layered.png": [
+          "tartan-plaid-black-watch-layered",
+          "tartan",
+          "plaid",
+          "black",
+          "watch",
+          "layered",
+          "texture"
+        ],
+        "tartan-plaid-black-watch-layered_normal.png": [
+          "tartan-plaid-black-watch-layered",
+          "tartan",
+          "plaid",
+          "black",
+          "watch",
+          "layered",
+          "texture"
+        ],
+        "tartan-plaid-black-watch-layered_roughness.png": [
+          "tartan-plaid-black-watch-layered",
+          "tartan",
+          "plaid",
+          "black",
+          "watch",
+          "layered",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "cable-knit-aran-cream-layered.png": "c4e237ec0318f762fa55baf8e87f9649d9995ebfacc6e203532ed3ea3b04973d",
+        "cable-knit-aran-cream-layered_normal.png": "43c30f6cab4ec93447f21513a05788801153222f16f8754ee8cf8794ed392f70",
+        "cable-knit-aran-cream-layered_roughness.png": "4d6a39e628f9f96ed64b60c6250c1dd1392ab6a70272105037cfa69a1f735157",
+        "cable-knit-aran-cream.png": "c9edda66b74d2dbe542d0e2c4f5f75391320980b1d0b331a9e9ea18af8a465fd",
+        "cable-knit-aran-cream_normal.png": "e039ef59ed2cc448da18358f933b6b624f0035dafe05e6b09d1c6d0c70b1c66d",
+        "cable-knit-aran-cream_roughness.png": "404ebf79558169e72177bc85a231ba92d1c28a5fa4afd654127951b86c2eafbb",
+        "cable-knit-burgundy.png": "d958f19f7f6eca200e7f4cff3a9c3ab7c63df4f9473abc9af82f178debeed662",
+        "cable-knit-burgundy_normal.png": "8a17a5883cfbbd434196de04759b746a187c36b05b513a20ac2424204e0fb8fb",
+        "cable-knit-burgundy_roughness.png": "f2150376c2a2fa7a19460cd66bbd685f891caea6eae54f6aff5499ac56e65d90",
+        "cable-knit-maritime-navy.png": "3a2cf97a356f4a9bcac0db3a809aa8833e3545b2225a53b9d098e9150bae43b1",
+        "cable-knit-maritime-navy_normal.png": "5960d1596ecfa83fc8efdf90b7d632152ee1af8a9c40235c4319cb488258dcf9",
+        "cable-knit-maritime-navy_roughness.png": "b42ee36d92ba50cc4d93e433f73839fb61e08dc542e3d96ac81036ca8694d9c3",
+        "corduroy-camel-layered.png": "53d6540d2ef1e9a292d7a8f80b62f2e2b273b69d94fc696a394afb8a5a099d3d",
+        "corduroy-camel-layered_normal.png": "213caf410f829fc94ee8bc740a4ac2ffa1651cd49fe93cd87636df4e6d40558d",
+        "corduroy-camel-layered_roughness.png": "9c6fbb3b199a8ac172ec71febc66d05d7124aa8711aa0547615382d280e1a2fe",
+        "damascus-steel-folded-layered.png": "14f441ff792d0eaa7c4f46628b64c7665ee7f91c5f7e097c881efab3da06bbec",
+        "damascus-steel-folded-layered_normal.png": "c4a029905e513938a2176cf3d5df9a15e352f2289347fb5e1596ce1d43ea7c9a",
+        "damascus-steel-folded-layered_roughness.png": "55391d7b415f516558fc5b3a6f2d66d3c9acee1bdfa1e765edcc6a8ff7378fe8",
+        "denim-twill-acid-wash.png": "b9cfb3d7cfbad4f4f10519f897c9edc6cc0538829df57adba754c0faac6801de",
+        "denim-twill-acid-wash_normal.png": "ae6a1e143e1f630e95bd4debc7b7a696f0a89a758a4e793f5a0d3f9e13ba41b2",
+        "denim-twill-acid-wash_roughness.png": "3a411a49319d148a089e698dcc868f2dd865824decaea109241b687f5cf40b88",
+        "denim-twill-charcoal.png": "47ed2b5129e04f608a02af03694bcf80162251e92825f2a45b3a46adbb2bf83a",
+        "denim-twill-charcoal_normal.png": "d16f465c83a46fe9d7a0b15f6661d43b25ae54a6de6f7c048452ea94dec82d07",
+        "denim-twill-charcoal_roughness.png": "fe0b9ce6e8a334dadb3d4464125a362156278dad514df0529fb5a62b903fd934",
+        "denim-twill-raw-indigo-layered.png": "93d7cbe2b78f2ff72d3458e1e9b615c55cb2a752ac72833ae3beabb8b726233e",
+        "denim-twill-raw-indigo-layered_normal.png": "0e331dbe6b799d3956d2e1f6d81b2b4234ce56c5668b567474798b6a38dd7235",
+        "denim-twill-raw-indigo-layered_roughness.png": "dd14cfaba0bcf258ca787fca78808485ab665918111f5afe001fcf91c3d19876",
+        "denim-twill-raw-indigo.png": "168da2d05c5e7767727a89b3a283d2f04a4b1250d5d6e061e9f0b7c0a68caae5",
+        "denim-twill-raw-indigo_normal.png": "c024642f54af515383b7526790e636bb1ac109887b7bba17a5d480a76e2a33d6",
+        "denim-twill-raw-indigo_roughness.png": "913769644d2896d1d4d37f3a4723ba04f81f1b3630f93d9363c951854836193a",
+        "hammered-metal-forged-gold-layered.png": "698fd76bb1468b73812efea7977eae32566d9a87503a7dcb0ae62f04dc7a77a6",
+        "hammered-metal-forged-gold-layered_normal.png": "3fe8ab47b411ef338e29538d65cf05bfc0c05a0381026238fdacc088f64c037d",
+        "hammered-metal-forged-gold-layered_roughness.png": "5fcf9c4022fb886afdbbe79f3fc66d8bc18b68c41c1544316cc764ff88f307f6",
+        "hammered-metal-forged-gold.png": "04c1651fc0358b5678cbe58f40457c58041dd3b4139b7b600eb2b84f1d216638",
+        "hammered-metal-forged-gold_normal.png": "8c3abbacbf69f28458874cd6375d2dd3696906f9b6f43c6354c3eb60ee639551",
+        "hammered-metal-forged-gold_roughness.png": "bb912cdcd12b3bde760d7f7bfcf595f43625193fba79d76b4e2c47c9c6219f38",
+        "hammered-metal-galvanized-steel.png": "5fc47125f60fb87756c2c05c0b113754e3ed8cfbb183f5aa1b6169ed16a2f528",
+        "hammered-metal-galvanized-steel_normal.png": "dfe19b67de434faea7e98f490a4edd250c486986b0d60b09e7e46d8bf17a183e",
+        "hammered-metal-galvanized-steel_roughness.png": "a16fc120f0c193fc08c97b8f768ae24c79491263e9c4f5567fac00d9b9b1393a",
+        "hammered-metal-verdigris-bronze.png": "5852c9de146a00606c0862d69d4a84812b336a5449c9c44e16b9cf123f51ce41",
+        "hammered-metal-verdigris-bronze_normal.png": "88b8ac44b6b04972e85234463031c27a5a0b7165ccfb9c4a235a8dcac172a544",
+        "hammered-metal-verdigris-bronze_roughness.png": "7ef530bcdb19555120b840e456882e88a9a3209b08ddd675ca7b78a944e1dd70",
+        "herringbone-weave-mustard-ochre.png": "3923d544483c1566bd3f98db892934566f2099d832285dba683f9e38a41761c5",
+        "herringbone-weave-mustard-ochre_normal.png": "613740d7752846ef845670e0e5c919861d7b9e5192bb91e015d0d2b30d42d608",
+        "herringbone-weave-mustard-ochre_roughness.png": "861e707bbd66dbf8b3a620f0d7243b6a4f44ae51f54469821cf38f5d83e78d30",
+        "herringbone-weave-savile-tweed-layered.png": "b9d7ff98a590b8f0bf3ac223164d9b60d9fc1cde8d67d693600288daa9ecc48e",
+        "herringbone-weave-savile-tweed-layered_normal.png": "827f376bf39982693bdc9ea7fe2a8c69c9439a505ee4264384308f18bee96c2a",
+        "herringbone-weave-savile-tweed-layered_roughness.png": "724aedbb3da3391d7a305ac100aef523fab6a555057daf7603dd4acf212907dc",
+        "herringbone-weave-savile-tweed.png": "a2b4c138db5caa0c7af82c9ebb7951faed11edff5077df363ff5d42288e9c71e",
+        "herringbone-weave-savile-tweed_normal.png": "a0cb8f7bcb8a6ac8d0fc95223b85e7e032a6ff540d612d04d1d09b3e1128c533",
+        "herringbone-weave-savile-tweed_roughness.png": "1c9c46e2e132822a6a833f665073a31b2972933067ade8539cce7dfb1e41f7bb",
+        "herringbone-weave-slate-charcoal.png": "a08901f676438ba988498ae7a6b10787b765450a64b69a064f289084fec85160",
+        "herringbone-weave-slate-charcoal_normal.png": "75e7a3c928303d5d60a4d26f09abd3b7b2b998e70ea66690ee80068f1a9bbd53",
+        "herringbone-weave-slate-charcoal_roughness.png": "a12445f2abebd2a46c941422b0f7c8d3d104637e299dc0387aff657c6f7347ef",
+        "pebbled-leather-obsidian-black.png": "7788a401a646e13bbf9ec6f5b793a81588816d46d0d772cdc113298ee6945e92",
+        "pebbled-leather-obsidian-black_normal.png": "72bd6cee122737dbea959911c25f2faa851e9d0af01d6eed52763e8003e7d1e5",
+        "pebbled-leather-obsidian-black_roughness.png": "8489127fc50f912b0fde6c1717109f74f7a997690f5f56e8205c79059ba2dc30",
+        "pebbled-leather-obsidian-layered.png": "f3a34826c3b24fab5c467cd8720a1abcd19774df4f341dcfd40e7cfe67a09323",
+        "pebbled-leather-obsidian-layered_normal.png": "f556a8f2b7d30aad93d9ed922862eebfb91ec883147a185cca6d2f00a8a2b213",
+        "pebbled-leather-obsidian-layered_roughness.png": "01374441200ba9994784e840aea491ffbcc0803a48d2b51dff0cab816d598f0d",
+        "pebbled-leather-oxblood-burgundy.png": "55b10419e49a434c5b07d37897605df252cd7b464125f0a67b0774c6b5585f47",
+        "pebbled-leather-oxblood-burgundy_normal.png": "5b74bb4c75a7d778140b878b00cd30a7f663bead5109d842dc6a1576f853ea88",
+        "pebbled-leather-oxblood-burgundy_roughness.png": "93a37b53db4e51d43406e4e51ba87e403936b03564289d062adafdbf443508ef",
+        "pebbled-leather-saddle-cognac-layered.png": "2e3dc5f343cea5ed273192fe5c2eb452ff591cd00661c61bc08e9360b3bed361",
+        "pebbled-leather-saddle-cognac-layered_normal.png": "8bc46fd3359bf2ff70e95068a64242e96dd95c30c382cb4fead7501f1afd6d2a",
+        "pebbled-leather-saddle-cognac-layered_roughness.png": "6bc06ac17469b4706e769fe82337d4372c046826434cf03dea94713a82ddc651",
+        "pebbled-leather-saddle-cognac.png": "f0fe42f77e66fadcfc57b6ea144398e8513437796d2ec96896a0731db844a8d7",
+        "pebbled-leather-saddle-cognac_normal.png": "3f982f119a50311e6498d0c5b71898e28d7e7bb6d963c18c176ecabfc8d497c1",
+        "pebbled-leather-saddle-cognac_roughness.png": "66e73a47c27e919ac2d5cde50b052d4add89f6bd0dac6ea7ea530b99dbd2f0b4",
+        "stucco-plaster-wall-cool-grey.png": "6c1a947fcd1c9065c8ed81d9a176ed8493c736ba8924e7974a37431102473c17",
+        "stucco-plaster-wall-cool-grey_normal.png": "03a47a2ec466c95c75ff5043d709a83114c748986a7dad6a2fda703ea0c45139",
+        "stucco-plaster-wall-cool-grey_roughness.png": "ccb255cb63dcb65de5c70a3994c9fa0e175f93ae3d93c1c8d2ed5a3c75fd5597",
+        "stucco-plaster-wall-terracotta.png": "5aa0ffe3e5eb393555036f83cf89fe8f58cf84250150e4692a6f26d9a2e0251e",
+        "stucco-plaster-wall-terracotta_normal.png": "ebc1ec1e1e391b0cb5b063e50fa27f62feedc4e850493c803e5a409413d190ce",
+        "stucco-plaster-wall-terracotta_roughness.png": "6624a93b166ae82195f591a770be8a41fa1e2cdafe86d49d38d95dd583349355",
+        "stucco-plaster-wall-warm-sand-layered.png": "445a31f67df91699aac4bd8200d6244a7aced432759ffc17bd101a3ed090854b",
+        "stucco-plaster-wall-warm-sand-layered_normal.png": "a644e17319e8b7a7a8cf33e65ff93d782a5c62ae0376421f2cc36e806d1513e2",
+        "stucco-plaster-wall-warm-sand-layered_roughness.png": "0722daf99dba0abe54a9f388c1acf533f0a845c321956e61f915213a82275bb9",
+        "stucco-plaster-wall-warm-sand.png": "a117fee84c3259d314d3d6187e36cc7ad30c978541be2043f0e4f13a3e9db42d",
+        "stucco-plaster-wall-warm-sand_normal.png": "95a974abd3588d0faa347f21f5f8f3cfd9112c2b73fa9e8fac58cc80095d4643",
+        "stucco-plaster-wall-warm-sand_roughness.png": "caef3bb547c7b3a444e285598aa8c779eb768c083d41ce095537fa8399393d2b",
+        "tartan-plaid-black-watch-layered.png": "be066a6546640e67a9ed55d2d9aeda47ab465c21ca41a601b5da9c902d4fd297",
+        "tartan-plaid-black-watch-layered_normal.png": "6fed1e231f874c3ab83afccf43a1f5dc8c2cc1acc1aa8123de4fe61600f068ad",
+        "tartan-plaid-black-watch-layered_roughness.png": "60f34ba3b1020732a4cf2e83fbca07c0a475b898d0ae6106a56b6f9967ccb70d"
+      },
+      "materials": {
+        "cable-knit-aran-cream-layered": {
+          "base": "cable-knit-aran-cream-layered.png",
+          "normal": "cable-knit-aran-cream-layered_normal.png",
+          "roughness": "cable-knit-aran-cream-layered_roughness.png"
+        },
+        "cable-knit-aran-cream": {
+          "base": "cable-knit-aran-cream.png",
+          "normal": "cable-knit-aran-cream_normal.png",
+          "roughness": "cable-knit-aran-cream_roughness.png"
+        },
+        "cable-knit-burgundy": {
+          "base": "cable-knit-burgundy.png",
+          "normal": "cable-knit-burgundy_normal.png",
+          "roughness": "cable-knit-burgundy_roughness.png"
+        },
+        "cable-knit-maritime-navy": {
+          "base": "cable-knit-maritime-navy.png",
+          "normal": "cable-knit-maritime-navy_normal.png",
+          "roughness": "cable-knit-maritime-navy_roughness.png"
+        },
+        "corduroy-camel-layered": {
+          "base": "corduroy-camel-layered.png",
+          "normal": "corduroy-camel-layered_normal.png",
+          "roughness": "corduroy-camel-layered_roughness.png"
+        },
+        "damascus-steel-folded-layered": {
+          "base": "damascus-steel-folded-layered.png",
+          "normal": "damascus-steel-folded-layered_normal.png",
+          "roughness": "damascus-steel-folded-layered_roughness.png"
+        },
+        "denim-twill-acid-wash": {
+          "base": "denim-twill-acid-wash.png",
+          "normal": "denim-twill-acid-wash_normal.png",
+          "roughness": "denim-twill-acid-wash_roughness.png"
+        },
+        "denim-twill-charcoal": {
+          "base": "denim-twill-charcoal.png",
+          "normal": "denim-twill-charcoal_normal.png",
+          "roughness": "denim-twill-charcoal_roughness.png"
+        },
+        "denim-twill-raw-indigo-layered": {
+          "base": "denim-twill-raw-indigo-layered.png",
+          "normal": "denim-twill-raw-indigo-layered_normal.png",
+          "roughness": "denim-twill-raw-indigo-layered_roughness.png"
+        },
+        "denim-twill-raw-indigo": {
+          "base": "denim-twill-raw-indigo.png",
+          "normal": "denim-twill-raw-indigo_normal.png",
+          "roughness": "denim-twill-raw-indigo_roughness.png"
+        },
+        "hammered-metal-forged-gold-layered": {
+          "base": "hammered-metal-forged-gold-layered.png",
+          "normal": "hammered-metal-forged-gold-layered_normal.png",
+          "roughness": "hammered-metal-forged-gold-layered_roughness.png"
+        },
+        "hammered-metal-forged-gold": {
+          "base": "hammered-metal-forged-gold.png",
+          "normal": "hammered-metal-forged-gold_normal.png",
+          "roughness": "hammered-metal-forged-gold_roughness.png"
+        },
+        "hammered-metal-galvanized-steel": {
+          "base": "hammered-metal-galvanized-steel.png",
+          "normal": "hammered-metal-galvanized-steel_normal.png",
+          "roughness": "hammered-metal-galvanized-steel_roughness.png"
+        },
+        "hammered-metal-verdigris-bronze": {
+          "base": "hammered-metal-verdigris-bronze.png",
+          "normal": "hammered-metal-verdigris-bronze_normal.png",
+          "roughness": "hammered-metal-verdigris-bronze_roughness.png"
+        },
+        "herringbone-weave-mustard-ochre": {
+          "base": "herringbone-weave-mustard-ochre.png",
+          "normal": "herringbone-weave-mustard-ochre_normal.png",
+          "roughness": "herringbone-weave-mustard-ochre_roughness.png"
+        },
+        "herringbone-weave-savile-tweed-layered": {
+          "base": "herringbone-weave-savile-tweed-layered.png",
+          "normal": "herringbone-weave-savile-tweed-layered_normal.png",
+          "roughness": "herringbone-weave-savile-tweed-layered_roughness.png"
+        },
+        "herringbone-weave-savile-tweed": {
+          "base": "herringbone-weave-savile-tweed.png",
+          "normal": "herringbone-weave-savile-tweed_normal.png",
+          "roughness": "herringbone-weave-savile-tweed_roughness.png"
+        },
+        "herringbone-weave-slate-charcoal": {
+          "base": "herringbone-weave-slate-charcoal.png",
+          "normal": "herringbone-weave-slate-charcoal_normal.png",
+          "roughness": "herringbone-weave-slate-charcoal_roughness.png"
+        },
+        "pebbled-leather-obsidian-black": {
+          "base": "pebbled-leather-obsidian-black.png",
+          "normal": "pebbled-leather-obsidian-black_normal.png",
+          "roughness": "pebbled-leather-obsidian-black_roughness.png"
+        },
+        "pebbled-leather-obsidian-layered": {
+          "base": "pebbled-leather-obsidian-layered.png",
+          "normal": "pebbled-leather-obsidian-layered_normal.png",
+          "roughness": "pebbled-leather-obsidian-layered_roughness.png"
+        },
+        "pebbled-leather-oxblood-burgundy": {
+          "base": "pebbled-leather-oxblood-burgundy.png",
+          "normal": "pebbled-leather-oxblood-burgundy_normal.png",
+          "roughness": "pebbled-leather-oxblood-burgundy_roughness.png"
+        },
+        "pebbled-leather-saddle-cognac-layered": {
+          "base": "pebbled-leather-saddle-cognac-layered.png",
+          "normal": "pebbled-leather-saddle-cognac-layered_normal.png",
+          "roughness": "pebbled-leather-saddle-cognac-layered_roughness.png"
+        },
+        "pebbled-leather-saddle-cognac": {
+          "base": "pebbled-leather-saddle-cognac.png",
+          "normal": "pebbled-leather-saddle-cognac_normal.png",
+          "roughness": "pebbled-leather-saddle-cognac_roughness.png"
+        },
+        "stucco-plaster-wall-cool-grey": {
+          "base": "stucco-plaster-wall-cool-grey.png",
+          "normal": "stucco-plaster-wall-cool-grey_normal.png",
+          "roughness": "stucco-plaster-wall-cool-grey_roughness.png"
+        },
+        "stucco-plaster-wall-terracotta": {
+          "base": "stucco-plaster-wall-terracotta.png",
+          "normal": "stucco-plaster-wall-terracotta_normal.png",
+          "roughness": "stucco-plaster-wall-terracotta_roughness.png"
+        },
+        "stucco-plaster-wall-warm-sand-layered": {
+          "base": "stucco-plaster-wall-warm-sand-layered.png",
+          "normal": "stucco-plaster-wall-warm-sand-layered_normal.png",
+          "roughness": "stucco-plaster-wall-warm-sand-layered_roughness.png"
+        },
+        "stucco-plaster-wall-warm-sand": {
+          "base": "stucco-plaster-wall-warm-sand.png",
+          "normal": "stucco-plaster-wall-warm-sand_normal.png",
+          "roughness": "stucco-plaster-wall-warm-sand_roughness.png"
+        },
+        "tartan-plaid-black-watch-layered": {
+          "base": "tartan-plaid-black-watch-layered.png",
+          "normal": "tartan-plaid-black-watch-layered_normal.png",
+          "roughness": "tartan-plaid-black-watch-layered_roughness.png"
+        }
+      },
+      "sha256": "0f6e9c2c18ea0ac9a640dfbf1a612ebae4713082e07e0c932945ca16927736b5",
+      "thumbs": {
+        "cable-knit-aran-cream-layered.png": "thumbs/materials-vol1-v1.0.0/cable-knit-aran-cream-layered.webp",
+        "cable-knit-aran-cream-layered_normal.png": "thumbs/materials-vol1-v1.0.0/cable-knit-aran-cream-layered_normal.webp",
+        "cable-knit-aran-cream-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/cable-knit-aran-cream-layered_roughness.webp",
+        "cable-knit-aran-cream.png": "thumbs/materials-vol1-v1.0.0/cable-knit-aran-cream.webp",
+        "cable-knit-aran-cream_normal.png": "thumbs/materials-vol1-v1.0.0/cable-knit-aran-cream_normal.webp",
+        "cable-knit-aran-cream_roughness.png": "thumbs/materials-vol1-v1.0.0/cable-knit-aran-cream_roughness.webp",
+        "cable-knit-burgundy.png": "thumbs/materials-vol1-v1.0.0/cable-knit-burgundy.webp",
+        "cable-knit-burgundy_normal.png": "thumbs/materials-vol1-v1.0.0/cable-knit-burgundy_normal.webp",
+        "cable-knit-burgundy_roughness.png": "thumbs/materials-vol1-v1.0.0/cable-knit-burgundy_roughness.webp",
+        "cable-knit-maritime-navy.png": "thumbs/materials-vol1-v1.0.0/cable-knit-maritime-navy.webp",
+        "cable-knit-maritime-navy_normal.png": "thumbs/materials-vol1-v1.0.0/cable-knit-maritime-navy_normal.webp",
+        "cable-knit-maritime-navy_roughness.png": "thumbs/materials-vol1-v1.0.0/cable-knit-maritime-navy_roughness.webp",
+        "corduroy-camel-layered.png": "thumbs/materials-vol1-v1.0.0/corduroy-camel-layered.webp",
+        "corduroy-camel-layered_normal.png": "thumbs/materials-vol1-v1.0.0/corduroy-camel-layered_normal.webp",
+        "corduroy-camel-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/corduroy-camel-layered_roughness.webp",
+        "damascus-steel-folded-layered.png": "thumbs/materials-vol1-v1.0.0/damascus-steel-folded-layered.webp",
+        "damascus-steel-folded-layered_normal.png": "thumbs/materials-vol1-v1.0.0/damascus-steel-folded-layered_normal.webp",
+        "damascus-steel-folded-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/damascus-steel-folded-layered_roughness.webp",
+        "denim-twill-acid-wash.png": "thumbs/materials-vol1-v1.0.0/denim-twill-acid-wash.webp",
+        "denim-twill-acid-wash_normal.png": "thumbs/materials-vol1-v1.0.0/denim-twill-acid-wash_normal.webp",
+        "denim-twill-acid-wash_roughness.png": "thumbs/materials-vol1-v1.0.0/denim-twill-acid-wash_roughness.webp",
+        "denim-twill-charcoal.png": "thumbs/materials-vol1-v1.0.0/denim-twill-charcoal.webp",
+        "denim-twill-charcoal_normal.png": "thumbs/materials-vol1-v1.0.0/denim-twill-charcoal_normal.webp",
+        "denim-twill-charcoal_roughness.png": "thumbs/materials-vol1-v1.0.0/denim-twill-charcoal_roughness.webp",
+        "denim-twill-raw-indigo-layered.png": "thumbs/materials-vol1-v1.0.0/denim-twill-raw-indigo-layered.webp",
+        "denim-twill-raw-indigo-layered_normal.png": "thumbs/materials-vol1-v1.0.0/denim-twill-raw-indigo-layered_normal.webp",
+        "denim-twill-raw-indigo-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/denim-twill-raw-indigo-layered_roughness.webp",
+        "denim-twill-raw-indigo.png": "thumbs/materials-vol1-v1.0.0/denim-twill-raw-indigo.webp",
+        "denim-twill-raw-indigo_normal.png": "thumbs/materials-vol1-v1.0.0/denim-twill-raw-indigo_normal.webp",
+        "denim-twill-raw-indigo_roughness.png": "thumbs/materials-vol1-v1.0.0/denim-twill-raw-indigo_roughness.webp",
+        "hammered-metal-forged-gold-layered.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-forged-gold-layered.webp",
+        "hammered-metal-forged-gold-layered_normal.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-forged-gold-layered_normal.webp",
+        "hammered-metal-forged-gold-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-forged-gold-layered_roughness.webp",
+        "hammered-metal-forged-gold.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-forged-gold.webp",
+        "hammered-metal-forged-gold_normal.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-forged-gold_normal.webp",
+        "hammered-metal-forged-gold_roughness.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-forged-gold_roughness.webp",
+        "hammered-metal-galvanized-steel.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-galvanized-steel.webp",
+        "hammered-metal-galvanized-steel_normal.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-galvanized-steel_normal.webp",
+        "hammered-metal-galvanized-steel_roughness.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-galvanized-steel_roughness.webp",
+        "hammered-metal-verdigris-bronze.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-verdigris-bronze.webp",
+        "hammered-metal-verdigris-bronze_normal.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-verdigris-bronze_normal.webp",
+        "hammered-metal-verdigris-bronze_roughness.png": "thumbs/materials-vol1-v1.0.0/hammered-metal-verdigris-bronze_roughness.webp",
+        "herringbone-weave-mustard-ochre.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-mustard-ochre.webp",
+        "herringbone-weave-mustard-ochre_normal.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-mustard-ochre_normal.webp",
+        "herringbone-weave-mustard-ochre_roughness.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-mustard-ochre_roughness.webp",
+        "herringbone-weave-savile-tweed-layered.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-savile-tweed-layered.webp",
+        "herringbone-weave-savile-tweed-layered_normal.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-savile-tweed-layered_normal.webp",
+        "herringbone-weave-savile-tweed-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-savile-tweed-layered_roughness.webp",
+        "herringbone-weave-savile-tweed.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-savile-tweed.webp",
+        "herringbone-weave-savile-tweed_normal.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-savile-tweed_normal.webp",
+        "herringbone-weave-savile-tweed_roughness.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-savile-tweed_roughness.webp",
+        "herringbone-weave-slate-charcoal.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-slate-charcoal.webp",
+        "herringbone-weave-slate-charcoal_normal.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-slate-charcoal_normal.webp",
+        "herringbone-weave-slate-charcoal_roughness.png": "thumbs/materials-vol1-v1.0.0/herringbone-weave-slate-charcoal_roughness.webp",
+        "pebbled-leather-obsidian-black.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-obsidian-black.webp",
+        "pebbled-leather-obsidian-black_normal.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-obsidian-black_normal.webp",
+        "pebbled-leather-obsidian-black_roughness.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-obsidian-black_roughness.webp",
+        "pebbled-leather-obsidian-layered.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-obsidian-layered.webp",
+        "pebbled-leather-obsidian-layered_normal.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-obsidian-layered_normal.webp",
+        "pebbled-leather-obsidian-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-obsidian-layered_roughness.webp",
+        "pebbled-leather-oxblood-burgundy.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-oxblood-burgundy.webp",
+        "pebbled-leather-oxblood-burgundy_normal.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-oxblood-burgundy_normal.webp",
+        "pebbled-leather-oxblood-burgundy_roughness.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-oxblood-burgundy_roughness.webp",
+        "pebbled-leather-saddle-cognac-layered.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-saddle-cognac-layered.webp",
+        "pebbled-leather-saddle-cognac-layered_normal.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-saddle-cognac-layered_normal.webp",
+        "pebbled-leather-saddle-cognac-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-saddle-cognac-layered_roughness.webp",
+        "pebbled-leather-saddle-cognac.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-saddle-cognac.webp",
+        "pebbled-leather-saddle-cognac_normal.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-saddle-cognac_normal.webp",
+        "pebbled-leather-saddle-cognac_roughness.png": "thumbs/materials-vol1-v1.0.0/pebbled-leather-saddle-cognac_roughness.webp",
+        "stucco-plaster-wall-cool-grey.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-cool-grey.webp",
+        "stucco-plaster-wall-cool-grey_normal.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-cool-grey_normal.webp",
+        "stucco-plaster-wall-cool-grey_roughness.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-cool-grey_roughness.webp",
+        "stucco-plaster-wall-terracotta.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-terracotta.webp",
+        "stucco-plaster-wall-terracotta_normal.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-terracotta_normal.webp",
+        "stucco-plaster-wall-terracotta_roughness.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-terracotta_roughness.webp",
+        "stucco-plaster-wall-warm-sand-layered.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-warm-sand-layered.webp",
+        "stucco-plaster-wall-warm-sand-layered_normal.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-warm-sand-layered_normal.webp",
+        "stucco-plaster-wall-warm-sand-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-warm-sand-layered_roughness.webp",
+        "stucco-plaster-wall-warm-sand.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-warm-sand.webp",
+        "stucco-plaster-wall-warm-sand_normal.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-warm-sand_normal.webp",
+        "stucco-plaster-wall-warm-sand_roughness.png": "thumbs/materials-vol1-v1.0.0/stucco-plaster-wall-warm-sand_roughness.webp",
+        "tartan-plaid-black-watch-layered.png": "thumbs/materials-vol1-v1.0.0/tartan-plaid-black-watch-layered.webp",
+        "tartan-plaid-black-watch-layered_normal.png": "thumbs/materials-vol1-v1.0.0/tartan-plaid-black-watch-layered_normal.webp",
+        "tartan-plaid-black-watch-layered_roughness.png": "thumbs/materials-vol1-v1.0.0/tartan-plaid-black-watch-layered_roughness.webp"
+      }
     }
   ]
 }
