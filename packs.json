@@ -4033,6 +4033,150 @@
         "base-terrazzo-travertine.png": "thumbs/base-textures-v1.0.0/base-terrazzo-travertine.webp",
         "base-woodland-camo-m81.png": "thumbs/base-textures-v1.0.0/base-woodland-camo-m81.webp"
       }
+    },
+    {
+      "name": "Detail Normals",
+      "description": "8 seamless 2048x2048 OpenGL micro-detail normal maps for metal, leather, weave, plaster, and wood.",
+      "size": "24.0 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/detail-normals-v1.0.0/Detail_Normals.zip",
+      "releaseTag": "detail-normals-v1.0.0",
+      "tags": [
+        "normals",
+        "detail",
+        "micro",
+        "opengl",
+        "grain",
+        "2048",
+        "seamless"
+      ],
+      "files": [
+        "detail-normal-brushed-metal.png",
+        "detail-normal-cast-pitting.png",
+        "detail-normal-hammered-planish.png",
+        "detail-normal-micro-leather-grain.png",
+        "detail-normal-plain-weave-grain.png",
+        "detail-normal-sand-stucco-float.png",
+        "detail-normal-twill-weave-grain.png",
+        "detail-normal-wood-pore-grain.png"
+      ],
+      "fileTags": {
+        "detail-normal-brushed-metal.png": [
+          "detail-normal-brushed-metal",
+          "detail",
+          "normal",
+          "brushed",
+          "metal",
+          "texture"
+        ],
+        "detail-normal-cast-pitting.png": [
+          "detail-normal-cast-pitting",
+          "detail",
+          "normal",
+          "cast",
+          "pitting",
+          "texture"
+        ],
+        "detail-normal-hammered-planish.png": [
+          "detail-normal-hammered-planish",
+          "detail",
+          "normal",
+          "hammered",
+          "planish",
+          "texture"
+        ],
+        "detail-normal-micro-leather-grain.png": [
+          "detail-normal-micro-leather-grain",
+          "detail",
+          "normal",
+          "micro",
+          "leather",
+          "grain",
+          "texture"
+        ],
+        "detail-normal-plain-weave-grain.png": [
+          "detail-normal-plain-weave-grain",
+          "detail",
+          "normal",
+          "plain",
+          "weave",
+          "grain",
+          "texture"
+        ],
+        "detail-normal-sand-stucco-float.png": [
+          "detail-normal-sand-stucco-float",
+          "detail",
+          "normal",
+          "sand",
+          "stucco",
+          "float",
+          "texture"
+        ],
+        "detail-normal-twill-weave-grain.png": [
+          "detail-normal-twill-weave-grain",
+          "detail",
+          "normal",
+          "twill",
+          "weave",
+          "grain",
+          "texture"
+        ],
+        "detail-normal-wood-pore-grain.png": [
+          "detail-normal-wood-pore-grain",
+          "detail",
+          "normal",
+          "wood",
+          "pore",
+          "grain",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "detail-normal-brushed-metal.png": "e574098956a86ed1b454b06481314067060edc8874c02f4c18538765973f7649",
+        "detail-normal-cast-pitting.png": "5d6b543ba98c3e9653639a1166a011332d2f404553730395909b0dbf56c0c82a",
+        "detail-normal-hammered-planish.png": "09c22136c392433a841ef2212bf737888942880c81d1aa52933736a0c2687ad9",
+        "detail-normal-micro-leather-grain.png": "1eef77d9c9074fcc8621290a39131834a6e4d65b3bcea6eef1374f2b5db60572",
+        "detail-normal-plain-weave-grain.png": "809c2539c51742b5ad8c00aa4b26fcebe2b0b5b2a0ed8d42082b39f7fb15890c",
+        "detail-normal-sand-stucco-float.png": "5c7a827a4c7d89b6dfbe098086f9546e66e630d7f23d6108dbe524f5b051c0f5",
+        "detail-normal-twill-weave-grain.png": "e6193962f8be1c219dc2a25a88ed877cb32dcef13331cea00dded2841b4c2572",
+        "detail-normal-wood-pore-grain.png": "7f3bffc445e4ece90e8be27c1837f994f49bab93dd68a631763133020f7f1524"
+      },
+      "materials": {
+        "detail-normal-brushed-metal": {
+          "base": "detail-normal-brushed-metal.png"
+        },
+        "detail-normal-cast-pitting": {
+          "base": "detail-normal-cast-pitting.png"
+        },
+        "detail-normal-hammered-planish": {
+          "base": "detail-normal-hammered-planish.png"
+        },
+        "detail-normal-micro-leather-grain": {
+          "base": "detail-normal-micro-leather-grain.png"
+        },
+        "detail-normal-plain-weave-grain": {
+          "base": "detail-normal-plain-weave-grain.png"
+        },
+        "detail-normal-sand-stucco-float": {
+          "base": "detail-normal-sand-stucco-float.png"
+        },
+        "detail-normal-twill-weave-grain": {
+          "base": "detail-normal-twill-weave-grain.png"
+        },
+        "detail-normal-wood-pore-grain": {
+          "base": "detail-normal-wood-pore-grain.png"
+        }
+      },
+      "sha256": "a67f3e05b8fe98067529624b4ea44283224fddf7ad3ea244ec3c055871d3db5a",
+      "thumbs": {
+        "detail-normal-brushed-metal.png": "thumbs/detail-normals-v1.0.0/detail-normal-brushed-metal.webp",
+        "detail-normal-cast-pitting.png": "thumbs/detail-normals-v1.0.0/detail-normal-cast-pitting.webp",
+        "detail-normal-hammered-planish.png": "thumbs/detail-normals-v1.0.0/detail-normal-hammered-planish.webp",
+        "detail-normal-micro-leather-grain.png": "thumbs/detail-normals-v1.0.0/detail-normal-micro-leather-grain.webp",
+        "detail-normal-plain-weave-grain.png": "thumbs/detail-normals-v1.0.0/detail-normal-plain-weave-grain.webp",
+        "detail-normal-sand-stucco-float.png": "thumbs/detail-normals-v1.0.0/detail-normal-sand-stucco-float.webp",
+        "detail-normal-twill-weave-grain.png": "thumbs/detail-normals-v1.0.0/detail-normal-twill-weave-grain.webp",
+        "detail-normal-wood-pore-grain.png": "thumbs/detail-normals-v1.0.0/detail-normal-wood-pore-grain.webp"
+      }
     }
   ]
 }
