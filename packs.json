@@ -6804,6 +6804,1047 @@
         "stone-wall-rough-fieldstone_normal.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone_normal.webp",
         "stone-wall-rough-fieldstone_roughness.png": "thumbs/materials-vol2-v1.0.0/stone-wall-rough-fieldstone_roughness.webp"
       }
+    },
+    {
+      "name": "Technical Fibers",
+      "description": "78 seamless 2048x2048 PBR woven technical fiber and composite material maps across 26 materials (base color, normal, and roughness).",
+      "size": "204.9 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/technical-fibers-v1.0.0/Technical_Fibers.zip",
+      "releaseTag": "technical-fibers-v1.0.0",
+      "tags": [
+        "materials",
+        "pbr",
+        "2048",
+        "carbon-fiber",
+        "kevlar",
+        "nylon",
+        "cordura",
+        "ripstop",
+        "mesh",
+        "rubber",
+        "woven",
+        "seamless"
+      ],
+      "files": [
+        "ballistic-nylon-1050d-olive.png",
+        "ballistic-nylon-1050d-olive_normal.png",
+        "ballistic-nylon-1050d-olive_roughness.png",
+        "ballistic-nylon-1680d-black.png",
+        "ballistic-nylon-1680d-black_normal.png",
+        "ballistic-nylon-1680d-black_roughness.png",
+        "carbon-fiber-plain-3k-layered.png",
+        "carbon-fiber-plain-3k-layered_normal.png",
+        "carbon-fiber-plain-3k-layered_roughness.png",
+        "carbon-fiber-plain-3k.png",
+        "carbon-fiber-plain-3k_normal.png",
+        "carbon-fiber-plain-3k_roughness.png",
+        "carbon-fiber-twill-aerospace-layered.png",
+        "carbon-fiber-twill-aerospace-layered_normal.png",
+        "carbon-fiber-twill-aerospace-layered_roughness.png",
+        "carbon-fiber-twill-aerospace.png",
+        "carbon-fiber-twill-aerospace_normal.png",
+        "carbon-fiber-twill-aerospace_roughness.png",
+        "carbon-fiber-twill-dry-matte.png",
+        "carbon-fiber-twill-dry-matte_normal.png",
+        "carbon-fiber-twill-dry-matte_roughness.png",
+        "carbon-fiber-twill-gunmetal-1k.png",
+        "carbon-fiber-twill-gunmetal-1k_normal.png",
+        "carbon-fiber-twill-gunmetal-1k_roughness.png",
+        "cordura-1000d-coyote-layered.png",
+        "cordura-1000d-coyote-layered_normal.png",
+        "cordura-1000d-coyote-layered_roughness.png",
+        "cordura-1000d-coyote.png",
+        "cordura-1000d-coyote_normal.png",
+        "cordura-1000d-coyote_roughness.png",
+        "cordura-500d-ranger-green.png",
+        "cordura-500d-ranger-green_normal.png",
+        "cordura-500d-ranger-green_roughness.png",
+        "kevlar-plain-aramid-gold-layered.png",
+        "kevlar-plain-aramid-gold-layered_normal.png",
+        "kevlar-plain-aramid-gold-layered_roughness.png",
+        "kevlar-plain-aramid-gold.png",
+        "kevlar-plain-aramid-gold_normal.png",
+        "kevlar-plain-aramid-gold_roughness.png",
+        "kevlar-plain-carbon-hybrid.png",
+        "kevlar-plain-carbon-hybrid_normal.png",
+        "kevlar-plain-carbon-hybrid_roughness.png",
+        "kevlar-twill-aramid-gold-layered.png",
+        "kevlar-twill-aramid-gold-layered_normal.png",
+        "kevlar-twill-aramid-gold-layered_roughness.png",
+        "kevlar-twill-aramid-gold.png",
+        "kevlar-twill-aramid-gold_normal.png",
+        "kevlar-twill-aramid-gold_roughness.png",
+        "kevlar-twill-carbon-hybrid.png",
+        "kevlar-twill-carbon-hybrid_normal.png",
+        "kevlar-twill-carbon-hybrid_roughness.png",
+        "polyester-mesh-athletic-slate.png",
+        "polyester-mesh-athletic-slate_normal.png",
+        "polyester-mesh-athletic-slate_roughness.png",
+        "polyester-mesh-spacer-black-layered.png",
+        "polyester-mesh-spacer-black-layered_normal.png",
+        "polyester-mesh-spacer-black-layered_roughness.png",
+        "polyester-mesh-spacer-black.png",
+        "polyester-mesh-spacer-black_normal.png",
+        "polyester-mesh-spacer-black_roughness.png",
+        "ripstop-nylon-coyote-layered.png",
+        "ripstop-nylon-coyote-layered_normal.png",
+        "ripstop-nylon-coyote-layered_roughness.png",
+        "ripstop-nylon-slate-grey.png",
+        "ripstop-nylon-slate-grey_normal.png",
+        "ripstop-nylon-slate-grey_roughness.png",
+        "ripstop-nylon-tactical-black.png",
+        "ripstop-nylon-tactical-black_normal.png",
+        "ripstop-nylon-tactical-black_roughness.png",
+        "rubberized-grip-diamond-black-layered.png",
+        "rubberized-grip-diamond-black-layered_normal.png",
+        "rubberized-grip-diamond-black-layered_roughness.png",
+        "rubberized-grip-diamond-black.png",
+        "rubberized-grip-diamond-black_normal.png",
+        "rubberized-grip-diamond-black_roughness.png",
+        "rubberized-grip-hex-fde.png",
+        "rubberized-grip-hex-fde_normal.png",
+        "rubberized-grip-hex-fde_roughness.png"
+      ],
+      "fileTags": {
+        "ballistic-nylon-1050d-olive.png": [
+          "ballistic-nylon-1050d-olive",
+          "ballistic",
+          "nylon",
+          "1050d",
+          "olive",
+          "texture"
+        ],
+        "ballistic-nylon-1050d-olive_normal.png": [
+          "ballistic-nylon-1050d-olive",
+          "ballistic",
+          "nylon",
+          "1050d",
+          "olive",
+          "texture"
+        ],
+        "ballistic-nylon-1050d-olive_roughness.png": [
+          "ballistic-nylon-1050d-olive",
+          "ballistic",
+          "nylon",
+          "1050d",
+          "olive",
+          "texture"
+        ],
+        "ballistic-nylon-1680d-black.png": [
+          "ballistic-nylon-1680d-black",
+          "ballistic",
+          "nylon",
+          "1680d",
+          "black",
+          "texture"
+        ],
+        "ballistic-nylon-1680d-black_normal.png": [
+          "ballistic-nylon-1680d-black",
+          "ballistic",
+          "nylon",
+          "1680d",
+          "black",
+          "texture"
+        ],
+        "ballistic-nylon-1680d-black_roughness.png": [
+          "ballistic-nylon-1680d-black",
+          "ballistic",
+          "nylon",
+          "1680d",
+          "black",
+          "texture"
+        ],
+        "carbon-fiber-plain-3k-layered.png": [
+          "carbon-fiber-plain-3k-layered",
+          "carbon",
+          "fiber",
+          "plain",
+          "3k",
+          "layered",
+          "texture"
+        ],
+        "carbon-fiber-plain-3k-layered_normal.png": [
+          "carbon-fiber-plain-3k-layered",
+          "carbon",
+          "fiber",
+          "plain",
+          "3k",
+          "layered",
+          "texture"
+        ],
+        "carbon-fiber-plain-3k-layered_roughness.png": [
+          "carbon-fiber-plain-3k-layered",
+          "carbon",
+          "fiber",
+          "plain",
+          "3k",
+          "layered",
+          "texture"
+        ],
+        "carbon-fiber-plain-3k.png": [
+          "carbon-fiber-plain-3k",
+          "carbon",
+          "fiber",
+          "plain",
+          "3k",
+          "texture"
+        ],
+        "carbon-fiber-plain-3k_normal.png": [
+          "carbon-fiber-plain-3k",
+          "carbon",
+          "fiber",
+          "plain",
+          "3k",
+          "texture"
+        ],
+        "carbon-fiber-plain-3k_roughness.png": [
+          "carbon-fiber-plain-3k",
+          "carbon",
+          "fiber",
+          "plain",
+          "3k",
+          "texture"
+        ],
+        "carbon-fiber-twill-aerospace-layered.png": [
+          "carbon-fiber-twill-aerospace-layered",
+          "carbon",
+          "fiber",
+          "twill",
+          "aerospace",
+          "layered",
+          "texture"
+        ],
+        "carbon-fiber-twill-aerospace-layered_normal.png": [
+          "carbon-fiber-twill-aerospace-layered",
+          "carbon",
+          "fiber",
+          "twill",
+          "aerospace",
+          "layered",
+          "texture"
+        ],
+        "carbon-fiber-twill-aerospace-layered_roughness.png": [
+          "carbon-fiber-twill-aerospace-layered",
+          "carbon",
+          "fiber",
+          "twill",
+          "aerospace",
+          "layered",
+          "texture"
+        ],
+        "carbon-fiber-twill-aerospace.png": [
+          "carbon-fiber-twill-aerospace",
+          "carbon",
+          "fiber",
+          "twill",
+          "aerospace",
+          "texture"
+        ],
+        "carbon-fiber-twill-aerospace_normal.png": [
+          "carbon-fiber-twill-aerospace",
+          "carbon",
+          "fiber",
+          "twill",
+          "aerospace",
+          "texture"
+        ],
+        "carbon-fiber-twill-aerospace_roughness.png": [
+          "carbon-fiber-twill-aerospace",
+          "carbon",
+          "fiber",
+          "twill",
+          "aerospace",
+          "texture"
+        ],
+        "carbon-fiber-twill-dry-matte.png": [
+          "carbon-fiber-twill-dry-matte",
+          "carbon",
+          "fiber",
+          "twill",
+          "dry",
+          "matte",
+          "texture"
+        ],
+        "carbon-fiber-twill-dry-matte_normal.png": [
+          "carbon-fiber-twill-dry-matte",
+          "carbon",
+          "fiber",
+          "twill",
+          "dry",
+          "matte",
+          "texture"
+        ],
+        "carbon-fiber-twill-dry-matte_roughness.png": [
+          "carbon-fiber-twill-dry-matte",
+          "carbon",
+          "fiber",
+          "twill",
+          "dry",
+          "matte",
+          "texture"
+        ],
+        "carbon-fiber-twill-gunmetal-1k.png": [
+          "carbon-fiber-twill-gunmetal-1k",
+          "carbon",
+          "fiber",
+          "twill",
+          "gunmetal",
+          "1k",
+          "texture"
+        ],
+        "carbon-fiber-twill-gunmetal-1k_normal.png": [
+          "carbon-fiber-twill-gunmetal-1k",
+          "carbon",
+          "fiber",
+          "twill",
+          "gunmetal",
+          "1k",
+          "texture"
+        ],
+        "carbon-fiber-twill-gunmetal-1k_roughness.png": [
+          "carbon-fiber-twill-gunmetal-1k",
+          "carbon",
+          "fiber",
+          "twill",
+          "gunmetal",
+          "1k",
+          "texture"
+        ],
+        "cordura-1000d-coyote-layered.png": [
+          "cordura-1000d-coyote-layered",
+          "cordura",
+          "1000d",
+          "coyote",
+          "layered",
+          "texture"
+        ],
+        "cordura-1000d-coyote-layered_normal.png": [
+          "cordura-1000d-coyote-layered",
+          "cordura",
+          "1000d",
+          "coyote",
+          "layered",
+          "texture"
+        ],
+        "cordura-1000d-coyote-layered_roughness.png": [
+          "cordura-1000d-coyote-layered",
+          "cordura",
+          "1000d",
+          "coyote",
+          "layered",
+          "texture"
+        ],
+        "cordura-1000d-coyote.png": [
+          "cordura-1000d-coyote",
+          "cordura",
+          "1000d",
+          "coyote",
+          "texture"
+        ],
+        "cordura-1000d-coyote_normal.png": [
+          "cordura-1000d-coyote",
+          "cordura",
+          "1000d",
+          "coyote",
+          "texture"
+        ],
+        "cordura-1000d-coyote_roughness.png": [
+          "cordura-1000d-coyote",
+          "cordura",
+          "1000d",
+          "coyote",
+          "texture"
+        ],
+        "cordura-500d-ranger-green.png": [
+          "cordura-500d-ranger-green",
+          "cordura",
+          "500d",
+          "ranger",
+          "green",
+          "texture"
+        ],
+        "cordura-500d-ranger-green_normal.png": [
+          "cordura-500d-ranger-green",
+          "cordura",
+          "500d",
+          "ranger",
+          "green",
+          "texture"
+        ],
+        "cordura-500d-ranger-green_roughness.png": [
+          "cordura-500d-ranger-green",
+          "cordura",
+          "500d",
+          "ranger",
+          "green",
+          "texture"
+        ],
+        "kevlar-plain-aramid-gold-layered.png": [
+          "kevlar-plain-aramid-gold-layered",
+          "kevlar",
+          "plain",
+          "aramid",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "kevlar-plain-aramid-gold-layered_normal.png": [
+          "kevlar-plain-aramid-gold-layered",
+          "kevlar",
+          "plain",
+          "aramid",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "kevlar-plain-aramid-gold-layered_roughness.png": [
+          "kevlar-plain-aramid-gold-layered",
+          "kevlar",
+          "plain",
+          "aramid",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "kevlar-plain-aramid-gold.png": [
+          "kevlar-plain-aramid-gold",
+          "kevlar",
+          "plain",
+          "aramid",
+          "gold",
+          "texture"
+        ],
+        "kevlar-plain-aramid-gold_normal.png": [
+          "kevlar-plain-aramid-gold",
+          "kevlar",
+          "plain",
+          "aramid",
+          "gold",
+          "texture"
+        ],
+        "kevlar-plain-aramid-gold_roughness.png": [
+          "kevlar-plain-aramid-gold",
+          "kevlar",
+          "plain",
+          "aramid",
+          "gold",
+          "texture"
+        ],
+        "kevlar-plain-carbon-hybrid.png": [
+          "kevlar-plain-carbon-hybrid",
+          "kevlar",
+          "plain",
+          "carbon",
+          "hybrid",
+          "texture"
+        ],
+        "kevlar-plain-carbon-hybrid_normal.png": [
+          "kevlar-plain-carbon-hybrid",
+          "kevlar",
+          "plain",
+          "carbon",
+          "hybrid",
+          "texture"
+        ],
+        "kevlar-plain-carbon-hybrid_roughness.png": [
+          "kevlar-plain-carbon-hybrid",
+          "kevlar",
+          "plain",
+          "carbon",
+          "hybrid",
+          "texture"
+        ],
+        "kevlar-twill-aramid-gold-layered.png": [
+          "kevlar-twill-aramid-gold-layered",
+          "kevlar",
+          "twill",
+          "aramid",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "kevlar-twill-aramid-gold-layered_normal.png": [
+          "kevlar-twill-aramid-gold-layered",
+          "kevlar",
+          "twill",
+          "aramid",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "kevlar-twill-aramid-gold-layered_roughness.png": [
+          "kevlar-twill-aramid-gold-layered",
+          "kevlar",
+          "twill",
+          "aramid",
+          "gold",
+          "layered",
+          "texture"
+        ],
+        "kevlar-twill-aramid-gold.png": [
+          "kevlar-twill-aramid-gold",
+          "kevlar",
+          "twill",
+          "aramid",
+          "gold",
+          "texture"
+        ],
+        "kevlar-twill-aramid-gold_normal.png": [
+          "kevlar-twill-aramid-gold",
+          "kevlar",
+          "twill",
+          "aramid",
+          "gold",
+          "texture"
+        ],
+        "kevlar-twill-aramid-gold_roughness.png": [
+          "kevlar-twill-aramid-gold",
+          "kevlar",
+          "twill",
+          "aramid",
+          "gold",
+          "texture"
+        ],
+        "kevlar-twill-carbon-hybrid.png": [
+          "kevlar-twill-carbon-hybrid",
+          "kevlar",
+          "twill",
+          "carbon",
+          "hybrid",
+          "texture"
+        ],
+        "kevlar-twill-carbon-hybrid_normal.png": [
+          "kevlar-twill-carbon-hybrid",
+          "kevlar",
+          "twill",
+          "carbon",
+          "hybrid",
+          "texture"
+        ],
+        "kevlar-twill-carbon-hybrid_roughness.png": [
+          "kevlar-twill-carbon-hybrid",
+          "kevlar",
+          "twill",
+          "carbon",
+          "hybrid",
+          "texture"
+        ],
+        "polyester-mesh-athletic-slate.png": [
+          "polyester-mesh-athletic-slate",
+          "polyester",
+          "mesh",
+          "athletic",
+          "slate",
+          "texture"
+        ],
+        "polyester-mesh-athletic-slate_normal.png": [
+          "polyester-mesh-athletic-slate",
+          "polyester",
+          "mesh",
+          "athletic",
+          "slate",
+          "texture"
+        ],
+        "polyester-mesh-athletic-slate_roughness.png": [
+          "polyester-mesh-athletic-slate",
+          "polyester",
+          "mesh",
+          "athletic",
+          "slate",
+          "texture"
+        ],
+        "polyester-mesh-spacer-black-layered.png": [
+          "polyester-mesh-spacer-black-layered",
+          "polyester",
+          "mesh",
+          "spacer",
+          "black",
+          "layered",
+          "texture"
+        ],
+        "polyester-mesh-spacer-black-layered_normal.png": [
+          "polyester-mesh-spacer-black-layered",
+          "polyester",
+          "mesh",
+          "spacer",
+          "black",
+          "layered",
+          "texture"
+        ],
+        "polyester-mesh-spacer-black-layered_roughness.png": [
+          "polyester-mesh-spacer-black-layered",
+          "polyester",
+          "mesh",
+          "spacer",
+          "black",
+          "layered",
+          "texture"
+        ],
+        "polyester-mesh-spacer-black.png": [
+          "polyester-mesh-spacer-black",
+          "polyester",
+          "mesh",
+          "spacer",
+          "black",
+          "texture"
+        ],
+        "polyester-mesh-spacer-black_normal.png": [
+          "polyester-mesh-spacer-black",
+          "polyester",
+          "mesh",
+          "spacer",
+          "black",
+          "texture"
+        ],
+        "polyester-mesh-spacer-black_roughness.png": [
+          "polyester-mesh-spacer-black",
+          "polyester",
+          "mesh",
+          "spacer",
+          "black",
+          "texture"
+        ],
+        "ripstop-nylon-coyote-layered.png": [
+          "ripstop-nylon-coyote-layered",
+          "ripstop",
+          "nylon",
+          "coyote",
+          "layered",
+          "texture"
+        ],
+        "ripstop-nylon-coyote-layered_normal.png": [
+          "ripstop-nylon-coyote-layered",
+          "ripstop",
+          "nylon",
+          "coyote",
+          "layered",
+          "texture"
+        ],
+        "ripstop-nylon-coyote-layered_roughness.png": [
+          "ripstop-nylon-coyote-layered",
+          "ripstop",
+          "nylon",
+          "coyote",
+          "layered",
+          "texture"
+        ],
+        "ripstop-nylon-slate-grey.png": [
+          "ripstop-nylon-slate-grey",
+          "ripstop",
+          "nylon",
+          "slate",
+          "grey",
+          "texture"
+        ],
+        "ripstop-nylon-slate-grey_normal.png": [
+          "ripstop-nylon-slate-grey",
+          "ripstop",
+          "nylon",
+          "slate",
+          "grey",
+          "texture"
+        ],
+        "ripstop-nylon-slate-grey_roughness.png": [
+          "ripstop-nylon-slate-grey",
+          "ripstop",
+          "nylon",
+          "slate",
+          "grey",
+          "texture"
+        ],
+        "ripstop-nylon-tactical-black.png": [
+          "ripstop-nylon-tactical-black",
+          "ripstop",
+          "nylon",
+          "tactical",
+          "black",
+          "texture"
+        ],
+        "ripstop-nylon-tactical-black_normal.png": [
+          "ripstop-nylon-tactical-black",
+          "ripstop",
+          "nylon",
+          "tactical",
+          "black",
+          "texture"
+        ],
+        "ripstop-nylon-tactical-black_roughness.png": [
+          "ripstop-nylon-tactical-black",
+          "ripstop",
+          "nylon",
+          "tactical",
+          "black",
+          "texture"
+        ],
+        "rubberized-grip-diamond-black-layered.png": [
+          "rubberized-grip-diamond-black-layered",
+          "rubberized",
+          "grip",
+          "diamond",
+          "black",
+          "layered",
+          "texture"
+        ],
+        "rubberized-grip-diamond-black-layered_normal.png": [
+          "rubberized-grip-diamond-black-layered",
+          "rubberized",
+          "grip",
+          "diamond",
+          "black",
+          "layered",
+          "texture"
+        ],
+        "rubberized-grip-diamond-black-layered_roughness.png": [
+          "rubberized-grip-diamond-black-layered",
+          "rubberized",
+          "grip",
+          "diamond",
+          "black",
+          "layered",
+          "texture"
+        ],
+        "rubberized-grip-diamond-black.png": [
+          "rubberized-grip-diamond-black",
+          "rubberized",
+          "grip",
+          "diamond",
+          "black",
+          "texture"
+        ],
+        "rubberized-grip-diamond-black_normal.png": [
+          "rubberized-grip-diamond-black",
+          "rubberized",
+          "grip",
+          "diamond",
+          "black",
+          "texture"
+        ],
+        "rubberized-grip-diamond-black_roughness.png": [
+          "rubberized-grip-diamond-black",
+          "rubberized",
+          "grip",
+          "diamond",
+          "black",
+          "texture"
+        ],
+        "rubberized-grip-hex-fde.png": [
+          "rubberized-grip-hex-fde",
+          "rubberized",
+          "grip",
+          "hex",
+          "fde",
+          "texture"
+        ],
+        "rubberized-grip-hex-fde_normal.png": [
+          "rubberized-grip-hex-fde",
+          "rubberized",
+          "grip",
+          "hex",
+          "fde",
+          "texture"
+        ],
+        "rubberized-grip-hex-fde_roughness.png": [
+          "rubberized-grip-hex-fde",
+          "rubberized",
+          "grip",
+          "hex",
+          "fde",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "ballistic-nylon-1050d-olive.png": "02ff1568d33f6686cacb6ee308e71bb9a06c9688d922b04dfba42895f3a6cb22",
+        "ballistic-nylon-1050d-olive_normal.png": "0f7145cf4088affdfab755be322d3c02c514f81358872838c26690fef0405f03",
+        "ballistic-nylon-1050d-olive_roughness.png": "df0cf8035cf3e39d36de1a476d985cd6e7afae59945cce57240726975d43b135",
+        "ballistic-nylon-1680d-black.png": "f4f76d79f3557ccdf708f3133ff2c62171b08ddaa2dd39b58140ee403959369c",
+        "ballistic-nylon-1680d-black_normal.png": "bbef62a5647b95ac340e7d55e9db84a5a69104f06d6f52243815e23686224e99",
+        "ballistic-nylon-1680d-black_roughness.png": "161d5ba72db33dec2a6a0f843edb49d8f821b4a7b1b3bfeb24b2f952376387c8",
+        "carbon-fiber-plain-3k-layered.png": "6c23cf1b9931b865ffb478c887b2e5e4ba52be660099c028a9fb0ef7a723c35a",
+        "carbon-fiber-plain-3k-layered_normal.png": "047a8390c03656d1b9f331adff5b70de20cb3b0e97a3a7c07f35c5cb30952778",
+        "carbon-fiber-plain-3k-layered_roughness.png": "1996197f10c7ed427101825713480a101c594768580ce9f71cbe7b60f6ccdc56",
+        "carbon-fiber-plain-3k.png": "c17c086fb43c3c18fe90101caa9d9c4147582e396a07bba7567f1f655049b5fb",
+        "carbon-fiber-plain-3k_normal.png": "d77046c52151156878ebc15202328ff08577358f48bcc8bd502f9813702f358d",
+        "carbon-fiber-plain-3k_roughness.png": "a411ac42c463acec52d09b3b6303ec108ce600a1574aacc7aae4ee6ca0dc26b4",
+        "carbon-fiber-twill-aerospace-layered.png": "5b12d3622f2f0d1172aeeef074b1ce6fce916c27b579c3a33142470a4202d860",
+        "carbon-fiber-twill-aerospace-layered_normal.png": "5dc2233a658d7f35e67d14f10bb61201f922eb5694fead8bb31488d6feb02e4d",
+        "carbon-fiber-twill-aerospace-layered_roughness.png": "234c90a583bfbb2bb0337163af432c26d7b5e8a0e708cb46b5b0a35599bfdf8b",
+        "carbon-fiber-twill-aerospace.png": "219edd886929452b90b952616b4b37cac0ddeff092c21e897e0597b4a8fb14a8",
+        "carbon-fiber-twill-aerospace_normal.png": "27bddc5388f42c903d9533a4880386169702775746be9685862719394b4c78ef",
+        "carbon-fiber-twill-aerospace_roughness.png": "55053837cf94cbe65510a3bbf5a7659c4f8deff0a192a224e64482918d96c1de",
+        "carbon-fiber-twill-dry-matte.png": "79f9e99b718afa1e721251bfb2c9f81d4e8d56e2fe26251ed6b41c06f5559acf",
+        "carbon-fiber-twill-dry-matte_normal.png": "f47fcc69ea15b08c47a73105cd4c7913470b8b59db92b55bc812fa3c81e7f6e8",
+        "carbon-fiber-twill-dry-matte_roughness.png": "765ff6c18c713efcae168d49c705fcfe5d064a98dc9cb29457f0e5a76bfd28f9",
+        "carbon-fiber-twill-gunmetal-1k.png": "a300fc6f09bbf19e434a3f59eafc6815869d1d7f741f0583583704bfc103f8d7",
+        "carbon-fiber-twill-gunmetal-1k_normal.png": "9daf4a8479fa8525e18c75a2550c03d89849a2f867bc3b6073b21a3f253cda60",
+        "carbon-fiber-twill-gunmetal-1k_roughness.png": "cc8c121acb862cd022eea8622b924159a9def954ac8d62ac57230383c9622359",
+        "cordura-1000d-coyote-layered.png": "4dc4294c8e408a57337350485f644ca45597e64b600ce413c20e0bad41019c1c",
+        "cordura-1000d-coyote-layered_normal.png": "e36aa37d5cbe8a04f896429eb4171dba3f67fbe436db620102974b7667216b65",
+        "cordura-1000d-coyote-layered_roughness.png": "33a67abfafe16ea31c56571853ea6230b767baf0291b44a5cc400ab553f6275d",
+        "cordura-1000d-coyote.png": "ba261f8c7aab652cf35c828497aa69015708452a369466db17522cf06510c232",
+        "cordura-1000d-coyote_normal.png": "889b5e1a10666866078ab8992d3e31e31f6f33ee18d2b14d57f93159a5ed0992",
+        "cordura-1000d-coyote_roughness.png": "c4c5d2097bb743aa991c3afe927233bdab839ac64d7b2bed8d27354ae613a52e",
+        "cordura-500d-ranger-green.png": "117fc5f8dca8eee9b14b6e6dbd3bad057af7ce3a35cada79eb1d6ce59bbac34f",
+        "cordura-500d-ranger-green_normal.png": "dde1ee29194aa7896f15a409b6ed6afb7035c753b6ff4e0d2f55c5ca3cb6c45d",
+        "cordura-500d-ranger-green_roughness.png": "ea897e4e42b8562988fbf259daf5da34e669dd73a4b6cedb913541349cc2f3b7",
+        "kevlar-plain-aramid-gold-layered.png": "39bf57aca31d7934746ef2d335e430aa67e8b827526bec82e55b260090f905b1",
+        "kevlar-plain-aramid-gold-layered_normal.png": "d802cc164f40a958f8e1c547e1da31dc271ac9a7cf40fc7a3c1dd9b4c5d809e2",
+        "kevlar-plain-aramid-gold-layered_roughness.png": "3c351d8da2b5725789ccf004a8a68bd62a2ae99cae2dd055849e5780c3bcd39b",
+        "kevlar-plain-aramid-gold.png": "60375274d443b3dc9b3fb43ed54d844fc4ebac63b76ca6f47d110a0af6041d21",
+        "kevlar-plain-aramid-gold_normal.png": "f51330d7bf779404d122c1f3b048074d6ac0cdfbcf5ecc4ddfc832d20a740412",
+        "kevlar-plain-aramid-gold_roughness.png": "a5829b0ad68c4b61941d1157df36f018e84aa4e996f3d1d2ed95a9b40736cdc0",
+        "kevlar-plain-carbon-hybrid.png": "8f110ef17384d9cd167a3e08abdb239da5720baa5960484127e0e70510dec707",
+        "kevlar-plain-carbon-hybrid_normal.png": "12f5f4869c36d9ab839a360d081b11afdf3254282326ce57fbfa6a4cc4fcfbc4",
+        "kevlar-plain-carbon-hybrid_roughness.png": "9ea0b182019d1ef129a49aa43825170fc44a417b16c7fce593f3f8caab6d8df2",
+        "kevlar-twill-aramid-gold-layered.png": "9909933fece511c03be039d86c3678b246522ed1a93eb24ed47060f6f43ecda3",
+        "kevlar-twill-aramid-gold-layered_normal.png": "16d7dddeaa4832395ce0f50237abdf14a4be4242ee2e4d5e74c80dd0772e1b73",
+        "kevlar-twill-aramid-gold-layered_roughness.png": "1cfe05ad95a605e699d268ee67b3087db2b6522c27b31338b1b745acff430cfc",
+        "kevlar-twill-aramid-gold.png": "464575829646f949765509ca4b7e14d6290495d7b48e35aa8086f9b7976a710e",
+        "kevlar-twill-aramid-gold_normal.png": "b95a6fea902dc3a10461bad14ca66c00b703952f8b7e935ae2cadf651fbac055",
+        "kevlar-twill-aramid-gold_roughness.png": "42258c32ce8d9166c1fa48caacb090b894075a295e9bfeeda1de089cb4068d81",
+        "kevlar-twill-carbon-hybrid.png": "4cf6617a1283ec511ce7cc608657a27853fbaaf1b80c4d464dc8b5cfb30e4142",
+        "kevlar-twill-carbon-hybrid_normal.png": "3bc7c7b0517113145358b68e10f179c6c91ea471a1886affe6bc73e71ee1ab8e",
+        "kevlar-twill-carbon-hybrid_roughness.png": "ae95b4c474231e27b812282b246a0a2fbf4fa14d142b955eb6f43bc85e3bd127",
+        "polyester-mesh-athletic-slate.png": "7746156d43a95d693c01e640ba79482b2b6989836cb198d818a70885a813c163",
+        "polyester-mesh-athletic-slate_normal.png": "2c0f8bc70b2520d176613ec5f9993b8eb69065a95e00e40caff1a782177359d6",
+        "polyester-mesh-athletic-slate_roughness.png": "16a4afbba031e6d9205cb8a1f945075a309705bdd86a4e03382a3b7b75f00d00",
+        "polyester-mesh-spacer-black-layered.png": "98ee1cabf2ba0b116ac3f501bfdcb7abfb0c6f0e5092b6209f82c642d61bbc7c",
+        "polyester-mesh-spacer-black-layered_normal.png": "81a4286591c76b1b36d0b6324143f9677b8a7e1eb786169d916faed949246f73",
+        "polyester-mesh-spacer-black-layered_roughness.png": "c693381fc1f8c9d47552acddbf48823c9c55d341d4920ae333c9629e5ea42def",
+        "polyester-mesh-spacer-black.png": "07bc414d777310fc9fe7e9e72af7f0a42d5ed48ff036d2cb0da9291156ba183e",
+        "polyester-mesh-spacer-black_normal.png": "3245958874044d4261c53460c94e2c7474aa3ab634bdfda88f5d95339abed1e6",
+        "polyester-mesh-spacer-black_roughness.png": "27a0b7d9d7513265b2a71204765c6ce697071fd0287a9f541d3863447a9254ea",
+        "ripstop-nylon-coyote-layered.png": "0992530a54517861b9f363b9e1962eaa4e757837e418e914defa01a86742c766",
+        "ripstop-nylon-coyote-layered_normal.png": "5f250d84f7f1c507c025f5a79a836ed0b1d6429a8bf124dc2e018c776b124e91",
+        "ripstop-nylon-coyote-layered_roughness.png": "0cd91f9b92611d1ac25ab957b77ed667ba8a35cfa365fa3dd7d6a04fd10e67ce",
+        "ripstop-nylon-slate-grey.png": "5e92992fedb7e62a6ef57411e221899758cd89ed00c73732681ad9afc5d4991a",
+        "ripstop-nylon-slate-grey_normal.png": "29869a10eaf80e0c844c3a7df1a2b52084bef334555f943a97a3037772bfad8b",
+        "ripstop-nylon-slate-grey_roughness.png": "8b6d049ab7a36a98c84db03bc6c441fda23f4084019129ceeb68d8cb5a99afda",
+        "ripstop-nylon-tactical-black.png": "482502499f798a2d590c62e2287462270b70f42c2c349a34f5cb8cc17d7d9310",
+        "ripstop-nylon-tactical-black_normal.png": "263f441c27d329c5d8856316d81ef861a0e4b59241abb5ee06e5e811296322b9",
+        "ripstop-nylon-tactical-black_roughness.png": "5946ec32d46e19df9efb72a361fc2863f5e838ea183641a93b92f42d441300bd",
+        "rubberized-grip-diamond-black-layered.png": "0b9e5a7271e1bb1b93052cb41bf4fff32c28b4648f77cc76c8f4bf8300b11ad4",
+        "rubberized-grip-diamond-black-layered_normal.png": "8e6592d19c62718fc13ed49b439c4e2910cdeb313f64a4b7dc5822443817d10f",
+        "rubberized-grip-diamond-black-layered_roughness.png": "9e9eeccc5f0eec9e51b26e0661eeb7d89e4bde103531c0fec621bb2b84513ff2",
+        "rubberized-grip-diamond-black.png": "91575c87111d4898dfb62103f20d078ed07a6823ada5bd52e499026489f1ca4e",
+        "rubberized-grip-diamond-black_normal.png": "162887893b794831f276de93fc9901979c3beca6fea9478d0e1c38f3fbb31ffc",
+        "rubberized-grip-diamond-black_roughness.png": "1d6aa7158cc4591c5e516ecad051c328a5ea9f0513b87c305d540419abd37940",
+        "rubberized-grip-hex-fde.png": "f643b259e51a9b65ba65b6da78c783b9bec18fd1e40c36986b6893893566d62a",
+        "rubberized-grip-hex-fde_normal.png": "0370255908cadf833674074eb06b2d77b70b7775f05923659f458f4719b9f0fb",
+        "rubberized-grip-hex-fde_roughness.png": "44ca86ea5d0b2e08b046ea95c66d826f7d802fdf14642316db172cdf3c3a19c1"
+      },
+      "materials": {
+        "ballistic-nylon-1050d-olive": {
+          "base": "ballistic-nylon-1050d-olive.png",
+          "normal": "ballistic-nylon-1050d-olive_normal.png",
+          "roughness": "ballistic-nylon-1050d-olive_roughness.png"
+        },
+        "ballistic-nylon-1680d-black": {
+          "base": "ballistic-nylon-1680d-black.png",
+          "normal": "ballistic-nylon-1680d-black_normal.png",
+          "roughness": "ballistic-nylon-1680d-black_roughness.png"
+        },
+        "carbon-fiber-plain-3k-layered": {
+          "base": "carbon-fiber-plain-3k-layered.png",
+          "normal": "carbon-fiber-plain-3k-layered_normal.png",
+          "roughness": "carbon-fiber-plain-3k-layered_roughness.png"
+        },
+        "carbon-fiber-plain-3k": {
+          "base": "carbon-fiber-plain-3k.png",
+          "normal": "carbon-fiber-plain-3k_normal.png",
+          "roughness": "carbon-fiber-plain-3k_roughness.png"
+        },
+        "carbon-fiber-twill-aerospace-layered": {
+          "base": "carbon-fiber-twill-aerospace-layered.png",
+          "normal": "carbon-fiber-twill-aerospace-layered_normal.png",
+          "roughness": "carbon-fiber-twill-aerospace-layered_roughness.png"
+        },
+        "carbon-fiber-twill-aerospace": {
+          "base": "carbon-fiber-twill-aerospace.png",
+          "normal": "carbon-fiber-twill-aerospace_normal.png",
+          "roughness": "carbon-fiber-twill-aerospace_roughness.png"
+        },
+        "carbon-fiber-twill-dry-matte": {
+          "base": "carbon-fiber-twill-dry-matte.png",
+          "normal": "carbon-fiber-twill-dry-matte_normal.png",
+          "roughness": "carbon-fiber-twill-dry-matte_roughness.png"
+        },
+        "carbon-fiber-twill-gunmetal-1k": {
+          "base": "carbon-fiber-twill-gunmetal-1k.png",
+          "normal": "carbon-fiber-twill-gunmetal-1k_normal.png",
+          "roughness": "carbon-fiber-twill-gunmetal-1k_roughness.png"
+        },
+        "cordura-1000d-coyote-layered": {
+          "base": "cordura-1000d-coyote-layered.png",
+          "normal": "cordura-1000d-coyote-layered_normal.png",
+          "roughness": "cordura-1000d-coyote-layered_roughness.png"
+        },
+        "cordura-1000d-coyote": {
+          "base": "cordura-1000d-coyote.png",
+          "normal": "cordura-1000d-coyote_normal.png",
+          "roughness": "cordura-1000d-coyote_roughness.png"
+        },
+        "cordura-500d-ranger-green": {
+          "base": "cordura-500d-ranger-green.png",
+          "normal": "cordura-500d-ranger-green_normal.png",
+          "roughness": "cordura-500d-ranger-green_roughness.png"
+        },
+        "kevlar-plain-aramid-gold-layered": {
+          "base": "kevlar-plain-aramid-gold-layered.png",
+          "normal": "kevlar-plain-aramid-gold-layered_normal.png",
+          "roughness": "kevlar-plain-aramid-gold-layered_roughness.png"
+        },
+        "kevlar-plain-aramid-gold": {
+          "base": "kevlar-plain-aramid-gold.png",
+          "normal": "kevlar-plain-aramid-gold_normal.png",
+          "roughness": "kevlar-plain-aramid-gold_roughness.png"
+        },
+        "kevlar-plain-carbon-hybrid": {
+          "base": "kevlar-plain-carbon-hybrid.png",
+          "normal": "kevlar-plain-carbon-hybrid_normal.png",
+          "roughness": "kevlar-plain-carbon-hybrid_roughness.png"
+        },
+        "kevlar-twill-aramid-gold-layered": {
+          "base": "kevlar-twill-aramid-gold-layered.png",
+          "normal": "kevlar-twill-aramid-gold-layered_normal.png",
+          "roughness": "kevlar-twill-aramid-gold-layered_roughness.png"
+        },
+        "kevlar-twill-aramid-gold": {
+          "base": "kevlar-twill-aramid-gold.png",
+          "normal": "kevlar-twill-aramid-gold_normal.png",
+          "roughness": "kevlar-twill-aramid-gold_roughness.png"
+        },
+        "kevlar-twill-carbon-hybrid": {
+          "base": "kevlar-twill-carbon-hybrid.png",
+          "normal": "kevlar-twill-carbon-hybrid_normal.png",
+          "roughness": "kevlar-twill-carbon-hybrid_roughness.png"
+        },
+        "polyester-mesh-athletic-slate": {
+          "base": "polyester-mesh-athletic-slate.png",
+          "normal": "polyester-mesh-athletic-slate_normal.png",
+          "roughness": "polyester-mesh-athletic-slate_roughness.png"
+        },
+        "polyester-mesh-spacer-black-layered": {
+          "base": "polyester-mesh-spacer-black-layered.png",
+          "normal": "polyester-mesh-spacer-black-layered_normal.png",
+          "roughness": "polyester-mesh-spacer-black-layered_roughness.png"
+        },
+        "polyester-mesh-spacer-black": {
+          "base": "polyester-mesh-spacer-black.png",
+          "normal": "polyester-mesh-spacer-black_normal.png",
+          "roughness": "polyester-mesh-spacer-black_roughness.png"
+        },
+        "ripstop-nylon-coyote-layered": {
+          "base": "ripstop-nylon-coyote-layered.png",
+          "normal": "ripstop-nylon-coyote-layered_normal.png",
+          "roughness": "ripstop-nylon-coyote-layered_roughness.png"
+        },
+        "ripstop-nylon-slate-grey": {
+          "base": "ripstop-nylon-slate-grey.png",
+          "normal": "ripstop-nylon-slate-grey_normal.png",
+          "roughness": "ripstop-nylon-slate-grey_roughness.png"
+        },
+        "ripstop-nylon-tactical-black": {
+          "base": "ripstop-nylon-tactical-black.png",
+          "normal": "ripstop-nylon-tactical-black_normal.png",
+          "roughness": "ripstop-nylon-tactical-black_roughness.png"
+        },
+        "rubberized-grip-diamond-black-layered": {
+          "base": "rubberized-grip-diamond-black-layered.png",
+          "normal": "rubberized-grip-diamond-black-layered_normal.png",
+          "roughness": "rubberized-grip-diamond-black-layered_roughness.png"
+        },
+        "rubberized-grip-diamond-black": {
+          "base": "rubberized-grip-diamond-black.png",
+          "normal": "rubberized-grip-diamond-black_normal.png",
+          "roughness": "rubberized-grip-diamond-black_roughness.png"
+        },
+        "rubberized-grip-hex-fde": {
+          "base": "rubberized-grip-hex-fde.png",
+          "normal": "rubberized-grip-hex-fde_normal.png",
+          "roughness": "rubberized-grip-hex-fde_roughness.png"
+        }
+      },
+      "sha256": "6994cc9d9a287fee847bdc73303cf7c46a99720eab02df9fbb55c071cb7467f0",
+      "thumbs": {
+        "ballistic-nylon-1050d-olive.png": "thumbs/technical-fibers-v1.0.0/ballistic-nylon-1050d-olive.webp",
+        "ballistic-nylon-1050d-olive_normal.png": "thumbs/technical-fibers-v1.0.0/ballistic-nylon-1050d-olive_normal.webp",
+        "ballistic-nylon-1050d-olive_roughness.png": "thumbs/technical-fibers-v1.0.0/ballistic-nylon-1050d-olive_roughness.webp",
+        "ballistic-nylon-1680d-black.png": "thumbs/technical-fibers-v1.0.0/ballistic-nylon-1680d-black.webp",
+        "ballistic-nylon-1680d-black_normal.png": "thumbs/technical-fibers-v1.0.0/ballistic-nylon-1680d-black_normal.webp",
+        "ballistic-nylon-1680d-black_roughness.png": "thumbs/technical-fibers-v1.0.0/ballistic-nylon-1680d-black_roughness.webp",
+        "carbon-fiber-plain-3k-layered.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-plain-3k-layered.webp",
+        "carbon-fiber-plain-3k-layered_normal.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-plain-3k-layered_normal.webp",
+        "carbon-fiber-plain-3k-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-plain-3k-layered_roughness.webp",
+        "carbon-fiber-plain-3k.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-plain-3k.webp",
+        "carbon-fiber-plain-3k_normal.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-plain-3k_normal.webp",
+        "carbon-fiber-plain-3k_roughness.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-plain-3k_roughness.webp",
+        "carbon-fiber-twill-aerospace-layered.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-aerospace-layered.webp",
+        "carbon-fiber-twill-aerospace-layered_normal.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-aerospace-layered_normal.webp",
+        "carbon-fiber-twill-aerospace-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-aerospace-layered_roughness.webp",
+        "carbon-fiber-twill-aerospace.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-aerospace.webp",
+        "carbon-fiber-twill-aerospace_normal.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-aerospace_normal.webp",
+        "carbon-fiber-twill-aerospace_roughness.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-aerospace_roughness.webp",
+        "carbon-fiber-twill-dry-matte.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-dry-matte.webp",
+        "carbon-fiber-twill-dry-matte_normal.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-dry-matte_normal.webp",
+        "carbon-fiber-twill-dry-matte_roughness.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-dry-matte_roughness.webp",
+        "carbon-fiber-twill-gunmetal-1k.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-gunmetal-1k.webp",
+        "carbon-fiber-twill-gunmetal-1k_normal.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-gunmetal-1k_normal.webp",
+        "carbon-fiber-twill-gunmetal-1k_roughness.png": "thumbs/technical-fibers-v1.0.0/carbon-fiber-twill-gunmetal-1k_roughness.webp",
+        "cordura-1000d-coyote-layered.png": "thumbs/technical-fibers-v1.0.0/cordura-1000d-coyote-layered.webp",
+        "cordura-1000d-coyote-layered_normal.png": "thumbs/technical-fibers-v1.0.0/cordura-1000d-coyote-layered_normal.webp",
+        "cordura-1000d-coyote-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/cordura-1000d-coyote-layered_roughness.webp",
+        "cordura-1000d-coyote.png": "thumbs/technical-fibers-v1.0.0/cordura-1000d-coyote.webp",
+        "cordura-1000d-coyote_normal.png": "thumbs/technical-fibers-v1.0.0/cordura-1000d-coyote_normal.webp",
+        "cordura-1000d-coyote_roughness.png": "thumbs/technical-fibers-v1.0.0/cordura-1000d-coyote_roughness.webp",
+        "cordura-500d-ranger-green.png": "thumbs/technical-fibers-v1.0.0/cordura-500d-ranger-green.webp",
+        "cordura-500d-ranger-green_normal.png": "thumbs/technical-fibers-v1.0.0/cordura-500d-ranger-green_normal.webp",
+        "cordura-500d-ranger-green_roughness.png": "thumbs/technical-fibers-v1.0.0/cordura-500d-ranger-green_roughness.webp",
+        "kevlar-plain-aramid-gold-layered.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-aramid-gold-layered.webp",
+        "kevlar-plain-aramid-gold-layered_normal.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-aramid-gold-layered_normal.webp",
+        "kevlar-plain-aramid-gold-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-aramid-gold-layered_roughness.webp",
+        "kevlar-plain-aramid-gold.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-aramid-gold.webp",
+        "kevlar-plain-aramid-gold_normal.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-aramid-gold_normal.webp",
+        "kevlar-plain-aramid-gold_roughness.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-aramid-gold_roughness.webp",
+        "kevlar-plain-carbon-hybrid.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-carbon-hybrid.webp",
+        "kevlar-plain-carbon-hybrid_normal.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-carbon-hybrid_normal.webp",
+        "kevlar-plain-carbon-hybrid_roughness.png": "thumbs/technical-fibers-v1.0.0/kevlar-plain-carbon-hybrid_roughness.webp",
+        "kevlar-twill-aramid-gold-layered.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-aramid-gold-layered.webp",
+        "kevlar-twill-aramid-gold-layered_normal.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-aramid-gold-layered_normal.webp",
+        "kevlar-twill-aramid-gold-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-aramid-gold-layered_roughness.webp",
+        "kevlar-twill-aramid-gold.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-aramid-gold.webp",
+        "kevlar-twill-aramid-gold_normal.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-aramid-gold_normal.webp",
+        "kevlar-twill-aramid-gold_roughness.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-aramid-gold_roughness.webp",
+        "kevlar-twill-carbon-hybrid.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-carbon-hybrid.webp",
+        "kevlar-twill-carbon-hybrid_normal.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-carbon-hybrid_normal.webp",
+        "kevlar-twill-carbon-hybrid_roughness.png": "thumbs/technical-fibers-v1.0.0/kevlar-twill-carbon-hybrid_roughness.webp",
+        "polyester-mesh-athletic-slate.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-athletic-slate.webp",
+        "polyester-mesh-athletic-slate_normal.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-athletic-slate_normal.webp",
+        "polyester-mesh-athletic-slate_roughness.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-athletic-slate_roughness.webp",
+        "polyester-mesh-spacer-black-layered.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-spacer-black-layered.webp",
+        "polyester-mesh-spacer-black-layered_normal.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-spacer-black-layered_normal.webp",
+        "polyester-mesh-spacer-black-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-spacer-black-layered_roughness.webp",
+        "polyester-mesh-spacer-black.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-spacer-black.webp",
+        "polyester-mesh-spacer-black_normal.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-spacer-black_normal.webp",
+        "polyester-mesh-spacer-black_roughness.png": "thumbs/technical-fibers-v1.0.0/polyester-mesh-spacer-black_roughness.webp",
+        "ripstop-nylon-coyote-layered.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-coyote-layered.webp",
+        "ripstop-nylon-coyote-layered_normal.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-coyote-layered_normal.webp",
+        "ripstop-nylon-coyote-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-coyote-layered_roughness.webp",
+        "ripstop-nylon-slate-grey.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-slate-grey.webp",
+        "ripstop-nylon-slate-grey_normal.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-slate-grey_normal.webp",
+        "ripstop-nylon-slate-grey_roughness.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-slate-grey_roughness.webp",
+        "ripstop-nylon-tactical-black.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-tactical-black.webp",
+        "ripstop-nylon-tactical-black_normal.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-tactical-black_normal.webp",
+        "ripstop-nylon-tactical-black_roughness.png": "thumbs/technical-fibers-v1.0.0/ripstop-nylon-tactical-black_roughness.webp",
+        "rubberized-grip-diamond-black-layered.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-diamond-black-layered.webp",
+        "rubberized-grip-diamond-black-layered_normal.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-diamond-black-layered_normal.webp",
+        "rubberized-grip-diamond-black-layered_roughness.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-diamond-black-layered_roughness.webp",
+        "rubberized-grip-diamond-black.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-diamond-black.webp",
+        "rubberized-grip-diamond-black_normal.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-diamond-black_normal.webp",
+        "rubberized-grip-diamond-black_roughness.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-diamond-black_roughness.webp",
+        "rubberized-grip-hex-fde.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-hex-fde.webp",
+        "rubberized-grip-hex-fde_normal.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-hex-fde_normal.webp",
+        "rubberized-grip-hex-fde_roughness.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-hex-fde_roughness.webp"
+      }
     }
   ]
 }
