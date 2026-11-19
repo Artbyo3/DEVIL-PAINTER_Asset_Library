@@ -110,6 +110,8 @@ REGISTERED_MODULES: tuple[str, ...] = (
     "red_brick_wall",             # NATIVE: running-bond bricks + recessed mortar joints
     "stone_wall",                 # NATIVE: coursed rough-hewn stone blocks + mortar
     "stucco_plaster_wall",        # NATIVE: sweeping trowel swells + fine sand float
+    # --- Material Pack Suites ---
+    "rubber_pack",                # NATIVE: neoprene, latex, vinyl & rubber variants + calibrated roughness
 )
 
 
