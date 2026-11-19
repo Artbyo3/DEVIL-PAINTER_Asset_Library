@@ -113,6 +113,7 @@ REGISTERED_MODULES: tuple[str, ...] = (
     # --- Material Pack Suites ---
     "rubber_pack",                # NATIVE: neoprene, latex, vinyl & rubber variants + calibrated roughness
     "metal_pack",                 # NATIVE: brushed, chrome, plate, chainmail, brass, copper, mesh & damascus metal variants + calibrated roughness
+    "wood_pack",                  # NATIVE: polished, ebony, cherry, teak, birch, bamboo & driftwood variants + calibrated roughness
 )
 
 
