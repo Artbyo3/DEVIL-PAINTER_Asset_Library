@@ -7845,6 +7845,295 @@
         "rubberized-grip-hex-fde_normal.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-hex-fde_normal.webp",
         "rubberized-grip-hex-fde_roughness.png": "thumbs/technical-fibers-v1.0.0/rubberized-grip-hex-fde_roughness.webp"
       }
+    },
+    {
+      "name": "Wood & Bamboo",
+      "description": "24 seamless 2048x2048 PBR wood and bamboo material maps across 8 materials (base color, normal, and roughness).",
+      "size": "65.2 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/wood-bamboo-v1.0.0/Wood_and_Bamboo.zip",
+      "releaseTag": "wood-bamboo-v1.0.0",
+      "tags": [
+        "materials",
+        "pbr",
+        "2048",
+        "wood",
+        "bamboo",
+        "walnut",
+        "ebony",
+        "birch",
+        "driftwood",
+        "seamless"
+      ],
+      "files": [
+        "bamboo-slats.png",
+        "bamboo-slats_normal.png",
+        "bamboo-slats_roughness.png",
+        "bamboo-woven-mat.png",
+        "bamboo-woven-mat_normal.png",
+        "bamboo-woven-mat_roughness.png",
+        "birch-pale.png",
+        "birch-pale_normal.png",
+        "birch-pale_roughness.png",
+        "cherry-satin.png",
+        "cherry-satin_normal.png",
+        "cherry-satin_roughness.png",
+        "dark-ebony.png",
+        "dark-ebony_normal.png",
+        "dark-ebony_roughness.png",
+        "teak-oiled.png",
+        "teak-oiled_normal.png",
+        "teak-oiled_roughness.png",
+        "walnut-polished.png",
+        "walnut-polished_normal.png",
+        "walnut-polished_roughness.png",
+        "weathered-driftwood.png",
+        "weathered-driftwood_normal.png",
+        "weathered-driftwood_roughness.png"
+      ],
+      "fileTags": {
+        "bamboo-slats.png": [
+          "bamboo-slats",
+          "bamboo",
+          "slats",
+          "texture"
+        ],
+        "bamboo-slats_normal.png": [
+          "bamboo-slats",
+          "bamboo",
+          "slats",
+          "texture"
+        ],
+        "bamboo-slats_roughness.png": [
+          "bamboo-slats",
+          "bamboo",
+          "slats",
+          "texture"
+        ],
+        "bamboo-woven-mat.png": [
+          "bamboo-woven-mat",
+          "bamboo",
+          "woven",
+          "mat",
+          "texture"
+        ],
+        "bamboo-woven-mat_normal.png": [
+          "bamboo-woven-mat",
+          "bamboo",
+          "woven",
+          "mat",
+          "texture"
+        ],
+        "bamboo-woven-mat_roughness.png": [
+          "bamboo-woven-mat",
+          "bamboo",
+          "woven",
+          "mat",
+          "texture"
+        ],
+        "birch-pale.png": [
+          "birch-pale",
+          "birch",
+          "pale",
+          "texture"
+        ],
+        "birch-pale_normal.png": [
+          "birch-pale",
+          "birch",
+          "pale",
+          "texture"
+        ],
+        "birch-pale_roughness.png": [
+          "birch-pale",
+          "birch",
+          "pale",
+          "texture"
+        ],
+        "cherry-satin.png": [
+          "cherry-satin",
+          "cherry",
+          "satin",
+          "texture"
+        ],
+        "cherry-satin_normal.png": [
+          "cherry-satin",
+          "cherry",
+          "satin",
+          "texture"
+        ],
+        "cherry-satin_roughness.png": [
+          "cherry-satin",
+          "cherry",
+          "satin",
+          "texture"
+        ],
+        "dark-ebony.png": [
+          "dark-ebony",
+          "dark",
+          "ebony",
+          "texture"
+        ],
+        "dark-ebony_normal.png": [
+          "dark-ebony",
+          "dark",
+          "ebony",
+          "texture"
+        ],
+        "dark-ebony_roughness.png": [
+          "dark-ebony",
+          "dark",
+          "ebony",
+          "texture"
+        ],
+        "teak-oiled.png": [
+          "teak-oiled",
+          "teak",
+          "oiled",
+          "texture"
+        ],
+        "teak-oiled_normal.png": [
+          "teak-oiled",
+          "teak",
+          "oiled",
+          "texture"
+        ],
+        "teak-oiled_roughness.png": [
+          "teak-oiled",
+          "teak",
+          "oiled",
+          "texture"
+        ],
+        "walnut-polished.png": [
+          "walnut-polished",
+          "walnut",
+          "polished",
+          "texture"
+        ],
+        "walnut-polished_normal.png": [
+          "walnut-polished",
+          "walnut",
+          "polished",
+          "texture"
+        ],
+        "walnut-polished_roughness.png": [
+          "walnut-polished",
+          "walnut",
+          "polished",
+          "texture"
+        ],
+        "weathered-driftwood.png": [
+          "weathered-driftwood",
+          "weathered",
+          "driftwood",
+          "texture"
+        ],
+        "weathered-driftwood_normal.png": [
+          "weathered-driftwood",
+          "weathered",
+          "driftwood",
+          "texture"
+        ],
+        "weathered-driftwood_roughness.png": [
+          "weathered-driftwood",
+          "weathered",
+          "driftwood",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "bamboo-slats.png": "05b1b08e3d45f2e6e42701f3e5c4e3661d9e0a40b4280bc116797473f9ed4622",
+        "bamboo-slats_normal.png": "feaefc6126503a098496547cc0fec4dfec2e10bff6ebd6a5ba1235c03c65f414",
+        "bamboo-slats_roughness.png": "edf36ef8444acf8b8bf26a62d1ca91f3c66bea6fd3a43f8b0557ad04a3e89046",
+        "bamboo-woven-mat.png": "73459c244b60698c7240850dd0a819f26ee49e85a327d89f333bc1ca30fcb3bc",
+        "bamboo-woven-mat_normal.png": "fa38a0cdd2fbdb24c8c48997589827fd1b14e3840cb85b775721e663b8d29642",
+        "bamboo-woven-mat_roughness.png": "75573cc7cbe614bf83965c73cbb112f75e0f97803a9e34066dccf5dd6379caf0",
+        "birch-pale.png": "51cb168d450a2fad9e8985b362e3460ec4d59035e10ba99ae5fdf91e60201b1f",
+        "birch-pale_normal.png": "0407f4d268793321c8af846f368dfa0259da87bb668cc248dbc334912a4dd78a",
+        "birch-pale_roughness.png": "8a0e98c5777c107d88b713412f62cd041e2109889ac748fbcb696518e894a69b",
+        "cherry-satin.png": "075ca16fee3b511eca232c2c8227076cb0880d1bcbdcdab4472d3e9e065ef6a2",
+        "cherry-satin_normal.png": "16a877317ac35246a67a279a48edd11ccacaa8f332e737bd5ed2c37748532fc0",
+        "cherry-satin_roughness.png": "9be1a16e4297c5c87a2f501b32b0ceb4eddf60f82ee16b2d76dcaef5cac0e352",
+        "dark-ebony.png": "f33b27b81c70675b9e6484a9831cfdb2b9c744651982e4e07af9c7633d04da9c",
+        "dark-ebony_normal.png": "9f0ce2b5dc4cffa3f4dd5864ec5fe556a4f7cd6cbf9b022dfa728c68c67ad947",
+        "dark-ebony_roughness.png": "23dee2f02cf07537dc490f1403340e564e3df4ff77b45039f6efd5536252bcb3",
+        "teak-oiled.png": "9e501f0260a08582de30770540f0a63808c87451bf45050e9f3385a01ee4dde3",
+        "teak-oiled_normal.png": "47a7af36b6ddf2fb383d84da5093bdd3a726a223a035d63bcdeaa09570454171",
+        "teak-oiled_roughness.png": "e266409303cf18f961aa0102bd859d9b38cf2d9b92ceec8e3f000b3c31ce7c2b",
+        "walnut-polished.png": "e4330462ce945d26446e4276d50b0e662de96bf7e1386964c882b50e85649d0b",
+        "walnut-polished_normal.png": "c568381760286683db28a7aefa56ed638d234b45b875b93594d1bf3baeacfecf",
+        "walnut-polished_roughness.png": "a78c254d38114ddc0543b91bb02ef830b7b78bc7f51f9b2cd83a811ed189c2b7",
+        "weathered-driftwood.png": "b73cf8fc68378e65dbb171f800f5e21d29eb8108883c7d574f2a5c3247ba55c9",
+        "weathered-driftwood_normal.png": "3de219102447b1ea2b9ed659ca7a2dca5fe15a0520d084aa1cd4e020d6b21315",
+        "weathered-driftwood_roughness.png": "42f4e26e47832748bf22723cc9dc58544b8d728ede332dc447df3d14f55b9b74"
+      },
+      "materials": {
+        "bamboo-slats": {
+          "base": "bamboo-slats.png",
+          "normal": "bamboo-slats_normal.png",
+          "roughness": "bamboo-slats_roughness.png"
+        },
+        "bamboo-woven-mat": {
+          "base": "bamboo-woven-mat.png",
+          "normal": "bamboo-woven-mat_normal.png",
+          "roughness": "bamboo-woven-mat_roughness.png"
+        },
+        "birch-pale": {
+          "base": "birch-pale.png",
+          "normal": "birch-pale_normal.png",
+          "roughness": "birch-pale_roughness.png"
+        },
+        "cherry-satin": {
+          "base": "cherry-satin.png",
+          "normal": "cherry-satin_normal.png",
+          "roughness": "cherry-satin_roughness.png"
+        },
+        "dark-ebony": {
+          "base": "dark-ebony.png",
+          "normal": "dark-ebony_normal.png",
+          "roughness": "dark-ebony_roughness.png"
+        },
+        "teak-oiled": {
+          "base": "teak-oiled.png",
+          "normal": "teak-oiled_normal.png",
+          "roughness": "teak-oiled_roughness.png"
+        },
+        "walnut-polished": {
+          "base": "walnut-polished.png",
+          "normal": "walnut-polished_normal.png",
+          "roughness": "walnut-polished_roughness.png"
+        },
+        "weathered-driftwood": {
+          "base": "weathered-driftwood.png",
+          "normal": "weathered-driftwood_normal.png",
+          "roughness": "weathered-driftwood_roughness.png"
+        }
+      },
+      "sha256": "793c7ef0e7e29b99183fe72be26ae07025383bb569303034a68ea767b22eac5e",
+      "thumbs": {
+        "bamboo-slats.png": "thumbs/wood-bamboo-v1.0.0/bamboo-slats.webp",
+        "bamboo-slats_normal.png": "thumbs/wood-bamboo-v1.0.0/bamboo-slats_normal.webp",
+        "bamboo-slats_roughness.png": "thumbs/wood-bamboo-v1.0.0/bamboo-slats_roughness.webp",
+        "bamboo-woven-mat.png": "thumbs/wood-bamboo-v1.0.0/bamboo-woven-mat.webp",
+        "bamboo-woven-mat_normal.png": "thumbs/wood-bamboo-v1.0.0/bamboo-woven-mat_normal.webp",
+        "bamboo-woven-mat_roughness.png": "thumbs/wood-bamboo-v1.0.0/bamboo-woven-mat_roughness.webp",
+        "birch-pale.png": "thumbs/wood-bamboo-v1.0.0/birch-pale.webp",
+        "birch-pale_normal.png": "thumbs/wood-bamboo-v1.0.0/birch-pale_normal.webp",
+        "birch-pale_roughness.png": "thumbs/wood-bamboo-v1.0.0/birch-pale_roughness.webp",
+        "cherry-satin.png": "thumbs/wood-bamboo-v1.0.0/cherry-satin.webp",
+        "cherry-satin_normal.png": "thumbs/wood-bamboo-v1.0.0/cherry-satin_normal.webp",
+        "cherry-satin_roughness.png": "thumbs/wood-bamboo-v1.0.0/cherry-satin_roughness.webp",
+        "dark-ebony.png": "thumbs/wood-bamboo-v1.0.0/dark-ebony.webp",
+        "dark-ebony_normal.png": "thumbs/wood-bamboo-v1.0.0/dark-ebony_normal.webp",
+        "dark-ebony_roughness.png": "thumbs/wood-bamboo-v1.0.0/dark-ebony_roughness.webp",
+        "teak-oiled.png": "thumbs/wood-bamboo-v1.0.0/teak-oiled.webp",
+        "teak-oiled_normal.png": "thumbs/wood-bamboo-v1.0.0/teak-oiled_normal.webp",
+        "teak-oiled_roughness.png": "thumbs/wood-bamboo-v1.0.0/teak-oiled_roughness.webp",
+        "walnut-polished.png": "thumbs/wood-bamboo-v1.0.0/walnut-polished.webp",
+        "walnut-polished_normal.png": "thumbs/wood-bamboo-v1.0.0/walnut-polished_normal.webp",
+        "walnut-polished_roughness.png": "thumbs/wood-bamboo-v1.0.0/walnut-polished_roughness.webp",
+        "weathered-driftwood.png": "thumbs/wood-bamboo-v1.0.0/weathered-driftwood.webp",
+        "weathered-driftwood_normal.png": "thumbs/wood-bamboo-v1.0.0/weathered-driftwood_normal.webp",
+        "weathered-driftwood_roughness.png": "thumbs/wood-bamboo-v1.0.0/weathered-driftwood_roughness.webp"
+      }
     }
   ]
 }
