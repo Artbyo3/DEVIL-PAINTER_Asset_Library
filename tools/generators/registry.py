@@ -116,6 +116,7 @@ REGISTERED_MODULES: tuple[str, ...] = (
     "wood_pack",                  # NATIVE: polished, ebony, cherry, teak, birch, bamboo & driftwood variants + calibrated roughness
     "glass_pack",                 # NATIVE: frosted, crystal, ice, frost, stained, pebble, mirror & obsidian glass variants + calibrated roughness
     "net_pack",                   # NATIVE: diamond, hexagonal, grid, cobweb & metallic net variants + calibrated roughness
+    "sheer_pack",                 # NATIVE: micro-mesh, tulle, dot, stripe, honeycomb & flocked sheer variants + calibrated roughness
 )
 
 
