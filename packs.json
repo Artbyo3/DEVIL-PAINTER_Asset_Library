@@ -8478,6 +8478,330 @@
         "vinyl-gloss-clear_normal.png": "thumbs/neoprene-rubber-v1.0.0/vinyl-gloss-clear_normal.webp",
         "vinyl-gloss-clear_roughness.png": "thumbs/neoprene-rubber-v1.0.0/vinyl-gloss-clear_roughness.webp"
       }
+    },
+    {
+      "name": "Metals & Armor",
+      "description": "27 seamless 2048x2048 PBR metal and armor material maps across 9 materials (base color, normal, and roughness).",
+      "size": "95.9 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/metals-armor-v1.0.0/Metals_and_Armor.zip",
+      "releaseTag": "metals-armor-v1.0.0",
+      "tags": [
+        "materials",
+        "pbr",
+        "2048",
+        "metal",
+        "armor",
+        "chainmail",
+        "steel",
+        "brass",
+        "copper",
+        "seamless"
+      ],
+      "files": [
+        "antique-brass.png",
+        "antique-brass_normal.png",
+        "antique-brass_roughness.png",
+        "brushed-steel.png",
+        "brushed-steel_normal.png",
+        "brushed-steel_roughness.png",
+        "chainmail-classic.png",
+        "chainmail-classic_normal.png",
+        "chainmail-classic_roughness.png",
+        "chainmail-darkened.png",
+        "chainmail-darkened_normal.png",
+        "chainmail-darkened_roughness.png",
+        "damascus-steel.png",
+        "damascus-steel_normal.png",
+        "damascus-steel_roughness.png",
+        "hammered-iron-plate.png",
+        "hammered-iron-plate_normal.png",
+        "hammered-iron-plate_roughness.png",
+        "oxidized-copper.png",
+        "oxidized-copper_normal.png",
+        "oxidized-copper_roughness.png",
+        "polished-chrome.png",
+        "polished-chrome_normal.png",
+        "polished-chrome_roughness.png",
+        "woven-metal-mesh.png",
+        "woven-metal-mesh_normal.png",
+        "woven-metal-mesh_roughness.png"
+      ],
+      "fileTags": {
+        "antique-brass.png": [
+          "antique-brass",
+          "antique",
+          "brass",
+          "texture"
+        ],
+        "antique-brass_normal.png": [
+          "antique-brass",
+          "antique",
+          "brass",
+          "texture"
+        ],
+        "antique-brass_roughness.png": [
+          "antique-brass",
+          "antique",
+          "brass",
+          "texture"
+        ],
+        "brushed-steel.png": [
+          "brushed-steel",
+          "brushed",
+          "steel",
+          "texture"
+        ],
+        "brushed-steel_normal.png": [
+          "brushed-steel",
+          "brushed",
+          "steel",
+          "texture"
+        ],
+        "brushed-steel_roughness.png": [
+          "brushed-steel",
+          "brushed",
+          "steel",
+          "texture"
+        ],
+        "chainmail-classic.png": [
+          "chainmail-classic",
+          "chainmail",
+          "classic",
+          "texture"
+        ],
+        "chainmail-classic_normal.png": [
+          "chainmail-classic",
+          "chainmail",
+          "classic",
+          "texture"
+        ],
+        "chainmail-classic_roughness.png": [
+          "chainmail-classic",
+          "chainmail",
+          "classic",
+          "texture"
+        ],
+        "chainmail-darkened.png": [
+          "chainmail-darkened",
+          "chainmail",
+          "darkened",
+          "texture"
+        ],
+        "chainmail-darkened_normal.png": [
+          "chainmail-darkened",
+          "chainmail",
+          "darkened",
+          "texture"
+        ],
+        "chainmail-darkened_roughness.png": [
+          "chainmail-darkened",
+          "chainmail",
+          "darkened",
+          "texture"
+        ],
+        "damascus-steel.png": [
+          "damascus-steel",
+          "damascus",
+          "steel",
+          "texture"
+        ],
+        "damascus-steel_normal.png": [
+          "damascus-steel",
+          "damascus",
+          "steel",
+          "texture"
+        ],
+        "damascus-steel_roughness.png": [
+          "damascus-steel",
+          "damascus",
+          "steel",
+          "texture"
+        ],
+        "hammered-iron-plate.png": [
+          "hammered-iron-plate",
+          "hammered",
+          "iron",
+          "plate",
+          "texture"
+        ],
+        "hammered-iron-plate_normal.png": [
+          "hammered-iron-plate",
+          "hammered",
+          "iron",
+          "plate",
+          "texture"
+        ],
+        "hammered-iron-plate_roughness.png": [
+          "hammered-iron-plate",
+          "hammered",
+          "iron",
+          "plate",
+          "texture"
+        ],
+        "oxidized-copper.png": [
+          "oxidized-copper",
+          "oxidized",
+          "copper",
+          "texture"
+        ],
+        "oxidized-copper_normal.png": [
+          "oxidized-copper",
+          "oxidized",
+          "copper",
+          "texture"
+        ],
+        "oxidized-copper_roughness.png": [
+          "oxidized-copper",
+          "oxidized",
+          "copper",
+          "texture"
+        ],
+        "polished-chrome.png": [
+          "polished-chrome",
+          "polished",
+          "chrome",
+          "texture"
+        ],
+        "polished-chrome_normal.png": [
+          "polished-chrome",
+          "polished",
+          "chrome",
+          "texture"
+        ],
+        "polished-chrome_roughness.png": [
+          "polished-chrome",
+          "polished",
+          "chrome",
+          "texture"
+        ],
+        "woven-metal-mesh.png": [
+          "woven-metal-mesh",
+          "woven",
+          "metal",
+          "mesh",
+          "texture"
+        ],
+        "woven-metal-mesh_normal.png": [
+          "woven-metal-mesh",
+          "woven",
+          "metal",
+          "mesh",
+          "texture"
+        ],
+        "woven-metal-mesh_roughness.png": [
+          "woven-metal-mesh",
+          "woven",
+          "metal",
+          "mesh",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "antique-brass.png": "41524c1660c37be496c4ebe9051600e9328159a251c054bb2d311c7e3f1bb446",
+        "antique-brass_normal.png": "4543cd2ba987d472f102a2ba96ff9f20a719fa1dd0556c77cbebfed8d814c9df",
+        "antique-brass_roughness.png": "970ad7b06f7359324a4f72f1bd3405046afef811564b2825135aa6c019dd750f",
+        "brushed-steel.png": "f8787e8daf07b3844eceae374b1bee3650124509d28fd6ccd512dbdfb2c62458",
+        "brushed-steel_normal.png": "767e49338da4eab749f1f8e71f3ddaf06b2d68b7c81e3c143dc51f6720a546da",
+        "brushed-steel_roughness.png": "b92a04415a1078990ca83bdb4e4c7cc2908ed0793d9f1305b79a611f2e7c624f",
+        "chainmail-classic.png": "205f9e70c138041e491efef755fa5b708a48b36ecf20fc9431b7a65e659724c4",
+        "chainmail-classic_normal.png": "0d20a3118f84ddf9ae3da911306ec9e6b44d97fc302786d06544dd6df55c971c",
+        "chainmail-classic_roughness.png": "6ac1bffa5e94db1deec945ab45bdc8383028484a00856fa740d01543066e76aa",
+        "chainmail-darkened.png": "219ee609c478941ccf588818a1f592385382e72d66eda6e7677fe69e2bd46264",
+        "chainmail-darkened_normal.png": "6258bf055ebe6548929640aeebce9e7e356f220d4bef1bde43e9d680b1c348ab",
+        "chainmail-darkened_roughness.png": "64eec7e475ab4ab1adfff63dd3f807b962d2f38d51119489d530ac536145fd45",
+        "damascus-steel.png": "d33d10f1ace2256307016a10439efac2b6253d0bc6253d5d5d4d850df7f39cef",
+        "damascus-steel_normal.png": "08d8e63e4ea3ef95598e39685bae5d3ec4cf9b7e57e40560cd73fd95a820d6cb",
+        "damascus-steel_roughness.png": "8c10426cb36c6852c5e5a8a54d6b842c67ca00ef31970d6418ed0eacb96592a4",
+        "hammered-iron-plate.png": "1792ccb08b80a303a95805e1995775332ebd23c3125bac0c7c74edd074e86475",
+        "hammered-iron-plate_normal.png": "b899f892589834d5e6bc3f03d7b897ebac53622385350d3660b6f34299b1c138",
+        "hammered-iron-plate_roughness.png": "f0d948d2e50fc28248c1f707f239fe32908e20d58232fc51b99a1c8be4594392",
+        "oxidized-copper.png": "fe8f544390d827ec4c9defb2da4736b099635cb4c602798c835cbdabb8bd93b8",
+        "oxidized-copper_normal.png": "12407046f52c022473054656d7908db92621eb68e633ad46101cf0751adc979c",
+        "oxidized-copper_roughness.png": "b8f7d95489da06868dc761498e478011e470b5f9c7c9de1206ef3c6761256c81",
+        "polished-chrome.png": "9a42f912adcb23493eb824b9fbee1bce1de747a66ec8a7b83c2ee117f3bdaf42",
+        "polished-chrome_normal.png": "797847dedce7453a44103e36847775354ed36a32b520cf891ebbd32ba7e6bae6",
+        "polished-chrome_roughness.png": "3d394b9dba237ad9d464eab934502d06cad5def2a8275846da83db25492e1263",
+        "woven-metal-mesh.png": "91680e63a723a05b83989394064ebadfa5317a1b8185b7ad4d06c2881d44c878",
+        "woven-metal-mesh_normal.png": "d3a4f6e9e8de704977c8aeccefbdf4dd25b718f97446c859500944b839c55f96",
+        "woven-metal-mesh_roughness.png": "5f801d1dc62161e3c02b81dc68ba59b2237a2ac1f05a8f97ee48a8a0cb256e85"
+      },
+      "materials": {
+        "antique-brass": {
+          "base": "antique-brass.png",
+          "normal": "antique-brass_normal.png",
+          "roughness": "antique-brass_roughness.png"
+        },
+        "brushed-steel": {
+          "base": "brushed-steel.png",
+          "normal": "brushed-steel_normal.png",
+          "roughness": "brushed-steel_roughness.png"
+        },
+        "chainmail-classic": {
+          "base": "chainmail-classic.png",
+          "normal": "chainmail-classic_normal.png",
+          "roughness": "chainmail-classic_roughness.png"
+        },
+        "chainmail-darkened": {
+          "base": "chainmail-darkened.png",
+          "normal": "chainmail-darkened_normal.png",
+          "roughness": "chainmail-darkened_roughness.png"
+        },
+        "damascus-steel": {
+          "base": "damascus-steel.png",
+          "normal": "damascus-steel_normal.png",
+          "roughness": "damascus-steel_roughness.png"
+        },
+        "hammered-iron-plate": {
+          "base": "hammered-iron-plate.png",
+          "normal": "hammered-iron-plate_normal.png",
+          "roughness": "hammered-iron-plate_roughness.png"
+        },
+        "oxidized-copper": {
+          "base": "oxidized-copper.png",
+          "normal": "oxidized-copper_normal.png",
+          "roughness": "oxidized-copper_roughness.png"
+        },
+        "polished-chrome": {
+          "base": "polished-chrome.png",
+          "normal": "polished-chrome_normal.png",
+          "roughness": "polished-chrome_roughness.png"
+        },
+        "woven-metal-mesh": {
+          "base": "woven-metal-mesh.png",
+          "normal": "woven-metal-mesh_normal.png",
+          "roughness": "woven-metal-mesh_roughness.png"
+        }
+      },
+      "sha256": "2f29d85d6fbe8a2352c22d4158fe185af915c3860dfb17cd5af14540548e8051",
+      "thumbs": {
+        "antique-brass.png": "thumbs/metals-armor-v1.0.0/antique-brass.webp",
+        "antique-brass_normal.png": "thumbs/metals-armor-v1.0.0/antique-brass_normal.webp",
+        "antique-brass_roughness.png": "thumbs/metals-armor-v1.0.0/antique-brass_roughness.webp",
+        "brushed-steel.png": "thumbs/metals-armor-v1.0.0/brushed-steel.webp",
+        "brushed-steel_normal.png": "thumbs/metals-armor-v1.0.0/brushed-steel_normal.webp",
+        "brushed-steel_roughness.png": "thumbs/metals-armor-v1.0.0/brushed-steel_roughness.webp",
+        "chainmail-classic.png": "thumbs/metals-armor-v1.0.0/chainmail-classic.webp",
+        "chainmail-classic_normal.png": "thumbs/metals-armor-v1.0.0/chainmail-classic_normal.webp",
+        "chainmail-classic_roughness.png": "thumbs/metals-armor-v1.0.0/chainmail-classic_roughness.webp",
+        "chainmail-darkened.png": "thumbs/metals-armor-v1.0.0/chainmail-darkened.webp",
+        "chainmail-darkened_normal.png": "thumbs/metals-armor-v1.0.0/chainmail-darkened_normal.webp",
+        "chainmail-darkened_roughness.png": "thumbs/metals-armor-v1.0.0/chainmail-darkened_roughness.webp",
+        "damascus-steel.png": "thumbs/metals-armor-v1.0.0/damascus-steel.webp",
+        "damascus-steel_normal.png": "thumbs/metals-armor-v1.0.0/damascus-steel_normal.webp",
+        "damascus-steel_roughness.png": "thumbs/metals-armor-v1.0.0/damascus-steel_roughness.webp",
+        "hammered-iron-plate.png": "thumbs/metals-armor-v1.0.0/hammered-iron-plate.webp",
+        "hammered-iron-plate_normal.png": "thumbs/metals-armor-v1.0.0/hammered-iron-plate_normal.webp",
+        "hammered-iron-plate_roughness.png": "thumbs/metals-armor-v1.0.0/hammered-iron-plate_roughness.webp",
+        "oxidized-copper.png": "thumbs/metals-armor-v1.0.0/oxidized-copper.webp",
+        "oxidized-copper_normal.png": "thumbs/metals-armor-v1.0.0/oxidized-copper_normal.webp",
+        "oxidized-copper_roughness.png": "thumbs/metals-armor-v1.0.0/oxidized-copper_roughness.webp",
+        "polished-chrome.png": "thumbs/metals-armor-v1.0.0/polished-chrome.webp",
+        "polished-chrome_normal.png": "thumbs/metals-armor-v1.0.0/polished-chrome_normal.webp",
+        "polished-chrome_roughness.png": "thumbs/metals-armor-v1.0.0/polished-chrome_roughness.webp",
+        "woven-metal-mesh.png": "thumbs/metals-armor-v1.0.0/woven-metal-mesh.webp",
+        "woven-metal-mesh_normal.png": "thumbs/metals-armor-v1.0.0/woven-metal-mesh_normal.webp",
+        "woven-metal-mesh_roughness.png": "thumbs/metals-armor-v1.0.0/woven-metal-mesh_roughness.webp"
+      }
     }
   ]
 }
