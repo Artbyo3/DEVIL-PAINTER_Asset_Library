@@ -112,6 +112,7 @@ REGISTERED_MODULES: tuple[str, ...] = (
     "stucco_plaster_wall",        # NATIVE: sweeping trowel swells + fine sand float
     # --- Material Pack Suites ---
     "rubber_pack",                # NATIVE: neoprene, latex, vinyl & rubber variants + calibrated roughness
+    "metal_pack",                 # NATIVE: brushed, chrome, plate, chainmail, brass, copper, mesh & damascus metal variants + calibrated roughness
 )
 
 
