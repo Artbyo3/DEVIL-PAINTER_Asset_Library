@@ -37,6 +37,7 @@ REGISTERED_MODULES: tuple[str, ...] = (
     "pebbled_leather",            # NATIVE: Voronoi pebble grain + pore height
     "leather_suede",              # NATIVE: 12 apparel leather & suede variants + calibrated roughness
     "knits_fleece",               # NATIVE: 12 apparel knit & fleece variants + calibrated roughness
+    "denim_workwear",             # NATIVE: 12 apparel denim & workwear variants + calibrated roughness
     "garment_wrinkles",           # NATIVE: tension fold, pleat, crumple height
     # --- Cloth, Seam & Lace Alphas (12: 11 NATIVE, 1 DERIVED) ---
     "double_topstitch_seam",      # NATIVE: folded seam step + pucker + stitches
