@@ -37,6 +37,10 @@ def _normal_path(base_path: Path) -> Path:
     return base_path.with_name(f"{base_path.stem}_normal{base_path.suffix}")
 
 
+def _roughness_path(base_path: Path) -> Path:
+    return base_path.with_name(f"{base_path.stem}_roughness{base_path.suffix}")
+
+
 def _build_pack_json(
     pack_name: str,
     kind: str,
@@ -80,6 +84,11 @@ def main(argv: list[str] | None = None) -> int:
         "--normal",
         action="store_true",
         help="Also emit OpenGL (+Y up) tangent-space normal maps with the _normal suffix.",
+    )
+    parser.add_argument(
+        "--roughness",
+        action="store_true",
+        help="Also emit calibrated grayscale PBR roughness maps with the _roughness suffix.",
     )
     parser.add_argument("--out", default=None, help="Output .png file path or directory (default: current directory).")
     parser.add_argument("--out-dir", default=None, help="Output directory for batch / pack-ready output.")
@@ -161,6 +170,16 @@ def main(argv: list[str] | None = None) -> int:
                 f"Generated {n_file} ({specs[0].name} normal [{specs[0].normal_source}], "
                 f"{n_img.size[0]}x{n_img.size[1]}, {n_img.mode})"
             )
+        if args.roughness:
+            r_file = _roughness_path(out_file)
+            r_img = specs[0].generate_roughness(
+                seed=args.seed, palette=args.palette, size=args.size, variant=args.variant
+            )
+            r_img.save(r_file, format="PNG", compress_level=4)
+            print(
+                f"Generated {r_file} ({specs[0].name} roughness, "
+                f"{r_img.size[0]}x{r_img.size[1]}, {r_img.mode})"
+            )
         return 0
 
     out_root = Path(args.out_dir or args.out or ".")
@@ -195,6 +214,16 @@ def main(argv: list[str] | None = None) -> int:
                 )
                 n_img.save(n_path, format="PNG", compress_level=4)
                 generated_paths.append(n_path)
+            if args.roughness:
+                r_path = _roughness_path(out_path)
+                r_img = spec.generate_roughness(
+                    seed=seed_cursor,
+                    palette=args.palette,
+                    size=args.size,
+                    variant=variant_i,
+                )
+                r_img.save(r_path, format="PNG", compress_level=4)
+                generated_paths.append(r_path)
             seed_cursor += 104729
 
     if args.write_pack_json:
