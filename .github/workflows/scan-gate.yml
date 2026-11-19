@@ -1,10 +1,13 @@
 name: Release Scan Gate
 
 on:
-  release:
-    types: [created]
   workflow_dispatch:
     inputs:
+      owner_approved:
+        description: "Confirm the owner has reviewed the draft release and approved running the scan gate"
+        required: true
+        default: false
+        type: boolean
       release_tag:
         description: "Draft release tag to scan (defaults to newest draft release if omitted)"
         required: false
@@ -23,7 +26,7 @@ concurrency:
 
 jobs:
   scan-gate:
-    if: (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.release.draft == true)
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 240
     permissions:
@@ -31,6 +34,20 @@ jobs:
       pages: write
 
     steps:
+      - name: Require owner approval
+        env:
+          INPUT_OWNER_APPROVED: ${{ inputs.owner_approved }}
+        run: |
+          if [ "$INPUT_OWNER_APPROVED" != "true" ]; then
+            echo "ERROR: Release Scan Gate refused to run: this gate requires the owner's approval (owner_approved must be true). No assets were scanned and no release was published."
+            {
+              echo "## Release Scan Gate Refused"
+              echo ""
+              echo "**Error:** This gate requires the owner's approval (\`owner_approved\` must be \`true\`). No assets were scanned and no release was published."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
       - name: Validate release_tag format
         env:
           INPUT_RELEASE_TAG: ${{ inputs.release_tag }}
