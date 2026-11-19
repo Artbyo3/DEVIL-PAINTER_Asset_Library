@@ -8134,6 +8134,350 @@
         "weathered-driftwood_normal.png": "thumbs/wood-bamboo-v1.0.0/weathered-driftwood_normal.webp",
         "weathered-driftwood_roughness.png": "thumbs/wood-bamboo-v1.0.0/weathered-driftwood_roughness.webp"
       }
+    },
+    {
+      "name": "Neoprene & Rubber",
+      "description": "27 seamless 2048x2048 PBR neoprene, latex, vinyl and rubber material maps across 9 materials (base color, normal, and roughness).",
+      "size": "64.1 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/neoprene-rubber-v1.0.0/Neoprene_and_Rubber.zip",
+      "releaseTag": "neoprene-rubber-v1.0.0",
+      "tags": [
+        "materials",
+        "pbr",
+        "2048",
+        "neoprene",
+        "rubber",
+        "latex",
+        "vinyl",
+        "apparel",
+        "seamless"
+      ],
+      "files": [
+        "latex-gloss-black.png",
+        "latex-gloss-black_normal.png",
+        "latex-gloss-black_roughness.png",
+        "latex-gloss-red.png",
+        "latex-gloss-red_normal.png",
+        "latex-gloss-red_roughness.png",
+        "neoprene-heather-grey.png",
+        "neoprene-heather-grey_normal.png",
+        "neoprene-heather-grey_roughness.png",
+        "neoprene-navy.png",
+        "neoprene-navy_normal.png",
+        "neoprene-navy_roughness.png",
+        "neoprene-perforated-charcoal.png",
+        "neoprene-perforated-charcoal_normal.png",
+        "neoprene-perforated-charcoal_roughness.png",
+        "neoprene-smooth-black.png",
+        "neoprene-smooth-black_normal.png",
+        "neoprene-smooth-black_roughness.png",
+        "rubber-matte-soft-touch.png",
+        "rubber-matte-soft-touch_normal.png",
+        "rubber-matte-soft-touch_roughness.png",
+        "rubberized-canvas-olive.png",
+        "rubberized-canvas-olive_normal.png",
+        "rubberized-canvas-olive_roughness.png",
+        "vinyl-gloss-clear.png",
+        "vinyl-gloss-clear_normal.png",
+        "vinyl-gloss-clear_roughness.png"
+      ],
+      "fileTags": {
+        "latex-gloss-black.png": [
+          "latex-gloss-black",
+          "latex",
+          "gloss",
+          "black",
+          "texture"
+        ],
+        "latex-gloss-black_normal.png": [
+          "latex-gloss-black",
+          "latex",
+          "gloss",
+          "black",
+          "texture"
+        ],
+        "latex-gloss-black_roughness.png": [
+          "latex-gloss-black",
+          "latex",
+          "gloss",
+          "black",
+          "texture"
+        ],
+        "latex-gloss-red.png": [
+          "latex-gloss-red",
+          "latex",
+          "gloss",
+          "red",
+          "texture"
+        ],
+        "latex-gloss-red_normal.png": [
+          "latex-gloss-red",
+          "latex",
+          "gloss",
+          "red",
+          "texture"
+        ],
+        "latex-gloss-red_roughness.png": [
+          "latex-gloss-red",
+          "latex",
+          "gloss",
+          "red",
+          "texture"
+        ],
+        "neoprene-heather-grey.png": [
+          "neoprene-heather-grey",
+          "neoprene",
+          "heather",
+          "grey",
+          "texture"
+        ],
+        "neoprene-heather-grey_normal.png": [
+          "neoprene-heather-grey",
+          "neoprene",
+          "heather",
+          "grey",
+          "texture"
+        ],
+        "neoprene-heather-grey_roughness.png": [
+          "neoprene-heather-grey",
+          "neoprene",
+          "heather",
+          "grey",
+          "texture"
+        ],
+        "neoprene-navy.png": [
+          "neoprene-navy",
+          "neoprene",
+          "navy",
+          "texture"
+        ],
+        "neoprene-navy_normal.png": [
+          "neoprene-navy",
+          "neoprene",
+          "navy",
+          "texture"
+        ],
+        "neoprene-navy_roughness.png": [
+          "neoprene-navy",
+          "neoprene",
+          "navy",
+          "texture"
+        ],
+        "neoprene-perforated-charcoal.png": [
+          "neoprene-perforated-charcoal",
+          "neoprene",
+          "perforated",
+          "charcoal",
+          "texture"
+        ],
+        "neoprene-perforated-charcoal_normal.png": [
+          "neoprene-perforated-charcoal",
+          "neoprene",
+          "perforated",
+          "charcoal",
+          "texture"
+        ],
+        "neoprene-perforated-charcoal_roughness.png": [
+          "neoprene-perforated-charcoal",
+          "neoprene",
+          "perforated",
+          "charcoal",
+          "texture"
+        ],
+        "neoprene-smooth-black.png": [
+          "neoprene-smooth-black",
+          "neoprene",
+          "smooth",
+          "black",
+          "texture"
+        ],
+        "neoprene-smooth-black_normal.png": [
+          "neoprene-smooth-black",
+          "neoprene",
+          "smooth",
+          "black",
+          "texture"
+        ],
+        "neoprene-smooth-black_roughness.png": [
+          "neoprene-smooth-black",
+          "neoprene",
+          "smooth",
+          "black",
+          "texture"
+        ],
+        "rubber-matte-soft-touch.png": [
+          "rubber-matte-soft-touch",
+          "rubber",
+          "matte",
+          "soft",
+          "touch",
+          "texture"
+        ],
+        "rubber-matte-soft-touch_normal.png": [
+          "rubber-matte-soft-touch",
+          "rubber",
+          "matte",
+          "soft",
+          "touch",
+          "texture"
+        ],
+        "rubber-matte-soft-touch_roughness.png": [
+          "rubber-matte-soft-touch",
+          "rubber",
+          "matte",
+          "soft",
+          "touch",
+          "texture"
+        ],
+        "rubberized-canvas-olive.png": [
+          "rubberized-canvas-olive",
+          "rubberized",
+          "canvas",
+          "olive",
+          "texture"
+        ],
+        "rubberized-canvas-olive_normal.png": [
+          "rubberized-canvas-olive",
+          "rubberized",
+          "canvas",
+          "olive",
+          "texture"
+        ],
+        "rubberized-canvas-olive_roughness.png": [
+          "rubberized-canvas-olive",
+          "rubberized",
+          "canvas",
+          "olive",
+          "texture"
+        ],
+        "vinyl-gloss-clear.png": [
+          "vinyl-gloss-clear",
+          "vinyl",
+          "gloss",
+          "clear",
+          "texture"
+        ],
+        "vinyl-gloss-clear_normal.png": [
+          "vinyl-gloss-clear",
+          "vinyl",
+          "gloss",
+          "clear",
+          "texture"
+        ],
+        "vinyl-gloss-clear_roughness.png": [
+          "vinyl-gloss-clear",
+          "vinyl",
+          "gloss",
+          "clear",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "latex-gloss-black.png": "e0955b7a4573a4a436ac19b68eafeac20b533aa6a62b31e539d431787ff1cefe",
+        "latex-gloss-black_normal.png": "c05c828a7c5c88e6dc080f6ff25480a8614ac918267e8520f58ae21ce5c02640",
+        "latex-gloss-black_roughness.png": "90d9c9fbb7bd1f38b7ebbc8aa71acd659b98ac741528d87b0c2619d7f0d39049",
+        "latex-gloss-red.png": "eeb1c5b9f996fcf8f0ec524b3027d9e9c848a0c268fac5aea31e131700b989d5",
+        "latex-gloss-red_normal.png": "add19998ff9bbcd570660a0dbaa247bf6fdab64dd7bd706a6d424071724a70a3",
+        "latex-gloss-red_roughness.png": "92c636ef850c7bf740d813d06edfb5b2ecb02877b4b3f4cf86541c689abf2d0a",
+        "neoprene-heather-grey.png": "bd06716ee67a3eb56e42aa9674678132de218f14ca1a631cb0c99c1a4c04ffce",
+        "neoprene-heather-grey_normal.png": "94bd3c7504807a4375ba416dcaa5fdba6b121b09d491a2c9fcbcf949c6b663e6",
+        "neoprene-heather-grey_roughness.png": "e6c35245359abe90c1a3f2566c1b3552b018ec0dfeca0bbcf103e28bcf6b2b13",
+        "neoprene-navy.png": "29561f8c11bc4263f029c317146a8fd0009b305a92281ce85f98aa506c3364b8",
+        "neoprene-navy_normal.png": "66dc181916f9607918af43d6e2a9ef9f12f5a03838871fd7ec310df2f33da860",
+        "neoprene-navy_roughness.png": "4c09ebb046026deb7b2753585639a4d896166d47ad29754097d73952846fbe98",
+        "neoprene-perforated-charcoal.png": "2887d720f5d27b2a3229e4c030b004bf6ffeacbe4ea942389cb4b9f32c8c2ead",
+        "neoprene-perforated-charcoal_normal.png": "b51e7e81a50206eaa41f30e0784a9c01b8bb72b8f8795933fee6dd64836ca7ce",
+        "neoprene-perforated-charcoal_roughness.png": "83f40a5f950026c8ba5c6aea9ea30fd5839793ad60847f1ebd6e8051b48193cd",
+        "neoprene-smooth-black.png": "a7d6561d2be3d7f6957fec76518f4d8c941b477e2b43b96a8c6dcb1e4f1db0ff",
+        "neoprene-smooth-black_normal.png": "81fa8c8cbfb5dc7277571f356ab37a02ddef09dbfc5b6a5e41040cc35c91e2d1",
+        "neoprene-smooth-black_roughness.png": "adb5f78a558b72d2cc3f94ca7689d81f4c1eb00e036c8e404e077e2a3b7b9448",
+        "rubber-matte-soft-touch.png": "320d12f8d0b1efec10371548684fbe5a027436d75a505c9f2b920e6418d7086e",
+        "rubber-matte-soft-touch_normal.png": "837f908fcdb7e336cf50b611f0ea2d3f8dd12b5d53044d8b13b1dc6f7633ca7e",
+        "rubber-matte-soft-touch_roughness.png": "19d7292c3b65d661fff47357f64527ede9947426bdf89e6448d906196fdb6576",
+        "rubberized-canvas-olive.png": "9548881290e5d2ba92a4c337f4b3cab18f39d070b27dfe1792e40bd4ead3f91d",
+        "rubberized-canvas-olive_normal.png": "5c154f6a056501a6550bab741cab6a15a523957f41c953165c275711493e947a",
+        "rubberized-canvas-olive_roughness.png": "7ba620a352ba4fac6f1ac02d3a5f2d416ba31d726a8158e379a57a91eed10d13",
+        "vinyl-gloss-clear.png": "b1720b4f714e3f0fd1ce7e37debe278fd07cb16dde1eed06f191059c2f714b7c",
+        "vinyl-gloss-clear_normal.png": "5daa358b2400b734055a45c39dbcbcf9da1206d24f97ab73374a1a4ae2412b15",
+        "vinyl-gloss-clear_roughness.png": "9775549c0ee1f4d1055e61f7ea901deddcfe1bea063f169c743c8b102ff64c46"
+      },
+      "materials": {
+        "latex-gloss-black": {
+          "base": "latex-gloss-black.png",
+          "normal": "latex-gloss-black_normal.png",
+          "roughness": "latex-gloss-black_roughness.png"
+        },
+        "latex-gloss-red": {
+          "base": "latex-gloss-red.png",
+          "normal": "latex-gloss-red_normal.png",
+          "roughness": "latex-gloss-red_roughness.png"
+        },
+        "neoprene-heather-grey": {
+          "base": "neoprene-heather-grey.png",
+          "normal": "neoprene-heather-grey_normal.png",
+          "roughness": "neoprene-heather-grey_roughness.png"
+        },
+        "neoprene-navy": {
+          "base": "neoprene-navy.png",
+          "normal": "neoprene-navy_normal.png",
+          "roughness": "neoprene-navy_roughness.png"
+        },
+        "neoprene-perforated-charcoal": {
+          "base": "neoprene-perforated-charcoal.png",
+          "normal": "neoprene-perforated-charcoal_normal.png",
+          "roughness": "neoprene-perforated-charcoal_roughness.png"
+        },
+        "neoprene-smooth-black": {
+          "base": "neoprene-smooth-black.png",
+          "normal": "neoprene-smooth-black_normal.png",
+          "roughness": "neoprene-smooth-black_roughness.png"
+        },
+        "rubber-matte-soft-touch": {
+          "base": "rubber-matte-soft-touch.png",
+          "normal": "rubber-matte-soft-touch_normal.png",
+          "roughness": "rubber-matte-soft-touch_roughness.png"
+        },
+        "rubberized-canvas-olive": {
+          "base": "rubberized-canvas-olive.png",
+          "normal": "rubberized-canvas-olive_normal.png",
+          "roughness": "rubberized-canvas-olive_roughness.png"
+        },
+        "vinyl-gloss-clear": {
+          "base": "vinyl-gloss-clear.png",
+          "normal": "vinyl-gloss-clear_normal.png",
+          "roughness": "vinyl-gloss-clear_roughness.png"
+        }
+      },
+      "sha256": "7873b2ca43ec519cea362c2b1d54a486d3a2a2db915c96543b8afc3f986f1746",
+      "thumbs": {
+        "latex-gloss-black.png": "thumbs/neoprene-rubber-v1.0.0/latex-gloss-black.webp",
+        "latex-gloss-black_normal.png": "thumbs/neoprene-rubber-v1.0.0/latex-gloss-black_normal.webp",
+        "latex-gloss-black_roughness.png": "thumbs/neoprene-rubber-v1.0.0/latex-gloss-black_roughness.webp",
+        "latex-gloss-red.png": "thumbs/neoprene-rubber-v1.0.0/latex-gloss-red.webp",
+        "latex-gloss-red_normal.png": "thumbs/neoprene-rubber-v1.0.0/latex-gloss-red_normal.webp",
+        "latex-gloss-red_roughness.png": "thumbs/neoprene-rubber-v1.0.0/latex-gloss-red_roughness.webp",
+        "neoprene-heather-grey.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-heather-grey.webp",
+        "neoprene-heather-grey_normal.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-heather-grey_normal.webp",
+        "neoprene-heather-grey_roughness.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-heather-grey_roughness.webp",
+        "neoprene-navy.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-navy.webp",
+        "neoprene-navy_normal.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-navy_normal.webp",
+        "neoprene-navy_roughness.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-navy_roughness.webp",
+        "neoprene-perforated-charcoal.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-perforated-charcoal.webp",
+        "neoprene-perforated-charcoal_normal.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-perforated-charcoal_normal.webp",
+        "neoprene-perforated-charcoal_roughness.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-perforated-charcoal_roughness.webp",
+        "neoprene-smooth-black.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-smooth-black.webp",
+        "neoprene-smooth-black_normal.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-smooth-black_normal.webp",
+        "neoprene-smooth-black_roughness.png": "thumbs/neoprene-rubber-v1.0.0/neoprene-smooth-black_roughness.webp",
+        "rubber-matte-soft-touch.png": "thumbs/neoprene-rubber-v1.0.0/rubber-matte-soft-touch.webp",
+        "rubber-matte-soft-touch_normal.png": "thumbs/neoprene-rubber-v1.0.0/rubber-matte-soft-touch_normal.webp",
+        "rubber-matte-soft-touch_roughness.png": "thumbs/neoprene-rubber-v1.0.0/rubber-matte-soft-touch_roughness.webp",
+        "rubberized-canvas-olive.png": "thumbs/neoprene-rubber-v1.0.0/rubberized-canvas-olive.webp",
+        "rubberized-canvas-olive_normal.png": "thumbs/neoprene-rubber-v1.0.0/rubberized-canvas-olive_normal.webp",
+        "rubberized-canvas-olive_roughness.png": "thumbs/neoprene-rubber-v1.0.0/rubberized-canvas-olive_roughness.webp",
+        "vinyl-gloss-clear.png": "thumbs/neoprene-rubber-v1.0.0/vinyl-gloss-clear.webp",
+        "vinyl-gloss-clear_normal.png": "thumbs/neoprene-rubber-v1.0.0/vinyl-gloss-clear_normal.webp",
+        "vinyl-gloss-clear_roughness.png": "thumbs/neoprene-rubber-v1.0.0/vinyl-gloss-clear_roughness.webp"
+      }
     }
   ]
 }
