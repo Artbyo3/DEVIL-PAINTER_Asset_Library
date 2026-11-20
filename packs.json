@@ -8802,6 +8802,335 @@
         "woven-metal-mesh_normal.png": "thumbs/metals-armor-v1.0.0/woven-metal-mesh_normal.webp",
         "woven-metal-mesh_roughness.png": "thumbs/metals-armor-v1.0.0/woven-metal-mesh_roughness.webp"
       }
+    },
+    {
+      "name": "Glass, Crystal & Ice",
+      "description": "27 seamless 2048x2048 PBR glass, crystal and ice material maps across 9 materials (base color, normal, and roughness).",
+      "size": "90.0 MB",
+      "downloadUrl": "https://github.com/Artbyo3/DEVIL-PAINTER_Asset_Library/releases/download/glass-crystal-ice-v1.0.0/Glass_Crystal_and_Ice.zip",
+      "releaseTag": "glass-crystal-ice-v1.0.0",
+      "tags": [
+        "materials",
+        "pbr",
+        "2048",
+        "glass",
+        "crystal",
+        "ice",
+        "frost",
+        "obsidian",
+        "seamless"
+      ],
+      "files": [
+        "crystal-facets-clear.png",
+        "crystal-facets-clear_normal.png",
+        "crystal-facets-clear_roughness.png",
+        "crystal-facets-smoky.png",
+        "crystal-facets-smoky_normal.png",
+        "crystal-facets-smoky_roughness.png",
+        "frosted-glass.png",
+        "frosted-glass_normal.png",
+        "frosted-glass_roughness.png",
+        "glass-pebble.png",
+        "glass-pebble_normal.png",
+        "glass-pebble_roughness.png",
+        "ice-sheet-blue.png",
+        "ice-sheet-blue_normal.png",
+        "ice-sheet-blue_roughness.png",
+        "mirror-flake.png",
+        "mirror-flake_normal.png",
+        "mirror-flake_roughness.png",
+        "obsidian-glass.png",
+        "obsidian-glass_normal.png",
+        "obsidian-glass_roughness.png",
+        "stained-glass-amber.png",
+        "stained-glass-amber_normal.png",
+        "stained-glass-amber_roughness.png",
+        "window-frost.png",
+        "window-frost_normal.png",
+        "window-frost_roughness.png"
+      ],
+      "fileTags": {
+        "crystal-facets-clear.png": [
+          "crystal-facets-clear",
+          "crystal",
+          "facets",
+          "clear",
+          "texture"
+        ],
+        "crystal-facets-clear_normal.png": [
+          "crystal-facets-clear",
+          "crystal",
+          "facets",
+          "clear",
+          "texture"
+        ],
+        "crystal-facets-clear_roughness.png": [
+          "crystal-facets-clear",
+          "crystal",
+          "facets",
+          "clear",
+          "texture"
+        ],
+        "crystal-facets-smoky.png": [
+          "crystal-facets-smoky",
+          "crystal",
+          "facets",
+          "smoky",
+          "texture"
+        ],
+        "crystal-facets-smoky_normal.png": [
+          "crystal-facets-smoky",
+          "crystal",
+          "facets",
+          "smoky",
+          "texture"
+        ],
+        "crystal-facets-smoky_roughness.png": [
+          "crystal-facets-smoky",
+          "crystal",
+          "facets",
+          "smoky",
+          "texture"
+        ],
+        "frosted-glass.png": [
+          "frosted-glass",
+          "frosted",
+          "glass",
+          "texture"
+        ],
+        "frosted-glass_normal.png": [
+          "frosted-glass",
+          "frosted",
+          "glass",
+          "texture"
+        ],
+        "frosted-glass_roughness.png": [
+          "frosted-glass",
+          "frosted",
+          "glass",
+          "texture"
+        ],
+        "glass-pebble.png": [
+          "glass-pebble",
+          "glass",
+          "pebble",
+          "texture"
+        ],
+        "glass-pebble_normal.png": [
+          "glass-pebble",
+          "glass",
+          "pebble",
+          "texture"
+        ],
+        "glass-pebble_roughness.png": [
+          "glass-pebble",
+          "glass",
+          "pebble",
+          "texture"
+        ],
+        "ice-sheet-blue.png": [
+          "ice-sheet-blue",
+          "ice",
+          "sheet",
+          "blue",
+          "texture"
+        ],
+        "ice-sheet-blue_normal.png": [
+          "ice-sheet-blue",
+          "ice",
+          "sheet",
+          "blue",
+          "texture"
+        ],
+        "ice-sheet-blue_roughness.png": [
+          "ice-sheet-blue",
+          "ice",
+          "sheet",
+          "blue",
+          "texture"
+        ],
+        "mirror-flake.png": [
+          "mirror-flake",
+          "mirror",
+          "flake",
+          "texture"
+        ],
+        "mirror-flake_normal.png": [
+          "mirror-flake",
+          "mirror",
+          "flake",
+          "texture"
+        ],
+        "mirror-flake_roughness.png": [
+          "mirror-flake",
+          "mirror",
+          "flake",
+          "texture"
+        ],
+        "obsidian-glass.png": [
+          "obsidian-glass",
+          "obsidian",
+          "glass",
+          "texture"
+        ],
+        "obsidian-glass_normal.png": [
+          "obsidian-glass",
+          "obsidian",
+          "glass",
+          "texture"
+        ],
+        "obsidian-glass_roughness.png": [
+          "obsidian-glass",
+          "obsidian",
+          "glass",
+          "texture"
+        ],
+        "stained-glass-amber.png": [
+          "stained-glass-amber",
+          "stained",
+          "glass",
+          "amber",
+          "texture"
+        ],
+        "stained-glass-amber_normal.png": [
+          "stained-glass-amber",
+          "stained",
+          "glass",
+          "amber",
+          "texture"
+        ],
+        "stained-glass-amber_roughness.png": [
+          "stained-glass-amber",
+          "stained",
+          "glass",
+          "amber",
+          "texture"
+        ],
+        "window-frost.png": [
+          "window-frost",
+          "window",
+          "frost",
+          "texture"
+        ],
+        "window-frost_normal.png": [
+          "window-frost",
+          "window",
+          "frost",
+          "texture"
+        ],
+        "window-frost_roughness.png": [
+          "window-frost",
+          "window",
+          "frost",
+          "texture"
+        ]
+      },
+      "fileHashes": {
+        "crystal-facets-clear.png": "1da953979620f25439bdc46e93ee8345eacbbc002f4ff0dea6bc32ecb97a479f",
+        "crystal-facets-clear_normal.png": "d5fc91f4c4d787678a081efc2139eca6afb72be595c56f4ad1aea8f9e931d764",
+        "crystal-facets-clear_roughness.png": "a550594bc2cf6f71979aa4b6f12271b7cc42b4720a81e71722eec98e3887382b",
+        "crystal-facets-smoky.png": "908a19414017e5b4de48c688584adc4f9834c58070e75059bc811a85924e5029",
+        "crystal-facets-smoky_normal.png": "bfdf9c9db361cf09bece037e3394fec72e3aca4a6da430b9d59dce7cb4c8b977",
+        "crystal-facets-smoky_roughness.png": "705b2bae032ac36143b1277925c23e96d3321d70d081c69d01750f15d959dffa",
+        "frosted-glass.png": "de489051c8cb3f2dd38499191c27625729c2aed07803822ed96cf23b67a934a7",
+        "frosted-glass_normal.png": "c1eecd3ab4c1781774bbf6647d7dba88f0bf15f53391e4c3b512193b94cfef7b",
+        "frosted-glass_roughness.png": "78e6acafbf0d5f49951c90682ddc88ec21b9bd0e15d7728e6dfedfd9845aab95",
+        "glass-pebble.png": "9354964521616a01b48dc5692ec243c5ca2953d1d59723cc147da72fd660d001",
+        "glass-pebble_normal.png": "ca506e06ac00ef02a74e0a4911e24d85c4c576e1ce0e4533971e10b76b7d6b0f",
+        "glass-pebble_roughness.png": "b47819da200ddd9cfd70bd7e18433c060af8852311694a783e117bbcc19c18f3",
+        "ice-sheet-blue.png": "9e7c8b2ba326aa76b856adf5b40075bc96278f4a9e2b056157c6e2bf07326035",
+        "ice-sheet-blue_normal.png": "ea98bd10c624ee4b5e8c8015ae758ded12ede634b83084bb59d53ebcd3e5e352",
+        "ice-sheet-blue_roughness.png": "54ad6b21174ae7ade03aa2d72279f9dc2b67c2fdd38d23298898df3ba09c7981",
+        "mirror-flake.png": "c95c0d2172ffd499a1f1b618c70ae936cf3c61802299adc0f086f0befe18131a",
+        "mirror-flake_normal.png": "68fee3fb4707641464645ec75e4f74aa6bc4c12c2a62e2d669ac6540d160d1d3",
+        "mirror-flake_roughness.png": "846669767fb66be28619af7850e9d1e6b87433b7d1feeb032e29c718730fd53e",
+        "obsidian-glass.png": "072eef8ffe87ce995efa26220f21a558b35592bb74d50e9e7ef139837a3d7f65",
+        "obsidian-glass_normal.png": "3ac3a221bbd64d79b9e03366174341161fe9bbbd48b7d02b6014cd95f4fadb2e",
+        "obsidian-glass_roughness.png": "3346a7c765ede9c1301988f8ba63a37537b1ceddcab3e816bf6083abd1c783cc",
+        "stained-glass-amber.png": "0b94eab0448187ce72698f0048cca14b7a0614802944b0662bb718b68bd31a44",
+        "stained-glass-amber_normal.png": "991dd82da8d4bc9d27c9e206e3a070357f9636829d189efed7b00c182bd69848",
+        "stained-glass-amber_roughness.png": "80e28f241c08c513c9c64cbba853b06c9df3621bd7e32c3af6b9e85d55497911",
+        "window-frost.png": "696056378b0655b0cf98055237152fbf206fa258401d3ecd57fc2b1898d0d02f",
+        "window-frost_normal.png": "a97f228317c3f66d53d99c455a91b4ece8a69816eeac70f71d15cabe79534dc4",
+        "window-frost_roughness.png": "501a48f75fcb44ce0e268fbd65863e4f4cc919009e29be7f81da81e086ad8cdb"
+      },
+      "materials": {
+        "crystal-facets-clear": {
+          "base": "crystal-facets-clear.png",
+          "normal": "crystal-facets-clear_normal.png",
+          "roughness": "crystal-facets-clear_roughness.png"
+        },
+        "crystal-facets-smoky": {
+          "base": "crystal-facets-smoky.png",
+          "normal": "crystal-facets-smoky_normal.png",
+          "roughness": "crystal-facets-smoky_roughness.png"
+        },
+        "frosted-glass": {
+          "base": "frosted-glass.png",
+          "normal": "frosted-glass_normal.png",
+          "roughness": "frosted-glass_roughness.png"
+        },
+        "glass-pebble": {
+          "base": "glass-pebble.png",
+          "normal": "glass-pebble_normal.png",
+          "roughness": "glass-pebble_roughness.png"
+        },
+        "ice-sheet-blue": {
+          "base": "ice-sheet-blue.png",
+          "normal": "ice-sheet-blue_normal.png",
+          "roughness": "ice-sheet-blue_roughness.png"
+        },
+        "mirror-flake": {
+          "base": "mirror-flake.png",
+          "normal": "mirror-flake_normal.png",
+          "roughness": "mirror-flake_roughness.png"
+        },
+        "obsidian-glass": {
+          "base": "obsidian-glass.png",
+          "normal": "obsidian-glass_normal.png",
+          "roughness": "obsidian-glass_roughness.png"
+        },
+        "stained-glass-amber": {
+          "base": "stained-glass-amber.png",
+          "normal": "stained-glass-amber_normal.png",
+          "roughness": "stained-glass-amber_roughness.png"
+        },
+        "window-frost": {
+          "base": "window-frost.png",
+          "normal": "window-frost_normal.png",
+          "roughness": "window-frost_roughness.png"
+        }
+      },
+      "sha256": "b219502a8a41bc1236bcdc1e829051c98b4447e40db2bfe8c7e84a00cf83d18d",
+      "thumbs": {
+        "crystal-facets-clear.png": "thumbs/glass-crystal-ice-v1.0.0/crystal-facets-clear.webp",
+        "crystal-facets-clear_normal.png": "thumbs/glass-crystal-ice-v1.0.0/crystal-facets-clear_normal.webp",
+        "crystal-facets-clear_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/crystal-facets-clear_roughness.webp",
+        "crystal-facets-smoky.png": "thumbs/glass-crystal-ice-v1.0.0/crystal-facets-smoky.webp",
+        "crystal-facets-smoky_normal.png": "thumbs/glass-crystal-ice-v1.0.0/crystal-facets-smoky_normal.webp",
+        "crystal-facets-smoky_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/crystal-facets-smoky_roughness.webp",
+        "frosted-glass.png": "thumbs/glass-crystal-ice-v1.0.0/frosted-glass.webp",
+        "frosted-glass_normal.png": "thumbs/glass-crystal-ice-v1.0.0/frosted-glass_normal.webp",
+        "frosted-glass_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/frosted-glass_roughness.webp",
+        "glass-pebble.png": "thumbs/glass-crystal-ice-v1.0.0/glass-pebble.webp",
+        "glass-pebble_normal.png": "thumbs/glass-crystal-ice-v1.0.0/glass-pebble_normal.webp",
+        "glass-pebble_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/glass-pebble_roughness.webp",
+        "ice-sheet-blue.png": "thumbs/glass-crystal-ice-v1.0.0/ice-sheet-blue.webp",
+        "ice-sheet-blue_normal.png": "thumbs/glass-crystal-ice-v1.0.0/ice-sheet-blue_normal.webp",
+        "ice-sheet-blue_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/ice-sheet-blue_roughness.webp",
+        "mirror-flake.png": "thumbs/glass-crystal-ice-v1.0.0/mirror-flake.webp",
+        "mirror-flake_normal.png": "thumbs/glass-crystal-ice-v1.0.0/mirror-flake_normal.webp",
+        "mirror-flake_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/mirror-flake_roughness.webp",
+        "obsidian-glass.png": "thumbs/glass-crystal-ice-v1.0.0/obsidian-glass.webp",
+        "obsidian-glass_normal.png": "thumbs/glass-crystal-ice-v1.0.0/obsidian-glass_normal.webp",
+        "obsidian-glass_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/obsidian-glass_roughness.webp",
+        "stained-glass-amber.png": "thumbs/glass-crystal-ice-v1.0.0/stained-glass-amber.webp",
+        "stained-glass-amber_normal.png": "thumbs/glass-crystal-ice-v1.0.0/stained-glass-amber_normal.webp",
+        "stained-glass-amber_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/stained-glass-amber_roughness.webp",
+        "window-frost.png": "thumbs/glass-crystal-ice-v1.0.0/window-frost.webp",
+        "window-frost_normal.png": "thumbs/glass-crystal-ice-v1.0.0/window-frost_normal.webp",
+        "window-frost_roughness.png": "thumbs/glass-crystal-ice-v1.0.0/window-frost_roughness.webp"
+      }
     }
   ]
 }
